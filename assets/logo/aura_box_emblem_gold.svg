@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="100%" height="100%">
+  <defs>
+    <linearGradient id="emblemGold" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFFBEB" />
+      <stop offset="30%" stop-color="#FCD34D" />
+      <stop offset="60%" stop-color="#D97706" />
+      <stop offset="100%" stop-color="#92400E" />
+    </linearGradient>
+    <filter id="emblemShadow" x="-30%" y="-30%" width="160%" height="160%">
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#000" flood-opacity="0.3"/>
+    </filter>
+  </defs>
+
+  <g transform="translate(10, 10)" filter="url(#emblemShadow)">
+    <!-- Primary Aura Sparkle Star -->
+    <path d="M 90 10 Q 90 90 170 90 Q 90 90 90 170 Q 90 90 10 90 Q 90 90 90 10 Z" fill="url(#emblemGold)" />
+    <!-- Companion Accent Sparkle -->
+    <path d="M 150 30 Q 150 50 170 50 Q 150 50 150 70 Q 150 50 130 50 Q 150 50 150 30 Z" fill="url(#emblemGold)" opacity="0.95" />
+  </g>
+</svg>
