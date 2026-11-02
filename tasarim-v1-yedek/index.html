@@ -1,0 +1,1007 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AURA BOX — Özel Hediye Kürasyonu & Lüks Konsiyerj</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="luxury-canvas">
+
+  <!-- =========================================================================
+       ÜST KONTROL BAR: GÖRÜNÜM SEÇİCİ (WEB vs MOBİL APP vs YAN YANA)
+       ========================================================================= -->
+  <aside class="viewport-controller-bar">
+    <div class="controller-inner">
+      <div class="controller-brand" onclick="window.scrollTo({top:0, behavior:'smooth'})">
+        <span class="crest-icon">✦</span>
+        <div class="brand-text-col">
+          <strong>AURA BOX</strong>
+          <span>The Private Relationship Concierge</span>
+        </div>
+      </div>
+
+      <!-- Switcher Butonları -->
+      <div class="view-switch-capsule">
+        <button class="switch-btn active" data-view="web" id="btnViewWeb">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <rect x="2" y="3" width="20" height="14" rx="2" ry="2"/>
+            <line x1="8" y1="21" x2="16" y2="21"/>
+            <line x1="12" y1="17" x2="12" y2="21"/>
+          </svg>
+          <span>Web Vitrini</span>
+        </button>
+
+        <button class="switch-btn" data-view="split" id="btnViewSplit">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <rect x="3" y="3" width="18" height="18" rx="2"/>
+            <line x1="12" y1="3" x2="12" y2="21"/>
+          </svg>
+          <span>Yan Yana (Split)</span>
+        </button>
+
+        <button class="switch-btn" data-view="mobile" id="btnViewMobile">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <rect x="5" y="2" width="14" height="20" rx="3" ry="3"/>
+            <line x1="12" y1="18" x2="12.01" y2="18"/>
+          </svg>
+          <span>iPhone 16 Pro</span>
+        </button>
+      </div>
+
+      <div class="controller-meta">
+        <span class="golden-privilege-tag">
+          <span class="gold-dot"></span> The Private Atelier Network
+        </span>
+      </div>
+    </div>
+  </aside>
+
+  <!-- =========================================================================
+       ANA ÇERÇEVE ALANI (WEB / MOBİL ÇİFTLİ VEYA TEKLİ KONTEYNER)
+       ========================================================================= -->
+  <div class="app-display-wrapper view-web-active" id="mainDisplayWrapper">
+
+    <!-- =======================================================================
+         BÖLÜM 1: WEB ANASAYFA (QUIET LUXURY & REFINED BENTO)
+         ======================================================================= -->
+    <div class="web-view-pane" id="webViewPane">
+      
+      <!-- Lüks Web Navigasyonu -->
+      <nav class="web-navbar">
+        <div class="web-nav-inner">
+          <div class="brand-crest-group" onclick="window.scrollTo({top:0, behavior:'smooth'})">
+            <div class="seal-mark">AB</div>
+            <div class="brand-logotype">
+              <span class="name">AURA BOX</span>
+              <span class="motto">Private Concierge & Vaults</span>
+            </div>
+          </div>
+
+          <div class="nav-links-luxury">
+            <a href="#serendipity">Ayrıcalık</a>
+            <a href="#urun-bandi">Zanaat Havuzu</a>
+            <a href="#gercek-kutular">Kürasyonlar</a>
+            <a href="#paketler">Kademeler & Özel Bütçe</a>
+            <a href="#onboarding-web">Profil Sihirbazı</a>
+          </div>
+
+          <div class="nav-cta-luxury">
+            <button class="btn-ghost-luxury" id="btnOpenMobileFromWeb">Mobil App &rarr;</button>
+            <a href="#onboarding-web" class="btn-gold-luxury">Kürasyon Başlat</a>
+          </div>
+        </div>
+      </nav>
+
+      <!-- =====================================================================
+           HERO SECTION: SİNEMATİK EDİTORYAL KARŞILAMA
+           ===================================================================== -->
+      <header class="web-hero-visual">
+        <div class="hero-backdrop-layer">
+          <div class="hero-left-text">
+            <div class="editorial-badge">
+              <span class="gold-star">✦</span>
+              <span>Görünmez Lüks İlişki Konsiyerji</span>
+              <span class="gold-star">✦</span>
+            </div>
+
+            <h1 class="hero-serif-title">
+              Siz ilişkinize odaklanın, <br>
+              <em class="italic-serif">jestleri bize bırakın.</em>
+            </h1>
+
+            <p class="hero-editorial-subtext">
+              Pırlantalardan İsviçre saat aksesuarlarına, taze çiçeklerden niş parfümlere, artisan çikolatalardan el dokuması parçalara... Her teslimatta atölyelerimizin en nadide hazineleriyle karşılaşma ayrıcalığı sunan, yapay zeka destekli gizli hediye kulübü.
+            </p>
+
+            <div class="hero-cta-cluster">
+              <a href="#onboarding-web" class="btn-black-luxury">
+                <span>İlk Sürprizi Kurgula</span>
+                <span class="arrow-sym">&rarr;</span>
+              </a>
+              <a href="#urun-bandi" class="btn-outline-luxury">
+                <span>Zanaat Havuzunu İncele</span>
+              </a>
+            </div>
+
+            <div class="hero-trust-metrics">
+              <div class="metric-pill">
+                <strong>Kişiye Özel Kademeler</strong>
+                <span>1.000 ₺'den Özel Bütçeye</span>
+              </div>
+              <div class="metric-divider"></div>
+              <div class="metric-pill">
+                <strong>The Serendipity Vault</strong>
+                <span>Her Kutuda Beklenmedik Zarafet</span>
+              </div>
+              <div class="metric-divider"></div>
+              <div class="metric-pill">
+                <strong>3 km² Zanaat Kümesi</strong>
+                <span>Taze Çiçek & Aynı Gün VIP Kurye</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Sağ Taraf: Sinematik Kutu Sahnesi (Sade, Çarpışmasız Tasarım) -->
+          <div class="hero-right-visual">
+            <div class="hero-visual-card">
+              <img src="https://images.unsplash.com/photo-1549465220-1a8b9238cd48?auto=format&fit=crop&w=1000&q=80" alt="Aura Box Luxury Curations" class="hero-main-img">
+              <div class="hero-card-overlay">
+                <div class="overlay-tag">
+                  <span class="pulse-gold"></span> BU AYIN KÜRATÖR SEÇKİSİ
+                </div>
+                <h3 class="overlay-title">The Parisienne Romance Edition</h3>
+                <p class="overlay-desc">Taze Lavanta Buketi • 925 Ayar Aytaşı Kolye • El Yapımı Trüfler • Mühürlü Kaligrafi Kartı</p>
+                <div class="overlay-price-bar">
+                  <span class="box-badge-gold">Signature Box</span>
+                  <span class="overlay-atelier-tag">Atelier Margot & Flora Lab</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </header>
+
+
+      <!-- =====================================================================
+           BÖLÜM 2: THE SERENDIPITY VAULT (BEKLENMEDİK ZARAFET AYRICALIĞI)
+           ===================================================================== -->
+      <section class="web-bento-section serendipity-section" id="serendipity">
+        <div class="serendipity-box">
+          <div class="serendipity-content">
+            <div class="serendipity-kicker">
+              <span class="shimmer-text">✦ THE SERENDIPITY PRIVILEGE ✦</span>
+            </div>
+            <h2 class="serendipity-title">Her Kutuda Beklenmedik Bir Zanaat Dokunuşu.</h2>
+            <p class="serendipity-subtext">
+              Aura Box'ta her üye, hangi kademeyi seçerse seçsin daima en yüksek ayrıcalığı hisseder. Küratörlerimiz ve yapay zeka algoritmamız, kutuların içerisine periyodik olarak yerel atölyelerimizin en kıymetli mücevherlerini, İsviçre zanaatı aksesuarlarını ve niş parfümlerini gizli bir lüks jest olarak dahil eder.
+            </p>
+
+            <div class="serendipity-pillars-grid">
+              <div class="privilege-card">
+                <div class="privilege-icon">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                    <polygon points="6 3 18 3 22 9 12 22 2 9"/>
+                    <line x1="12" y1="22" x2="12" y2="9"/>
+                    <line x1="2" y1="9" x2="22" y2="9"/>
+                  </svg>
+                </div>
+                <strong>Kıymetli Mücevher Sürprizi</strong>
+                <p>Doğal taş ve gümüşün ötesinde; sertifikalı pırlanta ve altın dokunuşlarla karşılaşma zarafeti.</p>
+              </div>
+
+              <div class="privilege-card">
+                <div class="privilege-icon">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                    <circle cx="12" cy="12" r="7"/>
+                    <polyline points="12 9 12 12 13.5 13.5"/>
+                    <path d="M16.51 17.35l-.35 3.83a2 2 0 0 1-2 1.82H9.83a2 2 0 0 1-2-1.82l-.35-3.83m.01-10.7l.35-3.83A2 2 0 0 1 9.83 1h4.34a2 2 0 0 1 2 1.82l.35 3.83"/>
+                  </svg>
+                </div>
+                <strong>İsviçre Saat Aksesuarları</strong>
+                <p>Mekanik saat kurma kutuları, İtalyan deri seyahat ruloları ve zamansız aksesuarlar.</p>
+              </div>
+
+              <div class="privilege-card">
+                <div class="privilege-icon">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                    <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/>
+                    <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>
+                  </svg>
+                </div>
+                <strong>Sessiz Kaçamak Davetiyeleri</strong>
+                <p>Kutunuzdan çıkabilecek iki kişilik butik bağ evi konaklaması veya özel sanat atölyesi jesti.</p>
+              </div>
+            </div>
+          </div>
+          <div class="serendipity-visual">
+            <img src="https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?auto=format&fit=crop&w=700&q=80" alt="Diamond Jewelry Piece" class="serendipity-showcase-img">
+            <div class="serendipity-badge-ribbon">Atelier Vault Selection</div>
+          </div>
+        </div>
+      </section>
+
+
+      <!-- =====================================================================
+           BÖLÜM 3: EXCLUSIVE ÜRÜN BANDI (KAYAN EDİTORYAL FİLMŞERİTİ)
+           FİYATSIZ, TRENDYOL DEĞİL, LÜKS MARQUEE BANDI
+           ===================================================================== -->
+      <section class="web-bento-section product-strip-section" id="urun-bandi">
+        <div class="section-editorial-header">
+          <span class="kicker">ZANAATKAR & MATERYAL HAVUZU</span>
+          <h2 class="serif-section-title">Kutularımızın İçindeki Rafine Dünya</h2>
+          <p class="section-tagline">3 km²'lik lokal kümemizdeki atölyelerden anlık API senkronu ile derlenen seçkin parçalar.</p>
+        </div>
+
+        <!-- Kayan Sonsuz Lüks Ürün Bandı (Filmstrip Marquee) -->
+        <div class="marquee-viewport-container">
+          <div class="luxury-marquee-track">
+
+            <!-- Parça 1: Pırlanta & Mücevher -->
+            <div class="filmstrip-card">
+              <div class="fs-img-wrap">
+                <img src="https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?auto=format&fit=crop&w=600&q=80" alt="Pırlanta & Aytaşı Kolye">
+              </div>
+              <div class="fs-meta">
+                <span class="fs-category">Mücevher & Tasarım</span>
+                <h4 class="fs-title">Doğal Aytaşı & 0.30ct Pırlanta Kolye</h4>
+                <p class="fs-origin">Atelier Margot • Nişantaşı (0.8 km)</p>
+              </div>
+            </div>
+
+            <!-- Parça 2: Saat & Lüks Deri -->
+            <div class="filmstrip-card">
+              <div class="fs-img-wrap">
+                <img src="https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?auto=format&fit=crop&w=600&q=80" alt="Saat Aksesuarı">
+              </div>
+              <div class="fs-meta">
+                <span class="fs-category">Saat & Aksesuar</span>
+                <h4 class="fs-title">İsviçre Saat Aksesuarı & Deri Rulo</h4>
+                <p class="fs-origin">Geneva Vault • Bebek (1.4 km)</p>
+              </div>
+            </div>
+
+            <!-- Parça 3: Taze Çiçek & Botanik -->
+            <div class="filmstrip-card">
+              <div class="fs-img-wrap">
+                <img src="https://images.unsplash.com/photo-1561181286-d3fee7d55364?auto=format&fit=crop&w=600&q=80" alt="Taze Tasarım Çiçek">
+              </div>
+              <div class="fs-meta">
+                <span class="fs-category">Botanik & Çiçek</span>
+                <h4 class="fs-title">Fransız Lavantası & Şakayık Buketi</h4>
+                <p class="fs-origin">Flora Botanica Lab (1.1 km) • VIP Kurye</p>
+              </div>
+            </div>
+
+            <!-- Parça 4: Niche Kokulu Mum -->
+            <div class="filmstrip-card">
+              <div class="fs-img-wrap">
+                <img src="https://images.unsplash.com/photo-1603006905003-be475563bc59?auto=format&fit=crop&w=600&q=80" alt="Doğal Soya Mumu">
+              </div>
+              <div class="fs-meta">
+                <span class="fs-category">Mum & Ambiyans</span>
+                <h4 class="fs-title">Mermer Kaideli Sedir & Paçuli Soya Mumu</h4>
+                <p class="fs-origin">Maison Wax Studio (2.1 km)</p>
+              </div>
+            </div>
+
+            <!-- Parça 5: İpek Şal & Dokuma -->
+            <div class="filmstrip-card">
+              <div class="fs-img-wrap">
+                <img src="https://images.unsplash.com/photo-1584917865442-de89df76afd3?auto=format&fit=crop&w=600&q=80" alt="İpek Fular">
+              </div>
+              <div class="fs-meta">
+                <span class="fs-category">İpek & Dokuma</span>
+                <h4 class="fs-title">İtalyan Doğal İpek Fular & Mini Etnik Obje</h4>
+                <p class="fs-origin">Weave & Silk Atölyesi (1.7 km)</p>
+              </div>
+            </div>
+
+            <!-- Parça 6: Koleksiyonluk Peluş -->
+            <div class="filmstrip-card">
+              <div class="fs-img-wrap">
+                <img src="https://images.unsplash.com/photo-1558877385-81a1c7e67d72?auto=format&fit=crop&w=600&q=80" alt="Tasarım Peluş Ayı">
+              </div>
+              <div class="fs-meta">
+                <span class="fs-category">Peluş & Hatıra</span>
+                <h4 class="fs-title">El Dikişi Kaşmir Peluş Ayı (Steiff Ekolü)</h4>
+                <p class="fs-origin">Atelier Nosta • Kadıköy (2.3 km)</p>
+              </div>
+            </div>
+
+            <!-- Parça 7: Niche Extrait Parfüm -->
+            <div class="filmstrip-card">
+              <div class="fs-img-wrap">
+                <img src="https://images.unsplash.com/photo-1523293182086-7651a899d37f?auto=format&fit=crop&w=600&q=80" alt="Niche Parfüm">
+              </div>
+              <div class="fs-meta">
+                <span class="fs-category">Niche Parfüm</span>
+                <h4 class="fs-title">Amber Grand Extrait de Parfum (50ml)</h4>
+                <p class="fs-origin">Oud & Botanica • Moda (2.4 km)</p>
+              </div>
+            </div>
+
+            <!-- Parça 8: Artisan Çikolata & Lezzet -->
+            <div class="filmstrip-card">
+              <div class="fs-img-wrap">
+                <img src="https://images.unsplash.com/photo-1549007994-cb92caebd54b?auto=format&fit=crop&w=600&q=80" alt="Artisan Trüf">
+              </div>
+              <div class="fs-meta">
+                <span class="fs-category">Artisan Gurme</span>
+                <h4 class="fs-title">Altın Varaklı Belçika Trüfleri & Kahve</h4>
+                <p class="fs-origin">Madlen Choco Atelier (0.9 km)</p>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+
+      <!-- =====================================================================
+           BÖLÜM 4: BU AYIN GERÇEK KUTULARI (THE CURATION LOOKBOOK)
+           ===================================================================== -->
+      <section class="web-bento-section clear-section" id="gercek-kutular">
+        <div class="section-editorial-header">
+          <span class="kicker">CANLI KÜRASİYONLAR</span>
+          <h2 class="serif-section-title">Abonelerimizin Masasına Ulaşan Gerçek Kutular</h2>
+          <p class="section-tagline">Kutunun kapağı açıldığında hissedilen o büyülü zarafet ve el yazısı kaligrafi not.</p>
+        </div>
+
+        <div class="curated-box-showcase-grid">
+
+          <!-- Kutu 1: The Romantic Bloom -->
+          <div class="lookbook-card">
+            <div class="lb-image-container">
+              <img src="https://images.unsplash.com/photo-1513885535751-8b9238bd345a?auto=format&fit=crop&w=800&q=80" alt="The Romantic Bloom Edition">
+              <div class="lb-ribbon-tag">Signature Edition</div>
+            </div>
+            <div class="lb-content">
+              <span class="lb-kicker">Eş & Sevgiliye Düzenli Zarafet</span>
+              <h3 class="lb-title">"The Romantic Bloom & Velvet"</h3>
+              <p class="lb-desc">Taze Fransız lavantaları buketi, 925 ayar aytaşı kolye, altın varaklı Belçika trüfleri ve mühürlü aşk mektubu.</p>
+              
+              <div class="lb-items-chips">
+                <span>✦ Flora Butik Buket</span>
+                <span>✦ Aytaşı Kolye</span>
+                <span>✦ Madlen Trüf</span>
+                <span>✦ Mühürlü Kaligrafi</span>
+              </div>
+
+              <div class="lb-footer">
+                <span class="lb-status-info">Aylık veya 2 Ayda Bir Sevkiyat</span>
+                <button class="btn-sm-gold" onclick="selectTierAndScroll('signature')">Bu Kurguyu Seç</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Kutu 2: The Midnight Gentleman / VIP -->
+          <div class="lookbook-card">
+            <div class="lb-image-container">
+              <img src="https://images.unsplash.com/photo-1524805444758-089113d48a6d?auto=format&fit=crop&w=800&q=80" alt="The Midnight Gentleman VIP">
+              <div class="lb-ribbon-tag vip">Prestige VIP Edition</div>
+            </div>
+            <div class="lb-content">
+              <span class="lb-kicker">Koca, Baba veya Prestijli İş Ortağı</span>
+              <h3 class="lb-title">"The Midnight Onyx & Timepiece"</h3>
+              <p class="lb-desc">Niche Amber Extrait parfüm, hakiki deri saat rulosu, el dökümü mermer mum ve çift kişilik tiyatro bileti.</p>
+              
+              <div class="lb-items-chips">
+                <span>✦ Amber Extrait</span>
+                <span>✦ Deri Saat Rulosu</span>
+                <span>✦ Mermer Mum</span>
+                <span>✦ Özel Etkinlik</span>
+              </div>
+
+              <div class="lb-footer">
+                <span class="lb-status-info">Özel Kurye ile Randevulu Teslimat</span>
+                <button class="btn-sm-gold" onclick="selectTierAndScroll('prestige')">Bu Kurguyu Seç</button>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+
+      <!-- =====================================================================
+           BÖLÜM 5: MODÜLER PAKETLER & KENDİN BELİRLE (CUSTOM ATELIER)
+           ===================================================================== -->
+      <section class="web-bento-section clear-section" id="paketler">
+        <div class="section-editorial-header">
+          <span class="kicker">LÜKS KADEMELERİ & ÖZEL BÜTÇE</span>
+          <h2 class="serif-section-title">İlişkinizin Ritmine Uygun Kurgu</h2>
+          <p class="section-tagline">Belirlenmiş standart paketlerden birini seçin ya da bütçenizi serbestçe kendiniz belirleyin.</p>
+        </div>
+
+        <!-- Frekans Seçici (Quiet Luxury) -->
+        <div class="editorial-frequency-bar">
+          <span class="freq-title">Gönderim Sıklığı:</span>
+          <div class="freq-pill-container">
+            <button class="web-freq-btn active" data-freq="monthly">Aylık Düzenli</button>
+            <button class="web-freq-btn" data-freq="bimonthly">2 Ayda Bir</button>
+            <button class="web-freq-btn" data-freq="special">Özel Günler (Yılda 4-5 Kez + 1 Salı)</button>
+          </div>
+        </div>
+
+        <div class="tier-editorial-grid">
+          <!-- Kademe 1: Petite -->
+          <div class="tier-editorial-card">
+            <div class="tier-card-header">
+              <span class="tier-label">Mikro-Jest / Zarafet</span>
+              <h3 class="tier-name">Aura Petite</h3>
+              <div class="tier-price-row">
+                <span class="price-val">1.000</span>
+                <span class="price-curr">₺ / ay</span>
+              </div>
+              <p class="tier-desc">Yeni başlayan flörtler, kıymetli dostluklar veya haftalık moral/self-reward jestleri.</p>
+            </div>
+            <div class="tier-card-body">
+              <ul class="luxury-bullet-list">
+                <li><span>✦</span> Tasarım sukulent veya cam teraryum</li>
+                <li><span>✦</span> El yapımı dolgulu artisan çikolata</li>
+                <li><span>✦</span> Doğal soya mumu ve aromaterapi esansı</li>
+                <li><span>✦</span> Kişiye özel kaligrafi motto kartı</li>
+              </ul>
+            </div>
+            <div class="tier-card-footer">
+              <button class="btn-tier-select" onclick="selectTierAndScroll('petite')">Petite Seç</button>
+            </div>
+          </div>
+
+          <!-- Kademe 2: Signature (Öne Çıkan) -->
+          <div class="tier-editorial-card featured-gold-card">
+            <div class="gold-featured-ribbon">En Çok Tercih Edilen Romantik Seçim</div>
+            <div class="tier-card-header">
+              <span class="tier-label gold">Standart / Romantik</span>
+              <h3 class="tier-name">Aura Signature</h3>
+              <div class="tier-price-row">
+                <span class="price-val">3.000</span>
+                <span class="price-curr">₺ / ay</span>
+              </div>
+              <p class="tier-desc">Eşe, sevgiliye ve anneye düzenli zarafet. Kusursuz bir ilişki sigortası.</p>
+            </div>
+            <div class="tier-card-body">
+              <ul class="luxury-bullet-list">
+                <li><span>✦</span> Butik tasarım taze çiçek buketi (Aynı gün kurye)</li>
+                <li><span>✦</span> Single-origin gurme kahve & trüf çikolata</li>
+                <li><span>✦</span> Sanatçı seramik fincanı veya tasarım kırtasiye</li>
+                <li><span>✦</span> Organik konsept cilt bakım & duş ritüeli</li>
+              </ul>
+            </div>
+            <div class="tier-card-footer">
+              <button class="btn-tier-select gold-btn" onclick="selectTierAndScroll('signature')">Signature ile Başla</button>
+            </div>
+          </div>
+
+          <!-- Kademe 3: Prestige VIP -->
+          <div class="tier-editorial-card">
+            <div class="tier-card-header">
+              <span class="tier-label">VIP / Prestige</span>
+              <h3 class="tier-name">Aura Prestige</h3>
+              <div class="tier-price-row">
+                <span class="price-val">6.500</span>
+                <span class="price-curr">₺ / ay</span>
+              </div>
+              <p class="tier-desc">Lüks zevklere sahip partnerler, iş ortakları ve prestijli özel jestler.</p>
+            </div>
+            <div class="tier-card-body">
+              <ul class="luxury-bullet-list">
+                <li><span>✦</span> Niche extrait parfüm (Özel koku evlerinden)</li>
+                <li><span>✦</span> Tasarım 925 gümüş / yarı değerli doğal taş takı</li>
+                <li><span>✦</span> El yapımı hakiki deri kartlık / aksesuar</li>
+                <li><span>✦</span> Çift kişilik tiyatro / seramik workshop bileti</li>
+              </ul>
+            </div>
+            <div class="tier-card-footer">
+              <button class="btn-tier-select" onclick="selectTierAndScroll('prestige')">Prestige Seç</button>
+            </div>
+          </div>
+
+          <!-- Kademe 4: Black Custom -->
+          <div class="tier-editorial-card black-velvet-card">
+            <div class="tier-card-header">
+              <span class="tier-label gold">Ultra-Lüks / Exclusive</span>
+              <h3 class="tier-name">Aura Black</h3>
+              <div class="tier-price-row">
+                <span class="price-val">50.000+</span>
+                <span class="price-curr">₺ / özel</span>
+              </div>
+              <p class="tier-desc">Sınır tanımayan lüks. Pırlanta, altın, İsviçre saat aksesuarları ve kişisel kaçamaklar.</p>
+            </div>
+            <div class="tier-card-body">
+              <ul class="luxury-bullet-list">
+                <li><span>✦</span> Sertifikalı gerçek pırlanta / altın mücevher</li>
+                <li><span>✦</span> Lüks İsviçre saat aksesuarları / kurma kutusu</li>
+                <li><span>✦</span> İtalyan ipek fular / kaşmir şal</li>
+                <li><span>✦</span> Butik bağ evi / lüks otel konaklama bileti</li>
+              </ul>
+            </div>
+            <div class="tier-card-footer">
+              <button class="btn-tier-select black-btn" onclick="selectTierAndScroll('black')">Özel Danışman İle Görüş</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- ===================================================================
+             ÖZEL BÜTÇE / KENDİN BELİRLE (CUSTOM ATELIER SLIDER)
+             =================================================================== -->
+        <div class="custom-budget-card">
+          <div class="cb-header">
+            <div>
+              <span class="cb-kicker">✦ ÖZEL BÜTÇE KONTROLÜ ✦</span>
+              <h3 class="cb-title">Bütçenizi Kendiniz Tanımlayın</h3>
+              <p class="cb-desc">Kalıplara bağlı kalmak istemeyenler için: Aylık ayırmak istediğiniz bütçeyi belirleyin, Aura AI o bütçedeki en asil kombinasyonu oluştursun.</p>
+            </div>
+            <div class="cb-budget-display">
+              <span class="cb-amount" id="customBudgetDisplay">15.000 ₺</span>
+              <span class="cb-freq">/ aylık serbest bütçe</span>
+            </div>
+          </div>
+
+          <div class="cb-slider-container">
+            <input type="range" min="1000" max="75000" step="500" value="15000" class="luxury-slider" id="budgetSlider">
+            <div class="cb-slider-labels">
+              <span>1.000 ₺</span>
+              <span>15.000 ₺</span>
+              <span>35.000 ₺</span>
+              <span>50.000 ₺</span>
+              <span>75.000 ₺+</span>
+            </div>
+          </div>
+
+          <div class="cb-curation-preview">
+            <div class="cb-preview-badge">Bu Bütçedeki Kürasyon Karakteri:</div>
+            <p class="cb-preview-text" id="customCurationSummary">
+              "Özel tasarım 925 ayar gümüş takı veya pırlanta dokunuşu, niche koku evi extrait parfümü, taze butik buket ve çift kişilik deneyim davetiyesi."
+            </p>
+            <button class="btn-gold-luxury" onclick="applyCustomBudgetAndScroll()">Bu Özel Bütçeyle Başla &rarr;</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- =====================================================================
+           BÖLÜM 6: 60-SANİYELİK İNTERAKTİF ONBOARDING SİHİRBAZI
+           ===================================================================== -->
+      <section class="web-bento-section clear-section" id="onboarding-web">
+        <div class="section-editorial-header">
+          <span class="kicker">KİŞİSEL KÜRASİYONUNUZ</span>
+          <h2 class="serif-section-title">60 Saniyede Alıcı Profilini Tanımlayın</h2>
+          <p class="section-tagline">Yapay zekanın ilk kutunuzu küratörlük kurallarıyla eşleştirmesi için 4 sade adım.</p>
+        </div>
+
+        <div class="bento-tile onboarding-wizard-tile">
+          <div class="wizard-stepper-header">
+            <div class="w-step active" data-step="1"><span>1</span> Alıcı Kimliği</div>
+            <div class="w-step-line"></div>
+            <div class="w-step" data-step="2"><span>2</span> Kesin Hayırlar</div>
+            <div class="w-step-line"></div>
+            <div class="w-step" data-step="3"><span>3</span> Kritik Takvim</div>
+            <div class="w-step-line"></div>
+            <div class="w-step" data-step="4"><span>4</span> Aura AI Analizi</div>
+          </div>
+
+          <!-- Wizard Adım 1 -->
+          <div class="wizard-step-pane active" id="wStep1">
+            <h3 class="wizard-pane-title">Kime Sürpriz Hazırlıyoruz?</h3>
+            <div class="wizard-chip-grid" id="wTargetGroup">
+              <button class="w-chip active" data-val="es">Eşim / Partnerim</button>
+              <button class="w-chip" data-val="anne">Annem / Babam</button>
+              <button class="w-chip" data-val="flort">Yeni Başlayan Flörtüm</button>
+              <button class="w-chip" data-val="b2b">Kilit İş Ortağım / VIP Müşteri</button>
+              <button class="w-chip" data-val="self">Kendim (Self-Reward)</button>
+            </div>
+
+            <h4 class="wizard-sub-title mt-20">Alıcının Baskın Yaşam Tarzı:</h4>
+            <div class="wizard-chip-grid" id="wPersonaGroup">
+              <button class="w-chip active" data-val="sanat">Sanatsever & Estetik</button>
+              <button class="w-chip" data-val="gurme">Gurme & Lezzet Tutkunu</button>
+              <button class="w-chip" data-val="minimal">Minimalist & Huzur Arayan</button>
+              <button class="w-chip" data-val="luks">Lüks & Glamour Meraklısı</button>
+            </div>
+
+            <div class="wizard-action-row">
+              <div></div>
+              <button class="btn-black-luxury" onclick="nextWizardStep(2)">Sonraki Adım: Alerjiler & Hayırlar &rarr;</button>
+            </div>
+          </div>
+
+          <!-- Wizard Adım 2 -->
+          <div class="wizard-step-pane" id="wStep2">
+            <h3 class="wizard-pane-title">Ters Köşeyi Önleyen "Kesin Hayırlar" (Alerjiler)</h3>
+            <p class="wizard-pane-desc">Alıcının hoşlanmadığı veya alerjik olduğu şeyleri kilitliyoruz. Sistem bunları asla kutuya sokmaz.</p>
+            
+            <div class="exclusion-checkbox-grid">
+              <label class="ex-check-card">
+                <input type="checkbox" id="chkPolen">
+                <span class="ex-check-box"></span>
+                <div>
+                  <strong>Çiçek Poleni Hassasiyeti</strong>
+                  <p>Taze buket yerine kuru aranjman veya tasarım sukulent verilir.</p>
+                </div>
+              </label>
+
+              <label class="ex-check-card">
+                <input type="checkbox" id="chkSeker">
+                <span class="ex-check-box"></span>
+                <div>
+                  <strong>Alkol / Şeker Tüketmeme Durumu</strong>
+                  <p>Şekerli pralinler yerine organik bitki çayları ve şekersiz tatlar seçilir.</p>
+                </div>
+              </label>
+
+              <label class="ex-check-card">
+                <input type="checkbox" id="chkGumus" checked>
+                <span class="ex-check-box"></span>
+                <div>
+                  <strong>Yalnızca 925 Gümüş Tercihi (Altın İstemiyor)</strong>
+                  <p>Tüm takı kürasyonları saf 925 ayar gümüş ile sınırlandırılır.</p>
+                </div>
+              </label>
+
+              <label class="ex-check-card">
+                <input type="checkbox" id="chkKoku">
+                <span class="ex-check-box"></span>
+                <div>
+                  <strong>Ağır Koku / Parfüm Hassasiyeti</strong>
+                  <p>Yalnızca hipoalerjenik kokusuz soya mumları ve hafif esanslar kullanılır.</p>
+                </div>
+              </label>
+            </div>
+
+            <div class="wizard-action-row">
+              <button class="btn-ghost-luxury" onclick="nextWizardStep(1)">&larr; Geri</button>
+              <button class="btn-black-luxury" onclick="nextWizardStep(3)">Sonraki Adım: Kritik Takvim &rarr;</button>
+            </div>
+          </div>
+
+          <!-- Wizard Adım 3 -->
+          <div class="wizard-step-pane" id="wStep3">
+            <h3 class="wizard-pane-title">Kritik Tarihleri Sabitleyelim</h3>
+            <p class="wizard-pane-desc">Bu tarihleri girdiğinizde sistem o ayların teslimatını kesin güne kilitler. Diğer aylar "Sıradan Bir Salı" sürprizi olarak gider.</p>
+
+            <div class="calendar-inputs-row">
+              <div class="input-luxury-field">
+                <label>Doğum Günü Tarihi</label>
+                <input type="text" class="input-lux" value="14 Ekim" placeholder="Örn: 14 Ekim">
+              </div>
+              <div class="input-luxury-field">
+                <label>Tanışma / Evlilik Yıldönümü</label>
+                <input type="text" class="input-lux" value="28 Haziran" placeholder="Örn: 28 Haziran">
+              </div>
+              <div class="input-luxury-field">
+                <label>Teslimat Tercihi</label>
+                <select class="input-lux">
+                  <option selected>Sıradan Bir Salı (Tersine Sürpriz)</option>
+                  <option>Her Ayın 1. Günü Sabit</option>
+                  <option>Hafta Sonu Teslimat</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="wizard-action-row">
+              <button class="btn-ghost-luxury" onclick="nextWizardStep(2)">&larr; Geri</button>
+              <button class="btn-gold-luxury" onclick="generateAiBoxPreview()">Yapay Zeka ile İlk Kutuyu Eşle &rarr;</button>
+            </div>
+          </div>
+
+          <!-- Wizard Adım 4 (Sonuç Önizlemesi) -->
+          <div class="wizard-step-pane" id="wStep4">
+            <div class="ai-matched-layout">
+              <div class="ai-matched-badge">
+                <span>✦</span> AURA ENGINE KİŞİSELLEŞTİRME BAŞARILI
+              </div>
+              <h3 class="wizard-pane-title">"Sanatsever Eş" İçin İlk Ay Kurgusu Hazır</h3>
+              <p class="wizard-pane-desc">3 km²'lik lokal kümemizdeki canlı stoktan eşleştirilen ilk sürpriz sepeti:</p>
+
+              <div class="matched-items-preview">
+                <div class="m-item">
+                  <span class="m-icon">✦</span>
+                  <strong>Atelier Margot 925 Gümüş Aytaşı Kolye</strong>
+                  <span class="m-tag">Odak Parça</span>
+                </div>
+                <div class="m-item">
+                  <span class="m-icon">✦</span>
+                  <strong>Fransız Lavantası & Taze Okaliptüs Buketi</strong>
+                  <span class="m-tag">Aynı Gün VIP Kurye</span>
+                </div>
+                <div class="m-item">
+                  <span class="m-icon">✦</span>
+                  <strong>Defne Studio El Yapımı Seramik Fincan</strong>
+                  <span class="m-tag">Sanatçı İmzalı</span>
+                </div>
+                <div class="m-item">
+                  <span class="m-icon">✦</span>
+                  <strong>Kaligrafi El Yazısı Özel Notunuz</strong>
+                  <span class="m-tag">Kişisel Dokunuş</span>
+                </div>
+              </div>
+
+              <div class="matched-footer-action">
+                <div class="price-lock-tag">
+                  <span id="wizardChosenTierTitle">Önerilen Kademe: <strong>Aura Signature (3.000 ₺/ay)</strong></span>
+                  <p>İlk gönderim teslim anında Secret Spoiler SMS'iniz telefonunuza düşecektir.</p>
+                </div>
+                <button class="btn-gold-luxury pulse-hover" onclick="showAppAlert('Kürasyon başarıyla kilitlendi! Mobil uygulamadan takip edebilirsiniz.')">Aboneliği Başlat & Kart Ekle</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Web Footer -->
+      <footer class="web-luxury-footer">
+        <div class="footer-crest-row">
+          <span class="footer-seal">AB</span>
+          <span class="footer-title">AURA BOX</span>
+          <p class="footer-sub">"Siz ilişkinize odaklanın, jestleri bize bırakın."</p>
+        </div>
+        <div class="footer-fine-print">
+          <span>© 2026 Aura Box Inc. All rights reserved.</span>
+          <span>Quiet Luxury • Exclusive Concierge Architecture</span>
+        </div>
+      </footer>
+    </div>
+
+
+    <!-- =======================================================================
+         BÖLÜM 2: MOBİL UYGULAMA (iPHONE 16 PRO CANLI DENEYİMİ)
+         ======================================================================= -->
+    <div class="mobile-view-pane" id="mobileViewPane">
+      <div class="mobile-device-stand">
+        <div class="iphone-16-frame">
+          <!-- Donanım Detayları: Dynamic Island, Sensörler -->
+          <div class="iphone-dynamic-island">
+            <div class="island-camera"></div>
+            <div class="island-indicator"></div>
+          </div>
+
+          <!-- iOS Durum Çubuğu -->
+          <div class="ios-status-bar">
+            <span class="status-time">09:41</span>
+            <div class="status-icons">
+              <svg width="15" height="11" viewBox="0 0 15 11" fill="currentColor">
+                <path d="M1 9h2V2H1v7zm4 0h2V0H5v9zm4 0h2V4H9v5zm4-9v9h2V0h-2z"/>
+              </svg>
+              <svg width="15" height="11" viewBox="0 0 16 12" fill="currentColor">
+                <path d="M8 0C3.6 0 .3 2.6 0 2.9l8 9.9 8-9.9C15.7 2.6 12.4 0 8 0z"/>
+              </svg>
+              <div class="battery-icon">
+                <div class="battery-level"></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Uygulama Ekran Sahnesi -->
+          <div class="app-screen-viewport">
+
+            <!-- MOBİL EKRAN 1: TIMELINE & İLİŞKİ MERKEZİ (HOME) -->
+            <div class="mobile-tab-screen active" id="tabScreenHome">
+              <!-- Mobil Üst Bar -->
+              <div class="app-top-header">
+                <div>
+                  <span class="app-greeting">Aura Concierge</span>
+                  <h2 class="app-user-title">Hoş geldin, Berat</h2>
+                </div>
+                <div class="app-avatar-badge" id="btnFaceIdTrigger" title="FaceID ile Secret Cheat Sheet Aç">
+                  <span class="faceid-mini">✦</span>
+                </div>
+              </div>
+
+              <!-- Ana İlişki Sayacı Kartı -->
+              <div class="relationship-countdown-card">
+                <div class="rel-badge">
+                  <span class="rel-dot"></span> Eşin Selin ile
+                </div>
+                <div class="rel-metric">
+                  <span class="num">18</span>
+                  <span class="unit">GÜN KALDI</span>
+                </div>
+                <h4 class="rel-event">3. Evlilik Yıldönümü Sürprizi</h4>
+                <p class="rel-status-text">
+                  <span class="mini-gold-dot"></span> Aura AI: 3 km² kümemizden Fransız lavantası buketi ve özel tasarım aytaşı kolye rezerve edildi.
+                </p>
+              </div>
+
+              <!-- Sıradaki Sürpriz Durumu (Sıradan Bir Salı) -->
+              <div class="random-drop-card">
+                <div class="rd-left">
+                  <span class="rd-icon">✦</span>
+                  <div>
+                    <strong>Sıradan Bir Salı Modu</strong>
+                    <p>Bu ayki teslimat rastgele bir iş gününde gizlice ulaşacak.</p>
+                  </div>
+                </div>
+                <span class="rd-badge">Aktif</span>
+              </div>
+
+              <!-- Geçmiş Jestler & Hatıra Galerisi -->
+              <div class="app-section-title-row">
+                <h4>Geçmiş Kutuların Arşivi</h4>
+                <span>Tümü &rarr;</span>
+              </div>
+
+              <div class="memory-polaroid-scroll">
+                <div class="polaroid-card">
+                  <div class="polaroid-img-wrapper">
+                    <img src="https://images.unsplash.com/photo-1561181286-d3fee7d55364?auto=format&fit=crop&w=300&q=80" alt="Ekim Kutusu">
+                  </div>
+                  <strong>Ekim Kutusu</strong>
+                  <p>Defne Seramik & Trüfler</p>
+                  <span class="p-rating">★★★★★ (Çok Beğendi)</span>
+                </div>
+
+                <div class="polaroid-card">
+                  <div class="polaroid-img-wrapper">
+                    <img src="https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?auto=format&fit=crop&w=300&q=80" alt="Eylül Kutusu">
+                  </div>
+                  <strong>Eylül Kutusu</strong>
+                  <p>Margot Aytaşı Kolye</p>
+                  <span class="p-rating">★★★★★ (Harika Seçim)</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- MOBİL EKRAN 2: THE VAULT (KASA & AÇILIM) -->
+            <div class="mobile-tab-screen" id="tabScreenVault">
+              <div class="app-top-header">
+                <div>
+                  <span class="app-greeting">Aura The Vault</span>
+                  <h2 class="app-user-title">Bu Ayın Kasası</h2>
+                </div>
+                <span class="vault-state-badge">Mühürlü</span>
+              </div>
+
+              <div class="vault-interactive-stage">
+                <div class="vault-box-container" id="vault3DBox" onclick="breakWaxSeal()">
+                  <div class="vault-wax-seal" id="vaultWaxSeal">
+                    <span class="seal-icon">✦</span>
+                    <span class="seal-text">MÜHÜRÜ KIR</span>
+                  </div>
+                  <div class="vault-ribbon-v"></div>
+                  <div class="vault-ribbon-h"></div>
+                  <div class="vault-box-core">
+                    <span class="vault-box-label">AURA SIGNATURE NO. 24</span>
+                  </div>
+                </div>
+
+                <p class="vault-hint" id="vaultHintText">
+                  Kutunun içeriğini önizlemek için mühre dokunun.
+                </p>
+
+                <!-- Açılınca Çıkan Ürün Kartları -->
+                <div class="vault-unveiled-items hidden" id="vaultUnveiled">
+                  <div class="v-item-row">
+                    <span class="v-icon">✦</span>
+                    <div>
+                      <strong>Fransız Lavantası Buketi</strong>
+                      <p>Flora Butik • Taze Hat</p>
+                    </div>
+                    <span class="v-check">✓</span>
+                  </div>
+                  <div class="v-item-row">
+                    <span class="v-icon">✦</span>
+                    <div>
+                      <strong>Aytaşı 925 Gümüş Kolye</strong>
+                      <p>Atelier Margot • Kuru Lüks</p>
+                    </div>
+                    <span class="v-check">✓</span>
+                  </div>
+                  <div class="v-item-row">
+                    <span class="v-icon">✦</span>
+                    <div>
+                      <strong>Madlen El Yapımı Trüf</strong>
+                      <p>Chocoholic • Artisan Tat</p>
+                    </div>
+                    <span class="v-check">✓</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- MOBİL EKRAN 3: SECRET CHEAT SHEET (BİYOMETRİK GİZLİ ÇEKMECE) -->
+            <div class="mobile-tab-screen" id="tabScreenCheat">
+              <div class="app-top-header">
+                <div>
+                  <span class="app-greeting">Biyometrik Güvenlik</span>
+                  <h2 class="app-user-title">Secret Cheat Sheet</h2>
+                </div>
+                <span class="faceid-pill">FaceID Korumalı</span>
+              </div>
+
+              <div class="cheat-sheet-container">
+                <div class="cheat-card-alert">
+                  <span class="ch-icon">✦</span>
+                  <div>
+                    <strong>"Ne broşu?" Mahcubiyetini Sıfırlayın</strong>
+                    <p>Alıcı kutuyu açıp sizi aradığında bilmeniz gereken tüm detaylar burada.</p>
+                  </div>
+                </div>
+
+                <div class="cheat-detail-card">
+                  <span class="ch-sub">Kutunun İçindekiler:</span>
+                  <ul class="ch-list">
+                    <li><strong>Atelier Margot Kolye:</strong> Doğal gökkuşağı aytaşı. 925 ayar rodyum kaplama gümüş.</li>
+                    <li><strong>Flora Tasarım Buket:</strong> Taze Fransız lavantası, okaliptüs ve pamuk otu.</li>
+                    <li><strong>Kişisel Notunuz:</strong> "Seninle geçen her gün bir hediye sevgilim..."</li>
+                  </ul>
+                </div>
+
+                <div class="curator-tips-card">
+                  <span class="curator-badge">Küratörün Sohbet Tüyosu:</span>
+                  <p class="curator-quote">
+                    "Eğer kolyenin taşını sorarsa: <em>'Aytaşının yeni başlangıçları ve dinginliği simgelediğini öğrendim, sana çok yakışacağını düşündüm'</em> diyebilirsiniz. Kusursuz bir etki bırakacaktır."
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <!-- MOBİL EKRAN 4: CONCIERGE CHAT (WHATSAPP TARZI DANIŞMAN) -->
+            <div class="mobile-tab-screen" id="tabScreenChat">
+              <div class="app-top-header">
+                <div>
+                  <span class="app-greeting">Kişisel İlişki Danışmanı</span>
+                  <h2 class="app-user-title">Aura Concierge</h2>
+                </div>
+                <span class="live-dot-green">Online</span>
+              </div>
+
+              <div class="app-chat-stream">
+                <div class="bubble bot">
+                  <p>Merhaba Berat Bey! Selin Hanım için hazırlanan bu ayki sürpriz tamamlandı.</p>
+                  <span class="b-time">10:14</span>
+                </div>
+                <div class="bubble bot">
+                  <p>Bu ay kutunun içerisine özel bir el yazısı not eklemek ister misiniz? Yoksa sizin adınıza zarif bir sevgi notu mu ekleyelim?</p>
+                  <span class="b-time">10:14</span>
+                </div>
+                <div class="bubble user">
+                  <p>"İyi ki varsın sevgilim, seninle hayat çok daha anlamlı." yazar mısınız?</p>
+                  <span class="b-time">10:17</span>
+                </div>
+                <div class="bubble bot">
+                  <p>Notunuz kaligrafi ile özel mühürlü kartımıza aktarıldı. Dağıtım Sıradan Bir Salı günü gizlice gerçekleştirilecek. ✦</p>
+                  <span class="b-time">10:18</span>
+                </div>
+              </div>
+
+              <div class="app-chat-input-bar">
+                <input type="text" placeholder="Konsiyerje mesaj yaz..." class="chat-in">
+                <button class="chat-send-btn">&uarr;</button>
+              </div>
+            </div>
+
+            <!-- iOS Alt Sekme Çubuğu (Tab Bar) -->
+            <nav class="ios-tab-bar">
+              <button class="tab-item active" data-tab="tabScreenHome">
+                <span class="tab-icon">✦</span>
+                <span class="tab-label">Zaman Tüneli</span>
+              </button>
+              <button class="tab-item" data-tab="tabScreenVault">
+                <span class="tab-icon">◈</span>
+                <span class="tab-label">Kasa</span>
+              </button>
+              <button class="tab-item" data-tab="tabScreenCheat">
+                <span class="tab-icon">❖</span>
+                <span class="tab-label">Cheat Sheet</span>
+              </button>
+              <button class="tab-item" data-tab="tabScreenChat">
+                <span class="tab-icon">◇</span>
+                <span class="tab-label">Konsiyerj</span>
+              </button>
+            </nav>
+
+            <!-- Home Gösterge Çizgisi (Home Indicator) -->
+            <div class="ios-home-indicator"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

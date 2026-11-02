@@ -1,0 +1,1988 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AURA BOX — Akıllı Hediye Kürasyon Platformu | Proje Sunumu</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;1,500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="light-theme">
+
+  <!-- Üst Gezinme Çubuğu (Apple Frosted Glass) -->
+  <header class="navbar-wrapper">
+    <div class="navbar-container">
+      <div class="brand-logo" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
+        <div class="brand-symbol">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/>
+            <polyline points="3.27 6.96 12 12.01 20.73 6.96"/>
+            <line x1="12" y1="22.08" x2="12" y2="12"/>
+          </svg>
+        </div>
+        <span class="brand-name">AURA BOX</span>
+        <span class="brand-tag">Project Deck 2026</span>
+      </div>
+
+      <nav class="nav-links">
+        <a href="#deger-onerisi" class="nav-link">Konsept</a>
+        <a href="#paketler" class="nav-link">Paketler</a>
+        <a href="#lootbox-ai" class="nav-link highlighted-link">AI Kutu</a>
+        <a href="#onboarding" class="nav-link">Onboarding</a>
+        <a href="#micro-hub" class="nav-link">3km² Hub</a>
+        <a href="#risk-cozum" class="nav-link">Riskler</a>
+        <a href="#b2b-ekonomi" class="nav-link">B2B & Marj</a>
+      </nav>
+
+      <div class="nav-actions">
+        <a href="../tasarim/" class="btn btn-secondary" title="Müşteri Platformu & Canlı Deneyim" style="text-decoration: none;">
+          <span>✨</span>
+          <span>Müşteri Platformu</span>
+        </a>
+        <button id="btnPresentationMode" class="btn btn-secondary" title="Slayt / Sunum Modu">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <rect x="2" y="3" width="20" height="14" rx="2" ry="2"/>
+            <line x1="8" y1="21" x2="16" y2="21"/>
+            <line x1="12" y1="17" x2="12" y2="21"/>
+          </svg>
+          <span>Sunum</span>
+        </button>
+        <a href="#lootbox-ai" class="btn btn-primary">
+          <span>AI Kutusu</span>
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+            <polyline points="9 18 15 12 9 6"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Sunum İlerleme Çubuğu -->
+  <div class="presentation-progress-bar" id="progressBar"></div>
+
+  <!-- Ana İçerik Konteyneri -->
+  <main class="page-container">
+
+    <!-- HERO BENTO SECTION -->
+    <section class="bento-section hero-section" id="hero">
+      <div class="hero-header">
+        <div class="pill-badge luxury-badge">
+          <span class="pulse-dot"></span>
+          Yeni Nesil Abonelikli Hediye ve İlişki Kürasyonu
+        </div>
+        <h1 class="hero-title">
+          Siz ilişkinize odaklanın, <br>
+          <span class="gradient-text">jestleri bize bırakın.</span>
+        </h1>
+        <p class="hero-subtitle">
+          Unutulma ve ihmal stresini sıfırlayan, <strong>850 TL'den 42.000 TL+'ye</strong> kadar yapay zeka gücüyle kişiye özel oluşturulan periyodik lüks hediye kutuları.
+        </p>
+      </div>
+
+      <!-- Hero Bento Grid -->
+      <div class="bento-grid hero-grid">
+        <!-- Kart 1: Öz Dinamik / Kahraman Paradigması -->
+        <div class="bento-card bento-col-8 hero-main-card">
+          <div class="card-inner">
+            <div class="card-badge-row">
+              <span class="tag-pill tag-purple">Ana Dinamik</span>
+              <span class="tag-pill tag-gold">Kusursuz İtibar</span>
+            </div>
+            <div class="hero-concept-layout">
+              <div class="concept-text">
+                <h3 class="bento-title">Gönderen Kahraman Olur, Aura Box Görünmez Kalır</h3>
+                <p class="bento-desc">
+                  Müşteriye sadece bir kutu satmıyoruz; <strong>"unutulma/ihmal edilme stresini ortadan kaldırma garantisi"</strong> ve <strong>"düşünülmüş sürpriz konforu"</strong> sunuyoruz. Kutuda asla sıradan bir abonelik ibaresi yer almaz; tamamen göndericinin kendi zevki ve el yazısı gibi hissettirilir.
+                </p>
+                <div class="hero-role-duo">
+                  <div class="role-pill">
+                    <span class="role-icon">👑</span>
+                    <div>
+                      <strong>Abone (Gönderen)</strong>
+                      <p>Romantik, özenli ve unutmayan kahraman</p>
+                    </div>
+                  </div>
+                  <div class="role-pill">
+                    <span class="role-icon">🪄</span>
+                    <div>
+                      <strong>Aura Box</strong>
+                      <p>Arka plandaki görünmez lüks küratör</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="hero-box-preview">
+                <div class="floating-luxury-box">
+                  <div class="box-ribbon"></div>
+                  <div class="box-tag">AURA NO. 24</div>
+                  <div class="box-items-preview">
+                    <div class="item-bubble" title="Tasarım Pırlanta / Gümüş Kolye">💎</div>
+                    <div class="item-bubble" title="Artisan Çikolata & Trüf">🍫</div>
+                    <div class="item-bubble" title="Niche Kokulu Soya Mumu">🕯️</div>
+                    <div class="item-bubble" title="El Yazısı Özel Not">✉️</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Kart 2: Fiyat ve Kademe Skalası -->
+        <div class="bento-card bento-col-4 metric-card bg-subtle-gold">
+          <div class="card-inner">
+            <span class="tag-pill tag-neutral">Bütçe Yelpazesi</span>
+            <div class="metric-value">850 ₺ — 42.000 ₺+</div>
+            <p class="metric-label">Her bütçe ve hediye amacına özel 6 kademeli şeffaf piramit.</p>
+            <div class="tier-mini-list">
+              <div class="tier-mini-item"><span>Petite</span><strong>850 ₺</strong></div>
+              <div class="tier-mini-item"><span>Signature (Popüler)</span><strong>2.600 ₺</strong></div>
+              <div class="tier-mini-item"><span>VIP Prestige</span><strong>5.500 ₺</strong></div>
+              <div class="tier-mini-item"><span>Privé (Altın)</span><strong>12.500 ₺</strong></div>
+              <div class="tier-mini-item"><span>Grand Atelier</span><strong>24.000 ₺</strong></div>
+              <div class="tier-mini-item gold"><span>Black Custom</span><strong>42.000 ₺+</strong></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Kart 3: 3 km² Hyper-Local Micro-Hub -->
+        <div class="bento-card bento-col-4 feature-card">
+          <div class="card-inner">
+            <div class="icon-circle icon-blue">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="10"/>
+                <polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/>
+              </svg>
+            </div>
+            <h4 class="card-title">3 km² Micro-Hub Kümesi</h4>
+            <p class="card-body">
+              Depomuz merkezde, seçkin tedarikçilerimiz 3 km çapında. API ile anlık stok & fiyat takibiyle taze çiçek ve gurme ürünler aynı gün VIP kurye ile çıkış yapar.
+            </p>
+            <div class="live-status-pill">
+              <span class="status-indicator"></span> 5 Butik Tedarikçi Canlı API Senkronunda
+            </div>
+          </div>
+        </div>
+
+        <!-- Kart 4: Tersine Sürpriz: "Sıradan Bir Salı" -->
+        <div class="bento-card bento-col-4 feature-card">
+          <div class="card-inner">
+            <div class="icon-circle icon-purple">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+                <line x1="16" y1="2" x2="16" y2="6"/>
+                <line x1="8" y1="2" x2="8" y2="6"/>
+                <line x1="3" y1="10" x2="21" y2="10"/>
+              </svg>
+            </div>
+            <h4 class="card-title">"Sıradan Bir Salı" Etkisi</h4>
+            <p class="card-body">
+              Hediyeler sadece ayın 1'inde gitmez. Ayın rastgele bir gününde kapıyı çalan beklenmedik sürpriz, alıcıda <strong>10 kat daha yüksek dopamin</strong> ve mutluluk yaratır.
+            </p>
+            <div class="feature-tag-row">
+              <span class="mini-chip">Beklenmedik An</span>
+              <span class="mini-chip">Dopamin Patlaması</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Kart 5: Cheat Sheet / "Ne Gönderildiğini Bilmeme" Önleyici -->
+        <div class="bento-card bento-col-4 feature-card highlight-border">
+          <div class="card-inner">
+            <div class="icon-circle icon-gold">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+              </svg>
+            </div>
+            <h4 class="card-title">Secret Cheat Sheet</h4>
+            <p class="card-body">
+              "Ne broşu?" rezilliğini önleyen canlı spoiler sistemi. Kutu teslim edildiği an gönderene detaylı SMS gider, alıcı aradığında gönderen her detayı bilir.
+            </p>
+            <a href="#risk-cozum" class="inline-action-link">Simülasyonu İncele &rarr;</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 1: DEĞER ÖNERİSİ & PSİKOLOJİ -->
+    <section class="bento-section" id="deger-onerisi">
+      <div class="section-title-wrap">
+        <span class="section-kicker">Davranışsal Psikoloji & Ürün Felsefesi</span>
+        <h2 class="section-heading">Neden Sadece Hediye Satmıyoruz?</h2>
+        <p class="section-subtext">İlişkilerde ihmal edilme korkusunu sıfırlayan, düşünülmüş lüks sürpriz konforu.</p>
+      </div>
+
+      <div class="bento-grid">
+        <!-- Büyük Psikoloji Kartı -->
+        <div class="bento-card bento-col-7">
+          <div class="card-inner">
+            <div class="tag-pill tag-purple">Duygusal Sözleşme</div>
+            <h3 class="bento-title mt-12">"Unutulma Stresini Ortadan Kaldırma Garantisi"</h3>
+            <p class="bento-desc">
+              Bir ilişkiyi yıpratan en büyük etken sevgisizlik değil; günlük hayatın koşturmacasında karşı tarafın kendisini <em>"ihmal edilmiş veya sıradanlaşmış"</em> hissetmesidir. Doğum günleri, tanışma yıldönümleri veya haftalarca süren yoğun iş temposunun ardından gelen boşluklar...
+            </p>
+            <div class="comparison-grid">
+              <div class="comparison-box bad">
+                <div class="comp-header">
+                  <span class="comp-icon">✕</span>
+                  <strong>Geleneksel Yol</strong>
+                </div>
+                <ul>
+                  <li>Son dakika çiçek sepeti siparişi</li>
+                  <li>Solgun güller, klişe hediye kutuları</li>
+                  <li>"Aklıma son anda geldi" hissi</li>
+                  <li>Sürekli takvim takip etme stresi</li>
+                </ul>
+              </div>
+              <div class="comparison-box good">
+                <div class="comp-header">
+                  <span class="comp-icon">✓</span>
+                  <strong>Aura Box Deneyimi</strong>
+                </div>
+                <ul>
+                  <li>Önceden kurgulanmış akıllı takvim</li>
+                  <li>Niche parfümler, pırlanta, gurme lezzetler</li>
+                  <li>Kişiye özel el yazısı duygu notu</li>
+                  <li>Sıfır zihinsel yük, %100 kahramanlık</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- İnteraktif WhatsApp Concierge Simülatörü -->
+        <div class="bento-card bento-col-5">
+          <div class="card-inner">
+            <div class="tag-pill tag-green">Canlı Önizleme</div>
+            <h3 class="bento-title mt-12">72 Saat Önceki Gizli Concierge</h3>
+            <p class="bento-desc">
+              Teslimattan 3 gün önce göndericiye otomatik WhatsApp pingi atılır. Özel bir not eklemek isterse yazar, boş bırakırsa küratörlerimiz onun adına şık bir kart düzenler.
+            </p>
+
+            <div class="phone-chat-mockup">
+              <div class="phone-chat-header">
+                <div class="chat-avatar">AB</div>
+                <div class="chat-info">
+                  <strong>Aura Box Concierge</strong>
+                  <span>Çevrimiçi</span>
+                </div>
+                <span class="chat-secure-badge">VIP AI</span>
+              </div>
+              <div class="chat-bubble-stream">
+                <div class="chat-message incoming">
+                  <p>Merhaba Berat Bey! 🎁 Eşiniz Selin Hanım için hazırladığımız bu ayki sürpriz Aura Box tamamlandı.</p>
+                  <span class="chat-time">10:42</span>
+                </div>
+                <div class="chat-message incoming">
+                  <p>Kutuya eklemek istediğiniz özel bir not var mı? <em>(Yanıtlamazsanız sizin adınıza zarif bir el yazısı kart ekleyeceğiz)</em></p>
+                  <span class="chat-time">10:42</span>
+                </div>
+                <div class="chat-message outgoing">
+                  <p>"İyi ki varsın sevgilim, seninle geçen her gün bir hediye..." yazar mısınız?</p>
+                  <span class="chat-time">10:45</span>
+                </div>
+                <div class="chat-message incoming">
+                  <p>Harika! Notunuz özel mühürlü kartımıza kaligrafi ile işlendi. Gönderim sıradan bir Salı günü gizlice yapılacak. 🪄</p>
+                  <span class="chat-time">10:46</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Kart 3: Negatif Churn & Duygusal Kilitlenme (Emotional Lock-In) -->
+        <div class="bento-card bento-col-12 emotional-lockin-card">
+          <div class="card-inner">
+            <div class="card-badge-row">
+              <span class="tag-pill tag-purple">Yatırımcı Perspektifi & Savunulabilirlik</span>
+              <span class="tag-pill tag-gold">Negatif Churn Savunması</span>
+            </div>
+            <div class="lockin-layout">
+              <div class="lockin-text">
+                <h3 class="bento-title mt-8">Aboneliği İptal Etmenin İlişkisel Bedeli</h3>
+                <p class="bento-desc">
+                  Geleneksel abonelik modellerinde (SaaS, eğlence, kutu e-ticaret) kullanıcı iptal butonuna bastığında yalnızca servisi kaybeder. Aura Box'ta ise iptal etmek, hayatındaki en değerli insana <em>"Artık senin için çabalamıyorum, ilişkinin rutinine teslim oldum"</em> mesajı vermekle eşdeğerdir. Bu derin duygusal bariyer, organik olarak sektörün en düşük churn oranını üretir.
+                </p>
+                <div class="lockin-quote">
+                  "Netflix'i bırakırsanız film izleyemezsiniz; Aura Box'ı bırakırsanız sevginizin özenini sorgulatırsınız."
+                </div>
+              </div>
+              <div class="lockin-metrics-grid">
+                <div class="lockin-metric-box highlight">
+                  <span class="l-metric-val">%1.4</span>
+                  <span class="l-metric-label">Aylık Churn Oranı</span>
+                  <span class="l-metric-sub">E-ticaret abonelik ortalaması %8-12</span>
+                </div>
+                <div class="lockin-metric-box">
+                  <span class="l-metric-val">14.6 Ay</span>
+                  <span class="l-metric-label">Ortalama LTV Süresi</span>
+                  <span class="l-metric-sub">Duygusal bağ ile uzayan yaşam döngüsü</span>
+                </div>
+                <div class="lockin-metric-box">
+                  <span class="l-metric-val">4.2x</span>
+                  <span class="l-metric-label">LTV / CAC Çarpanı</span>
+                  <span class="l-metric-sub">Sıfıra yakın edinim maliyetiyle yüksek kârlılık</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 2: MODÜLER PAKETLER & KADEMELER -->
+    <section class="bento-section" id="paketler">
+      <div class="section-title-wrap">
+        <span class="section-kicker">Ürün & Paket Mimarisi</span>
+        <h2 class="section-heading">Kutu Başına Şeffaf Lüks Kademeleri</h2>
+        <p class="section-subtext">Aylık düzenli abonelikte en avantajlı sadakat fiyatı; seyrek ve özel günlerde esnek teslimat.</p>
+      </div>
+
+      <!-- Frekans Seçici Bar -->
+      <div class="frequency-selector-bar">
+        <span class="freq-label">Gönderim Sıklığı:</span>
+        <div class="freq-toggle-group">
+          <button class="freq-btn active" data-freq="monthly">Aylık Düzenli (Her Ay)</button>
+          <button class="freq-btn" data-freq="bimonthly">2 Ayda Bir</button>
+          <button class="freq-btn" data-freq="special">Önemli Günler (Yılda 4-5 Kez + 1 Salı Sürprizi)</button>
+        </div>
+      </div>
+
+      <!-- Paket Bento Grid -->
+      <div class="bento-grid package-grid">
+        <!-- Paket 1: Petite -->
+        <div class="bento-card package-card" data-tier="petite">
+          <div class="card-inner">
+            <div class="pack-badge">Giriş / Micro-Jest</div>
+            <h3 class="pack-name">Aura Petite</h3>
+            <div class="pack-price">
+              <span class="currency">₺</span>
+              <span class="amount">850</span>
+              <span class="period">/kutu</span>
+            </div>
+            <div class="pack-freq-sub">
+              <span class="freq-tag-badge loyalty">🏆 %20 Sadakat İndirimi (12 Kutu/Yıl)</span>
+            </div>
+            <p class="pack-summary">Yeni başlayan flörtler, yakın arkadaşlar veya haftalık moral/self-reward jestleri.</p>
+            <hr class="pack-divider">
+            <ul class="pack-feature-list">
+              <li><span>🌱</span> Tasarım sukulent veya mini cam teraryum</li>
+              <li><span>🍫</span> Butik el yapımı dolgulu artisan çikolata</li>
+              <li><span>🕯️</span> Doğal soya mumu & aromaterapi yağı</li>
+              <li><span>✉️</span> Kişiye özel motto & el yazısı kart</li>
+            </ul>
+            <div class="pack-tag-pill">En İyi Kullanım: Arkadaşlık & Kendini Şımartma</div>
+          </div>
+        </div>
+
+        <!-- Paket 2: Signature (Öne Çıkan Standart) -->
+        <div class="bento-card package-card featured-tier" data-tier="signature">
+          <div class="popular-ribbon">En Popüler Seçim</div>
+          <div class="card-inner">
+            <div class="pack-badge gold-badge">Standart / Romantik</div>
+            <h3 class="pack-name">Aura Signature</h3>
+            <div class="pack-price">
+              <span class="currency">₺</span>
+              <span class="amount">2.600</span>
+              <span class="period">/kutu</span>
+            </div>
+            <div class="pack-freq-sub">
+              <span class="freq-tag-badge loyalty">🏆 En Avantajlı Fiyat (12 Kutu/Yıl)</span>
+            </div>
+            <p class="pack-summary">Sevgiliye, eşe ve anneye düzenli zarafet. Kusursuz bir romantik ilişki sigortası.</p>
+            <hr class="pack-divider">
+            <ul class="pack-feature-list">
+              <li><span>💐</span> Nitelikli butik tasarım çiçek buketi (Aynı gün kurye)</li>
+              <li><span>☕</span> Single-origin gurme kahve & trüf çikolata</li>
+              <li><span>🏺</span> Yerli tasarımcı seramik kupa veya kırtasiye</li>
+              <li><span>✨</span> Konsept organik cilt bakım / ritüel seti</li>
+            </ul>
+            <div class="pack-tag-pill gold">3 km² Yerel Çiçekçi & Çikolatacı Entegre</div>
+          </div>
+        </div>
+
+        <!-- Paket 3: Prestige VIP -->
+        <div class="bento-card package-card" data-tier="prestige">
+          <div class="card-inner">
+            <div class="pack-badge vip-badge">VIP / Prestige</div>
+            <h3 class="pack-name">Aura Prestige</h3>
+            <div class="pack-price">
+              <span class="currency">₺</span>
+              <span class="amount">5.500</span>
+              <span class="period">/kutu</span>
+            </div>
+            <div class="pack-freq-sub">
+              <span class="freq-tag-badge loyalty">🏆 VIP Sadakat Fiyatı (12 Kutu/Yıl)</span>
+            </div>
+            <p class="pack-summary">Lüks zevklere sahip partnerler, varlıklı profesyoneller ve prestijli özel jestler.</p>
+            <hr class="pack-divider">
+            <ul class="pack-feature-list">
+              <li><span>✨</span> Niche parfüm (Niş koku evlerinden travel boy)</li>
+              <li><span>💍</span> Tasarım 925 ayar gümüş / yarı değerli doğal taş takı</li>
+              <li><span>👜</span> El yapımı hakiki deri kartlık veya pasaport kılıfı</li>
+              <li><span>🎭</span> Çift kişilik özel tiyatro / seramik workshop bileti</li>
+            </ul>
+            <div class="pack-tag-pill">Deneyim + Lüks Parça Karması</div>
+          </div>
+        </div>
+
+        <!-- Paket 4: Privé (Haute Curation) -->
+        <div class="bento-card package-card" data-tier="prive">
+          <div class="card-inner">
+            <div class="pack-badge prive-badge">Haute Curation / Altın</div>
+            <h3 class="pack-name">Aura Privé</h3>
+            <div class="pack-price">
+              <span class="currency">₺</span>
+              <span class="amount">12.500</span>
+              <span class="period">/kutu</span>
+            </div>
+            <div class="pack-freq-sub">
+              <span class="freq-tag-badge loyalty">🏆 Privé Sadakat Avantajı (12 Kutu/Yıl)</span>
+            </div>
+            <p class="pack-summary">İnce zevklere sahip partnerler, terfi kutlamaları ve zarif altın/mücevher anları.</p>
+            <hr class="pack-divider">
+            <ul class="pack-feature-list">
+              <li><span>👑</span> 14 Ayar altın minimalist kolye veya pırlanta küpe</li>
+              <li><span>🧴</span> Tam boy (100ml) Fransız extrait parfüm (Özel gravürlü)</li>
+              <li><span>🧣</span> İtalyan saf ipek fular veya el dokuması kaşmir şal</li>
+              <li><span>🍷</span> Şef masası (Chef's Table) 2 kişilik tadım deneyimi</li>
+            </ul>
+            <div class="pack-tag-pill">Fine Jewelry & Gurme Şef Masası</div>
+          </div>
+        </div>
+
+        <!-- Paket 5: Grand Atelier (Fine Jewelry & Kaçamak) -->
+        <div class="bento-card package-card grand-tier" data-tier="grand">
+          <div class="card-inner">
+            <div class="pack-badge grand-badge">Fine Jewelry / Kaçamak</div>
+            <h3 class="pack-name">Aura Grand Atelier</h3>
+            <div class="pack-price">
+              <span class="currency">₺</span>
+              <span class="amount">24.000</span>
+              <span class="period">/kutu</span>
+            </div>
+            <div class="pack-freq-sub">
+              <span class="freq-tag-badge loyalty">🏆 Grand Sadakat Avantajı (12 Kutu/Yıl)</span>
+            </div>
+            <p class="pack-summary">Büyük yıldönümleri, evlilik teklifleri ve kalıcı miras bırakan lüks zanaat parçaları.</p>
+            <hr class="pack-divider">
+            <ul class="pack-feature-list">
+              <li><span>💎</span> HRD/GIA sertifikalı 0.40ct pırlanta / safir mücevher</li>
+              <li><span>🧳</span> Toskana el dikişi hakiki deri seyahat çantası / saat rulosu</li>
+              <li><span>🍇</span> Butik bağ evinde 1 gece gurme konaklama & şarap tadımı</li>
+              <li><span>📜</span> Baş küratör onaylı balmumu mühürlü el yazısı mektup</li>
+            </ul>
+            <div class="pack-tag-pill gold">Sertifikalı Pırlanta & Bağ Evi Kaçamağı</div>
+          </div>
+        </div>
+
+        <!-- Paket 6: Black Custom Exclusive -->
+        <div class="bento-card package-card black-exclusive-card" data-tier="black">
+          <div class="card-inner">
+            <div class="pack-badge black-badge">Ultra-Lüks / Exclusive</div>
+            <h3 class="pack-name">Aura Black</h3>
+            <div class="pack-price">
+              <span class="currency">₺</span>
+              <span class="amount">42.000+</span>
+              <span class="period">/kutu</span>
+            </div>
+            <div class="pack-freq-sub">
+              <span class="freq-tag-badge loyalty">🏆 Exclusive Kulüp (12 Kutu/Yıl)</span>
+            </div>
+            <p class="pack-summary">Sınır tanımayan lüks. Pırlanta, altın, İsviçre saat aksesuarları ve kişisel kaçamaklar.</p>
+            <hr class="pack-divider">
+            <ul class="pack-feature-list">
+              <li><span>💎</span> Sertifikalı gerçek pırlanta / özel tasarım altın mücevher</li>
+              <li><span>⌚</span> Lüks İsviçre saat aksesuarları / kurma kutusu</li>
+              <li><span>🚁</span> Helikopter transferli 5 yıldızlı süit konaklama davetiyesi</li>
+              <li><span>🎩</span> 7/24 kişisel hediye konsiyerji ve zırhlı kurye teslimat</li>
+            </ul>
+            <div class="pack-tag-pill black">Özel Konsiyerj Hizmeti & Zırhlı Teslimat</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 3: AURA LIVING INTELLIGENCE ENGINE -->
+    <section class="bento-section" id="lootbox-ai">
+      <div class="section-title-wrap">
+        <span class="section-kicker">Çok Modlu Zevk Zekâsı</span>
+        <h2 class="section-heading">Aura Living Intelligence — Kişiselleştirilmiş Kürasyon Motoru</h2>
+        <p class="section-subtext">
+          Görsel stil taraması (Vision AI), 72 saat önceki anlık duygu fısıltısı ve her teslimat sonrası sensory RLHF geri bildirimiyle sürekli evrilen yaşayan yapay zeka kürasyon motoru.
+        </p>
+      </div>
+
+      <div class="bento-card lootbox-master-card">
+        <div class="card-inner">
+          <div class="lootbox-interface">
+            <!-- Sol Panel: Parametre Seçiciler -->
+            <div class="lootbox-controls">
+              <div class="control-header">
+                <span class="control-icon">🧬</span>
+                <h4>Living Intelligence Parametreleri</h4>
+              </div>
+
+              <div class="input-group">
+                <label>Hedef Alıcı:</label>
+                <div class="pill-selector-row" id="targetSelector">
+                  <button class="selector-pill active" data-target="es">Eş / Partner</button>
+                  <button class="selector-pill" data-target="anne">Anne / Baba</button>
+                  <button class="selector-pill" data-target="b2b">İş Ortağı / VIP</button>
+                  <button class="selector-pill" data-target="self">Kendime (Self-Reward)</button>
+                </div>
+              </div>
+
+              <div class="input-group">
+                <label>Vision AI Stil & Zevk DNA'sı:</label>
+                <div class="pill-selector-row" id="personaSelector">
+                  <button class="selector-pill active" data-persona="sanatsever">Sanatsever & Estetik</button>
+                  <button class="selector-pill" data-persona="gurme">Gurme & Tat Odaklı</button>
+                  <button class="selector-pill" data-persona="minimalist">Minimalist / Huzur</button>
+                  <button class="selector-pill" data-persona="luks">Lüks & Glamour</button>
+                </div>
+              </div>
+
+              <div class="input-group">
+                <label>Kürasyon Bütçe Kademesi:</label>
+                <div class="pill-selector-row" id="budgetSelector">
+                  <button class="selector-pill" data-budget="850">850 ₺ (Petite)</button>
+                  <button class="selector-pill active" data-budget="2600">2.600 ₺ (Signature)</button>
+                  <button class="selector-pill" data-budget="5500">5.500 ₺ (Prestige)</button>
+                  <button class="selector-pill" data-budget="12500">12.500 ₺ (Privé)</button>
+                  <button class="selector-pill" data-budget="24000">24.000 ₺ (Grand)</button>
+                  <button class="selector-pill" data-budget="42000">42.000 ₺ (Black)</button>
+                </div>
+              </div>
+
+              <div class="algorithm-breakdown-bar">
+                <div class="bar-label">AI Dengeleme Matrisi:</div>
+                <div class="segmented-bar">
+                  <span class="segment seg-1" style="width: 40%;" title="%40 Ana Parça">Odak %40</span>
+                  <span class="segment seg-2" style="width: 30%;" title="%30 Duygusal / Taze">Taze/Duygu %30</span>
+                  <span class="segment seg-3" style="width: 15%;" title="%15 Ambiyans">Ambiyans %15</span>
+                  <span class="segment seg-4" style="width: 15%;" title="%15 Sunum & Not">Deneyim %15</span>
+                </div>
+              </div>
+
+              <button class="btn btn-lootbox-roll" id="btnRollBox">
+                <span class="roll-sparkle">✨</span>
+                <span>Living Intelligence ile Aura Box Oluştur</span>
+                <span class="roll-arrow">&rarr;</span>
+              </button>
+              <div class="api-sync-indicator">
+                <span class="sync-dot"></span> 3 km² çapındaki hiper-lokal partner stokları taranıyor...
+              </div>
+            </div>
+
+            <!-- Sağ Panel: Kasa Açılımı Sahnesi & Sonuçlar -->
+            <div class="lootbox-stage" id="lootboxStage">
+              <div class="unboxing-placeholder" id="stagePlaceholder">
+                <div class="vault-icon">🎁</div>
+                <h3>Aura Living Intelligence Kürasyona Hazır</h3>
+                <p>Sol panelden profil, stil DNA'sı ve bütçeyi belirleyin. Çok modlu zekâ motorumuz 3 km² kümedeki canlı partner stoklarını saniyeler içinde zevk haritanıza eşlesin.</p>
+              </div>
+
+              <div class="unboxing-active hidden" id="stageActive">
+                <div class="lootbox-rolling-animation">
+                  <div class="spinner-ring"></div>
+                  <div class="rolling-text">Vision AI DNA'sı & Canlı API Stokları Taranıyor...</div>
+                </div>
+              </div>
+
+              <div class="unboxing-result hidden" id="stageResult">
+                <div class="result-header">
+                  <div>
+                    <span class="loot-tier-tag" id="resTierTag">SIGNATURE EDITION</span>
+                    <h3 class="loot-title" id="resTitle">"Sanatsever Eş" Kürasyonu</h3>
+                  </div>
+                  <div class="loot-market-value">
+                    <span class="value-title">Kürasyon Perakende Değeri:</span>
+                    <strong class="value-num" id="resTotalValue">4.200 ₺</strong>
+                  </div>
+                </div>
+
+                <div class="loot-items-grid" id="resItemsGrid">
+                  <!-- JS dinamik dolduracak -->
+                </div>
+
+                <div class="loot-concierge-note" id="resConciergeNote">
+                  <strong>Aura Zekâ Küratör Notu:</strong>
+                  <p id="resNoteText">"Seçilen Fransız lavantası buketi ve el yapımı aytaşı kolye, alıcının sakin tonlara olan ilgisine göre eşleştirildi."</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 30 Canlı Partner API'sinden 1 Kutunun Doğuşu (Algoritmik Pipeline Kartı) -->
+        <div class="bento-card bento-col-12 curation-pipeline-card">
+          <div class="card-inner">
+            <div class="card-badge-row">
+              <span class="tag-pill tag-purple">Algoritmik Kürasyon Mimarisi</span>
+              <span class="tag-pill tag-gold">Canlı API & 3 km² Sentezi</span>
+            </div>
+            <h3 class="bento-title mt-8">30 Tedarikçinin Canlı API Stoğundan 1 Aura Box'ın Doğuşu</h3>
+            <p class="bento-desc">
+              Aura Box statik katalog ürünlerini paketlemez. 3 km² yarıçapındaki 30 bağımsız butik ve zanaatkarın canlı envanteriyle doğrudan konuşur; 0.4 saniye içinde sıfır hata ve maksimum zarafet ile o aya özel tekil kutuyu oluşturur.
+            </p>
+
+            <div class="pipeline-stepper">
+              <!-- Adım 1 -->
+              <div class="p-step-box active-flow">
+                <div class="p-step-num"><span>01</span> 📡</div>
+                <div class="p-step-title">30 Partner API Taraması</div>
+                <div class="p-step-desc">1.400+ anlık ürün; stok durumu, fırından/atölyeden çıkış saati ve 3 km² kurye mesafesi taranır.</div>
+                <span class="p-step-badge">14 ms Gecikme</span>
+              </div>
+
+              <!-- Adım 2 -->
+              <div class="p-step-box active-flow">
+                <div class="p-step-num"><span>02</span> 🛡️</div>
+                <div class="p-step-title">Kesin Hayırlar Kalkanı</div>
+                <div class="p-step-desc">Alerjik polenler, sevilmeyen koku/metal türleri ve daha önce gönderilmiş tüm ürünler mutlak olarak elenir.</div>
+                <span class="p-step-badge">%100 Sıfır Risk</span>
+              </div>
+
+              <!-- Adım 3 -->
+              <div class="p-step-box active-flow">
+                <div class="p-step-num"><span>03</span> 🧬</div>
+                <div class="p-step-title">Vision AI & Ses Sentezi</div>
+                <div class="p-step-desc">Fotoğraflardan çıkarılan renk paleti ve göndericinin 10 sn'lik sesli fısıltısı (anlık stres/yorgunluk) modele beslenir.</div>
+                <span class="p-step-badge">%97.8 Stil Dengesi</span>
+              </div>
+
+              <!-- Adım 4 -->
+              <div class="p-step-box active-flow">
+                <div class="p-step-num"><span>04</span> ⚖️</div>
+                <div class="p-step-title">Bütçe Harmoni Matrisi</div>
+                <div class="p-step-desc">%40 Odak Mücevher/Parfüm + %30 Taze Çiçek/Trüf + %15 Ambiyans + %15 Mühürlü Kaligrafi oranıyla bütçe kilitlenir.</div>
+                <span class="p-step-badge">46% Sabit Brüt Marj</span>
+              </div>
+
+              <!-- Adım 5 -->
+              <div class="p-step-box active-flow">
+                <div class="p-step-num"><span>05</span> 🪄</div>
+                <div class="p-step-title">JIT Montaj & Gizli Mühür</div>
+                <div class="p-step-desc">Aynı gün taze ve kuru hat birleştirilir, el yazısı kart eklenir, dış koli markasız mühürlenir.</div>
+                <span class="p-step-badge">Sıradan Bir Salı</span>
+              </div>
+            </div>
+
+            <div class="pipeline-cta-bar">
+              <div class="pipeline-live-stat">
+                <span class="pulse-dot"></span> Canlı Algoritma: 30 API düğümü aktif • Ortalama gecikme: <strong id="pipelineLatency">320 ms</strong>
+              </div>
+              <button class="btn-pipeline-sim" id="btnSimulatePipeline" onclick="runPipelineSimulation()">
+                <span>▶</span> 30 API Kürasyonunu Canlı Simüle Et
+              </button>
+            </div>
+
+            <!-- Simülasyon Canlı Konsolu (Animatif Akış) -->
+            <div class="pipeline-sim-console hidden" id="pipelineSimConsole">
+              <div class="sim-console-header">
+                <div class="sim-live-status">
+                  <span class="sim-pulse-spinner"></span>
+                  <span id="simStatusText">30 Partner API'si taranıyor...</span>
+                </div>
+                <span class="sim-timer-tag" id="simStopwatch">0 ms</span>
+              </div>
+              <div class="sim-progress-track">
+                <div class="sim-progress-fill" id="simProgressFill"></div>
+              </div>
+              <div class="sim-curated-preview hidden" id="simCuratedPreview">
+                <div class="sim-preview-badge">✨ KUTU 342 MS İÇİNDE BAŞARIYLA SENTEZLENDİ</div>
+                <div class="sim-preview-grid">
+                  <div class="sim-p-item">🌸 <strong>Flora Botanica:</strong> Fransız Lavantası Buketi (Stok: Canlı API • 1.1 km)</div>
+                  <div class="sim-p-item">💎 <strong>Atelier Margot:</strong> 925 Aytaşı Kolye (Stok: 2 Adet • 0.8 km)</div>
+                  <div class="sim-p-item">🍫 <strong>Madlen Choco:</strong> Altın Varaklı Trüf (Aynı Gün Üretim • Bebek)</div>
+                  <div class="sim-p-item">💌 <strong>Kaligrafi Atölyesi:</strong> Mühürlü Kişisel Mektup + Sesli QR</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 4: KULLANICI ONBOARDING & ALGORİTMA AKIŞI -->
+    <section class="bento-section" id="onboarding">
+      <div class="section-title-wrap">
+        <span class="section-kicker">Kayıt Akışı & Veri Mimarisi</span>
+        <h2 class="section-heading">Kargaşayı Önleyen Yapılandırılmış Kayıt</h2>
+        <p class="section-subtext">Serbest metin kaosu yerine kesin kilitler, alerji filtreleri ve hatasız takvim yönetimi.</p>
+      </div>
+
+      <div class="bento-grid">
+        <!-- Adım 1: Alıcı Profili -->
+        <div class="bento-card bento-col-4 flow-card">
+          <div class="card-inner">
+            <div class="step-num">01</div>
+            <h4 class="card-title">Alıcı Kimliği & Persona</h4>
+            <p class="card-body">Kime hediye gidiyor? Eş, anne, baba, iş ortağı veya kendim. Yaş grubu, meslek ve ilgi alanları tek tıkla seçilir.</p>
+            <div class="structured-tags">
+              <span class="s-tag active">Eş / Sevgili</span>
+              <span class="s-tag">Sanatsever</span>
+              <span class="s-tag">Gurme</span>
+              <span class="s-tag">Seyahat</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Adım 2: Kesin Hayırlar (Hard Exclusions) -->
+        <div class="bento-card bento-col-4 flow-card highlight-danger">
+          <div class="card-inner">
+            <div class="step-num step-alert">02</div>
+            <h4 class="card-title">Kesin Hayırlar & Alerjiler</h4>
+            <p class="card-body">Ters köşeyi sıfırlayan filtre. Alerjik ürünler, sevilmeyen kokular veya alkol/şeker hassasiyetleri algoritmaya kilitlenir.</p>
+            <div class="exclusion-list">
+              <div class="ex-item"><span class="cross">✕</span> Çiçek poleni alerjisi (Kuru çiçek verilir)</div>
+              <div class="ex-item"><span class="cross">✕</span> Alkol / rafine şeker yok</div>
+              <div class="ex-item"><span class="check">✓</span> Yalnızca 925 Gümüş (Altın yok)</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Adım 3: Kritik Takvim Kilitleri -->
+        <div class="bento-card bento-col-4 flow-card">
+          <div class="card-inner">
+            <div class="step-num">03</div>
+            <h4 class="card-title">Kritik Takvim Kilitleri</h4>
+            <p class="card-body">Doğum günü, tanışma yıldönümü ve Sevgililer Günü takvime sabitlenir. Sistem o ayların teslimatını o kesin tarihe bağlar.</p>
+            <div class="calendar-preview">
+              <div class="cal-badge"><span class="cal-icon">📅</span> 14 Ekim: Doğum Günü (Kilitli)</div>
+              <div class="cal-badge"><span class="cal-icon">💍</span> 28 Haziran: Yıldönümü (Kilitli)</div>
+              <div class="cal-badge random"><span class="cal-icon">🎲</span> Sıradan Bir Salı (Sürpriz)</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Adım 4 & 5 Geniş Bento Kartı -->
+        <div class="bento-card bento-col-12 feedback-flow-card">
+          <div class="card-inner">
+            <div class="feedback-layout">
+              <div class="fb-left">
+                <span class="tag-pill tag-purple">Döngüsel Yapay Zeka (RLHF)</span>
+                <h3 class="bento-title mt-12">Her Kutudan Sonra Öğrenen Sistem</h3>
+                <p class="bento-desc">
+                  Göndericiye ve dilerse alıcıya kutu açıldıktan sonra sessiz bir 1-5 yıldız memnuniyet puanlaması yaptırılır. Alınan geri bildirimlerle makine öğrenimi modeli eğitilir; bir sonraki kutu hedefin zevkine matematiksel olarak daha da yaklaşır.
+                </p>
+                <div class="accuracy-graph">
+                  <div class="acc-metric">
+                    <strong>%97.8</strong>
+                    <span>3. Kutudan Sonra Memnuniyet Oranı</span>
+                  </div>
+                  <div class="acc-metric">
+                    <strong>%0.4</strong>
+                    <span>İade / Değişim Talebi</span>
+                  </div>
+                </div>
+              </div>
+              <div class="fb-right">
+                <div class="feedback-demo-box">
+                  <div class="fb-demo-title">Kullanıcı Memnuniyet Puanlaması (Örnek)</div>
+                  <div class="star-rating-row">
+                    <span class="star active">★</span>
+                    <span class="star active">★</span>
+                    <span class="star active">★</span>
+                    <span class="star active">★</span>
+                    <span class="star active">★</span>
+                  </div>
+                  <p class="fb-comment">"Eşim kolyenin tasarımına ve kutunun kokusuna bayıldı. Çikolatanın bitter olması tam isabet olmuş!"</p>
+                  <div class="ai-learned-tag">
+                    <span class="pulse-mini"></span> AI Güncellendi: Gelecek kutularda 'Yoğun Kakao & Minimal Gümüş' ağırlığı %30 artırıldı.
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- QR Sesli & Videolu Hatıra Kartı Kartı (Voice Memo Keepsake) -->
+        <div class="bento-card bento-col-12 voice-keepsake-card">
+          <div class="card-inner">
+            <div class="card-badge-row">
+              <span class="tag-pill tag-purple">Duygusal Teknoloji</span>
+              <span class="tag-pill tag-gold">Sonsuz Hatıra Zarfı</span>
+            </div>
+            <div class="voice-keepsake-layout">
+              <div class="voice-keepsake-info">
+                <h3 class="bento-title mt-8">Sesli Not Analizi & QR Sürpriz Kartı</h3>
+                <p class="bento-desc">
+                  Kullanıcı araba sürerken veya meşgulken WhatsApp'a 10 saniyelik bir ses notu atabilir: <em>"Bu ara çok başı ağrıyor, işle ilgili çok stresli; dinlendirici spa ve lavanta tonları ağırlıklı olsun..."</em>.
+                </p>
+                <p class="bento-desc" style="margin-top:0.5rem;">
+                  Aura AI bu ses kaydını <strong>iki amaçla</strong> kullanır:
+                </p>
+                <ul class="solution-bullet-list mt-8">
+                  <li><strong>1. Akustik Duygu Analizi:</strong> Ses tonundaki yorgunluk ve stres seviyesini ölçüp o ayki kutunun koku, mum ve doku ağırlığını sakinleştirici bileşenlere kalibre eder.</li>
+                  <li><strong>2. Mühürlü QR Hatıra Kartı:</strong> Bu samimi ses veya video kaydı, kutunun içindeki lüks balmumu mühürlü karta dinamik QR olarak basılır. Alıcı kamerayı tuttuğunda eşinin kendi sesinden duygulandıran mesajı yankılanır.</li>
+                </ul>
+              </div>
+
+              <!-- Canlı Ses Oynatıcı & QR Mockup -->
+              <div class="voice-card-mockup">
+                <div class="v-card-wax">AB</div>
+                <span class="tag-pill tag-neutral" style="font-size:0.65rem;">Kutudaki Kaligrafi Zarfından Çıkan Kart</span>
+                <h4 style="font-family:var(--font-serif); font-size:1.15rem; color:var(--accent-purple-royal); margin-top:0.5rem;">"Senin İçin Bir Fısıltı Bıraktım..."</h4>
+                
+                <div class="v-audio-player">
+                  <div class="v-player-controls">
+                    <button class="v-play-btn" title="Ses Kaydını Dinle">▶</button>
+                    <div class="v-waveform">
+                      <div class="wave-bar" style="animation-delay: 0.1s; height: 12px;"></div>
+                      <div class="wave-bar" style="animation-delay: 0.3s; height: 22px;"></div>
+                      <div class="wave-bar" style="animation-delay: 0.2s; height: 18px;"></div>
+                      <div class="wave-bar" style="animation-delay: 0.5s; height: 26px;"></div>
+                      <div class="wave-bar" style="animation-delay: 0.4s; height: 14px;"></div>
+                      <div class="wave-bar" style="animation-delay: 0.6s; height: 20px;"></div>
+                      <div class="wave-bar" style="animation-delay: 0.15s; height: 10px;"></div>
+                      <div class="wave-bar" style="animation-delay: 0.35s; height: 24px;"></div>
+                      <div class="wave-bar" style="animation-delay: 0.45s; height: 16px;"></div>
+                      <div class="wave-bar" style="animation-delay: 0.25s; height: 22px;"></div>
+                    </div>
+                    <span style="font-size:0.75rem; font-weight:700; color:var(--accent-purple-vibrant);">0:14</span>
+                  </div>
+                </div>
+
+                <div class="v-qr-preview-box">
+                  <div class="v-qr-code-img">📱</div>
+                  <div>
+                    <strong style="font-size:0.78rem; display:block; color:var(--text-primary);">Dinamik Güvenli QR Kod</strong>
+                    <span style="font-size:0.7rem; color:var(--text-secondary);">Kamerayla okutulduğunda şifreli lüks dinleme sayfasına yönlendirir.</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 5: 3 KM² MICRO-HUB LOJİSTİK & API EKOSİSTEMİ -->
+    <section class="bento-section" id="micro-hub">
+      <div class="section-title-wrap">
+        <span class="section-kicker">Operasyon & Lojistik Modeli</span>
+        <h2 class="section-heading">3 km² Yarıçapında Hiper-Lokal Micro-Hub</h2>
+        <p class="section-subtext">Merkez depomuz ortada; seçkin yerel zanaatkarlar 3 km'lik kümede. Sıfır bayatlama, canlı API stok takibi.</p>
+      </div>
+
+      <div class="bento-grid">
+        <!-- Radar & Harita Görseli Kartı -->
+        <div class="bento-card bento-col-8 hub-map-card">
+          <div class="card-inner">
+            <div class="hub-header">
+              <div>
+                <span class="tag-pill tag-blue">Canlı Küme Radarı</span>
+                <h3 class="bento-title mt-8">Merkez Depo & Çevre Partnerler</h3>
+              </div>
+              <div class="hub-latency">
+                <span class="pulse-dot"></span> Ortalama API Yanıtı: <strong>14 ms</strong>
+              </div>
+            </div>
+
+            <!-- Interaktif Hub Radarı -->
+            <div class="radar-container" id="radarContainer">
+              <div class="radar-circle circle-3km">
+                <span class="radar-distance-tag">3.0 km Yarıçap</span>
+              </div>
+              <div class="radar-circle circle-2km"></div>
+              <div class="radar-circle circle-1km"></div>
+              
+              <!-- Merkez Depo -->
+              <div class="hub-center-node" title="AURA BOX Merkez Micro-Fulfillment Deposu">
+                <div class="center-core">AB</div>
+                <span class="node-label">MERKEZ DEPO</span>
+              </div>
+
+              <!-- Çevre Tedarikçi Düğümleri -->
+              <div class="partner-node partner-florist" style="top: 20%; left: 30%;" data-partner="florist">
+                <div class="node-pin">💐</div>
+                <span class="node-name">Butik Çiçekçi</span>
+                <span class="node-stock">Canlı API: 42 Buket</span>
+              </div>
+
+              <div class="partner-node partner-choc" style="top: 28%; left: 75%;" data-partner="choc">
+                <div class="node-pin">🍫</div>
+                <span class="node-name">Artisan Çikolatacı</span>
+                <span class="node-stock">Canlı API: 85 Kutu</span>
+              </div>
+
+              <div class="partner-node partner-jewelry" style="top: 72%; left: 25%;" data-partner="jewelry">
+                <div class="node-pin">💎</div>
+                <span class="node-name">Tasarım Kuyumcu</span>
+                <span class="node-stock">Canlı API: 18 Mücevher</span>
+              </div>
+
+              <div class="partner-node partner-perfume" style="top: 78%; left: 70%;" data-partner="perfume">
+                <div class="node-pin">✨</div>
+                <span class="node-name">Niche Parfüm Atölyesi</span>
+                <span class="node-stock">Canlı API: 31 Parfüm</span>
+              </div>
+
+              <div class="partner-node partner-leather" style="top: 50%; left: 88%;" data-partner="leather">
+                <div class="node-pin">👜</div>
+                <span class="node-name">Deri Atölyesi</span>
+                <span class="node-stock">Canlı API: 24 Aksesuar</span>
+              </div>
+            </div>
+
+            <div class="hub-footer-legend">
+              <div class="legend-item"><span class="leg-color leg-center"></span> Merkez Depo (Just-in-Time Montaj)</div>
+              <div class="legend-item"><span class="leg-color leg-fresh"></span> Taze Hat (Çiçek / Çikolata - Aynı Gün Kurye)</div>
+              <div class="legend-item"><span class="leg-color leg-dry"></span> Kuru Lüks (Mücevher / Parfüm / Deri)</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- İki Hatlı Sevkiyat Mimarisi -->
+        <div class="bento-card bento-col-4">
+          <div class="card-inner">
+            <span class="tag-pill tag-purple">Lojistik İkilemi Çözümü</span>
+            <h3 class="bento-title mt-12">Çift Hatlı Akıllı Sevkiyat</h3>
+            <p class="bento-desc">
+              Çiçek gibi taze ürünler standart kargo ile taşınamaz; ezilir ve solar. Aura Box bu riski iki ayrı dağıtım hattıyla yönetir:
+            </p>
+
+            <div class="logistics-pipeline">
+              <div class="pipeline-item">
+                <div class="pipe-icon icon-fresh">🛵</div>
+                <div class="pipe-text">
+                  <strong>Taze Hat (Lokal VIP Kurye)</strong>
+                  <p>Taze tasarım çiçekler, yaş çikolatalar ve makaronlar. Sadece lokal kurye ağıyla 2-4 saatte adrese elden teslim edilir.</p>
+                </div>
+              </div>
+              <div class="pipeline-item">
+                <div class="pipe-icon icon-dry">📦</div>
+                <div class="pipe-text">
+                  <strong>Kuru Hat (Lüks Ekspres Kargo)</strong>
+                  <p>Mücevher, niche parfüm, ipek fular, tasarım kırtasiye. Özel mühürlü sert kutularla tüm Türkiye'ye 24 saatte sigortalı sevk.</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="jit-advantage-box">
+              <span class="tag-pill tag-green" style="margin-bottom: 0.5rem; display: inline-block;">0 Stok & JIT Modeli</span>
+              <strong>Sıfır Depo & Envanter Riski:</strong>
+              <p>Milyonlarca liralık mücevher veya lüks ürün depoda bekletilmez; sermaye kilitlenmez. Sipariş teslim günü 3 km² kümedeki butiklerden API ile çekilip montajlanır.</p>
+              
+              <div class="jit-stats-grid">
+                <div class="jit-stat-card">
+                  <div class="jit-stat-num">%0</div>
+                  <div class="jit-stat-desc">Atıl Stok / Bayatlama Kaybı</div>
+                </div>
+                <div class="jit-stat-card">
+                  <div class="jit-stat-num">%46</div>
+                  <div class="jit-stat-desc">Brüt Kâr Marjı (JIT Verimliliği)</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Kart 3: Kusursuz Partner Ekosistemi (8 Temel Lüks Dikey) -->
+        <div class="bento-card bento-col-12 partner-ecosystem-master-card">
+          <div class="card-inner">
+            <div class="card-badge-row">
+              <span class="tag-pill tag-purple">Zanaatkar & Tedarikçi Ağı</span>
+              <span class="tag-pill tag-gold">8 Temel Lüks Dikey</span>
+            </div>
+            <h3 class="bento-title mt-8">Birlikte Çalışacağımız Seçkin Partner Yelpazesi</h3>
+            <p class="bento-desc">
+              Aura Box, sıradan toptancılar yerine 3 km² yarıçapındaki en prestijli yerel atölyeler ve bağımsız zanaatkarlarla API entegrasyonu kurar. Her dikey, yüksek duygusal değer ve kusursuz kalite standartlarına göre seçilir.
+            </p>
+
+            <div class="partner-ecosystem-grid">
+              <!-- Dikey 1 -->
+              <div class="partner-cat-card">
+                <div class="cat-header">
+                  <div class="cat-icon">💎</div>
+                  <div>
+                    <h4 class="cat-title">Mücevher & Tasarım Takı</h4>
+                  </div>
+                </div>
+                <p class="cat-desc">Kapalıçarşı & Nişantaşı bağımsız atölyeleri, 925 ayar rodyumlu gümüş, doğal aytaşı/ametist ve sertifikalı pırlanta kasaları.</p>
+                <div class="cat-partners-list">
+                  <span class="cat-partner-pill">Atelier Margot</span>
+                  <span class="cat-partner-pill">Geneva Vault Bebek</span>
+                  <span class="cat-partner-pill">925 Silver Lab</span>
+                </div>
+              </div>
+
+              <!-- Dikey 2 -->
+              <div class="partner-cat-card">
+                <div class="cat-header">
+                  <div class="cat-icon">💐</div>
+                  <div>
+                    <h4 class="cat-title">Taze Çiçek & Botanik</h4>
+                  </div>
+                </div>
+                <p class="cat-desc">Tasarım butik çiçekçiler, stabilize solmayan Ekvador gülleri ve ithal orkide & mikro teraryum laboratuvarları (Aynı gün VIP kurye).</p>
+                <div class="cat-partners-list">
+                  <span class="cat-partner-pill">Flora Botanica Lab</span>
+                  <span class="cat-partner-pill">Atölye Bloom</span>
+                  <span class="cat-partner-pill">Maison Fleur</span>
+                </div>
+              </div>
+
+              <!-- Dikey 3 -->
+              <div class="partner-cat-card">
+                <div class="cat-header">
+                  <div class="cat-icon">✨</div>
+                  <div>
+                    <h4 class="cat-title">Niche Parfüm & Koku</h4>
+                  </div>
+                </div>
+                <p class="cat-desc">Grasse esanslı Extrait de Parfum atölyeleri, el dökümü mermer kaideli soya mumları ve ahşap çubuklu lüks oda difüzörleri.</p>
+                <div class="cat-partners-list">
+                  <span class="cat-partner-pill">Oud & Botanica Moda</span>
+                  <span class="cat-partner-pill">Maison Wax Studio</span>
+                  <span class="cat-partner-pill">Scent Atelier</span>
+                </div>
+              </div>
+
+              <!-- Dikey 4 -->
+              <div class="partner-cat-card">
+                <div class="cat-header">
+                  <div class="cat-icon">🍫</div>
+                  <div>
+                    <h4 class="cat-title">Artisan Gurme & Lezzet</h4>
+                  </div>
+                </div>
+                <p class="cat-desc">Günlük el yapımı altın varaklı Belçika trüfleri, single-origin mikro kavrum çekirdek kahveler ve artisan organik tatlar.</p>
+                <div class="cat-partners-list">
+                  <span class="cat-partner-pill">Madlen Choco Atelier</span>
+                  <span class="cat-partner-pill">Roastery Lab</span>
+                  <span class="cat-partner-pill">Artisan Praline</span>
+                </div>
+              </div>
+
+              <!-- Dikey 5 -->
+              <div class="partner-cat-card">
+                <div class="cat-header">
+                  <div class="cat-icon">👜</div>
+                  <div>
+                    <h4 class="cat-title">Lüks Deri & İpek Tekstil</h4>
+                  </div>
+                </div>
+                <p class="cat-desc">El dikişi hakiki dana derisi saat seyahat ruloları, Como & Bursa saf ipek tasarım fularları ve Moğolistan kaşmir şalları.</p>
+                <div class="cat-partners-list">
+                  <span class="cat-partner-pill">Weave & Silk Atölyesi</span>
+                  <span class="cat-partner-pill">Leather Crafts Bebek</span>
+                  <span class="cat-partner-pill">Como Silk Lab</span>
+                </div>
+              </div>
+
+              <!-- Dikey 6 -->
+              <div class="partner-cat-card">
+                <div class="cat-header">
+                  <div class="cat-icon">🏺</div>
+                  <div>
+                    <h4 class="cat-title">Seramik & Masa Sanatı</h4>
+                  </div>
+                </div>
+                <p class="cat-desc">Numaralandırılmış bağımsız sanatçı seramikleri, el tornası fincanlar, doğal mermer tütsülükler ve prinç masa heykelleri.</p>
+                <div class="cat-partners-list">
+                  <span class="cat-partner-pill">Defne Studio Kadıköy</span>
+                  <span class="cat-partner-pill">Terra Cotta Art</span>
+                  <span class="cat-partner-pill">Marble Craft</span>
+                </div>
+              </div>
+
+              <!-- Dikey 7 -->
+              <div class="partner-cat-card">
+                <div class="cat-header">
+                  <div class="cat-icon">🎭</div>
+                  <div>
+                    <h4 class="cat-title">Deneyim & Özel Kaçamak</h4>
+                  </div>
+                </div>
+                <p class="cat-desc">Butik bağ evi konaklama voucher'ları, şef eşliğinde gastronomi tadım masaları, seramik & koku atölyesi çift kişilik davetiyeleri.</p>
+                <div class="cat-partners-list">
+                  <span class="cat-partner-pill">Relais Escapes</span>
+                  <span class="cat-partner-pill">Chef Table Concierge</span>
+                  <span class="cat-partner-pill">Zorlu VIP Box</span>
+                </div>
+              </div>
+
+              <!-- Dikey 8 -->
+              <div class="partner-cat-card">
+                <div class="cat-header">
+                  <div class="cat-icon">🧸</div>
+                  <div>
+                    <h4 class="cat-title">Koleksiyon & Duygu Objeleri</h4>
+                  </div>
+                </div>
+                <p class="cat-desc">Steiff ekolü el dikişi kaşmir hatıra ayıları, kişiye özel gravürlü prinç dolma kalemler ve el yapımı mekanik melodi kutuları.</p>
+                <div class="cat-partners-list">
+                  <span class="cat-partner-pill">Atelier Nosta Kadıköy</span>
+                  <span class="cat-partner-pill">Vintage Music Box</span>
+                  <span class="cat-partner-pill">Brass Atelier</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Kart 4: Sipariş Yönetim Paneli Simülatörü (Ops Hub Command Console) -->
+        <div class="bento-card bento-col-12 ops-simulator-card" id="ops-simulator">
+          <div class="card-inner">
+            <div class="card-badge-row">
+              <span class="tag-pill tag-purple">B2B Operasyon Paneli</span>
+              <span class="tag-pill tag-gold">38 Tedarikçi • 2.450 Canlı Malzeme</span>
+              <span class="tag-pill tag-green">AI Otonom Kürasyon</span>
+            </div>
+            
+            <div class="ops-header-flex">
+              <div>
+                <h3 class="bento-title mt-8">Sipariş Yönetim Paneli: Örnek 3. Ay Sevkiyatı Nasıl Hazırlanıyor?</h3>
+                <p class="bento-desc">
+                  Yapay zeka statik bir katalog seçicisi değildir. 38 zanaatkarın canlı API envanteriyle konuşur; alıcının geçmiş geri bildirimlerini (RLHF) ve 72 saat önceki ses fısıltısını sentezleyerek bütçeyi ve ürünleri otonom olarak kilitler.
+                </p>
+              </div>
+              <button class="btn-ops-simulate" id="btnRunOpsSimulation" onclick="runOpsSimulation()">
+                <span>▶</span> 3. Ay Siparişini Otonom Derle
+              </button>
+            </div>
+
+            <div class="ops-command-grid">
+              <!-- Sütun 1: Öğrenilmiş Zevk Hafızası -->
+              <div class="ops-panel-col ops-memory-col">
+                <div class="ops-col-header">
+                  <span class="ops-col-tag">RLHF Zevk Hafızası</span>
+                  <h4>Sipariş #AB-8921</h4>
+                  <span class="ops-user-badge">Abone: Caner K. • Alıcı: Melis T. (Eş)</span>
+                </div>
+
+                <div class="ops-timeline-list">
+                  <div class="ops-time-item done">
+                    <div class="time-header">
+                      <span class="time-badge">1. Ay (Geçmiş)</span>
+                      <span class="time-status">✓ Teslim Edildi</span>
+                    </div>
+                    <p class="time-products">Şakayık Buketi & 925 Aytaşı Kolye</p>
+                    <div class="time-feedback">
+                      <strong>Geri Bildirim:</strong> "Kokuyu çok beğendi fakat gümüş zincir yerine sıcak / rose tonları tercih ettiğini söyledi."
+                    </div>
+                  </div>
+
+                  <div class="ops-time-item done">
+                    <div class="time-header">
+                      <span class="time-badge">2. Ay (Geçmiş)</span>
+                      <span class="time-status">✓ Teslim Edildi</span>
+                    </div>
+                    <p class="time-products">Rose Altın Bileklik & Belçika Trüfleri</p>
+                    <div class="time-feedback">
+                      <strong>Geri Bildirim:</strong> "Rose altına bayıldı! Çikolatayı çok sevdi. Takı kutusu doldu, bu ay biraz dinlendirici şeyler olsun."
+                    </div>
+                  </div>
+
+                  <div class="ops-time-item current" id="opsTimelineCurrent">
+                    <div class="time-header">
+                      <span class="time-badge current">3. Ay (Şu Anki Sipariş)</span>
+                      <span class="time-status live">● Hazırlanıyor</span>
+                    </div>
+                    <div class="whisper-audio-box">
+                      <span class="w-audio-icon">🎙️</span>
+                      <div>
+                        <strong>72 Saat Önceki Ses Kaydı (Caner K.):</strong>
+                        <p>"Bu hafta büyük bir terfi aldı, kutlama havasında olsun ama çok başı ağrıyor, yorgun..."</p>
+                      </div>
+                    </div>
+                    <div class="ai-deduction-box" id="opsAiDeduction">
+                      🧠 <strong>AI Karar Motoru:</strong> Takı doygunluğu nedeniyle ana odak dinlendirici koku & muma çevrildi; rose altın aksan korundu, kutlama çiçeği eklendi.
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Sütun 2: 38 Tedarikçi & Canlı Filtreleme -->
+              <div class="ops-panel-col ops-engine-col">
+                <div class="ops-col-header">
+                  <span class="ops-col-tag">38 Tedarikçi API Taraması</span>
+                  <h4>2.450 Malzeme Havuzu</h4>
+                  <span class="ops-user-badge">Nişantaşı Micro-Hub (1.4 km)</span>
+                </div>
+
+                <div class="ops-filter-tags-row">
+                  <span class="ops-tag-pill active">✓ Sıcak Rose Tonları</span>
+                  <span class="ops-tag-pill active">✓ Aromaterapi (Adaçayı/Sedir)</span>
+                  <span class="ops-tag-pill active">✓ Terfi Kutlaması</span>
+                  <span class="ops-tag-pill blocked">✕ Gümüş Takı (Doygunluk)</span>
+                  <span class="ops-tag-pill blocked">✕ Şakayık & Aytaşı (Sıfır Tekrar)</span>
+                </div>
+
+                <div class="ops-product-basket" id="opsProductBasket">
+                  <div class="ops-empty-state" id="opsEmptyState">
+                    <span>⏳</span>
+                    <p>Siparişi otonom derlemek için yukarıdaki simülasyon butonuna tıklayın.</p>
+                  </div>
+                  <div class="ops-items-stream hidden" id="opsItemsStream">
+                    <!-- JS Dinamik Dolduracak -->
+                  </div>
+                </div>
+              </div>
+
+              <!-- Sütun 3: Bütçe Optimizasyonu & CS Sandık Arbitrajı -->
+              <div class="ops-panel-col ops-calc-col">
+                <div class="ops-col-header">
+                  <span class="ops-col-tag">Bütçe & Marj Optimizasyonu</span>
+                  <h4>CS Sandık Arbitrajı</h4>
+                  <span class="ops-user-badge">Signature Kademe</span>
+                </div>
+
+                <div class="ops-calc-card">
+                  <div class="ops-calc-row">
+                    <span>Müşterinin Ödediği Fiyat:</span>
+                    <strong>2.600 ₺</strong>
+                  </div>
+                  <div class="ops-calc-row">
+                    <span>Toptan Alım Maliyeti (COGS):</span>
+                    <strong id="opsWholesaleDisplay" style="color:var(--text-secondary);">1.340 ₺</strong>
+                  </div>
+                  <div class="ops-calc-row retail-row">
+                    <span>Kutunun Perakende Vitrin Değeri:</span>
+                    <strong id="opsRetailDisplay" style="color:var(--accent-purple-royal);">3.850 ₺</strong>
+                  </div>
+
+                  <div class="ops-calc-kpis">
+                    <div class="kpi-mini-box">
+                      <span class="kpi-title">Aura Box Brüt Kârı</span>
+                      <strong class="kpi-val green" id="opsMarginVal">%48.5</strong>
+                      <span class="kpi-sub">1.260 ₺ Net Brüt Kâr</span>
+                    </div>
+                    <div class="kpi-mini-box">
+                      <span class="kpi-title">Müşteriye Sürpriz Katma Değer</span>
+                      <strong class="kpi-val purple" id="opsBonusVal">+1.250 ₺</strong>
+                      <span class="kpi-sub">"Rare Drop" Terfi Dopamini</span>
+                    </div>
+                  </div>
+
+                  <div class="ops-dispatch-banner" id="opsDispatchBanner">
+                    <div class="disp-dot"></div>
+                    <div class="disp-text" id="opsDispText">
+                      <strong>Micro-Hub Durumu: Beklemede</strong>
+                      <span>Kürasyon algoritması hazır; emir bekleniyor.</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 6: KRİTİK RİSKLER VE ÇÖZÜM MATRİSİ -->
+    <section class="bento-section" id="risk-cozum">
+      <div class="section-title-wrap">
+        <span class="section-kicker">Kritik Risk Yönetimi</span>
+        <h2 class="section-heading">Olası Tehlikeler ve Önleyici Çözümler</h2>
+        <p class="section-subtext">Sistemi kusursuz kılan, en ince detayına kadar düşünülmüş operasyonel güvenlik kalkanları.</p>
+      </div>
+
+      <div class="bento-grid">
+        <!-- Risk 1: Ne Gönderildiğini Bilmeme Paradoksu -->
+        <div class="bento-card bento-col-6 risk-card">
+          <div class="card-inner">
+            <div class="risk-badge-row">
+              <span class="risk-pill danger">Kritik Risk 1</span>
+              <span class="solution-pill">Çözüldü</span>
+            </div>
+            <h3 class="risk-title">"Ne Gönderildiğini Bilmeme" Paradoksu</h3>
+            <div class="risk-problem">
+              <strong>Tehlike:</strong> Gönderen sürprizi merak etmeyip arka plana atabilir. Ancak alıcı heyecanla arayıp <em>"Hayatım gönderdiğin ametist taşlı broşa bayıldım, nereden aklına geldi!"</em> dediğinde gönderen <em>"Ne broşu?"</em> derse sistem çöker, samimiyet zedelenir.
+            </div>
+            <div class="risk-solution">
+              <div class="sol-header">
+                <span class="sol-icon">🛡️</span>
+                <strong>Aura Box Çözümü: The Secret Spoiler Alert</strong>
+              </div>
+              <p>Kutu kurye tarafından teslim edildiği an göndericiye özel WhatsApp bildirimi düşer:</p>
+              <div class="sms-quote-box">
+                <span class="sms-icon">💬</span>
+                <em>"Sürpriziniz teslim edildi! 🎁 Kutunun içeriği: Atelier Margot tasarımı ametist broş ve el yapımı trüf çikolata. Konu açılırsa bilginiz olsun, harika bir zevkiniz var :)"</em>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Risk 2: Ters Köşe / Beğenmeme Riski -->
+        <div class="bento-card bento-col-6 risk-card">
+          <div class="card-inner">
+            <div class="risk-badge-row">
+              <span class="risk-pill warning">Kritik Risk 2</span>
+              <span class="solution-pill">Çözüldü</span>
+            </div>
+            <h3 class="risk-title">Ters Köşe ve Zevk Uyuşmazlığı</h3>
+            <div class="risk-problem">
+              <strong>Tehlike:</strong> Alıcının zevkine uymayan, beden/renk olarak antipati beslediği bir ürün marka prestijine darbe vurur ve göndericiyi mahcup eder.
+            </div>
+            <div class="risk-solution">
+              <div class="sol-header">
+                <span class="sol-icon">🛡️</span>
+                <strong>Aura Box Çözümü: 3 Katmanlı Koruma</strong>
+              </div>
+              <ul class="solution-bullet-list">
+                <li><strong>Kesin Hayırlar (Hard Exclusions):</strong> Onboarding sırasında alerjiler, sevilmeyen koku/metal tipleri sisteme kilitlenir.</li>
+                <li><strong>Sessiz Değişim Kartı:</strong> Kutuda şık bir QR kod yer alır. Alıcı dilerse kimse kırılmadan 48 saat içinde ürünü sessizce değiştirebilir.</li>
+                <li><strong>Geri Bildirim Döngüsü:</strong> Yapay zeka her kutudan sonra zevk haritasını günceller.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- Risk 3: Tedarik ve Tazelik Lojistiği -->
+        <div class="bento-card bento-col-6 risk-card">
+          <div class="card-inner">
+            <div class="risk-badge-row">
+              <span class="risk-pill warning">Kritik Risk 3</span>
+              <span class="solution-pill">Çözüldü</span>
+            </div>
+            <h3 class="risk-title">Taze Çiçek ve Gıda Bozulma Riski</h3>
+            <div class="risk-problem">
+              <strong>Tehlike:</strong> Türkiye genelinde kargoların ezilme ve gecikme riski nedeniyle taze çiçek ve çikolatanın seyahat etmesi imkansızdır.
+            </div>
+            <div class="risk-solution">
+              <div class="sol-header">
+                <span class="sol-icon">🛡️</span>
+                <strong>Aura Box Çözümü: Yerel Hub Bölünmesi</strong>
+              </div>
+              <p>
+                Taze ürünler yalnızca yerel VIP kurye ağı (3 km² micro-hub) ile dağıtılır. Şehirlerarası gönderimlerde ise taze çiçek yerine uzun ömürlü lüks kuru aranjmanlar, aromaterapi kitleri ve kalıcı tasarım objeler devreye sokulur.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Risk 4: Beklenti Yorgunluğu & Rutinleşme -->
+        <div class="bento-card bento-col-6 risk-card">
+          <div class="card-inner">
+            <div class="risk-badge-row">
+              <span class="risk-pill info">Kritik Risk 4</span>
+              <span class="solution-pill">Çözüldü</span>
+            </div>
+            <h3 class="risk-title">Rutinleşme ve Sürpriz Hissinin Kaybı</h3>
+            <div class="risk-problem">
+              <strong>Tehlike:</strong> Her ayın tam olarak 1'inde gelen hediye zamanla "rutin bir fatura gibi" sıradanlaşır; sürpriz büyü bozulur.
+            </div>
+            <div class="risk-solution">
+              <div class="sol-header">
+                <span class="sol-icon">🛡️</span>
+                <strong>Aura Box Çözümü: "Sıradan Bir Salı" Algoritması</strong>
+              </div>
+              <p>
+                Kritik yıldönümleri dışındaki aylarda paket, göndericinin onayıyla ayın rastgele bir iş gününde teslim edilir. Hiçbir özel gün yokken gelen kutu, alıcıda rutin tarihlere göre <strong>10 kat daha derin minnettarlık</strong> yaratır.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 7: B2B, KÜRASYON ORTAKLIKLARI & FİNANSAL BİRİM EKONOMİSİ -->
+    <section class="bento-section" id="b2b-ekonomi">
+      <div class="section-title-wrap">
+        <span class="section-kicker">İş Modeli, B2B & Finansal Mimarî</span>
+        <h2 class="section-heading">Kürasyon Ortaklıkları ve Birim Ekonomisi</h2>
+        <p class="section-subtext">Nakit akışını stabilize eden kurumsal bacak, tasarımcı iş birlikleri ve %46 brüt marj gücü.</p>
+      </div>
+
+      <div class="bento-grid">
+        <!-- B2B & Kurumsal Bacak -->
+        <div class="bento-card bento-col-6">
+          <div class="card-inner">
+            <span class="tag-pill tag-blue">B2B Kurumsal Hacim</span>
+            <h3 class="bento-title mt-12">Şirketler İçin VIP Sadakat Motoru</h3>
+            <p class="bento-desc">
+              Şirketlerin kilit müşterilerine, C-level yöneticilerine ve ajanslarına sıradan promosyon ürünleri yerine yüksek prestijli, kişiselleştirilmiş hediyeler sunması churn oranını düşürür.
+            </p>
+            
+            <div class="b2b-feature-grid">
+              <div class="b2b-box">
+                <strong>Executive Onboarding</strong>
+                <p>Üst düzey transferler ve yeni ortaklar için lüks hoş geldin deneyimi.</p>
+              </div>
+              <div class="b2b-box">
+                <strong>VIP Müşteri Bağlama</strong>
+                <p>Gayrimenkul, finans ve otomotiv müşterilerine periyodik jest akışı.</p>
+              </div>
+              <div class="b2b-box">
+                <strong>Nakit Akışı İstikrarı</strong>
+                <p>Yıllık sözleşmeli kurumsal aboneliklerle garantili MRR (Aylık Tekrarlayan Gelir).</p>
+              </div>
+              <div class="b2b-box">
+                <strong>Özel Kurumsal Konsiyerj</strong>
+                <p>Şirket logolu kaba kutular yerine zarif el mühürlü kart tasarımı.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Kürasyon Ortaklıkları & Tasarımcı Ağı -->
+        <div class="bento-card bento-col-6">
+          <div class="card-inner">
+            <span class="tag-pill tag-gold">Kürasyon Ortaklıkları</span>
+            <h3 class="bento-title mt-12">Tanınmış Yerli Sanatçılar & Markalar</h3>
+            <p class="bento-desc">
+              Yerli tasarımcılar, seramik sanatçıları ve niche koku evleriyle yapılan "Co-Branded" anlaşmalar her iki tarafa da benzersiz avantajlar sağlar:
+            </p>
+
+            <div class="artist-collab-showcase">
+              <div class="collab-item">
+                <div class="collab-avatar">🎨</div>
+                <div class="collab-info">
+                  <strong>"Bu Ayın Sanatçısı: Defne S."</strong>
+                  <span>Sadece Aura Box üyelerine özel numaralandırılmış el yapımı seramik tütsülük serisi.</span>
+                </div>
+              </div>
+              <div class="collab-item">
+                <div class="collab-avatar">🌿</div>
+                <div class="collab-info">
+                  <strong>"Niche Parfüm Evi: Oud & Rose"</strong>
+                  <span>Mağaza satış fiyatının %45 altında toptan API konsinye tedarik anlaşması.</span>
+                </div>
+              </div>
+              <div class="collab-item">
+                <div class="collab-avatar">✨</div>
+                <div class="collab-info">
+                  <strong>Kazan-Kazan Formülü</strong>
+                  <span>Tasarımcı için doğrudan 5.000 A+ müşteriye tanıtım; Aura Box için %50 indirimli maliyet.</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Finansal Birim Ekonomisi (Standart 3.000 TL Kutu) -->
+        <div class="bento-card bento-col-8">
+          <div class="card-inner">
+            <div class="card-badge-row">
+              <span class="tag-pill tag-green">Birim Ekonomisi (Unit Economics)</span>
+              <span class="tag-pill tag-neutral">Standart Paket: 3.000 ₺</span>
+            </div>
+            <h3 class="bento-title mt-12">Tek Bir Kutu Üzerinden Marj Kırılımı</h3>
+            
+            <div class="unit-economics-chart">
+              <div class="chart-bar-container">
+                <div class="chart-segment seg-cogs" style="width: 40%;" title="Ürün Maliyeti: 1.200 ₺ (%40)">COGS %40</div>
+                <div class="chart-segment seg-box" style="width: 5%;" title="Ambalaj & Mühür: 150 ₺ (%5)">Ambalaj %5</div>
+                <div class="chart-segment seg-logistics" style="width: 6%;" title="VIP Kurye: 180 ₺ (%6)">Kurye %6</div>
+                <div class="chart-segment seg-gateway" style="width: 3%;" title="Ödeme Komisyonu: 90 ₺ (%3)">Pos %3</div>
+                <div class="chart-segment seg-profit" style="width: 46%;" title="Net Brüt Kâr: 1.380 ₺ (%46)">Brüt Kâr %46 (1.380 ₺)</div>
+              </div>
+
+              <div class="chart-legend-grid">
+                <div class="legend-card">
+                  <span class="color-dot c-cogs"></span>
+                  <div>
+                    <strong>1.200 ₺ (%40)</strong>
+                    <p>Ürün Tedarik Maliyeti (Toptan API İndirimli)</p>
+                  </div>
+                </div>
+                <div class="legend-card">
+                  <span class="color-dot c-box"></span>
+                  <div>
+                    <strong>150 ₺ (%5)</strong>
+                    <p>Mühürlü Lüks Kutu & Kaligrafi Kart</p>
+                  </div>
+                </div>
+                <div class="legend-card">
+                  <span class="color-dot c-kurye"></span>
+                  <div>
+                    <strong>180 ₺ (%6)</strong>
+                    <p>3 km² Aynı Gün VIP Kurye Teslimatı</p>
+                  </div>
+                </div>
+                <div class="legend-card highlight">
+                  <span class="color-dot c-kar"></span>
+                  <div>
+                    <strong>1.380 ₺ (%46)</strong>
+                    <p>Aura Box Brüt Kârı (Kutu Başı)</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- LTV & Retention Metrikleri -->
+        <div class="bento-card bento-col-4 bg-subtle-purple">
+          <div class="card-inner">
+            <span class="tag-pill tag-purple">Büyüme & LTV</span>
+            <h3 class="bento-title mt-12">Yüksek Yaşam Boyu Değeri</h3>
+            <p class="bento-desc">Hediye aboneliği churn oranı en düşük e-ticaret modellerinden biridir; çünkü sevdiklerine jest yapmayı bırakmak istemezler.</p>
+            
+            <div class="ltv-stats-stack">
+              <div class="ltv-stat">
+                <span class="stat-number">8.4 Ay</span>
+                <span class="stat-desc">Ortalama Abone Kalma Süresi</span>
+              </div>
+              <div class="ltv-stat">
+                <span class="stat-number">25.200 ₺</span>
+                <span class="stat-desc">Müşteri Başı Yaşam Boyu Ciro (LTV)</span>
+              </div>
+              <div class="ltv-stat gold">
+                <span class="stat-number">%14.2</span>
+                <span class="stat-desc">Kutuyu Alanın Yeni Abone Olma Oranı (Viral Döngü)</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- CS:GO Sandık Arbitrajı & Toptan / Perakende Modeli -->
+        <div class="bento-card bento-col-12 cs-arbitrage-card">
+          <div class="card-inner">
+            <div class="card-badge-row">
+              <span class="tag-pill tag-purple">Ekonomi Mimarisi</span>
+              <span class="tag-pill tag-gold">CS:GO Sandık & Beklenen Değer (EV) Modeli</span>
+              <span class="tag-pill tag-green">%46 Kilitli Brüt Marj</span>
+            </div>
+            <div class="cs-arbitrage-layout">
+              <div class="cs-arbitrage-intro">
+                <h3 class="bento-title mt-8">Toptan Satın Alma Gücü & "CS Sandık" Değer Arbitrajı</h3>
+                <p class="bento-desc">
+                  Aura Box ürünleri perakendeden değil; doğrudan 3 km² kümesindeki bağımsız zanaatkar ve butiklerden <strong>toptan konsinye API anlaşmalarıyla (%50-%60 toptan iskonto)</strong> temin eder. Kutuya konulan ürünler ise Nişantaşı / Bebek vitrinlerindeki <strong>gerçek perakende piyasa fiyatıyla</strong> değerlenir.
+                </p>
+                <div class="cs-mechanism-quote">
+                  "CS:GO Sandık Mantığı: Çoğu kutuda ödenenin dengi/bir tık altı çıkar (platform marjı kilitlenir), ama bazen öyle bir 'Jackpot' patlar ki kullanıcı 2.600 ₺ verip 6.000 ₺'lik parça alır. Havuz ortalamasında platform her zaman %46 kârdadır."
+                </div>
+              </div>
+
+              <div class="cs-odds-grid">
+                <!-- Kutu Olasılık 1 -->
+                <div class="cs-odd-box standard">
+                  <div class="odd-header">
+                    <span class="odd-pill">%70 Olasılık</span>
+                    <span class="odd-title">Standart Dengeli Kutu</span>
+                  </div>
+                  <div class="odd-math">
+                    <div class="math-row"><span>Ödenen (Signature):</span> <strong>2.600 ₺</strong></div>
+                    <div class="math-row"><span>Toptan Alım (COGS):</span> <strong>1.220 ₺</strong></div>
+                    <div class="math-row highlight"><span>Perakende Değeri:</span> <strong>2.400 ₺</strong></div>
+                  </div>
+                  <span class="odd-outcome green">Platform Marjı: %53 (Yüksek Kârlılık)</span>
+                  <p class="odd-sub">Kusursuz taze çiçek, artisan tat ve kaligrafi ile stabil yüksek tatmin.</p>
+                </div>
+
+                <!-- Kutu Olasılık 2 -->
+                <div class="cs-odd-box rare">
+                  <div class="odd-header">
+                    <span class="odd-pill purple">%20 Olasılık</span>
+                    <span class="odd-title">Rare Drop (Yüksek Değer)</span>
+                  </div>
+                  <div class="odd-math">
+                    <div class="math-row"><span>Ödenen (Signature):</span> <strong>2.600 ₺</strong></div>
+                    <div class="math-row"><span>Toptan Alım (COGS):</span> <strong>1.450 ₺</strong></div>
+                    <div class="math-row highlight"><span>Perakende Değeri:</span> <strong>3.600 ₺</strong></div>
+                  </div>
+                  <span class="odd-outcome purple">Platform Marjı: %44 (+1.000 ₺ Müşteri Bonusu)</span>
+                  <p class="odd-sub">Tam boy niş extrait parfüm veya gümüş tasarım takı sürprizi.</p>
+                </div>
+
+                <!-- Kutu Olasılık 3 -->
+                <div class="cs-odd-box jackpot">
+                  <div class="odd-header">
+                    <span class="odd-pill gold">%10 Olasılık</span>
+                    <span class="odd-title">🏆 Jackpot Serendipity</span>
+                  </div>
+                  <div class="odd-math">
+                    <div class="math-row"><span>Ödenen (Signature):</span> <strong>2.600 ₺</strong></div>
+                    <div class="math-row"><span>Toptan Alım (COGS):</span> <strong>1.780 ₺</strong></div>
+                    <div class="math-row highlight gold"><span>Perakende Değeri:</span> <strong>5.800 ₺</strong></div>
+                  </div>
+                  <span class="odd-outcome gold">Platform Marjı: %31 (+3.200 ₺ Mega Sürpriz!)</span>
+                  <p class="odd-sub">0.25ct pırlantalı kolye veya butik otel hafta sonu konaklama bileti!</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="cs-pool-summary-bar">
+              <div class="pool-stat">
+                <span>Ağırlıklı Ortalama Toptan Maliyet:</span>
+                <strong>1.322 ₺</strong>
+              </div>
+              <div class="pool-stat">
+                <span>Ağırlıklı Ortalama Perakende Değer:</span>
+                <strong style="color:var(--accent-purple-royal);">2.980 ₺ (+%14 Algılanan Değer)</strong>
+              </div>
+              <div class="pool-stat">
+                <span>Havuz Sabit Brüt Marjı:</span>
+                <strong style="color:#15803D;">%49.1 Brüt Kâr (Kilitli & Risksiz)</strong>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 1. Yıl Sonu Türkiye Büyüme Projeksiyonu: 100.000 Aktif Abone -->
+        <div class="bento-card bento-col-12 projection-100k-card">
+          <div class="card-inner">
+            <div class="card-badge-row">
+              <span class="tag-pill tag-green">Finansal Projeksiyon</span>
+              <span class="tag-pill tag-gold">1. Yıl Sonu Türkiye Ölçeği</span>
+              <span class="tag-pill tag-purple">100.000 Aktif Abone</span>
+            </div>
+            
+            <div class="proj-header-row">
+              <div>
+                <h3 class="bento-title mt-8">1. Yılın Sonunda 100.000 Müşteri: Gelir & Segment Projeksiyonu</h3>
+                <p class="bento-desc">
+                  İstanbul (7 Hub), Ankara (2 Hub), İzmir (2 Hub) ve Bursa (1 Hub) olmak üzere toplam 12 hiper-lokal Micro-Hub ağında 100.000 aktif aboneye ulaşıldığında oluşan ciro, nakit akışı ve kârlılık matrisi.
+                </p>
+              </div>
+            </div>
+
+            <!-- 4 Hero Finansal Metrik -->
+            <div class="proj-hero-metrics-grid">
+              <div class="proj-metric-box">
+                <span class="p-met-title">Toplam Aktif Abone</span>
+                <strong class="p-met-val">100.000</strong>
+                <span class="p-met-sub">12 Metropol Micro-Hub</span>
+              </div>
+              <div class="proj-metric-box">
+                <span class="p-met-title">Aylık Tekrarlayan Ciro (MRR)</span>
+                <strong class="p-met-val" style="color:var(--accent-purple-royal);">405.25 M₺</strong>
+                <span class="p-met-sub">~11.9 Milyon USD / Ay</span>
+              </div>
+              <div class="proj-metric-box">
+                <span class="p-met-title">Yıllık Koşu Hızı (ARR)</span>
+                <strong class="p-met-val" style="color:#78350F;">4.86 Milyar ₺</strong>
+                <span class="p-met-sub">~143 Milyon USD / Yıl</span>
+              </div>
+              <div class="proj-metric-box highlight-green">
+                <span class="p-met-title">Aylık Brüt Kâr (%46)</span>
+                <strong class="p-met-val" style="color:#15803D;">186.41 M₺</strong>
+                <span class="p-met-sub">~2.24 Milyar ₺ Yıllık Kâr</span>
+              </div>
+            </div>
+
+            <!-- 6 Segment Dağılım Tablosu -->
+            <div class="proj-segments-table-wrap">
+              <table class="proj-table">
+                <thead>
+                  <tr>
+                    <th>Kademe</th>
+                    <th>Fiyat (₺ / Kutu)</th>
+                    <th>Abone Payı (%)</th>
+                    <th>Aktif Abone Sayısı</th>
+                    <th>Aylık Ciro (MRR)</th>
+                    <th>Karakteristik Profil & Hacim Dinamiği</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>Aura Petite</strong></td>
+                    <td>850 ₺</td>
+                    <td><span class="seg-share-badge">35%</span></td>
+                    <td><strong>35.000</strong></td>
+                    <td class="col-num">29.750.000 ₺</td>
+                    <td>Genç profesyoneller, flört, arkadaşlık ve düzenli haftalık moral jestleri</td>
+                  </tr>
+                  <tr class="featured-row">
+                    <td><strong>Aura Signature ⭐</strong></td>
+                    <td>2.600 ₺</td>
+                    <td><span class="seg-share-badge gold">40%</span></td>
+                    <td><strong>40.000</strong></td>
+                    <td class="col-num gold">104.000.000 ₺</td>
+                    <td>Ana romantik kitle; evli çiftler, taze çiçek, artisan çikolata ve ambiyans</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Aura Prestige</strong></td>
+                    <td>5.500 ₺</td>
+                    <td><span class="seg-share-badge">15%</span></td>
+                    <td><strong>15.000</strong></td>
+                    <td class="col-num">82.500.000 ₺</td>
+                    <td>Varlıklı kitle, yöneticiler, 925 ayar takı, niche extrait parfüm ve tiyatro</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Aura Privé</strong></td>
+                    <td>12.500 ₺</td>
+                    <td><span class="seg-share-badge">6%</span></td>
+                    <td><strong>6.000</strong></td>
+                    <td class="col-num">75.000.000 ₺</td>
+                    <td>14K altın minimalist takı, tam boy parfüm, şef masası degustasyonu</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Aura Grand Atelier</strong></td>
+                    <td>24.000 ₺</td>
+                    <td><span class="seg-share-badge">3%</span></td>
+                    <td><strong>3.000</strong></td>
+                    <td class="col-num">72.000.000 ₺</td>
+                    <td>Sertifikalı pırlanta, İtalyan deri hafta sonu çantası, lüks bağ evi kaçamağı</td>
+                  </tr>
+                  <tr class="black-row">
+                    <td><strong>Aura Black</strong></td>
+                    <td>42.000+ ₺</td>
+                    <td><span class="seg-share-badge black">1%</span></td>
+                    <td><strong>1.000</strong></td>
+                    <td class="col-num black">42.000.000 ₺</td>
+                    <td>Ultra-lüks kurumsal patronlar, saat kurma kutusu, helikopterli konaklama</td>
+                  </tr>
+                </tbody>
+                <tfoot>
+                  <tr>
+                    <th colspan="2">TOPLAM / ORTALAMA</th>
+                    <th>100%</th>
+                    <th>100.000 Abone</th>
+                    <th class="col-num total">405.250.000 ₺/ay</th>
+                    <th>Ortalama Sepet (ARPU): <strong>4.052 ₺ / ay</strong></th>
+                  </tr>
+                </tfoot>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- B2B Executive ROI & Kurumsal Çarpan Kartı -->
+        <div class="bento-card bento-col-12 b2b-roi-card">
+          <div class="card-inner">
+            <div class="card-badge-row">
+              <span class="tag-pill tag-blue">Aura Executive</span>
+              <span class="tag-pill tag-gold">Kurumsal Sadakat ROI Hesaplayıcısı</span>
+            </div>
+            <div class="roi-layout">
+              <div class="roi-info">
+                <h3 class="bento-title mt-8">50 Üst Düzey VIP Hesap İçin Kurumsal Yatırım Getirisi</h3>
+                <p class="bento-desc">
+                  Kurumsal şirketlerin ana müşteri veya kilit ortak kaybı milyonlarca liralık hasar yaratır. Sıradan kurumsal ajandalar veya ucuz hediyeler çöpe giderken, Aura Box'ın mühürlü artisan kürasyonları karar vericilerde kalıcı duygusal sadakat oluşturur.
+                </p>
+                <div class="lockin-quote">
+                  "Sıradan logolu bir kupa unutulur; el yapımı koku ve mühürlü kaligrafi jesti 10 milyonluk sözleşmeyi yeniletir."
+                </div>
+              </div>
+              <div class="roi-metrics-column">
+                <div class="roi-stat-row">
+                  <span class="roi-label">50 VIP Hesap / Yıllık Bütçe:</span>
+                  <span class="roi-value">1.500.000 ₺ <small style="font-size:0.75rem; color:var(--text-muted);">(2.500 ₺/ay)</small></span>
+                </div>
+                <div class="roi-stat-row">
+                  <span class="roi-label">Sadakatle Korunan 1 Büyük Sözleşme:</span>
+                  <span class="roi-value">10.000.000 ₺+</span>
+                </div>
+                <div class="roi-stat-row hero-stat">
+                  <span class="roi-label">Net Kurumsal Sadakat ROI Çarpanı:</span>
+                  <span class="roi-value green">6.7x Doğrudan Geri Dönüş</span>
+                </div>
+                <div class="roi-stat-row">
+                  <span class="roi-label">Aura Box Garantili Kurumsal ARR:</span>
+                  <span class="roi-value" style="color:var(--accent-purple-vibrant);">1.5M ₺ Yıllık Sabit Nakit Akışı</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Rekabet Matrisi: The Luxury Void (12 Sütun) -->
+        <div class="bento-card bento-col-12 competitive-matrix-card">
+          <div class="card-inner">
+            <div class="card-badge-row">
+              <span class="tag-pill tag-purple">Pazar Analizi</span>
+              <span class="tag-pill tag-gold">The Luxury Void (Lüks Boşluk)</span>
+            </div>
+            <h3 class="bento-title mt-8">Geleneksel Pazara Karşı Aura Box Rekabet Bariyeri</h3>
+            <p class="bento-desc">
+              Piyasa ya ucuz ve kaba kutu e-ticaretiyle (Çiçeksepeti, Muhiku) ya da pahalı ama ruhsuz mağazacılıkla (Beymen Gift) dolu. İlişki psikolojisini, yapay zekayı ve tam gizliliği birleştiren yegane lüks teknoloji kulübüyüz.
+            </p>
+
+            <div class="matrix-container">
+              <table class="comp-table">
+                <thead>
+                  <tr>
+                    <th>Stratejik Kriter</th>
+                    <th>Geleneksel Kutu / Çiçeksepeti</th>
+                    <th>Lüks Mağazacılık (Beymen/Vakko)</th>
+                    <th class="col-aura">✦ AURA BOX</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>Kişiselleştirme Derinliği</strong></td>
+                    <td><span class="score-badge fail">✕ Klişe Katalog Seçimi</span></td>
+                    <td><span class="score-badge neutral">~ Standart Hediye Çeki</span></td>
+                    <td class="col-aura"><span class="score-badge win">✓ Living AI (Vision & Ses DNA'sı)</span></td>
+                  </tr>
+                  <tr>
+                    <td><strong>Dış Koli Gizliliği</strong></td>
+                    <td><span class="score-badge fail">✕ Kaba Logolu Koli</span></td>
+                    <td><span class="score-badge neutral">~ Büyük Marka Poşeti</span></td>
+                    <td class="col-aura"><span class="score-badge win">✓ %100 Markasız Stealth Koli</span></td>
+                  </tr>
+                  <tr>
+                    <td><strong>Mahcubiyet Önleyici Spoiler</strong></td>
+                    <td><span class="score-badge fail">✕ Yok (Gönderen unutur)</span></td>
+                    <td><span class="score-badge fail">✕ Faturada fiyat ifşası</span></td>
+                    <td class="col-aura"><span class="score-badge win">✓ Secret WhatsApp Spoiler SMS</span></td>
+                  </tr>
+                  <tr>
+                    <td><strong>Taze & Kuru Çift Hat Lojistiği</strong></td>
+                    <td><span class="score-badge fail">✕ Ezilen kargo çiçekleri</span></td>
+                    <td><span class="score-badge neutral">~ Sadece kuru lüks mağaza</span></td>
+                    <td class="col-aura"><span class="score-badge win">✓ 3 km² JIT Lokal Kurye + Kuru Hat</span></td>
+                  </tr>
+                  <tr>
+                    <td><strong>Sürpriz Zamanlama Etkisi</strong></td>
+                    <td><span class="score-badge neutral">~ Sadece belirli gün teslim</span></td>
+                    <td><span class="score-badge fail">✕ Elden son dakika alımı</span></td>
+                    <td class="col-aura"><span class="score-badge win">✓ "Sıradan Bir Salı" Dopamini</span></td>
+                  </tr>
+                  <tr>
+                    <td><strong>Duygusal Churn Koruması</strong></td>
+                    <td><span class="score-badge fail">✕ Yüksek (%10+ Churn)</span></td>
+                    <td><span class="score-badge fail">✕ Abonelik Yok (Tekil Alım)</span></td>
+                    <td class="col-aura"><span class="score-badge win">✓ %1.4 Churn (İlişkisel Kilitlenme)</span></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- Cohort Retention & NRR (%124 Gülümseyen Tutunma Eğrisi) -->
+        <div class="bento-card bento-col-12 cohort-master-card">
+          <div class="card-inner">
+            <div class="card-badge-row">
+              <span class="tag-pill tag-green">Finansal Büyüme Modeli</span>
+              <span class="tag-pill tag-gold">%124 Net Revenue Retention (NRR)</span>
+            </div>
+            <div class="cohort-layout">
+              <div class="cohort-text">
+                <h3 class="bento-title mt-8">Gülümseyen Tutunma Eğrisi (Smiley Face Retention)</h3>
+                <p class="bento-desc">
+                  Standart SaaS ve e-ticaret modellerinde kullanıcılar aylar geçtikçe sistemi terk eder (düşen eğri). Aura Box'ta ise kullanıcılar sistemde kaldıkça yaklaşan yıldönümleri, terfiler ve evlilik günleri için paketlerini Petite'ten Prestige ve Black Custom'a yükseltirler.
+                </p>
+                <div class="lockin-quote">
+                  "Kullanıcı sevgisini kanıtladıkça sepetteki lüks hacmi büyür; Net Gelir Tutunma Oranımız (NRR) %124'e ulaşır."
+                </div>
+              </div>
+
+              <div class="cohort-stat-box">
+                <div style="display:flex; justify-content:space-between; align-items:baseline;">
+                  <span class="cohort-num-hero">%124</span>
+                  <span class="tag-pill tag-green">Expansion MRR</span>
+                </div>
+                <span style="font-size:0.8rem; font-weight:700; color:var(--text-secondary);">12 Aylık Kohort Gelir Artışı (Upgrade Dinamiği)</span>
+
+                <div class="cohort-curve-visual">
+                  <div class="c-bar-col">
+                    <span class="c-bar-val">100%</span>
+                    <div class="c-bar-fill" style="height: 60%;"></div>
+                    <span class="c-bar-label">1. Ay</span>
+                  </div>
+                  <div class="c-bar-col">
+                    <span class="c-bar-val">96%</span>
+                    <div class="c-bar-fill" style="height: 56%;"></div>
+                    <span class="c-bar-label">3. Ay</span>
+                  </div>
+                  <div class="c-bar-col">
+                    <span class="c-bar-val">108%</span>
+                    <div class="c-bar-fill" style="height: 72%;"></div>
+                    <span class="c-bar-label">6. Ay</span>
+                  </div>
+                  <div class="c-bar-col">
+                    <span class="c-bar-val">116%</span>
+                    <div class="c-bar-fill" style="height: 84%;"></div>
+                    <span class="c-bar-label">9. Ay</span>
+                  </div>
+                  <div class="c-bar-col">
+                    <span class="c-bar-val" style="color:var(--accent-purple-vibrant);">124%</span>
+                    <div class="c-bar-fill" style="height: 100%;"></div>
+                    <span class="c-bar-label">12. Ay</span>
+                  </div>
+                </div>
+                <span style="font-size:0.72rem; color:var(--text-muted); text-align:center;">Özel günlerde paket yükseltme (Tier Upgrade) sayesinde ciro organik artar.</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 8: SUNUM ÖZETİ & ROADMAP -->
+    <section class="bento-section roadmap-section" id="roadmap">
+      <div class="section-title-wrap">
+        <span class="section-kicker">Gelecek Vizyonu</span>
+        <h2 class="section-heading">3 Aşamalı Büyüme Yol Haritası</h2>
+        <p class="section-subtext">İstanbul micro-hub pilotundan global ilişki konsiyerjliğine uzanan vizyon.</p>
+      </div>
+
+      <div class="bento-grid">
+        <div class="bento-card bento-col-4 roadmap-card">
+          <div class="card-inner">
+            <span class="phase-tag">Faz 1 • Ay 1-3</span>
+            <h4 class="card-title">Pilot Micro-Hub (İstanbul)</h4>
+            <ul class="roadmap-checklist">
+              <li>Kadıköy & Nişantaşı 3 km² pilot micro-hub depoları</li>
+              <li><strong>Kontrollü Lansman:</strong> 500 VIP Davetiye & Özel Bekleme Listesi (Operasyonel darboğazı önleme)</li>
+              <li>Signature (3.000 ₺) ve Prestige (6.500 ₺) lansmanı</li>
+              <li>Canlı WhatsApp concierge bot & QR sesli kart entegrasyonu</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="bento-card bento-col-4 roadmap-card">
+          <div class="card-inner">
+            <span class="phase-tag">Faz 2 • Ay 4-6</span>
+            <h4 class="card-title">Ulusal Yayılım & B2B</h4>
+            <ul class="roadmap-checklist">
+              <li>Ankara ve İzmir micro-hub depolarının açılması</li>
+              <li>Aura Black (50.000 ₺+) ultra-lüks serisi</li>
+              <li>B2B Kurumsal sadakat portalının lansmanı</li>
+              <li>3.000 aktif aboneye ulaşım</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="bento-card bento-col-4 roadmap-card">
+          <div class="card-inner">
+            <span class="phase-tag">Faz 3 • Ay 7-12</span>
+            <h4 class="card-title">Otonom AI & MENA Açılımı</h4>
+            <ul class="roadmap-checklist">
+              <li>Predictive Relationship AI (İlişki sinyalleri analitiği)</li>
+              <li>Dubai & Riyad lüks segment açılımı</li>
+              <li>Uluslararası lüks moda evleriyle global iş birlikleri</li>
+              <li>15.000+ aktif abone ve karlı operasyon</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="presentation-footer">
+      <div class="footer-inner">
+        <div class="footer-brand">
+          <div class="brand-symbol">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/>
+            </svg>
+          </div>
+          <div>
+            <strong>AURA BOX</strong>
+            <p>"Siz ilişkinize odaklanın, jestleri bize bırakın."</p>
+          </div>
+        </div>
+        <div class="footer-meta">
+          <span>Proje Dokümanı: <code>/AURA_BOX_PROJE_DOKUMANI.md</code></span>
+          <span>Apple Bento Light Presentation Design • 2026</span>
+        </div>
+      </div>
+    </footer>
+  </main>
+
+  <!-- YÜZEN SUNUM KONTROLLERİ (PITCH DECK CONTROLS) -->
+  <div class="floating-deck-controls" id="deckControls">
+    <button class="deck-btn" id="prevSection" title="Önceki Bölüm (Sol Ok)">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg>
+    </button>
+    <div class="deck-indicator" id="sectionIndicator">
+      <span id="currentSectionIdx">1</span> / <span id="totalSections">8</span>
+    </div>
+    <button class="deck-btn" id="nextSection" title="Sonraki Bölüm (Sağ Ok)">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+    </button>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
