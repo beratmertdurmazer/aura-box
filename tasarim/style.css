@@ -14,6 +14,7 @@
 
   /* Elite Purple Signature Accents */
   --c-purple-royal: #2E1065;      /* Deep Imperial Aubergine/Violet (Text titles / Primary buttons) */
+  --c-purple-deep: #1A0B2E;       /* Ultra deep midnight purple */
   --c-purple-primary: #3B1C54;    /* Rich Velvet Purple */
   --c-purple-vibrant: #581C87;    /* Jewel Violet (Primary CTA hover, active pills) */
   --c-purple-accent: #7C3AED;     /* Modern Iris Glow (Icons, sparkles, focus) */
@@ -1601,9 +1602,10 @@ body.cinematic-canvas {
   background: #FFFFFF;
   border: 1px solid var(--c-border-subtle);
   border-radius: var(--radius-cinema);
-  padding: 3rem 2.5rem;
+  padding: 3.5rem 3rem;
   box-shadow: var(--shadow-cinema-card);
-  max-width: 900px;
+  max-width: 1200px;
+  width: 100%;
   margin: 0 auto;
 }
 
@@ -3861,26 +3863,31 @@ body.cinematic-canvas {
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  padding: 0.65rem 1.35rem;
-  font-size: 0.88rem;
+  padding: 0.65rem 1.45rem;
+  font-size: 0.9rem;
   font-weight: 700;
-  color: var(--c-text-secondary);
+  color: #373042 !important;
   background: transparent;
   border: none;
   border-radius: var(--radius-pill);
   cursor: pointer;
-  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: all 0.25s ease;
 }
 
 .hit-btn.active {
-  background: linear-gradient(135deg, var(--c-purple-royal) 0%, var(--c-purple-deep) 100%);
-  color: #FFFFFF;
-  box-shadow: 0 4px 15px rgba(76, 29, 149, 0.3);
+  background: #2E1065 !important;
+  background: linear-gradient(135deg, #2E1065 0%, #1A0B2E 100%) !important;
+  color: #FFFFFF !important;
+  box-shadow: 0 4px 15px rgba(46, 16, 101, 0.25);
+}
+
+.hit-btn:not(.active) {
+  color: #4A4458 !important;
 }
 
 .hit-btn:hover:not(.active) {
-  color: var(--c-purple-royal);
-  background: rgba(124, 58, 237, 0.06);
+  color: #2E1065 !important;
+  background: rgba(124, 58, 237, 0.08) !important;
 }
 
 .hit-icon {
