@@ -224,6 +224,51 @@ document.addEventListener('DOMContentLoaded', () => {
       location: 'Karaköy (Merkeze 2.1 km)',
       material: '%100 Doğal Soya Mumu, Sedir Ağacı Esansı',
       quality: '65 Saat İs Yapmadan Yanma'
+    },
+    bracelet: {
+      serial: 'SERİ NO: BR-910/300',
+      title: '14K Rose Altın İtalyan Örgü Bileklik',
+      subtitle: 'Milano kuyumculuk geleneğinden ilhamla elde örülen 14 ayar rose altın mücevher.',
+      artisan: 'Atelier Margot Fine • Selim Usta',
+      location: 'Nişantaşı (Merkeze 0.8 km)',
+      material: '14 Ayar Rose Altın, Güvenlik Kilitli',
+      quality: 'Ömür Boyu Parlatma & Bakım Garantisi'
+    },
+    cashmere: {
+      serial: 'SERİ NO: KSH-412/100',
+      title: 'Moğolistan Saf Kaşmir Dokuma Şal',
+      subtitle: 'İç Moğolistan dağ keçisi tiftiğinden dokunan, tüy hafifliğinde ultra lüks şal.',
+      artisan: 'Atelier Tessuto • Loro Piana Ekolü',
+      location: 'Bomonti (Merkeze 1.6 km)',
+      material: '%100 2-Kat Bükümlü Kaşmir Yünü',
+      quality: 'Doğal Ekolojik Boyalı • Hypoallergenic'
+    },
+    ceramic: {
+      serial: 'PARTİ NO: CER-204-HAND',
+      title: 'Ham Mat Sır Seramik Kupa & Mermer Tütsülük',
+      subtitle: 'Tornada tek tek şekillendirilen ve odun fırınında 1250°C derecede pişirilen zanaat parçası.',
+      artisan: 'Defne Sanat Stüdyosu • Defne K.',
+      location: 'Kuzguncuk (Merkeze 3.2 km)',
+      material: 'Taş Çamuru (Stoneware) & Mat Kül Sırı',
+      quality: 'Gıda Uyumlu • Bulaşık Makinesi Güvenli'
+    },
+    leather: {
+      serial: 'SERİ NO: SMY-088-ROYAL',
+      title: 'Kraliyet Mühürlü Hakiki Deri Kılıf & Defter',
+      subtitle: 'İngiliz ciltçilik geleneğiyle altın yaldız kenarlı sayfalar ve bitkisel tabak deri kılıf.',
+      artisan: 'Smythson Ekolü Atölye',
+      location: 'Galata (Merkeze 1.9 km)',
+      material: 'Krosgrain Sığır Derisi & Kuşe Kağıt',
+      quality: 'Kişiselleştirilmiş Baş Harf Baskı Uyumlu'
+    },
+    relais: {
+      serial: 'DAVETİYE KODU: RC-URLA-VIP-092',
+      title: 'Urla Butik Bağ Evi Özel Tadım Davetiyesi',
+      subtitle: 'Asırlık zeytinlikler arasında çift kişilik sommelier eşliğinde gün batımı tadımı ve süit konaklama.',
+      artisan: 'Relais Concierge Network',
+      location: 'Urla Bağ Yolu / İzmir',
+      material: 'Özel Kaligrafi Davetiye Kartı & Rezervasyon Anahtarı',
+      quality: '12 Ay Geçerli Esnek Rezervasyon'
     }
   };
 
