@@ -3839,3 +3839,180 @@ body.cinematic-canvas {
     padding: 0.75rem 1rem;
   }
 }
+
+
+/* ==========================================================================
+   DUAL-INTENT SWITCHER & 3-ADIMDA NASIL ÇALIŞIR (BENTO RITUAL CARDS)
+   ========================================================================== */
+.hero-intent-toggle-bar {
+  display: inline-flex;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid var(--c-purple-border);
+  border-radius: var(--radius-pill);
+  padding: 5px;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 4px 20px rgba(124, 58, 237, 0.08);
+}
+
+.hit-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.65rem 1.35rem;
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: var(--c-text-secondary);
+  background: transparent;
+  border: none;
+  border-radius: var(--radius-pill);
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.hit-btn.active {
+  background: linear-gradient(135deg, var(--c-purple-royal) 0%, var(--c-purple-deep) 100%);
+  color: #FFFFFF;
+  box-shadow: 0 4px 15px rgba(76, 29, 149, 0.3);
+}
+
+.hit-btn:hover:not(.active) {
+  color: var(--c-purple-royal);
+  background: rgba(124, 58, 237, 0.06);
+}
+
+.hit-icon {
+  font-size: 1rem;
+}
+
+.bento-ritual-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+.bento-ritual-card {
+  background: #FFFFFF;
+  border: 1px solid var(--c-border-subtle);
+  border-radius: 24px;
+  padding: 2rem 1.75rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 250px;
+  box-shadow: var(--shadow-cinema-card);
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.bento-ritual-card:hover {
+  transform: translateY(-5px);
+  border-color: rgba(124, 58, 237, 0.3);
+  box-shadow: 0 16px 36px rgba(76, 29, 149, 0.1);
+}
+
+.bento-ritual-card.featured-gold-card {
+  border-color: rgba(184, 134, 11, 0.3);
+  background: linear-gradient(180deg, #FFFFFF 0%, #FDFCF8 100%);
+}
+
+.brc-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.25rem;
+}
+
+.brc-step-badge {
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--c-purple-royal);
+  background: var(--c-purple-soft);
+  padding: 0.25rem 0.65rem;
+  border-radius: var(--radius-pill);
+  border: 1px solid var(--c-purple-border);
+}
+
+.brc-step-badge.gold {
+  color: #996515;
+  background: #FEF9C3;
+  border-color: #FDE047;
+}
+
+.brc-icon-badge {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(124, 58, 237, 0.08);
+  color: var(--c-purple-royal);
+}
+
+.brc-icon-badge.gold {
+  background: rgba(212, 175, 55, 0.15);
+  color: var(--c-gold);
+}
+
+.brc-title {
+  font-family: var(--font-serif);
+  font-size: 1.35rem;
+  font-weight: 600;
+  color: var(--c-text-primary);
+  margin: 0 0 0.5rem 0;
+}
+
+.brc-desc {
+  font-size: 0.88rem;
+  line-height: 1.6;
+  color: var(--c-text-secondary);
+  margin-bottom: 1.25rem;
+  flex: 1;
+}
+
+.brc-chips-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.brc-chip {
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: #4B5563;
+  background: #F3F4F6;
+  border: 1px solid #E5E7EB;
+  padding: 0.25rem 0.65rem;
+  border-radius: 8px;
+}
+
+.brc-chip.gold {
+  color: #854D0E;
+  background: #FEF9C3;
+  border-color: #FEF08A;
+}
+
+@media (max-width: 1024px) {
+  .bento-ritual-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 640px) {
+  .hero-intent-toggle-bar {
+    width: 100%;
+    flex-direction: column;
+    border-radius: 18px;
+  }
+  .hit-btn {
+    width: 100%;
+    justify-content: center;
+  }
+}

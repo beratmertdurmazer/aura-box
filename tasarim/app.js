@@ -35,6 +35,49 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // =========================================================================
+  // 1B. DUAL-INTENT SWITCHER (Kendim İçin vs Biri İçin)
+  // =========================================================================
+  window.setExperienceIntent = function(intent) {
+    const btnSelf = document.getElementById('btnIntentSelf');
+    const btnGift = document.getElementById('btnIntentGift');
+    const kicker = document.getElementById('heroKickerText');
+    const headline = document.getElementById('heroMainHeadline');
+    const subtext = document.getElementById('heroSubtext');
+    const ctaBtn = document.getElementById('heroMainCtaBtn');
+
+    if (intent === 'self') {
+      if (btnSelf) btnSelf.classList.add('active');
+      if (btnGift) btnGift.classList.remove('active');
+      if (kicker) kicker.textContent = 'Aura Private Concierge • Kişisel Lüks Ritüeli & Şahsi Mola';
+      if (headline) headline.innerHTML = 'Her ay kapınıza gelen rafine bir mola.<br><span class="gradient-headline">Kendinizi sessiz lüksle şımartın.</span>';
+      if (subtext) subtext.innerHTML = 'Dünyanın en seçkin niş parfümleri, zanaatkar mücevherleri, saf kaşmir ve botanik dokunuşlarla; sadece sizin stil DNA\'nıza özel mühürlü ve sürpriz bir aylık lüks kaçamak.';
+      if (ctaBtn) ctaBtn.innerHTML = '<span>Kişisel Profilini Oluştur</span><span class="btn-arrow">&rarr;</span>';
+
+      // Auto-select 'self' in wizard
+      const selfChip = document.querySelector('#wTargetGroup .w-chip[data-val="self"]');
+      if (selfChip) {
+        document.querySelectorAll('#wTargetGroup .w-chip').forEach(c => c.classList.remove('active'));
+        selfChip.classList.add('active');
+      }
+    } else {
+      if (btnGift) btnGift.classList.add('active');
+      if (btnSelf) btnSelf.classList.remove('active');
+      if (kicker) kicker.textContent = 'Aura Intelligence Engine • Yeni Nesil Lüks Hediye Konsiyerji';
+      if (headline) headline.innerHTML = 'Siz sevdiklerinize odaklanın.<br><span class="gradient-headline">Jestleri yaşayan zekaya bırakın.</span>';
+      if (subtext) subtext.innerHTML = 'Unutulma stresini sıfırlayan, eşinizin veya dostunuzun zevk haritasını çözen ve kapı çalınana kadar <strong>içeriği tamamen mühürlü kalan</strong> kişisel hediye konsiyerji.';
+      if (ctaBtn) ctaBtn.innerHTML = '<span>Hediye Kürasyonunu Başlat</span><span class="btn-arrow">&rarr;</span>';
+
+      // Auto-select 'es' in wizard
+      const esChip = document.querySelector('#wTargetGroup .w-chip[data-val="es"]');
+      if (esChip) {
+        document.querySelectorAll('#wTargetGroup .w-chip').forEach(c => c.classList.remove('active'));
+        esChip.classList.add('active');
+      }
+    }
+    playChime();
+  };
+
+  // =========================================================================
   // 2. MOBİL APP TAB BAR KONTROLÜ
   // =========================================================================
   const tabButtons = document.querySelectorAll('.ios-tab-bar .tab-item');
