@@ -777,4 +777,46 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  // =========================================================================
+  // 6. SMART CALENDAR SYNC SIMULATION
+  // =========================================================================
+  window.simulateCalendarSync = function(provider) {
+    const statusPill = document.getElementById('calSyncStatus');
+    const msg = document.getElementById('calSyncMsg');
+    const inputs = document.querySelectorAll('#wStep3 .input-lux');
+
+    if (inputs.length >= 2) {
+      inputs[0].value = '14 Ekim (Doğum Günü)';
+      inputs[0].style.borderColor = '#10B981';
+      inputs[1].value = '28 Haziran (Yıldönümü)';
+      inputs[1].style.borderColor = '#10B981';
+    }
+
+    if (statusPill && msg) {
+      statusPill.style.display = 'inline-flex';
+      const provName = provider === 'google' ? 'Google Calendar' : 'Apple iCal';
+      msg.textContent = `✓ ${provName} bağlandı: 2 kritik tarih takvimden otomatik aktarıldı!`;
+    }
+    playChime();
+  };
+
+  // =========================================================================
+  // 7. STEALTH NOTIFICATION TOAST (APPLE PUSH SIMULATOR)
+  // =========================================================================
+  const toast = document.getElementById('stealthToast');
+  window.dismissStealthToast = function() {
+    if (toast) {
+      toast.classList.remove('show');
+      toast.classList.add('dismissed');
+    }
+  };
+
+  // Show stealth toast automatically after 3.2 seconds
+  setTimeout(() => {
+    if (toast && !toast.classList.contains('dismissed')) {
+      toast.classList.add('show');
+      playChime();
+    }
+  }, 3200);
+
 });

@@ -301,6 +301,58 @@
             <div class="sc-img-badge">Atelier Vault Unboxing</div>
           </div>
         </div>
+
+        <!-- KUTUNUN ANATOMİSİ: 3 KATMANLI AÇILIŞ SEREMONİSİ -->
+        <div class="unboxing-anatomy-container">
+          <div class="anatomy-header">
+            <span class="anatomy-kicker">✦ SEREMONİ ANATOMİSİ ✦</span>
+            <h3 class="anatomy-title">Kapağı Kaldırdığınızda Karşılaşacağınız 3 Lüks Katman</h3>
+            <p class="anatomy-desc">Her detay düşünülmüş; ilk kokudan son dokunuşa kadar bir hediye değil, bir sanat seremonisi.</p>
+          </div>
+
+          <div class="unboxing-layers-grid">
+            <!-- Katman 1 -->
+            <div class="layer-card">
+              <div class="layer-num-badge">KATMAN 01</div>
+              <div class="layer-icon-box">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                  <polyline points="22,6 12,13 2,6"/>
+                </svg>
+              </div>
+              <h4 class="layer-heading">Mühürlü Kaligrafi Zarfı &amp; Sesli QR</h4>
+              <p class="layer-desc">Kutunun kapağını açtığınız an sizi ilk karşılayan; el yapımı pamuk kağıda balmumu mühürlü zarf ve gizli sesli fısıltınızı dinleten QR kod.</p>
+              <span class="layer-tag">✦ Duygusal Zirve</span>
+            </div>
+
+            <!-- Katman 2 -->
+            <div class="layer-card">
+              <div class="layer-num-badge">KATMAN 02</div>
+              <div class="layer-icon-box">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+                </svg>
+              </div>
+              <h4 class="layer-heading">İpek Kese &amp; Fransız Lavantası</h4>
+              <p class="layer-desc">İpek kurdele çözüldüğünde odaya yayılan Grasse lavantası ve sedir esansı; ürünleri saran doğal ipek dokuma ve kadife koruyucu yatak.</p>
+              <span class="layer-tag">✦ Duyusal Koku &amp; Doku</span>
+            </div>
+
+            <!-- Katman 3 -->
+            <div class="layer-card featured-gold-layer">
+              <div class="layer-num-badge gold">KATMAN 03</div>
+              <div class="layer-icon-box gold">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+                </svg>
+              </div>
+              <h4 class="layer-heading">Zanaatkar Pasaportlu İmza Parça</h4>
+              <p class="layer-desc">Chanel, Diptyque, Le Labo, pırlanta takı veya İsviçre saat aksesuarı; atölye ustasının ıslak imzalı orijinallik beratı ile kutunun kalbinde.</p>
+              <span class="layer-tag gold">✦ Zanaat Pasaportu &amp; Sertifika</span>
+            </div>
+          </div>
+        </div>
+
       </section>
 
 
@@ -1058,6 +1110,31 @@
             <h3 class="wizard-pane-title">Kritik Tarihleri Sabitleyelim</h3>
             <p class="wizard-pane-desc">Bu tarihleri girdiğinizde sistem o ayların teslimatını kesin güne kilitler. Diğer aylar "Sıradan Bir Salı" sürprizi olarak gider.</p>
 
+            <!-- Akıllı Takvim Senkronizasyonu (Google & Apple Sync) -->
+            <div class="smart-calendar-sync-widget">
+              <div class="scs-header">
+                <span class="scs-icon">🗓️</span>
+                <div class="scs-text">
+                  <strong>Tek Tıkla Takvimini Senkronize Et</strong>
+                  <p>Doğum günü ve yıldönümlerini takvimden otomatik aktarın; sistem 7 gün önce sessizce hazırlansın.</p>
+                </div>
+              </div>
+              <div class="scs-btn-group">
+                <button type="button" class="btn-cal-sync" onclick="simulateCalendarSync('google')">
+                  <span class="cal-logo">G</span>
+                  <span>Google Calendar ile Aktar</span>
+                </button>
+                <button type="button" class="btn-cal-sync" onclick="simulateCalendarSync('apple')">
+                  <span class="cal-logo"></span>
+                  <span>Apple iCal ile Aktar</span>
+                </button>
+              </div>
+              <div class="scs-status-pill" id="calSyncStatus" style="display:none;">
+                <span class="pulse-dot-green"></span>
+                <span id="calSyncMsg">✓ 2 Kritik Tarih Başarıyla İçe Aktarıldı (14 Ekim • Doğum Günü, 28 Haziran • Yıldönümü)</span>
+              </div>
+            </div>
+
             <div class="calendar-inputs-row">
               <div class="input-luxury-field">
                 <label>Doğum Günü Tarihi</label>
@@ -1730,5 +1807,28 @@
   </div>
 
   <script src="app.js"></script>
+  <!-- Canlı Gizli Fısıltı Bildirim Simülatörü (Floating Apple Push Banner) -->
+  <div class="stealth-notification-toast" id="stealthToast">
+    <div class="toast-glass-card">
+      <div class="toast-header-row">
+        <div class="toast-app-id">
+          <span class="toast-app-icon">AB</span>
+          <span class="toast-app-name">AURA CONCIERGE</span>
+          <span class="toast-time">Şimdi</span>
+        </div>
+        <button class="toast-dismiss-btn" onclick="dismissStealthToast()" title="Kapat">&times;</button>
+      </div>
+      <div class="toast-body-row">
+        <div class="toast-text-col">
+          <strong class="toast-title">Kuryeniz Kapıyı Çaldı 🕊️</strong>
+          <p class="toast-msg">Kutuda ne olduğunu alıcınız henüz bilmiyor. İçindeki <em>"Doğal Aytaşı &amp; Pırlanta Kolye"</em>nin zanaat hikayesi ve fısıltı notunuz hazır.</p>
+        </div>
+      </div>
+      <div class="toast-action-bar">
+        <button class="toast-pill-btn" onclick="openVoiceModal()">Gizli Fısıltı &amp; Sesli QR Oynat &rarr;</button>
+      </div>
+    </div>
+  </div>
+
 </body>
 </html>

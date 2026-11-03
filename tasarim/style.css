@@ -4023,3 +4023,376 @@ body.cinematic-canvas {
     justify-content: center;
   }
 }
+
+
+/* ==========================================================================
+   UNBOXING ANATOMİSİ (3 KATMANLI AÇILIŞ SEREMONİSİ)
+   ========================================================================== */
+.unboxing-anatomy-container {
+  margin-top: 3.5rem;
+  padding-top: 2.5rem;
+  border-top: 1px dashed rgba(124, 58, 237, 0.2);
+}
+
+.anatomy-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.anatomy-kicker {
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--c-purple-royal);
+  display: block;
+  margin-bottom: 0.35rem;
+}
+
+.anatomy-title {
+  font-family: var(--font-serif);
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--c-text-primary);
+  margin-bottom: 0.35rem;
+}
+
+.anatomy-desc {
+  font-size: 0.88rem;
+  color: var(--c-text-secondary);
+  margin: 0;
+}
+
+.unboxing-layers-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+
+.layer-card {
+  background: #FFFFFF;
+  border: 1px solid var(--c-border-subtle);
+  border-radius: 20px;
+  padding: 1.75rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.03);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  position: relative;
+}
+
+.layer-card:hover {
+  transform: translateY(-5px);
+  border-color: rgba(124, 58, 237, 0.3);
+  box-shadow: 0 12px 28px rgba(76, 29, 149, 0.09);
+}
+
+.layer-card.featured-gold-layer {
+  border-color: rgba(184, 134, 11, 0.3);
+  background: linear-gradient(180deg, #FFFFFF 0%, #FDFCF8 100%);
+}
+
+.layer-num-badge {
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  color: var(--c-purple-royal);
+  background: var(--c-purple-soft);
+  border: 1px solid var(--c-purple-border);
+  padding: 0.2rem 0.6rem;
+  border-radius: var(--radius-pill);
+  align-self: flex-start;
+  margin-bottom: 1rem;
+}
+
+.layer-num-badge.gold {
+  color: #854D0E;
+  background: #FEF9C3;
+  border-color: #FEF08A;
+}
+
+.layer-icon-box {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  background: rgba(124, 58, 237, 0.08);
+  color: var(--c-purple-royal);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+
+.layer-icon-box.gold {
+  background: rgba(212, 175, 55, 0.15);
+  color: var(--c-gold);
+}
+
+.layer-heading {
+  font-family: var(--font-serif);
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: var(--c-text-primary);
+  margin: 0 0 0.5rem 0;
+}
+
+.layer-desc {
+  font-size: 0.82rem;
+  line-height: 1.55;
+  color: var(--c-text-secondary);
+  margin: 0 0 1rem 0;
+  flex: 1;
+}
+
+.layer-tag {
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--c-purple-royal);
+  background: rgba(124, 58, 237, 0.05);
+  border-radius: 6px;
+  padding: 0.25rem 0.55rem;
+  align-self: flex-start;
+}
+
+.layer-tag.gold {
+  color: #854D0E;
+  background: #FEF9C3;
+}
+
+/* ==========================================================================
+   AKILLI TAKVİM SENKRONİZASYONU (GOOGLE & APPLE SYNC)
+   ========================================================================== */
+.smart-calendar-sync-widget {
+  background: #FAF5FF;
+  border: 1px dashed rgba(124, 58, 237, 0.3);
+  border-radius: 18px;
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.scs-header {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  margin-bottom: 1.25rem;
+}
+
+.scs-icon {
+  font-size: 1.8rem;
+  flex-shrink: 0;
+}
+
+.scs-text strong {
+  display: block;
+  font-size: 0.95rem;
+  color: var(--c-purple-royal);
+  margin-bottom: 0.2rem;
+}
+
+.scs-text p {
+  font-size: 0.82rem;
+  color: var(--c-text-secondary);
+  margin: 0;
+}
+
+.scs-btn-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.85rem;
+}
+
+.btn-cal-sync {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  background: #FFFFFF;
+  border: 1px solid var(--c-border-subtle);
+  border-radius: var(--radius-pill);
+  padding: 0.6rem 1.25rem;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--c-text-primary);
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  transition: all 0.25s ease;
+}
+
+.btn-cal-sync:hover {
+  border-color: var(--c-purple-vibrant);
+  color: var(--c-purple-royal);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 14px rgba(124, 58, 237, 0.12);
+}
+
+.cal-logo {
+  font-family: var(--font-sans);
+  font-weight: 800;
+  font-size: 1rem;
+}
+
+.scs-status-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 1rem;
+  background: #ECFDF5;
+  border: 1px solid #A7F3D0;
+  color: #065F46;
+  font-size: 0.8rem;
+  font-weight: 700;
+  padding: 0.45rem 1rem;
+  border-radius: var(--radius-pill);
+  animation: fadeInDown 0.3s ease;
+}
+
+.pulse-dot-green {
+  width: 8px;
+  height: 8px;
+  background: #10B981;
+  border-radius: 50%;
+  box-shadow: 0 0 8px rgba(16, 185, 129, 0.8);
+}
+
+/* ==========================================================================
+   CANLI GİZLİ FISILTI BİLDİRİMİ (APPLE PUSH NOTIFICATION TOAST)
+   ========================================================================== */
+.stealth-notification-toast {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  z-index: 9999;
+  max-width: 400px;
+  width: calc(100% - 4rem);
+  transform: translateY(140%);
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.stealth-notification-toast.show {
+  transform: translateY(0);
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.toast-glass-card {
+  background: rgba(26, 11, 46, 0.95);
+  backdrop-filter: blur(22px);
+  -webkit-backdrop-filter: blur(22px);
+  border: 1px solid rgba(212, 175, 55, 0.35);
+  border-radius: 22px;
+  padding: 1.25rem 1.4rem;
+  color: #FFFFFF;
+  box-shadow: 0 20px 45px rgba(26, 11, 46, 0.45), 0 0 0 1px rgba(255, 255, 255, 0.08);
+}
+
+.toast-header-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.75rem;
+}
+
+.toast-app-id {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.toast-app-icon {
+  width: 22px;
+  height: 22px;
+  border-radius: 6px;
+  background: linear-gradient(135deg, #D4AF37, #996515);
+  color: #1A0B2E;
+  font-size: 0.65rem;
+  font-weight: 900;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.toast-app-name {
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  color: rgba(255, 255, 255, 0.75);
+}
+
+.toast-time {
+  font-size: 0.7rem;
+  color: rgba(255, 255, 255, 0.5);
+  margin-left: 0.25rem;
+}
+
+.toast-dismiss-btn {
+  background: transparent;
+  border: none;
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 1.3rem;
+  line-height: 1;
+  cursor: pointer;
+  padding: 0 0.25rem;
+  transition: color 0.2s;
+}
+
+.toast-dismiss-btn:hover {
+  color: #FFFFFF;
+}
+
+.toast-title {
+  display: block;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #F8FAFC;
+  margin-bottom: 0.3rem;
+}
+
+.toast-msg {
+  font-size: 0.84rem;
+  line-height: 1.45;
+  color: rgba(255, 255, 255, 0.85);
+  margin: 0 0 1rem 0;
+}
+
+.toast-msg em {
+  color: #FCD34D;
+  font-style: normal;
+  font-weight: 600;
+}
+
+.toast-action-bar {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.toast-pill-btn {
+  background: linear-gradient(135deg, #D4AF37 0%, #B8860B 100%);
+  color: #1A0B2E;
+  border: none;
+  border-radius: var(--radius-pill);
+  padding: 0.55rem 1.1rem;
+  font-size: 0.82rem;
+  font-weight: 800;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(212, 175, 55, 0.3);
+  transition: all 0.25s ease;
+}
+
+.toast-pill-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(212, 175, 55, 0.45);
+}
+
+@media (max-width: 900px) {
+  .unboxing-layers-grid {
+    grid-template-columns: 1fr;
+  }
+  .stealth-notification-toast {
+    bottom: 1rem;
+    right: 1rem;
+    left: 1rem;
+    width: auto;
+    max-width: none;
+  }
+}
