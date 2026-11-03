@@ -48,9 +48,9 @@ document.addEventListener('DOMContentLoaded', () => {
     if (intent === 'self') {
       if (btnSelf) btnSelf.classList.add('active');
       if (btnGift) btnGift.classList.remove('active');
-      if (kicker) kicker.textContent = 'Aura Private Concierge • Kişisel Lüks Ritüeli & Şahsi Mola';
-      if (headline) headline.innerHTML = 'Her ay kapınıza gelen rafine bir mola.<br><span class="gradient-headline">Kendinizi sessiz lüksle şımartın.</span>';
-      if (subtext) subtext.innerHTML = 'Dünyanın en seçkin niş parfümleri, zanaatkar mücevherleri, saf kaşmir ve botanik dokunuşlarla; sadece sizin stil DNA\'nıza özel mühürlü ve sürpriz bir aylık lüks kaçamak.';
+      if (kicker) kicker.textContent = 'Aura Private Concierge • Kişisel Lüks Ritüeli';
+      if (headline) headline.innerHTML = 'Hak ettiğiniz <span class="gradient-headline">sessiz lüks.</span>';
+      if (subtext) subtext.innerHTML = 'Dünyanın en seçkin niş parfümleri, zanaatkar mücevherleri ve saf kaşmir dokunuşlarıyla; sadece sizin stil DNA\'nıza özel mühürlenen aylık lüks ritüel.';
       if (ctaBtn) ctaBtn.innerHTML = '<span>Kişisel Profilini Oluştur</span><span class="btn-arrow">&rarr;</span>';
 
       // Auto-select 'self' in wizard
@@ -63,8 +63,8 @@ document.addEventListener('DOMContentLoaded', () => {
       if (btnGift) btnGift.classList.add('active');
       if (btnSelf) btnSelf.classList.remove('active');
       if (kicker) kicker.textContent = 'Aura Intelligence Engine • Yeni Nesil Lüks Hediye Konsiyerji';
-      if (headline) headline.innerHTML = 'Siz sevdiklerinize odaklanın.<br><span class="gradient-headline">Jestleri yaşayan zekaya bırakın.</span>';
-      if (subtext) subtext.innerHTML = 'Unutulma stresini sıfırlayan, eşinizin veya dostunuzun zevk haritasını çözen ve kapı çalınana kadar <strong>içeriği tamamen mühürlü kalan</strong> kişisel hediye konsiyerji.';
+      if (headline) headline.innerHTML = 'Kusursuz jestler.<br><span class="gradient-headline">Sıfır çaba.</span>';
+      if (subtext) subtext.innerHTML = 'Unutulma stresini sıfırlayan, sevdiklerinizin zevk haritasını çözen ve kapı çalınana kadar içeriği gizli kalan kişisel konsiyerj.';
       if (ctaBtn) ctaBtn.innerHTML = '<span>Hediye Kürasyonunu Başlat</span><span class="btn-arrow">&rarr;</span>';
 
       // Auto-select 'es' in wizard
@@ -427,41 +427,211 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // =========================================================================
-  // 5. ÖZEL BÜTÇE SLIDER'I (CUSTOM ATELIER SLIDER)
+  // 5. APPLE-STYLE MEMBERSHIP STUDIO CONSOLE & ÖZEL BÜTÇE
   // =========================================================================
-  const budgetSlider = document.getElementById('budgetSlider');
-  const customBudgetDisplay = document.getElementById('customBudgetDisplay');
-  const customCurationSummary = document.getElementById('customCurationSummary');
+  const CONSOLE_TIERS = {
+    petite: {
+      name: 'Aura Petite',
+      badge: 'Mikro-Jest & Zarafet',
+      arbitrage: 'Piyasa Perakende Değeri: ~1.200 ₺',
+      desc: 'Yeni başlayan flörtler, kıymetli dostluklar veya kendinize küçük bir moral ve self-reward jesti.',
+      price: { monthly: '850', bimonthly: '950', special: '1.050' },
+      chips: [
+        '✦ Tasarım Sukulent veya Cam Teraryum',
+        '✦ El Yapımı Dolgulu Artisan Çikolata',
+        '✦ Doğal Soya Mumu & Aromaterapi',
+        '✦ Kişiye Özel Kaligrafi Motto Kartı'
+      ]
+    },
+    signature: {
+      name: 'Aura Signature',
+      badge: 'Standart / Romantik',
+      arbitrage: 'Piyasa Perakende Değeri: ~3.800 ₺',
+      desc: 'Eşe, sevgiliye ve kendinize düzenli zarafet. Butik çiçek, gurme çikolata, tasarım obje ve organik bakım ritüeli.',
+      price: { monthly: '2.600', bimonthly: '2.850', special: '3.100' },
+      chips: [
+        '✦ Butik Tasarım Buket (VIP Kurye)',
+        '✦ Single-Origin Kahve & Trüf',
+        '✦ Sanatçı İmzalı Seramik Fincan',
+        '✦ Organik Cilt Bakım & Duş Ritüeli'
+      ]
+    },
+    prestige: {
+      name: 'Aura Prestige',
+      badge: 'VIP Prestige & Niche Zevkler',
+      arbitrage: 'Piyasa Perakende Değeri: ~8.200 ₺',
+      desc: 'Lüks zevklere sahip partnerler, iş ortakları ve prestijli anlar için yüksek kalibreli sürprizler.',
+      price: { monthly: '5.500', bimonthly: '5.950', special: '6.400' },
+      chips: [
+        '✦ Niche Extrait Parfüm (Özel Koku Evleri)',
+        '✦ 925 Ayar Gümüş / Doğal Taş Takı',
+        '✦ El Yapımı Hakiki Deri Kartlık',
+        '✦ Çift Kişilik Özel Kültür & Sanat Bileti'
+      ]
+    },
+    prive: {
+      name: 'Aura Privé',
+      badge: 'Haute Curation & Fine Jewelry',
+      arbitrage: 'Piyasa Perakende Değeri: ~18.500 ₺',
+      desc: 'Altın dokunuşlar, İtalyan saf ipek ve sınırlı sayıda üretilen zanaatkar objeleriyle büyüleyen üst segment deneyim.',
+      price: { monthly: '12.500', bimonthly: '13.500', special: '14.800' },
+      chips: [
+        '✦ 14K Altın & Aytaşı Tasarım Mücevher',
+        '✦ İtalyan Saf İpek Twilly Fular',
+        '✦ Grand Cru Şarap Kadehi & Trüf Havuzu',
+        '✦ Kişisel Konsiyerj Özel Mührü'
+      ]
+    },
+    vault: {
+      name: 'Aura Grand Vault',
+      badge: 'Zaman ve Mücevher Ustaları',
+      arbitrage: 'Piyasa Perakende Değeri: ~36.000 ₺',
+      desc: 'İsviçre horoloji aksesuarları, sertifikalı pırlanta mücevherler ve hafta sonu butik kaçamak ayrıcalıkları.',
+      price: { monthly: '24.000', bimonthly: '25.500', special: '27.500' },
+      chips: [
+        '✦ Sertifikalı Pırlanta Kolye veya Küpe',
+        '✦ İsviçre Mekanizma Saat Kurma Kutusu',
+        '✦ Moğolistan Saf Bebek Kaşmiri Şal',
+        '✦ Butik Bağ Evi / Relais & Châteaux Daveti'
+      ]
+    },
+    black: {
+      name: 'Aura Black',
+      badge: 'Ultra-Lüks & Özel Danışman',
+      arbitrage: 'Piyasa Perakende Değeri: ~65.000+ ₺',
+      desc: 'Sınırsız bütçe, tam kişiselleştirilmiş kürasyon ve 7/24 özel yaşam konsiyerji desteğiyle ulaşılamaz deneyimler.',
+      price: { monthly: '42.000+', bimonthly: '45.000+', special: '48.000+' },
+      chips: [
+        '✦ Haute Horlogerie & Yüksek Mücevher',
+        '✦ Özel Şoförlü Stealth Sürpriz Teslimat',
+        '✦ Michelin Yıldızlı Şef Rezervasyonu',
+        '✦ Yılda 2 Kez VIP Hafta Sonu Kaçamağı'
+      ]
+    }
+  };
 
-  if (budgetSlider && customBudgetDisplay && customCurationSummary) {
-    budgetSlider.addEventListener('input', () => {
-      const val = parseInt(budgetSlider.value, 10);
-      customBudgetDisplay.textContent = `${val.toLocaleString('tr-TR')} ₺`;
+  let currentConsoleFreq = 'monthly';
+  let currentConsoleTier = 'signature';
 
-      if (val < 2500) {
-        customCurationSummary.textContent = '"İncelikli mini tasarım sukulent, el yapımı aromaterapi mumu ve butik artisan trüfler."';
-      } else if (val < 5000) {
-        customCurationSummary.textContent = '"Taze butik tasarım çiçek buketi, 925 ayar gümüş takı ve el yapımı seramik tasarım objesi."';
-      } else if (val < 12000) {
-        customCurationSummary.textContent = '"Niche extrait parfüm, İtalyan hakiki deri kartlık/cüzdan ve çift kişilik özel kültür davetiyesi."';
-      } else if (val < 30000) {
-        customCurationSummary.textContent = '"Sertifikalı pırlanta ve altın tasarım kolye, saf ipek İtalyan şal ve gurme tadım deneyimi."';
-      } else {
-        customCurationSummary.textContent = '"İsviçre mekanizmalı saat aksesuarları, pırlanta mücevherler ve hafta sonu butik bağ evi / otel kaçamağı."';
+  window.switchConsoleFreq = function(freq) {
+    currentConsoleFreq = freq;
+    document.querySelectorAll('.cfs-pill').forEach(btn => {
+      btn.classList.toggle('active', btn.getAttribute('data-freq') === freq);
+    });
+
+    const freqNotes = {
+      monthly: 'Aylık Düzenli Teslimat (Yılda 12 Kutu)',
+      bimonthly: '2 Ayda Bir Teslimat (Yılda 6 Kutu)',
+      special: 'Özel Günler + 1 Salı Sürprizi (Yılda 5 Kutu)'
+    };
+    const freqEl = document.getElementById('cmcFreqNote');
+    if (freqEl && freqNotes[freq]) freqEl.textContent = freqNotes[freq];
+
+    // Update prices on tabs
+    document.querySelectorAll('.cts-tab').forEach(tab => {
+      const tKey = tab.getAttribute('data-tier');
+      if (CONSOLE_TIERS[tKey]) {
+        const priceEl = tab.querySelector('.cts-price');
+        if (priceEl) priceEl.textContent = `${CONSOLE_TIERS[tKey].price[freq]} ₺`;
       }
     });
+
+    // Update master card
+    updateConsoleMasterCard();
+    playChime();
+  };
+
+  window.selectConsoleTier = function(tier) {
+    if (!CONSOLE_TIERS[tier]) return;
+    currentConsoleTier = tier;
+
+    document.querySelectorAll('.cts-tab').forEach(tab => {
+      tab.classList.toggle('active', tab.getAttribute('data-tier') === tier);
+    });
+
+    updateConsoleMasterCard();
+    playChime();
+  };
+
+  function updateConsoleMasterCard() {
+    const data = CONSOLE_TIERS[currentConsoleTier];
+    if (!data) return;
+
+    const badgeEl = document.getElementById('cmcTierBadge');
+    const arbEl = document.getElementById('cmcArbitrageTag');
+    const titleEl = document.getElementById('cmcTierTitle');
+    const descEl = document.getElementById('cmcTierDesc');
+    const chipsEl = document.getElementById('cmcChipsGrid');
+    const priceEl = document.getElementById('cmcPriceVal');
+
+    if (badgeEl) badgeEl.textContent = data.badge;
+    if (arbEl) arbEl.textContent = data.arbitrage;
+    if (titleEl) titleEl.textContent = data.name;
+    if (descEl) descEl.textContent = data.desc;
+    if (priceEl) priceEl.textContent = data.price[currentConsoleFreq] || data.price.monthly;
+
+    if (chipsEl) {
+      chipsEl.innerHTML = data.chips.map(chip => `<span class="cmc-chip">${chip}</span>`).join('');
+    }
   }
 
-  window.applyCustomBudgetAndScroll = function() {
-    const val = budgetSlider ? parseInt(budgetSlider.value, 10).toLocaleString('tr-TR') : '15.000';
+  window.applyConsoleTierAndScroll = function() {
+    const data = CONSOLE_TIERS[currentConsoleTier];
     const chosenTitle = document.getElementById('wizardChosenTierTitle');
-    if (chosenTitle) {
-      chosenTitle.innerHTML = `Özel Bütçeniz: <strong>Aura Atelier Custom (${val} ₺/ay)</strong>`;
+    if (chosenTitle && data) {
+      const p = data.price[currentConsoleFreq] || data.price.monthly;
+      chosenTitle.innerHTML = `Seçilen Kademe: <strong>${data.name} (${p} ₺/kutu)</strong>`;
     }
 
     const onboardingSection = document.getElementById('onboarding-web');
     if (onboardingSection) {
       onboardingSection.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
+  window.handleConsoleSlider = function(val) {
+    const num = parseInt(val, 10);
+    const labelEl = document.getElementById('customSliderValLabel');
+    const previewEl = document.getElementById('consoleSliderPreviewText');
+
+    if (labelEl) {
+      labelEl.innerHTML = `Seçilen Özel Bütçe: <strong>${num.toLocaleString('tr-TR')} ₺ / kutu</strong>`;
+    }
+
+    if (previewEl) {
+      if (num < 3000) {
+        previewEl.textContent = '"İncelikli mini tasarım sukulent, el yapımı aromaterapi mumu ve butik artisan trüfler."';
+      } else if (num < 8000) {
+        previewEl.textContent = '"Taze butik tasarım çiçek buketi, 925 ayar gümüş takı ve el yapımı seramik sanat eseri fincan."';
+      } else if (num < 20000) {
+        previewEl.textContent = '"Niche extrait parfüm, 14K altın pırlanta dokunuşu, İtalyan hakiki deri aksesuar ve gurme tadım deneyimi."';
+      } else if (num < 45000) {
+        previewEl.textContent = '"Sertifikalı pırlanta kolye, saf Moğolistan kaşmiri şal, İsviçre saat kurma kutusu ve Relais & Châteaux daveti."';
+      } else {
+        previewEl.textContent = '"Haute horlogerie saat aksesuarları, pırlanta takı, şoförlü gizli teslimat ve Michelin restoran rezervasyonu."';
+      }
+    }
+  };
+
+  window.applyConsoleCustomBudget = function() {
+    const slider = document.getElementById('consoleBudgetRange');
+    const val = slider ? parseInt(slider.value, 10).toLocaleString('tr-TR') : '15.000';
+    const chosenTitle = document.getElementById('wizardChosenTierTitle');
+    if (chosenTitle) {
+      chosenTitle.innerHTML = `Özel Bütçeniz: <strong>Aura Atelier Custom (${val} ₺/kutu)</strong>`;
+    }
+
+    const onboardingSection = document.getElementById('onboarding-web');
+    if (onboardingSection) {
+      onboardingSection.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
+  // Backward compatibility for existing buttons if any
+  window.selectTierAndScroll = function(tierName) {
+    if (CONSOLE_TIERS[tierName]) {
+      selectConsoleTier(tierName);
+      applyConsoleTierAndScroll();
     }
   };
 
