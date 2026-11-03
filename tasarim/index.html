@@ -191,6 +191,39 @@
           <p class="cinema-desc">Sıradan kataloglar veya saatlerce hediye arama stresi yok. Stil DNA'nız çözümlenir, atölyelerden en nadir parçalar ayrılır ve mühürlü sürpriz kapınızı çalar.</p>
         </div>
 
+        <!-- YENİ: Akan Işıklı Zaman Çizelgesi (Stealth Delivery Metro Route) -->
+        <div class="stealth-metro-timeline-wrap">
+          <div class="metro-track-line">
+            <div class="metro-flowing-pulse"></div>
+          </div>
+          <div class="metro-stations-row">
+            <div class="metro-station-node active">
+              <span class="msn-dot"><span class="msn-inner-glow"></span></span>
+              <div class="msn-meta">
+                <span class="msn-step">01. FAZ</span>
+                <strong class="msn-label">Stil &amp; Zevk DNA'sı</strong>
+                <span class="msn-desc">60s Yapay Zeka Taraması</span>
+              </div>
+            </div>
+            <div class="metro-station-node active">
+              <span class="msn-dot"><span class="msn-inner-glow"></span></span>
+              <div class="msn-meta">
+                <span class="msn-step gold">02. FAZ</span>
+                <strong class="msn-label gold">Zanaat Kürasyonu</strong>
+                <span class="msn-desc">35+ Lüks Ev &amp; Pasaport</span>
+              </div>
+            </div>
+            <div class="metro-station-node active">
+              <span class="msn-dot"><span class="msn-inner-glow"></span></span>
+              <div class="msn-meta">
+                <span class="msn-step">03. FAZ</span>
+                <strong class="msn-label">Sessiz Teslimat</strong>
+                <span class="msn-desc">Balmumu Mühür &amp; Fısıltı</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
         <div class="bento-ritual-grid">
           <!-- Adım 1: Zevk & Stil DNA'sı -->
           <div class="bento-ritual-card">
@@ -296,8 +329,60 @@
           </div>
 
           <div class="sc-visual">
-            <img src="../assets/packaging/aura_box_hands_ribbon_wax_close.jpg" alt="Aura Box Unboxing Ritual & Wax Seal" class="sc-img">
-            <div class="sc-img-badge">Atelier Vault Unboxing</div>
+            <div class="sc-interactive-stage">
+              <!-- 3D Gyro / Kapağı Aralanan Kadife Kutu -->
+              <div class="gyro-box-card" id="gyroBoxCard" onmousemove="handleGyroBoxMove(event)" onmouseleave="resetGyroBox()">
+                <div class="gyro-box-perspective">
+                  <div class="gyro-box-mesh" id="gyroBoxMesh">
+                    <div class="gb-lid" id="gbLid">
+                      <div class="gb-lid-top">
+                        <div class="gb-wax-seal"><span>AB</span></div>
+                        <div class="gb-gold-ribbon"></div>
+                      </div>
+                      <div class="gb-lid-front"></div>
+                    </div>
+                    <div class="gb-base">
+                      <div class="gb-glow-core"></div>
+                      <div class="gb-peeking-item">
+                        <span class="gb-sparkle">✨</span>
+                        <span class="gb-item-txt">Sertifikalı Zanaat Parçası</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="gyro-pill-cue">
+                  <span class="gpc-icon">👆</span>
+                  <span>İmleci yaklaştırın: Kapağı aralayın</span>
+                </div>
+              </div>
+
+              <!-- Holografik Zanaatkar Pasaportu Kartı -->
+              <div class="hologram-passport-card" id="hologramPassportCard" onmousemove="handleHologramShimmer(event)" onmouseleave="resetHologramShimmer()">
+                <div class="holo-shimmer-layer" id="holoShimmerLayer"></div>
+                <div class="holo-header">
+                  <span class="holo-crest">AB</span>
+                  <div class="holo-title-group">
+                    <span class="holo-sub">RÉPUBLIQUE DES ARTISANS</span>
+                    <strong class="holo-title">ZANAATKAR PASAPORTU</strong>
+                  </div>
+                  <span class="holo-badge">ORIGINEL</span>
+                </div>
+                <div class="holo-body">
+                  <div class="holo-row">
+                    <span>SERİ NO:</span>
+                    <strong>AB-2026-8492-AU</strong>
+                  </div>
+                  <div class="holo-row">
+                    <span>ATÖLYE KOORDİNATI:</span>
+                    <strong>41.0504° N, 28.9934° E (Nişantaşı)</strong>
+                  </div>
+                  <div class="holo-row">
+                    <span>KÜRATÖR İMZASI:</span>
+                    <em class="holo-signature">M. Delacroix</em>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
 
@@ -375,11 +460,35 @@
           <p class="cinema-desc">Seçkin atölyelerimizden anlık API senkronu ile derlenen, dokunmak isteyeceğiniz zamansız parçalar.</p>
         </div>
 
+        <!-- Canlı Atölye Nabzı (Live Atelier Ticker Bar) -->
+        <div class="live-atelier-ticker-container">
+          <div class="ticker-live-indicator">
+            <span class="live-pulse-dot"></span>
+            <span class="live-pulse-label">CANLI KÜRASİYON AKIŞI</span>
+          </div>
+          <div class="ticker-viewport">
+            <div class="ticker-text-slider" id="atelierLiveTicker">
+              <span class="ticker-msg active">🟢 14:12 — Bebek Atölyesi: Aura Prestige için 14K aytaşı kolye mühürlendi.</span>
+              <span class="ticker-msg">🟢 15:30 — Cenevre Senkronu: 6 adet hakiki deri saat seyahat rulosu stoka girdi.</span>
+              <span class="ticker-msg">🟢 16:05 — Stealth Kurye: Beşiktaş rotasında sıradan bir Salı sürprizi kapıyı çaldı.</span>
+              <span class="ticker-msg">🟢 16:40 — Nişantaşı Fine Jewelry: 0.30ct pırlanta orijinallik sertifikası sisteme işlendi.</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Cinsiyet & Alıcı Filtresi: Tümü, Kadın, Erkek, Kendim İçin -->
+        <div class="lookbook-filter-bar">
+          <button class="lb-filter-btn active" data-filter="all" onclick="filterLookbook('all')">✦ Tümü</button>
+          <button class="lb-filter-btn" data-filter="her" onclick="filterLookbook('her')">👠 Onun İçin (Kadın)</button>
+          <button class="lb-filter-btn" data-filter="him" onclick="filterLookbook('him')">⌚ Onun İçin (Erkek)</button>
+          <button class="lb-filter-btn" data-filter="self" onclick="filterLookbook('self')">✨ Kendim İçin</button>
+        </div>
+
         <!-- Kayan Sonsuz Lüks Ürün Bandı (Filmstrip Marquee) -->
         <div class="marquee-viewport-container">
           <div class="luxury-marquee-track">
-            <!-- 01: Pırlanta Kolye -->
-            <div class="lookbook-item-card" onclick="openProvenance('necklace')">
+            <!-- 01: Pırlanta Kolye (Kadın) -->
+            <div class="lookbook-item-card" data-category="her" onclick="openProvenance('necklace')">
               <div class="lb-img-wrap">
                 <img src="https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?auto=format&fit=crop&w=600&q=80" alt="Doğal Aytaşı & Pırlanta Kolye" loading="lazy">
                 <div class="lb-overlay-gradient"></div>
@@ -391,8 +500,8 @@
               </div>
             </div>
 
-            <!-- 02: 14K Rose Altın Bileklik -->
-            <div class="lookbook-item-card" onclick="openProvenance('bracelet')">
+            <!-- 02: 14K Rose Altın Bileklik (Kadın) -->
+            <div class="lookbook-item-card" data-category="her" onclick="openProvenance('bracelet')">
               <div class="lb-img-wrap">
                 <img src="https://images.unsplash.com/photo-1611085583191-a3b181a88401?auto=format&fit=crop&w=600&q=80" alt="14K Rose Altın İtalyan Bileklik" loading="lazy">
                 <div class="lb-overlay-gradient"></div>
@@ -404,8 +513,8 @@
               </div>
             </div>
 
-            <!-- 03: İsviçre Saat Aksesuarı & Deri Rulo -->
-            <div class="lookbook-item-card" onclick="openProvenance('watch')">
+            <!-- 03: İsviçre Saat Aksesuarı & Deri Rulo (Erkek) -->
+            <div class="lookbook-item-card" data-category="him" onclick="openProvenance('watch')">
               <div class="lb-img-wrap">
                 <img src="https://images.unsplash.com/photo-1524805444758-089113d48a6d?auto=format&fit=crop&w=600&q=80" alt="İsviçre Saat Aksesuarı" loading="lazy">
                 <div class="lb-overlay-gradient"></div>
@@ -417,8 +526,47 @@
               </div>
             </div>
 
-            <!-- 04: Taze Fransız Şakayığı Buketi -->
-            <div class="lookbook-item-card">
+            <!-- 04: Kristal Füme Viski Kadehi & Granit Buz Taşları (Erkek) -->
+            <div class="lookbook-item-card" data-category="him">
+              <div class="lb-img-wrap">
+                <img src="https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?auto=format&fit=crop&w=600&q=80" alt="Kristal Füme Viski Kadehi" loading="lazy">
+                <div class="lb-overlay-gradient"></div>
+                <span class="lb-provenance-badge">🥃 Bar Zanaatı</span>
+              </div>
+              <div class="lb-caption">
+                <h4 class="lb-title">Kristal Füme Viski Kadehi &amp; Taş Seti</h4>
+                <p class="lb-atelier">Atelier Amber • Moda</p>
+              </div>
+            </div>
+
+            <!-- 05: İtalyan Hakiki Deri Kartlık & Cüzdan (Erkek) -->
+            <div class="lookbook-item-card" data-category="him">
+              <div class="lb-img-wrap">
+                <img src="https://images.unsplash.com/photo-1627123424574-724758594e93?auto=format&fit=crop&w=600&q=80" alt="Hakiki Deri Kartlık & Cüzdan" loading="lazy">
+                <div class="lb-overlay-gradient"></div>
+                <span class="lb-provenance-badge">📜 Pasaport</span>
+              </div>
+              <div class="lb-caption">
+                <h4 class="lb-title">İtalyan Hakiki Deri Kartlık &amp; Cüzdan</h4>
+                <p class="lb-atelier">Cuoio Fiorentino • Floransa</p>
+              </div>
+            </div>
+
+            <!-- 06: İtalyan Dokuma & Zanaatkar Kravat / Manşet (Erkek) -->
+            <div class="lookbook-item-card" data-category="him">
+              <div class="lb-img-wrap">
+                <img src="https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&w=600&q=80" alt="İtalyan Dokuma Aksesuarlar" loading="lazy">
+                <div class="lb-overlay-gradient"></div>
+                <span class="lb-provenance-badge">👔 Sartorial</span>
+              </div>
+              <div class="lb-caption">
+                <h4 class="lb-title">İpek-Yün Sartorial Kravat &amp; Manşet</h4>
+                <p class="lb-atelier">Sartoria Panizza • Milano</p>
+              </div>
+            </div>
+
+            <!-- 07: Taze Fransız Şakayığı Buketi (Kadın) -->
+            <div class="lookbook-item-card" data-category="her">
               <div class="lb-img-wrap">
                 <img src="https://images.unsplash.com/photo-1563245372-f21724e3856d?auto=format&fit=crop&w=600&q=80" alt="Taze Fransız Şakayığı" loading="lazy">
                 <div class="lb-overlay-gradient"></div>
@@ -430,8 +578,8 @@
               </div>
             </div>
 
-            <!-- 05: Mermer Kaideli Sedir Mumu -->
-            <div class="lookbook-item-card" onclick="openProvenance('candle')">
+            <!-- 08: Mermer Kaideli Sedir Mumu (Self) -->
+            <div class="lookbook-item-card" data-category="self" onclick="openProvenance('candle')">
               <div class="lb-img-wrap">
                 <img src="https://images.unsplash.com/photo-1603006905003-be475563bc59?auto=format&fit=crop&w=600&q=80" alt="Mermer Kaideli Mum" loading="lazy">
                 <div class="lb-overlay-gradient"></div>
@@ -443,8 +591,8 @@
               </div>
             </div>
 
-            <!-- 06: İtalyan Doğal İpek Twilly Fular -->
-            <div class="lookbook-item-card">
+            <!-- 09: İtalyan Doğal İpek Twilly Fular (Kadın) -->
+            <div class="lookbook-item-card" data-category="her">
               <div class="lb-img-wrap">
                 <img src="https://images.unsplash.com/photo-1584917865442-de89df76afd3?auto=format&fit=crop&w=600&q=80" alt="İpek Twilly Fular" loading="lazy">
                 <div class="lb-overlay-gradient"></div>
@@ -456,8 +604,8 @@
               </div>
             </div>
 
-            <!-- 07: Moğolistan Saf Kaşmir Şal -->
-            <div class="lookbook-item-card" onclick="openProvenance('cashmere')">
+            <!-- 10: Moğolistan Saf Kaşmir Şal (Self & Tümü) -->
+            <div class="lookbook-item-card" data-category="self him her" onclick="openProvenance('cashmere')">
               <div class="lb-img-wrap">
                 <img src="https://images.unsplash.com/photo-1520903920243-00d872a2d1c9?auto=format&fit=crop&w=600&q=80" alt="Saf Kaşmir Dokuma Şal" loading="lazy">
                 <div class="lb-overlay-gradient"></div>
@@ -469,8 +617,8 @@
               </div>
             </div>
 
-            <!-- 08: Amber Grand Extrait Parfüm -->
-            <div class="lookbook-item-card" onclick="openProvenance('perfume')">
+            <!-- 11: Amber Grand Extrait Parfüm (Self & Tümü) -->
+            <div class="lookbook-item-card" data-category="self him her" onclick="openProvenance('perfume')">
               <div class="lb-img-wrap">
                 <img src="https://images.unsplash.com/photo-1523293182086-7651a899d37f?auto=format&fit=crop&w=600&q=80" alt="Amber Grand Extrait Parfüm" loading="lazy">
                 <div class="lb-overlay-gradient"></div>
@@ -482,8 +630,8 @@
               </div>
             </div>
 
-            <!-- 09: Altın Varaklı Belçika Trüfleri -->
-            <div class="lookbook-item-card" onclick="openProvenance('chocolate')">
+            <!-- 12: Altın Varaklı Belçika Trüfleri (Self) -->
+            <div class="lookbook-item-card" data-category="self" onclick="openProvenance('chocolate')">
               <div class="lb-img-wrap">
                 <img src="https://images.unsplash.com/photo-1549007994-cb92caebd54b?auto=format&fit=crop&w=600&q=80" alt="Belçika Trüfleri" loading="lazy">
                 <div class="lb-overlay-gradient"></div>
@@ -495,8 +643,8 @@
               </div>
             </div>
 
-            <!-- 10: Ham Seramik Kupa & Mermer Tütsülük -->
-            <div class="lookbook-item-card" onclick="openProvenance('ceramic')">
+            <!-- 13: Ham Seramik Kupa & Mermer Tütsülük (Self) -->
+            <div class="lookbook-item-card" data-category="self" onclick="openProvenance('ceramic')">
               <div class="lb-img-wrap">
                 <img src="https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?auto=format&fit=crop&w=600&q=80" alt="Seramik Kupa" loading="lazy">
                 <div class="lb-overlay-gradient"></div>
@@ -508,8 +656,8 @@
               </div>
             </div>
 
-            <!-- 11: Kraliyet Deri Defter & Kılıf -->
-            <div class="lookbook-item-card" onclick="openProvenance('leather')">
+            <!-- 14: Hakiki Deri Pasaport Kılıfı (Erkek & Tümü) -->
+            <div class="lookbook-item-card" data-category="him self" onclick="openProvenance('leather')">
               <div class="lb-img-wrap">
                 <img src="https://images.unsplash.com/photo-1544717305-2782549b5136?auto=format&fit=crop&w=600&q=80" alt="Kraliyet Deri Defter" loading="lazy">
                 <div class="lb-overlay-gradient"></div>
@@ -521,8 +669,8 @@
               </div>
             </div>
 
-            <!-- 12: Urla Butik Bağ Evi Davetiyesi -->
-            <div class="lookbook-item-card" onclick="openProvenance('relais')">
+            <!-- 15: Urla Butik Bağ Evi Davetiyesi (Tümü) -->
+            <div class="lookbook-item-card" data-category="self her him" onclick="openProvenance('relais')">
               <div class="lb-img-wrap">
                 <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=600&q=80" alt="Bağ Evi Konaklama" loading="lazy">
                 <div class="lb-overlay-gradient"></div>
@@ -534,8 +682,9 @@
               </div>
             </div>
 
-            <!-- 01: Pırlanta Kolye -->
-            <div class="lookbook-item-card" onclick="openProvenance('necklace')">
+            <!-- DUPLICATE SET FOR INFINITE SMOOTH MARQUEE -->
+            <!-- 01 Duplicate -->
+            <div class="lookbook-item-card" data-category="her" onclick="openProvenance('necklace')">
               <div class="lb-img-wrap">
                 <img src="https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?auto=format&fit=crop&w=600&q=80" alt="Doğal Aytaşı & Pırlanta Kolye" loading="lazy">
                 <div class="lb-overlay-gradient"></div>
@@ -547,8 +696,8 @@
               </div>
             </div>
 
-            <!-- 02: 14K Rose Altın Bileklik -->
-            <div class="lookbook-item-card" onclick="openProvenance('bracelet')">
+            <!-- 02 Duplicate -->
+            <div class="lookbook-item-card" data-category="her" onclick="openProvenance('bracelet')">
               <div class="lb-img-wrap">
                 <img src="https://images.unsplash.com/photo-1611085583191-a3b181a88401?auto=format&fit=crop&w=600&q=80" alt="14K Rose Altın İtalyan Bileklik" loading="lazy">
                 <div class="lb-overlay-gradient"></div>
@@ -560,8 +709,8 @@
               </div>
             </div>
 
-            <!-- 03: İsviçre Saat Aksesuarı & Deri Rulo -->
-            <div class="lookbook-item-card" onclick="openProvenance('watch')">
+            <!-- 03 Duplicate -->
+            <div class="lookbook-item-card" data-category="him" onclick="openProvenance('watch')">
               <div class="lb-img-wrap">
                 <img src="https://images.unsplash.com/photo-1524805444758-089113d48a6d?auto=format&fit=crop&w=600&q=80" alt="İsviçre Saat Aksesuarı" loading="lazy">
                 <div class="lb-overlay-gradient"></div>
@@ -573,8 +722,47 @@
               </div>
             </div>
 
-            <!-- 04: Taze Fransız Şakayığı Buketi -->
-            <div class="lookbook-item-card">
+            <!-- 04 Duplicate -->
+            <div class="lookbook-item-card" data-category="him">
+              <div class="lb-img-wrap">
+                <img src="https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?auto=format&fit=crop&w=600&q=80" alt="Kristal Füme Viski Kadehi" loading="lazy">
+                <div class="lb-overlay-gradient"></div>
+                <span class="lb-provenance-badge">🥃 Bar Zanaatı</span>
+              </div>
+              <div class="lb-caption">
+                <h4 class="lb-title">Kristal Füme Viski Kadehi &amp; Taş Seti</h4>
+                <p class="lb-atelier">Atelier Amber • Moda</p>
+              </div>
+            </div>
+
+            <!-- 05 Duplicate -->
+            <div class="lookbook-item-card" data-category="him">
+              <div class="lb-img-wrap">
+                <img src="https://images.unsplash.com/photo-1627123424574-724758594e93?auto=format&fit=crop&w=600&q=80" alt="Hakiki Deri Kartlık & Cüzdan" loading="lazy">
+                <div class="lb-overlay-gradient"></div>
+                <span class="lb-provenance-badge">📜 Pasaport</span>
+              </div>
+              <div class="lb-caption">
+                <h4 class="lb-title">İtalyan Hakiki Deri Kartlık &amp; Cüzdan</h4>
+                <p class="lb-atelier">Cuoio Fiorentino • Floransa</p>
+              </div>
+            </div>
+
+            <!-- 06 Duplicate -->
+            <div class="lookbook-item-card" data-category="him">
+              <div class="lb-img-wrap">
+                <img src="https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&w=600&q=80" alt="İtalyan Dokuma Aksesuarlar" loading="lazy">
+                <div class="lb-overlay-gradient"></div>
+                <span class="lb-provenance-badge">👔 Sartorial</span>
+              </div>
+              <div class="lb-caption">
+                <h4 class="lb-title">İpek-Yün Sartorial Kravat &amp; Manşet</h4>
+                <p class="lb-atelier">Sartoria Panizza • Milano</p>
+              </div>
+            </div>
+
+            <!-- 07 Duplicate -->
+            <div class="lookbook-item-card" data-category="her">
               <div class="lb-img-wrap">
                 <img src="https://images.unsplash.com/photo-1563245372-f21724e3856d?auto=format&fit=crop&w=600&q=80" alt="Taze Fransız Şakayığı" loading="lazy">
                 <div class="lb-overlay-gradient"></div>
@@ -586,8 +774,8 @@
               </div>
             </div>
 
-            <!-- 05: Mermer Kaideli Sedir Mumu -->
-            <div class="lookbook-item-card" onclick="openProvenance('candle')">
+            <!-- 08 Duplicate -->
+            <div class="lookbook-item-card" data-category="self" onclick="openProvenance('candle')">
               <div class="lb-img-wrap">
                 <img src="https://images.unsplash.com/photo-1603006905003-be475563bc59?auto=format&fit=crop&w=600&q=80" alt="Mermer Kaideli Mum" loading="lazy">
                 <div class="lb-overlay-gradient"></div>
@@ -599,8 +787,8 @@
               </div>
             </div>
 
-            <!-- 06: İtalyan Doğal İpek Twilly Fular -->
-            <div class="lookbook-item-card">
+            <!-- 09 Duplicate -->
+            <div class="lookbook-item-card" data-category="her">
               <div class="lb-img-wrap">
                 <img src="https://images.unsplash.com/photo-1584917865442-de89df76afd3?auto=format&fit=crop&w=600&q=80" alt="İpek Twilly Fular" loading="lazy">
                 <div class="lb-overlay-gradient"></div>
@@ -612,8 +800,8 @@
               </div>
             </div>
 
-            <!-- 07: Moğolistan Saf Kaşmir Şal -->
-            <div class="lookbook-item-card" onclick="openProvenance('cashmere')">
+            <!-- 10 Duplicate -->
+            <div class="lookbook-item-card" data-category="self him her" onclick="openProvenance('cashmere')">
               <div class="lb-img-wrap">
                 <img src="https://images.unsplash.com/photo-1520903920243-00d872a2d1c9?auto=format&fit=crop&w=600&q=80" alt="Saf Kaşmir Dokuma Şal" loading="lazy">
                 <div class="lb-overlay-gradient"></div>
@@ -625,8 +813,8 @@
               </div>
             </div>
 
-            <!-- 08: Amber Grand Extrait Parfüm -->
-            <div class="lookbook-item-card" onclick="openProvenance('perfume')">
+            <!-- 11 Duplicate -->
+            <div class="lookbook-item-card" data-category="self him her" onclick="openProvenance('perfume')">
               <div class="lb-img-wrap">
                 <img src="https://images.unsplash.com/photo-1523293182086-7651a899d37f?auto=format&fit=crop&w=600&q=80" alt="Amber Grand Extrait Parfüm" loading="lazy">
                 <div class="lb-overlay-gradient"></div>
@@ -638,8 +826,8 @@
               </div>
             </div>
 
-            <!-- 09: Altın Varaklı Belçika Trüfleri -->
-            <div class="lookbook-item-card" onclick="openProvenance('chocolate')">
+            <!-- 12 Duplicate -->
+            <div class="lookbook-item-card" data-category="self" onclick="openProvenance('chocolate')">
               <div class="lb-img-wrap">
                 <img src="https://images.unsplash.com/photo-1549007994-cb92caebd54b?auto=format&fit=crop&w=600&q=80" alt="Belçika Trüfleri" loading="lazy">
                 <div class="lb-overlay-gradient"></div>
@@ -651,8 +839,8 @@
               </div>
             </div>
 
-            <!-- 10: Ham Seramik Kupa & Mermer Tütsülük -->
-            <div class="lookbook-item-card" onclick="openProvenance('ceramic')">
+            <!-- 13 Duplicate -->
+            <div class="lookbook-item-card" data-category="self" onclick="openProvenance('ceramic')">
               <div class="lb-img-wrap">
                 <img src="https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?auto=format&fit=crop&w=600&q=80" alt="Seramik Kupa" loading="lazy">
                 <div class="lb-overlay-gradient"></div>
@@ -664,8 +852,8 @@
               </div>
             </div>
 
-            <!-- 11: Kraliyet Deri Defter & Kılıf -->
-            <div class="lookbook-item-card" onclick="openProvenance('leather')">
+            <!-- 14 Duplicate -->
+            <div class="lookbook-item-card" data-category="him self" onclick="openProvenance('leather')">
               <div class="lb-img-wrap">
                 <img src="https://images.unsplash.com/photo-1544717305-2782549b5136?auto=format&fit=crop&w=600&q=80" alt="Kraliyet Deri Defter" loading="lazy">
                 <div class="lb-overlay-gradient"></div>
@@ -677,8 +865,8 @@
               </div>
             </div>
 
-            <!-- 12: Urla Butik Bağ Evi Davetiyesi -->
-            <div class="lookbook-item-card" onclick="openProvenance('relais')">
+            <!-- 15 Duplicate -->
+            <div class="lookbook-item-card" data-category="self her him" onclick="openProvenance('relais')">
               <div class="lb-img-wrap">
                 <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=600&q=80" alt="Bağ Evi Konaklama" loading="lazy">
                 <div class="lb-overlay-gradient"></div>
@@ -1135,47 +1323,104 @@
             </div>
           </div>
 
-          <!-- Wizard Adım 4: Gizem Korunur! Asla içindekiler ifşa edilmez -->
+          <!-- Wizard Adım 4: Yapay Zeka Kasa Mühürleme & AI Reveal -->
           <div class="wizard-step-pane" id="wStep4">
-            <div class="sealed-vault-confirmation">
-              <div class="sealed-wax-icon">
-                <span>AB</span>
+            <!-- 1. Aşama: 2 Saniyelik Sinematik Tarama Ekranı -->
+            <div class="ai-scan-cinematic-screen" id="aiScanScreen" style="display:none;">
+              <div class="ai-scan-laser-box">
+                <div class="laser-scanner-beam"></div>
+                <div class="ai-scan-crest">AB</div>
               </div>
-              <span class="sealed-tag">✦ KASA BAŞARIYLA MÜHÜRLENDİ ✦</span>
-              <h3 class="wizard-pane-title">İlk Aura Box Hazırlandı ve Kilitlendi</h3>
-              <p class="wizard-pane-desc">
-                Sürprizin büyüsünü korumak adına kutunun içeriği gizli tutulmaktadır. Kurye kapıyı çaldığı saniye, sadece sizin telefonunuza gizli fısıltı bildiriminiz (Secret Cheat Sheet) ulaşacaktır.
-              </p>
+              <h3 class="ai-scan-title">Yapay Zeka Atölye Ağını Tarıyor</h3>
+              <p class="ai-scan-desc">Fotoğraf stil DNA'sı, Nişantaşı ve Cenevre bağımsız zanaatkarlarıyla eşleştiriliyor...</p>
+              <div class="ai-scan-ticker-steps" id="aiScanTicker">
+                <span class="scan-step-item active">✦ Vision AI renk paleti ve doku DNA'sı çözümlendi...</span>
+                <span class="scan-step-item">✦ 35+ partner atölyenin anlık envanteri taranıyor...</span>
+                <span class="scan-step-item">✦ Alerjiler ve kesin kırmızı çizgiler kilitlendi...</span>
+                <span class="scan-step-item">✦ Mühür vuruluyor: %97.8 Zevk Uyum Skoru hesaplandı.</span>
+              </div>
+            </div>
 
-              <div class="sealed-parameters-summary five-items">
-                <div class="sp-item">
-                  <span class="sp-label">Hedef Kişi</span>
-                  <strong class="sp-val">Eşiniz / Partneriniz</strong>
-                </div>
-                <div class="sp-item">
-                  <span class="sp-label">Vision AI Stil DNA'sı</span>
-                  <strong class="sp-val" id="summaryVisionStyle">Fransız Riviera & İpek</strong>
-                </div>
-                <div class="sp-item">
-                  <span class="sp-label">Kesin Kilit</span>
-                  <strong class="sp-val">Saf 925 Gümüş Tercihi</strong>
-                </div>
-                <div class="sp-item">
-                  <span class="sp-label">Özel Fısıltı</span>
-                  <strong class="sp-val" id="summaryNotes">Dinlendirici SPA Ağırlıklı</strong>
-                </div>
-                <div class="sp-item">
-                  <span class="sp-label">İlk Zevk Uyum Skoru</span>
-                  <strong class="sp-val highlighted-purple">%97.8 (Canlı)</strong>
-                </div>
+            <!-- 2. Aşama: Kişiselleştirilmiş Kutu & Radar Reveal -->
+            <div class="ai-reveal-cinematic-screen" id="aiRevealScreen">
+              <div class="ai-reveal-header">
+                <span class="sealed-tag">✦ HAUTE-COUTURE KÜRASYON TAMAMLANDI ✦</span>
+                <h3 class="wizard-pane-title">Eşinize Özel İlk Kasa Mühürlendi</h3>
+                <p class="wizard-pane-desc">Yapay zeka algoritması stil DNA'nızı ve zevk kısıtlarınızı analiz ederek en kusursuz ilk kutu kurgusunu hazırladı.</p>
               </div>
 
-              <div class="matched-footer-action">
-                <div class="price-lock-tag">
-                  <span id="wizardChosenTierTitle">Seçilen Kademe: <strong>Aura Signature (3.000 ₺/ay)</strong></span>
-                  <p>100% Markasız dış kutu ile kapıya gelir. Dilediğiniz an duraklatabilirsiniz.</p>
+              <div class="ai-reveal-grid">
+                <!-- Sol: İlişki & Zevk Ritmi Radarı (SVG Spider Chart) -->
+                <div class="ai-radar-card">
+                  <div class="arc-header">
+                    <span class="arc-kicker">ANALİTİK KÜRASYON GÜVENİ</span>
+                    <h4 class="arc-title">İlişki &amp; Zevk Ritmi Radarı</h4>
+                  </div>
+                  <div class="radar-chart-container">
+                    <svg class="radar-svg" viewBox="0 0 300 300">
+                      <!-- Arka plan beşgen kılavuzları -->
+                      <polygon class="radar-grid-poly" points="150,30 264,113 220,247 80,247 36,113" />
+                      <polygon class="radar-grid-poly" points="150,60 236,122 203,222 97,222 64,122" />
+                      <polygon class="radar-grid-poly" points="150,90 207,131 185,198 115,198 93,131" />
+                      <!-- Radar eksen çizgileri -->
+                      <line class="radar-axis-line" x1="150" y1="150" x2="150" y2="30" />
+                      <line class="radar-axis-line" x1="150" y1="150" x2="264" y2="113" />
+                      <line class="radar-axis-line" x1="150" y1="150" x2="220" y2="247" />
+                      <line class="radar-axis-line" x1="150" y1="150" x2="80" y2="247" />
+                      <line class="radar-axis-line" x1="150" y1="150" x2="36" y2="113" />
+                      <!-- Veri çokgeni (Altın Glow) -->
+                      <polygon class="radar-data-poly" points="150,42 258,118 212,238 88,242 42,118" />
+                      <!-- Düğümler -->
+                      <circle class="radar-node" cx="150" cy="42" r="5" title="Zevk &amp; Stil Uyumu: %98" />
+                      <circle class="radar-node" cx="258" cy="118" r="5" title="Takvim Güvenliği: %100" />
+                      <circle class="radar-node" cx="212" cy="238" r="5" title="Atölye Arbitrajı: 2.8x" />
+                      <circle class="radar-node" cx="88" cy="242" r="5" title="Sürpriz Katsayısı: %95" />
+                      <circle class="radar-node" cx="42" cy="118" r="5" title="Zanaat Özgünlüğü: %100" />
+                    </svg>
+                    <!-- Eksen Etiketleri -->
+                    <span class="radar-lbl lbl-top">Zevk Uyumu (%98)</span>
+                    <span class="radar-lbl lbl-tr">Takvim Koruması (%100)</span>
+                    <span class="radar-lbl lbl-br">Zanaat Arbitrajı (2.8x)</span>
+                    <span class="radar-lbl lbl-bl">Sürpriz Endeksi (%95)</span>
+                    <span class="radar-lbl lbl-tl">Özgünlük (%100)</span>
+                  </div>
+                  <div class="radar-tags-row">
+                    <span class="rt-chip">✦ Vision AI Destekli</span>
+                    <span class="rt-chip gold">⚖️ 2.8x Perakende Katma Değeri</span>
+                  </div>
                 </div>
-                <button class="btn-cinema-gold pulse-hover" onclick="showAppAlert('Kürasyon mühürlendi! Mobil uygulamadan takip edebilirsiniz.')">Aboneliği Başlat & Kart Ekle</button>
+
+                <!-- Sağ: Kişiye Özel Mühürlü Kutu Mockup Kartı -->
+                <div class="ai-box-mockup-card">
+                  <div class="abmc-badge-row">
+                    <span class="abmc-match-tag">🏆 %96 Uyumla Tavsiye Edilen</span>
+                    <span class="abmc-stealth-tag">🔒 Mühürlü Kasa</span>
+                  </div>
+                  <h4 class="abmc-tier-name">Aura Prestige</h4>
+                  <p class="abmc-tier-desc">Eşinizin sanatsever yaşam tarzı ve Fransız Riviera stil DNA'sı için özel olarak Cenevre ve Nişantaşı atölyelerinden ayrılan başyapıt kürasyon.</p>
+                  
+                  <div class="abmc-spec-list">
+                    <div class="abmc-spec-item">
+                      <span class="abmc-spec-label">Alıcı &amp; Stil:</span>
+                      <strong>Eşiniz / Partneriniz • Sanatsever &amp; İpek</strong>
+                    </div>
+                    <div class="abmc-spec-item">
+                      <span class="abmc-spec-label">Tahmini İlk Teslimat:</span>
+                      <strong id="aiRevealDeliveryDate">14 Ekim (Doğum Günü)</strong>
+                    </div>
+                    <div class="abmc-spec-item">
+                      <span class="abmc-spec-label">Özel Fısıltı Brifingi:</span>
+                      <strong>Dinlendirici SPA &amp; 925 Ayar Gümüş</strong>
+                    </div>
+                    <div class="abmc-spec-item">
+                      <span class="abmc-spec-label">Kutu Başı Üyelik:</span>
+                      <strong class="abmc-price-highlight">5.500 ₺ <small>/ kutu</small></strong>
+                    </div>
+                  </div>
+
+                  <button class="btn-cinema-gold pulse-hover w-100" onclick="lockAiRecommendationAndProceed('prestige')">Bu Kademeyle Başla & Kart Ekle &rarr;</button>
+                  <span class="abmc-micro-guarantee">✓ Kapı çalana kadar içerik mühürlü kalır. İstediğiniz an durdurun veya iptal edin.</span>
+                </div>
               </div>
             </div>
           </div>
@@ -1191,6 +1436,46 @@
           <span class="cinema-kicker">ÜYELİK KADEMELERİ &amp; ÖZEL BÜTÇE</span>
           <h2 class="cinema-title">Sizin Ritminize Uygun Lüks Kademesi</h2>
           <p class="cinema-desc">İster küratörlü standart kademelerden birini seçin, ister bütçenizi tek kaydırmayla kendiniz belirleyin.</p>
+        </div>
+
+        <!-- Perakende vs. Aura Box İnteraktif Değer Ölçeği (Luxury Value Scale) -->
+        <div class="luxury-value-scale-container">
+          <div class="lvs-header">
+            <span class="lvs-kicker">⚖️ DEĞER &amp; ZAMAN ARBİTRAJI</span>
+            <h3 class="lvs-title">Neden Tek Tek Almak Yerine Aura Box?</h3>
+            <p class="lvs-desc">Aura Box üyeliği sadece zamandan tasarruf sağlamaz; atölyelerle doğrudan API toptan entegrasyonu sayesinde piyasa etiketlerinin kat kat üzerinde bir zanaat değerini kapınıza getirir.</p>
+          </div>
+
+          <div class="lvs-bars-grid">
+            <!-- Sol Bar: Bireysel Butiklerden Tek Tek Toplanırsa -->
+            <div class="lvs-bar-card retail">
+              <div class="lbc-top">
+                <span class="lbc-tag">Tekil Perakende Mağazaları</span>
+                <span class="lbc-amount">12.400 ₺</span>
+              </div>
+              <div class="lbc-visual-bar retail-bar">
+                <div class="lbc-segment seg-1" title="Ürün Liste Fiyatı (%40 Perakende Karı)">Liste Fiyatı</div>
+                <div class="lbc-segment seg-2" title="Ayrı Kargo & VIP Kurye Masrafları">4x Kargo</div>
+                <div class="lbc-segment seg-3" title="Özel Ambalaj & Kaligrafi Kartı">Ambalaj</div>
+                <div class="lbc-segment seg-4" title="Zaman Kaybı & Yanlış Seçim Riski">Zaman &amp; Stres</div>
+              </div>
+              <p class="lbc-note">4 farklı butik gezme stresi, şişkin perakende fiyatları ve kargo takibi.</p>
+            </div>
+
+            <!-- Sağ Bar: Aura Box Kulüp Üyeliği -->
+            <div class="lvs-bar-card aurabox">
+              <div class="lbc-top">
+                <span class="lbc-tag gold">Aura Prestige Üyeliği</span>
+                <span class="lbc-amount gold">5.500 ₺</span>
+              </div>
+              <div class="lbc-visual-bar aura-bar">
+                <div class="lbc-solid-gold">
+                  <span>✦ %100 Zanaatkar Toptan Arbitrajı + VIP Kurye + Mühürlü Kaligrafi</span>
+                </div>
+              </div>
+              <p class="lbc-note gold"><strong>₺6.900 Doğrudan Arbitraj Avantajı</strong> + Sıfır stres, yaşayan zeka güvencesi.</p>
+            </div>
+          </div>
         </div>
 
         <div class="apple-membership-console">

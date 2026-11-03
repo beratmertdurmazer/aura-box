@@ -654,6 +654,48 @@ document.addEventListener('DOMContentLoaded', () => {
   window.generateAiBoxPreview = function() {
     window.nextWizardStep(4);
     playChime();
+
+    const scanScreen = document.getElementById('aiScanScreen');
+    const revealScreen = document.getElementById('aiRevealScreen');
+    const tickerSteps = document.querySelectorAll('#aiScanTicker .scan-step-item');
+
+    // Extract dates from step 3 if filled
+    const dateInput = document.querySelector('#wStep3 .input-lux');
+    const revealDeliveryDate = document.getElementById('aiRevealDeliveryDate');
+    if (dateInput && dateInput.value.trim() && revealDeliveryDate) {
+      revealDeliveryDate.textContent = dateInput.value.trim();
+    }
+
+    if (scanScreen && revealScreen) {
+      scanScreen.style.display = 'block';
+      revealScreen.style.display = 'none';
+
+      let currentStep = 0;
+      const stepInterval = setInterval(() => {
+        currentStep++;
+        if (tickerSteps[currentStep]) {
+          tickerSteps.forEach((st, i) => st.classList.toggle('active', i === currentStep));
+        }
+      }, 500);
+
+      setTimeout(() => {
+        clearInterval(stepInterval);
+        scanScreen.style.display = 'none';
+        revealScreen.style.display = 'flex';
+        playChime();
+      }, 2100);
+    }
+  };
+
+  window.lockAiRecommendationAndProceed = function(tier) {
+    if (typeof selectConsoleTier === 'function') {
+      selectConsoleTier(tier);
+    }
+    const paketler = document.getElementById('paketler');
+    if (paketler) {
+      paketler.scrollIntoView({ behavior: 'smooth' });
+    }
+    playChime();
   };
 
   // Chip Selector Helpers
@@ -988,5 +1030,83 @@ document.addEventListener('DOMContentLoaded', () => {
       playChime();
     }
   }, 3200);
+
+  // =========================================================================
+  // 8. LOOKBOOK GENDER & PERSONA FILTERS
+  // =========================================================================
+  window.filterLookbook = function(category) {
+    const buttons = document.querySelectorAll('.lb-filter-btn');
+    buttons.forEach(btn => {
+      btn.classList.toggle('active', btn.getAttribute('data-filter') === category);
+    });
+
+    const cards = document.querySelectorAll('.luxury-marquee-track .lookbook-item-card');
+    cards.forEach(card => {
+      const cat = card.getAttribute('data-category') || '';
+      if (category === 'all' || cat.includes(category)) {
+        card.style.display = '';
+      } else {
+        card.style.display = 'none';
+      }
+    });
+    playChime();
+  };
+
+  // =========================================================================
+  // 9. 3D GYRO BOX TILT & HOLOGRAPHIC SHIMMER
+  // =========================================================================
+  window.handleGyroBoxMove = function(event) {
+    const card = document.getElementById('gyroBoxCard');
+    const mesh = document.getElementById('gyroBoxMesh');
+    if (!card || !mesh) return;
+
+    const rect = card.getBoundingClientRect();
+    const x = event.clientX - rect.left;
+    const y = event.clientY - rect.top;
+    const dx = (x - rect.width / 2) / (rect.width / 2);
+    const dy = (y - rect.height / 2) / (rect.height / 2);
+
+    mesh.style.transform = `rotateY(${dx * 22}deg) rotateX(${-dy * 16}deg)`;
+  };
+
+  window.resetGyroBox = function() {
+    const mesh = document.getElementById('gyroBoxMesh');
+    if (mesh) {
+      mesh.style.transform = 'rotateY(0deg) rotateX(0deg)';
+    }
+  };
+
+  window.handleHologramShimmer = function(event) {
+    const card = document.getElementById('hologramPassportCard');
+    const layer = document.getElementById('holoShimmerLayer');
+    if (!card || !layer) return;
+
+    const rect = card.getBoundingClientRect();
+    const xPercent = ((event.clientX - rect.left) / rect.width) * 100;
+    const yPercent = ((event.clientY - rect.top) / rect.height) * 100;
+
+    layer.style.setProperty('--mouse-x', `${xPercent}%`);
+    layer.style.setProperty('--mouse-y', `${yPercent}%`);
+    layer.style.opacity = '1';
+  };
+
+  window.resetHologramShimmer = function() {
+    const layer = document.getElementById('holoShimmerLayer');
+    if (layer) {
+      layer.style.opacity = '0.75';
+    }
+  };
+
+  // =========================================================================
+  // 10. LIVE ATELIER TICKER AUTO-ROTATION
+  // =========================================================================
+  let tickerIndex = 0;
+  const tickerEl = document.getElementById('atelierLiveTicker');
+  if (tickerEl) {
+    setInterval(() => {
+      tickerIndex = (tickerIndex + 1) % 4;
+      tickerEl.style.transform = `translateY(-${tickerIndex * 22}px)`;
+    }, 3800);
+  }
 
 });
