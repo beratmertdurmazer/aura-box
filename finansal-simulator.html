@@ -1,0 +1,4686 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AURA BOX — 4 Yıllık Yatırımcı Finansal Kokpiti & Simülatör</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;1,600&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    :root {
+      /* Apple Light Palette */
+      --bg-canvas: #F5F5F7;
+      --bg-card: #FFFFFF;
+      --bg-card-subtle: #FBFBFD;
+      --bg-pill: #E5E5EA;
+      --bg-input: #F2F2F7;
+      
+      --text-primary: #1D1D1F;
+      --text-secondary: #6E6E73;
+      --text-tertiary: #86868B;
+      
+      --brand-purple: #2E1065;
+      --brand-purple-light: #5B21B6;
+      --brand-purple-soft: #F5F0FF;
+      --brand-gold: #C5A059;
+      --brand-gold-soft: #EAD8B1;
+      
+      --apple-green: #34C759;
+      --apple-green-dark: #248A3D;
+      --apple-blue: #0071E3;
+      --apple-red: #FF3B30;
+      
+      --border-subtle: rgba(0, 0, 0, 0.06);
+      --border-focus: rgba(46, 16, 101, 0.35);
+      
+      --shadow-bento: 0 4px 20px -2px rgba(0, 0, 0, 0.04), 0 1px 3px rgba(0, 0, 0, 0.02);
+      --shadow-hover: 0 16px 36px -6px rgba(0, 0, 0, 0.08), 0 4px 12px rgba(0, 0, 0, 0.03);
+      
+      --radius-bento: 24px;
+      --radius-sm: 12px;
+      --radius-pill: 999px;
+      
+      --font-sans: -apple-system, BlinkMacSystemFont, "Plus Jakarta Sans", "SF Pro Display", "SF Pro Text", "Helvetica Neue", sans-serif;
+      --font-serif: 'Playfair Display', Georgia, serif;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    body {
+      background-color: var(--bg-canvas);
+      color: var(--text-primary);
+      font-family: var(--font-sans);
+      min-height: 100vh;
+      line-height: 1.45;
+      padding-bottom: 60px;
+    }
+
+    /* TOP APPLE NAV BAR */
+    .top-navbar {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(255, 255, 255, 0.92);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border-subtle);
+      padding: 10px 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      white-space: nowrap;
+      flex-wrap: nowrap;
+      overflow-x: auto;
+      min-width: 0;
+    }
+
+    .nav-brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-shrink: 0;
+    }
+
+    .brand-emblem {
+      width: 36px;
+      height: 36px;
+      border-radius: 9px;
+      background: var(--brand-purple);
+      color: #FFF;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 0.95rem;
+      flex-shrink: 0;
+    }
+
+    .brand-info h1 {
+      font-size: 0.98rem;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      color: var(--text-primary);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      white-space: nowrap;
+      margin: 0;
+    }
+
+    .brand-info p {
+      font-size: 0.7rem;
+      color: var(--text-secondary);
+      white-space: nowrap;
+      margin: 0;
+    }
+
+    /* MAIN VIEW NAVIGATION TABS (APPLE SEGMENTED CONTROLLER) */
+    .main-view-switcher {
+      background: var(--bg-pill);
+      padding: 3px;
+      border-radius: var(--radius-pill);
+      display: inline-flex;
+      gap: 3px;
+      flex-shrink: 0;
+    }
+
+    .view-tab-btn {
+      border: none;
+      background: transparent;
+      padding: 6px 14px;
+      border-radius: var(--radius-pill);
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--text-secondary);
+      cursor: pointer;
+      transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+      font-family: var(--font-sans);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      white-space: nowrap !important;
+      line-height: 1.2;
+      flex-shrink: 0;
+    }
+
+    .view-tab-btn.active {
+      background: var(--bg-card);
+      color: var(--brand-purple);
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+      font-weight: 700;
+    }
+
+    .save-indicator {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      font-size: 0.72rem;
+      color: var(--apple-green-dark);
+      background: rgba(52, 199, 89, 0.1);
+      padding: 5px 10px;
+      border-radius: var(--radius-pill);
+      font-weight: 600;
+      white-space: nowrap !important;
+      flex-shrink: 0;
+    }
+
+    .save-indicator.saving {
+      color: #D97706;
+      background: rgba(217, 119, 6, 0.1);
+    }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      flex-shrink: 0;
+    }
+
+    .btn-apple {
+      font-family: var(--font-sans);
+      font-size: 0.78rem;
+      font-weight: 600;
+      padding: 6px 11px;
+      border-radius: var(--radius-pill);
+      cursor: pointer;
+      border: 1px solid transparent;
+      transition: all 0.2s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      text-decoration: none;
+      white-space: nowrap !important;
+      line-height: 1.2;
+      flex-shrink: 0;
+    }
+
+    .btn-apple-primary {
+      background: var(--brand-purple);
+      color: #FFF;
+    }
+
+    .btn-apple-primary:hover {
+      background: var(--brand-purple-light);
+      transform: translateY(-1px);
+    }
+
+    .btn-apple-secondary {
+      background: var(--bg-card);
+      border-color: rgba(0, 0, 0, 0.1);
+      color: var(--text-primary);
+    }
+
+    .btn-apple-secondary:hover {
+      background: #EFEFF4;
+    }
+
+    /* SCENARIO STRIP */
+    .scenario-strip {
+      max-width: 1440px;
+      margin: 18px auto 0;
+      padding: 0 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 14px;
+    }
+
+    .segmented-control {
+      background: var(--bg-pill);
+      padding: 4px;
+      border-radius: var(--radius-pill);
+      display: inline-flex;
+      gap: 2px;
+    }
+
+    .segment-btn {
+      border: none;
+      background: transparent;
+      padding: 6px 14px;
+      border-radius: var(--radius-pill);
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--text-secondary);
+      cursor: pointer;
+      transition: all 0.2s;
+      font-family: var(--font-sans);
+      white-space: nowrap !important;
+    }
+
+    .segment-btn.active {
+      background: var(--bg-card);
+      color: var(--text-primary);
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    }
+
+    /* BENTO MAIN CONTAINER */
+    .view-container {
+      max-width: 1440px;
+      margin: 18px auto 0;
+      padding: 0 40px;
+    }
+
+    @media (max-width: 1024px) {
+      .top-navbar, .scenario-strip, .view-container {
+        padding-left: 16px;
+        padding-right: 16px;
+      }
+    }
+
+    .bento-grid {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 20px;
+    }
+
+    @media (max-width: 1024px) {
+      .bento-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* BENTO CARDS */
+    .bento-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-bento);
+      padding: 24px 28px;
+      box-shadow: var(--shadow-bento);
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      display: flex;
+      flex-direction: column;
+      position: relative;
+    }
+
+    .bento-card:hover {
+      box-shadow: var(--shadow-hover);
+      border-color: rgba(0, 0, 0, 0.09);
+    }
+
+    /* SPANS */
+    .span-3 { grid-column: span 3; }
+    .span-4 { grid-column: span 4; }
+    .span-5 { grid-column: span 5; }
+    .span-6 { grid-column: span 6; }
+    .span-7 { grid-column: span 7; }
+    .span-8 { grid-column: span 8; }
+    .span-12 { grid-column: span 12; }
+
+    @media (max-width: 1024px) {
+      .span-3, .span-4, .span-5, .span-6, .span-7, .span-8, .span-12 {
+        grid-column: span 1 !important;
+      }
+    }
+
+    /* METRIC HERO */
+    .metric-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 6px;
+    }
+
+    .metric-label {
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: var(--text-tertiary);
+      text-transform: uppercase;
+      letter-spacing: -0.01em;
+    }
+
+    .metric-icon {
+      width: 28px;
+      height: 28px;
+      border-radius: 8px;
+      background: var(--bg-canvas);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.85rem;
+    }
+
+    .metric-value {
+      font-size: 2.1rem;
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      color: var(--text-primary);
+      margin-bottom: 4px;
+      line-height: 1.1;
+    }
+
+    .metric-value.purple { color: var(--brand-purple); }
+    .metric-value.green { color: var(--apple-green-dark); }
+
+    .metric-sub {
+      font-size: 0.78rem;
+      color: var(--text-secondary);
+      font-weight: 500;
+    }
+
+    /* CARD HEADERS */
+    .card-title-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 16px;
+    }
+
+    .card-title-row h3 {
+      font-size: 1.05rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      color: var(--text-primary);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .card-title-row span.subtitle {
+      font-size: 0.8rem;
+      color: var(--text-secondary);
+      font-weight: 500;
+    }
+
+    /* PITCH TALK HERO CARD */
+    .bento-pitch-card {
+      background: linear-gradient(135deg, #FAF7FF 0%, #FFFFFF 100%);
+      border: 1px solid rgba(46, 16, 101, 0.12);
+    }
+
+    .pitch-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: var(--brand-purple);
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      margin-bottom: 10px;
+    }
+
+    .pitch-quote-apple {
+      font-size: 1.02rem;
+      font-weight: 500;
+      line-height: 1.6;
+      color: var(--text-primary);
+      margin-bottom: 14px;
+    }
+
+    .pitch-quote-apple strong {
+      color: var(--brand-purple);
+      font-weight: 700;
+    }
+
+    .pitch-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+      padding-top: 12px;
+      border-top: 1px solid rgba(46, 16, 101, 0.08);
+    }
+
+    .pitch-badges-row {
+      display: flex;
+      gap: 12px;
+      font-size: 0.78rem;
+      color: var(--text-secondary);
+      flex-wrap: wrap;
+    }
+
+    /* DYNAMIC EXPENSES MANAGEMENT */
+    .expenses-filter-bar {
+      display: flex;
+      gap: 6px;
+      margin-bottom: 12px;
+      overflow-x: auto;
+      padding-bottom: 4px;
+    }
+
+    .cat-pill {
+      border: 1px solid var(--border-subtle);
+      background: var(--bg-canvas);
+      padding: 5px 12px;
+      border-radius: var(--radius-pill);
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--text-secondary);
+      cursor: pointer;
+      transition: all 0.15s;
+      white-space: nowrap;
+    }
+
+    .cat-pill:hover, .cat-pill.active {
+      background: var(--brand-purple);
+      color: #FFF;
+      border-color: var(--brand-purple);
+    }
+
+    .expense-scroll-container {
+      max-height: 400px;
+      overflow-y: auto;
+      overflow-x: auto;
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--border-subtle);
+    }
+
+    .expense-items-table {
+      width: 100%;
+      min-width: 800px;
+      border-collapse: collapse;
+    }
+
+    .expense-items-table th:first-child,
+    .expense-items-table td:first-child {
+      min-width: 250px;
+      width: 250px;
+    }
+
+    .expense-items-table th {
+      text-align: left;
+      font-size: 0.72rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      color: var(--text-tertiary);
+      padding: 8px 12px;
+      background: var(--bg-card-subtle);
+      border-bottom: 1px solid var(--border-subtle);
+      position: sticky;
+      top: 0;
+      z-index: 5;
+    }
+
+    .expense-items-table td {
+      padding: 8px 12px;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.04);
+      font-size: 0.82rem;
+      vertical-align: middle;
+      background: #FFF;
+    }
+
+    .expense-items-table tr:hover td {
+      background: var(--bg-card-subtle);
+    }
+
+    .exp-name-input {
+      font-family: var(--font-sans);
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--text-primary);
+      border: 1px solid transparent;
+      background: transparent;
+      padding: 3px 6px;
+      border-radius: 6px;
+      width: 100%;
+      min-width: 200px;
+      box-sizing: border-box;
+    }
+
+    .exp-name-input:focus {
+      outline: none;
+      background: #FFF;
+      border-color: var(--border-focus);
+    }
+
+    .exp-tag {
+      font-size: 0.68rem;
+      padding: 2px 7px;
+      border-radius: 6px;
+      font-weight: 600;
+      background: rgba(0, 0, 0, 0.05);
+      color: var(--text-secondary);
+      white-space: nowrap;
+    }
+
+    .exp-input-wrap {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      justify-content: flex-end;
+    }
+
+    .exp-input {
+      font-family: monospace;
+      font-size: 0.85rem;
+      font-weight: 600;
+      width: 90px;
+      padding: 4px 6px;
+      border-radius: 6px;
+      border: 1px solid var(--border-subtle);
+      background: var(--bg-input);
+      color: var(--text-primary);
+      text-align: right;
+    }
+
+    .exp-input:focus {
+      outline: none;
+      border-color: var(--brand-purple);
+      background: #FFF;
+    }
+
+    .btn-delete-row {
+      background: transparent;
+      border: none;
+      color: var(--text-tertiary);
+      cursor: pointer;
+      padding: 4px 8px;
+      border-radius: 6px;
+      font-size: 0.85rem;
+      transition: all 0.15s;
+    }
+
+    .btn-delete-row:hover {
+      color: var(--apple-red);
+      background: rgba(255, 59, 48, 0.1);
+    }
+
+    .add-expense-bar {
+      margin-top: 12px;
+      display: flex;
+      gap: 8px;
+      align-items: center;
+      padding: 10px;
+      background: var(--bg-card-subtle);
+      border-radius: var(--radius-sm);
+      border: 1px dashed rgba(46, 16, 101, 0.2);
+    }
+
+    .add-expense-bar input, .add-expense-bar select {
+      padding: 6px 10px;
+      border-radius: 8px;
+      border: 1px solid var(--border-subtle);
+      background: #FFF;
+      font-size: 0.8rem;
+      font-family: var(--font-sans);
+    }
+
+    .add-expense-bar input:focus, .add-expense-bar select:focus {
+      outline: none;
+      border-color: var(--brand-purple);
+    }
+
+    .exp-total-card {
+      margin-top: 12px;
+      padding: 12px 18px;
+      background: var(--bg-card-subtle);
+      border-radius: var(--radius-sm);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border: 1px solid var(--border-subtle);
+    }
+
+    .exp-total-label {
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--text-secondary);
+    }
+
+    .exp-total-val {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--brand-purple);
+      font-family: monospace;
+    }
+
+    /* 1 BOX ANATOMY */
+    .anatomy-apple-bar {
+      display: flex;
+      height: 34px;
+      border-radius: 10px;
+      overflow: hidden;
+      margin: 10px 0 14px;
+      background: #E5E5EA;
+    }
+
+    .anat-segment {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.72rem;
+      font-weight: 600;
+      color: #FFF;
+      transition: width 0.3s;
+      overflow: hidden;
+      white-space: nowrap;
+      min-width: 0;
+      padding: 0;
+      cursor: help;
+    }
+
+    .anat-craft { background: #5B21B6; }
+    .anat-box { background: #3B82F6; }
+    .anat-courier { background: #06B6D4; }
+    .anat-pos { background: #64748B; }
+    .anat-profit { background: #34C759; font-weight: 700; }
+
+    .anatomy-details-list {
+      display: flex;
+      flex-direction: column;
+      gap: 7px;
+    }
+
+    .anat-list-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: var(--bg-canvas);
+      border-radius: 8px;
+      padding: 6px 10px;
+      border: 1px solid var(--border-subtle);
+      transition: background 0.15s, border-color 0.15s;
+    }
+
+    .anat-list-row:hover {
+      background: #FFF;
+      border-color: rgba(0, 0, 0, 0.12);
+    }
+
+    .anat-row-left {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex: 1;
+      min-width: 0;
+    }
+
+    .anat-row-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    .anat-lbl-input {
+      font-family: var(--font-sans);
+      font-size: 0.81rem;
+      font-weight: 600;
+      color: var(--text-secondary);
+      border: 1px solid transparent;
+      background: transparent;
+      padding: 2px 4px;
+      border-radius: 4px;
+      width: 100%;
+      min-width: 0;
+      box-sizing: border-box;
+    }
+
+    .anat-lbl-input:hover {
+      border-color: rgba(0, 0, 0, 0.12);
+      background: #FFF;
+      color: var(--text-primary);
+    }
+
+    .anat-lbl-input:focus {
+      outline: none;
+      background: #FFF;
+      border-color: var(--brand-purple);
+      color: var(--text-primary);
+      box-shadow: 0 0 0 2px rgba(46, 16, 101, 0.08);
+    }
+
+    .anat-tile-val {
+      font-size: 0.92rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      font-family: monospace;
+      flex-shrink: 0;
+      margin-left: 8px;
+    }
+
+    .anat-profit-card {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: rgba(52, 199, 89, 0.08);
+      border: 1px solid rgba(52, 199, 89, 0.22);
+      border-radius: 8px;
+      padding: 8px 12px;
+      margin-top: 2px;
+    }
+
+    .anat-profit-lbl {
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: var(--apple-green-dark);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .anat-profit-val {
+      font-size: 1.02rem;
+      font-weight: 800;
+      color: var(--apple-green-dark);
+      font-family: monospace;
+    }
+
+    /* TIERS MINI GRID & EDITABLE INPUTS */
+    .tier-info-left {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex: 1;
+      min-width: 0;
+    }
+
+    .tier-name-input {
+      font-family: var(--font-sans);
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      border: 1px solid transparent;
+      background: transparent;
+      padding: 2px 4px;
+      border-radius: 6px;
+      width: 100%;
+      min-width: 140px;
+      box-sizing: border-box;
+    }
+
+    .tier-name-input:hover {
+      border-color: rgba(0, 0, 0, 0.12);
+      background: #FFF;
+    }
+
+    .tier-name-input:focus {
+      outline: none;
+      background: #FFF;
+      border-color: var(--brand-purple);
+      box-shadow: 0 0 0 2px rgba(46, 16, 101, 0.1);
+    }
+
+    .anat-lbl-input {
+      font-family: var(--font-sans);
+      font-size: 0.72rem;
+      font-weight: 600;
+      color: var(--text-secondary);
+      border: 1px solid transparent;
+      background: transparent;
+      padding: 1px 3px;
+      border-radius: 4px;
+      width: 100%;
+    }
+
+    .anat-lbl-input:hover {
+      border-color: rgba(0, 0, 0, 0.12);
+      background: #FFF;
+    }
+
+    .anat-lbl-input:focus {
+      outline: none;
+      background: #FFF;
+      border-color: var(--brand-purple);
+      color: var(--text-primary);
+    }
+
+    .exp-cat-select {
+      font-family: var(--font-sans);
+      font-size: 0.72rem;
+      font-weight: 600;
+      color: var(--text-secondary);
+      background: var(--bg-card-subtle);
+      border: 1px solid var(--border-subtle);
+      padding: 3px 6px;
+      border-radius: 6px;
+      cursor: pointer;
+      outline: none;
+    }
+
+    .exp-cat-select:focus {
+      border-color: var(--brand-purple);
+      background: #FFF;
+    }
+
+    .tiers-bento-list {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .tier-bento-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 6px 10px;
+      background: var(--bg-canvas);
+      border-radius: 8px;
+      font-size: 0.78rem;
+    }
+
+    .tier-info-left {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .tier-badge-circ {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+    }
+
+    .tier-inputs {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .tier-input-sm {
+      width: 55px;
+      padding: 3px 5px;
+      font-size: 0.76rem;
+      border: 1px solid var(--border-subtle);
+      border-radius: 6px;
+      background: #FFF;
+      text-align: right;
+      font-family: monospace;
+    }
+
+    /* SLIDERS */
+    .slider-tile {
+      margin-bottom: 12px;
+    }
+
+    .slider-tile-top {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: var(--text-secondary);
+      margin-bottom: 4px;
+    }
+
+    .slider-tile-top strong {
+      color: var(--text-primary);
+    }
+
+    input[type="range"] {
+      -webkit-appearance: none;
+      width: 100%;
+      height: 5px;
+      border-radius: 3px;
+      background: var(--bg-pill);
+      outline: none;
+      cursor: pointer;
+    }
+
+    input[type="range"]::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      background: #FFFFFF;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.25);
+      border: 1px solid rgba(0, 0, 0, 0.08);
+      cursor: pointer;
+      transition: transform 0.1s;
+    }
+
+    input[type="range"]::-webkit-slider-thumb:hover {
+      transform: scale(1.15);
+    }
+
+    /* CONSOLIDATED 5-PERIOD TABLE & PRELAUNCH TABLE */
+    .apple-table-wrap {
+      width: 100%;
+      overflow-x: auto;
+      border-radius: var(--radius-sm);
+    }
+
+    .apple-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.82rem;
+    }
+
+    .apple-table th {
+      text-align: right;
+      padding: 10px 14px;
+      font-weight: 700;
+      color: var(--text-tertiary);
+      border-bottom: 1px solid var(--border-subtle);
+      font-size: 0.68rem;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      background: var(--bg-card-subtle);
+      white-space: nowrap;
+      vertical-align: bottom;
+    }
+
+    .apple-table th:first-child { 
+      text-align: left; 
+      min-width: 230px;
+    }
+
+    .apple-table td {
+      padding: 9px 14px;
+      text-align: right;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.04);
+      font-family: monospace;
+      font-size: 0.82rem;
+      white-space: nowrap;
+    }
+
+    .apple-table td:first-child {
+      text-align: left;
+      font-family: var(--font-sans);
+      font-weight: 600;
+      color: var(--text-primary);
+    }
+
+    .apple-table tr:hover td {
+      background: rgba(46, 16, 101, 0.02);
+    }
+
+    .apple-table tr.highlight {
+      background: rgba(52, 199, 89, 0.08);
+    }
+
+    .apple-table tr.highlight td {
+      font-weight: 700;
+      color: var(--apple-green-dark);
+    }
+
+    .period-col-badge {
+      display: inline-block;
+      font-size: 0.60rem;
+      font-weight: 700;
+      padding: 2px 6px;
+      border-radius: 4px;
+      background: rgba(0, 0, 0, 0.05);
+      color: var(--text-secondary);
+      margin-bottom: 3px;
+      letter-spacing: normal;
+    }
+
+    .period-col-badge.purple {
+      background: rgba(91, 33, 182, 0.12);
+      color: var(--brand-purple);
+    }
+
+    /* MONTH-BY-MONTH EDITABLE TABLE IN PRELAUNCH VIEW (ZERO TRUNCATION) */
+    .prelaunch-table {
+      min-width: 1080px;
+      width: 100%;
+      table-layout: auto;
+    }
+
+    .prelaunch-table th:first-child,
+    .prelaunch-table td:first-child {
+      min-width: 320px;
+      width: 320px;
+    }
+
+    .prelaunch-table th:nth-child(2),
+    .prelaunch-table td:nth-child(2) {
+      min-width: 130px;
+      width: 130px;
+    }
+
+    .prelaunch-table td input.exp-name-input {
+      width: 100%;
+      min-width: 300px;
+      font-family: var(--font-sans);
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--text-primary);
+      border: 1px solid transparent;
+      background: transparent;
+      padding: 5px 8px;
+      border-radius: 6px;
+      box-sizing: border-box;
+      display: block;
+    }
+
+    .prelaunch-table td input.exp-name-input:hover {
+      border-color: rgba(0, 0, 0, 0.12);
+      background: #FFF;
+    }
+
+    .prelaunch-table td input.exp-name-input:focus {
+      outline: none;
+      background: #FFF;
+      border-color: var(--brand-purple);
+      box-shadow: 0 0 0 2px rgba(46, 16, 101, 0.08);
+    }
+
+    .prelaunch-table select.exp-cat-select {
+      width: 100%;
+      min-width: 115px;
+      font-size: 0.74rem;
+    }
+
+    .prelaunch-table td input[type="number"] {
+      font-family: monospace;
+      font-size: 0.80rem;
+      padding: 5px 6px;
+      width: 72px;
+      border-radius: 6px;
+      border: 1px solid var(--border-subtle);
+      background: var(--bg-input);
+      text-align: right;
+      box-sizing: border-box;
+    }
+
+    .prelaunch-table td input[type="number"]:focus {
+      outline: none;
+      background: #FFF;
+      border-color: var(--brand-purple);
+    }
+
+    /* PRELAUNCH SECTION GROUP HEADERS & SUBTOTALS */
+    .pre-group-header {
+      background: #F8FAFC;
+      border-top: 2px solid rgba(0, 0, 0, 0.08);
+      border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+    }
+    .pre-group-header td {
+      padding: 9px 12px !important;
+      font-size: 0.80rem !important;
+      font-weight: 700 !important;
+      letter-spacing: 0.02em;
+    }
+    .pre-group-header.tech-header td {
+      color: #6D28D9 !important;
+      background: rgba(109, 40, 217, 0.06) !important;
+      border-left: 4px solid #6D28D9 !important;
+    }
+    .pre-group-header.physical-header td {
+      color: #92400E !important;
+      background: rgba(197, 160, 89, 0.10) !important;
+      border-left: 4px solid #C5A059 !important;
+    }
+    .pre-subtotal-row {
+      font-weight: 700 !important;
+      font-size: 0.82rem !important;
+    }
+    .pre-subtotal-row.tech-subtotal {
+      background: rgba(109, 40, 217, 0.03) !important;
+      border-bottom: 2px solid rgba(109, 40, 217, 0.18) !important;
+    }
+    .pre-subtotal-row.physical-subtotal {
+      background: rgba(197, 160, 89, 0.05) !important;
+      border-bottom: 2px solid rgba(197, 160, 89, 0.22) !important;
+    }
+    .split-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 3px;
+      padding: 2px 6px;
+      border-radius: 5px;
+      font-size: 0.70rem;
+      font-weight: 600;
+    }
+    .split-pill.tech {
+      background: rgba(109, 40, 217, 0.09);
+      color: #6D28D9;
+      border: 1px solid rgba(109, 40, 217, 0.18);
+    }
+    .split-pill.physical {
+      background: rgba(197, 160, 89, 0.12);
+      color: #92400E;
+      border: 1px solid rgba(197, 160, 89, 0.25);
+    }
+
+    .chart-box-apple {
+      position: relative;
+      height: 330px;
+      width: 100%;
+    }
+
+    /* ========================================================
+       APPLE BENTO VISUAL ROADMAP (4 STRATEGIC PHASES INFOGRAPHIC)
+       ======================================================== */
+    .visual-roadmap-card {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .roadmap-grid-apple {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+      margin-bottom: 12px;
+    }
+
+    @media (max-width: 1100px) {
+      .roadmap-grid-apple {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    .phase-bento-card {
+      background: var(--bg-canvas);
+      border: 1px solid var(--border-subtle);
+      border-radius: 14px;
+      padding: 12px 14px;
+      display: flex;
+      flex-direction: column;
+      gap: 7px;
+      position: relative;
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+      overflow: hidden;
+    }
+
+    .phase-bento-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+    }
+
+    .phase-1::before { background: linear-gradient(90deg, #5B21B6, #8B5CF6); }
+    .phase-2::before { background: linear-gradient(90deg, #D97706, #F59E0B); }
+    .phase-3::before { background: linear-gradient(90deg, #0071E3, #38BDF8); }
+    .phase-4::before { background: linear-gradient(90deg, #10B981, #34C759); }
+
+    .phase-1 { background: linear-gradient(180deg, rgba(91, 33, 182, 0.04) 0%, #FFFFFF 100%); }
+    .phase-2 { background: linear-gradient(180deg, rgba(217, 119, 6, 0.04) 0%, #FFFFFF 100%); }
+    .phase-3 { background: linear-gradient(180deg, rgba(0, 113, 227, 0.04) 0%, #FFFFFF 100%); }
+    .phase-4 { background: linear-gradient(180deg, rgba(52, 199, 89, 0.05) 0%, #FFFFFF 100%); }
+
+    .phase-bento-card:hover {
+      background: #FFF;
+      border-color: rgba(0, 0, 0, 0.15);
+      box-shadow: 0 10px 24px -4px rgba(46, 16, 101, 0.08);
+      transform: translateY(-3px);
+    }
+
+    .phase-card-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .phase-num-badge {
+      font-size: 0.65rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--text-tertiary);
+    }
+
+    .phase-status-pill {
+      font-size: 0.65rem;
+      font-weight: 700;
+      padding: 2px 7px;
+      border-radius: 999px;
+      white-space: nowrap;
+    }
+
+    .phase-status-prep { background: rgba(91, 33, 182, 0.1); color: #5B21B6; }
+    .phase-status-breakeven { background: rgba(217, 119, 6, 0.12); color: #D97706; }
+    .phase-status-scale { background: rgba(0, 113, 227, 0.1); color: #0071E3; }
+    .phase-status-ceiling { background: rgba(52, 199, 89, 0.12); color: var(--apple-green-dark); }
+
+    .phase-title {
+      font-size: 0.86rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      line-height: 1.2;
+    }
+
+    .phase-time {
+      font-size: 0.70rem;
+      color: var(--text-tertiary);
+      font-weight: 500;
+      margin-top: -3px;
+    }
+
+    .phase-hero-kpi {
+      display: flex;
+      flex-direction: column;
+      background: rgba(255, 255, 255, 0.95);
+      border: 1px solid rgba(0, 0, 0, 0.06);
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.02);
+      border-radius: 9px;
+      padding: 7px 10px;
+    }
+
+    .phase-kpi-val {
+      font-family: var(--font-sans);
+      font-size: 1.25rem;
+      font-weight: 800;
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+    }
+
+    .phase-1 .phase-kpi-val { color: var(--brand-purple); }
+    .phase-2 .phase-kpi-val { color: #D97706; }
+    .phase-3 .phase-kpi-val { color: #0071E3; }
+    .phase-4 .phase-kpi-val { color: var(--apple-green-dark); }
+
+    .phase-kpi-sub {
+      font-size: 0.66rem;
+      color: var(--text-secondary);
+      font-weight: 600;
+      margin-top: 2px;
+    }
+
+    .phase-checklist {
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+    }
+
+    .phase-item {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.71rem;
+      color: var(--text-secondary);
+      line-height: 1.3;
+      padding: 2px 4px;
+      border-radius: 5px;
+      transition: background 0.15s ease;
+    }
+
+    .phase-item:hover {
+      background: rgba(0, 0, 0, 0.03);
+      color: var(--text-primary);
+    }
+
+    .phase-item span:first-child {
+      font-size: 0.76rem;
+      flex-shrink: 0;
+    }
+
+    /* MILESTONE PROGRESS FLOW BAR */
+    .milestone-flow-wrap {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: linear-gradient(90deg, rgba(91, 33, 182, 0.03) 0%, rgba(52, 199, 89, 0.04) 100%);
+      border: 1px solid rgba(0, 0, 0, 0.06);
+      border-radius: 12px;
+      padding: 10px 16px;
+      margin-top: auto;
+      box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.02);
+    }
+
+    .flow-step {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+    }
+
+    .flow-circle {
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      font-size: 0.64rem;
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #FFF;
+      flex-shrink: 0;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+      border: 2px solid #FFF;
+    }
+
+    .flow-circle.prep { background: #5B21B6; }
+    .flow-circle.launch { background: #6D28D9; }
+    .flow-circle.breakeven { background: #D97706; }
+    .flow-circle.scale { background: #0071E3; }
+    .flow-circle.ceiling { background: #248A3D; }
+
+    .flow-info {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .flow-label {
+      font-size: 0.65rem;
+      color: var(--text-tertiary);
+      font-weight: 600;
+    }
+
+    .flow-val {
+      font-size: 0.74rem;
+      font-weight: 700;
+      color: var(--text-primary);
+    }
+
+    .flow-line {
+      flex: 1;
+      height: 3px;
+      background: linear-gradient(90deg, rgba(91, 33, 182, 0.25) 0%, rgba(52, 199, 89, 0.3) 100%);
+      margin: 0 8px;
+      border-radius: 2px;
+    }
+      margin: 0 6px;
+    }
+
+    /* PITCH SPEECH DRAWER */
+    .pitch-speech-drawer {
+      display: none;
+      margin-top: 10px;
+      padding: 12px 14px;
+      background: #FFF;
+      border: 1px solid var(--border-subtle);
+      border-radius: 10px;
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.04);
+      animation: fadeIn 0.2s ease-out;
+    }
+
+    .pitch-drawer-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 6px;
+      font-size: 0.76rem;
+      font-weight: 700;
+      color: var(--text-primary);
+    }
+
+    /* ========================================================
+       ANATOMY MULTI-TIER SELECTOR & ENHANCED DISPLAY
+       ======================================================== */
+    .anat-tier-strip {
+      display: flex;
+      gap: 5px;
+      overflow-x: auto;
+      padding: 2px 2px 6px;
+      margin-bottom: 8px;
+      scrollbar-width: thin;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    .anat-tier-strip::-webkit-scrollbar {
+      height: 3px;
+    }
+
+    .anat-tier-strip::-webkit-scrollbar-thumb {
+      background: rgba(0, 0, 0, 0.15);
+      border-radius: 3px;
+    }
+
+    .anat-tier-btn {
+      flex-shrink: 0;
+      padding: 4px 9px;
+      border-radius: 999px;
+      font-size: 0.70rem;
+      font-weight: 600;
+      border: 1px solid var(--border-subtle);
+      background: var(--bg-card-subtle);
+      color: var(--text-secondary);
+      cursor: pointer;
+      transition: all 0.15s cubic-bezier(0.16, 1, 0.3, 1);
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      white-space: nowrap;
+    }
+
+    .anat-tier-btn:hover {
+      border-color: rgba(0, 0, 0, 0.2);
+      color: var(--text-primary);
+      background: #FFF;
+      transform: translateY(-1px);
+    }
+
+    .anat-tier-btn.active {
+      background: var(--brand-purple);
+      color: #FFF;
+      border-color: var(--brand-purple);
+      box-shadow: 0 2px 6px rgba(46, 16, 101, 0.25);
+    }
+
+    .anat-selected-tier-banner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: var(--bg-canvas);
+      border: 1px solid var(--border-subtle);
+      border-radius: 8px;
+      padding: 6px 10px;
+      margin-bottom: 8px;
+    }
+
+    .anat-tier-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      display: inline-block;
+      flex-shrink: 0;
+    }
+
+    .anat-price-tag {
+      font-family: monospace;
+      font-size: 0.86rem;
+      font-weight: 800;
+      color: var(--brand-purple);
+      background: rgba(46, 16, 101, 0.08);
+      padding: 2px 7px;
+      border-radius: 6px;
+    }
+
+    .anat-val-group {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .anat-pct-chip {
+      font-size: 0.70rem;
+      font-weight: 600;
+      color: var(--text-tertiary);
+      background: rgba(0, 0, 0, 0.04);
+      padding: 1px 5px;
+      border-radius: 4px;
+      min-width: 36px;
+      text-align: right;
+    }
+
+    /* ========================================================
+       OPEX SPLIT BAR (DEPARTMENTAL ALLOCATION)
+       ======================================================== */
+    .opex-summary-bar-card {
+      margin-bottom: 10px;
+      background: var(--bg-canvas);
+      border: 1px solid var(--border-subtle);
+      border-radius: 10px;
+      padding: 8px 12px;
+    }
+
+    .opex-stacked-bar {
+      display: flex;
+      height: 10px;
+      border-radius: 999px;
+      overflow: hidden;
+      background: #E5E5EA;
+      margin-bottom: 6px;
+    }
+
+    .opex-bar-seg {
+      height: 100%;
+      transition: width 0.3s ease;
+    }
+
+    .opex-cat-chips-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      align-items: center;
+    }
+
+    .opex-cat-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      font-size: 0.70rem;
+      color: var(--text-secondary);
+    }
+
+    .opex-chip-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+    }
+
+    .opex-chip-pct {
+      font-weight: 700;
+      color: var(--text-primary);
+      font-family: monospace;
+    }
+
+    /* TIER SHARE BAR & INSPECT BUTTON */
+    .tier-share-bar-wrap {
+      width: 44px;
+      height: 5px;
+      background: #E5E5EA;
+      border-radius: 999px;
+      overflow: hidden;
+      flex-shrink: 0;
+      margin: 0 4px;
+    }
+
+    .tier-share-fill {
+      height: 100%;
+      border-radius: 999px;
+      transition: width 0.3s;
+    }
+
+    .tier-unit-profit-pill {
+      font-size: 0.65rem;
+      font-weight: 700;
+      color: var(--apple-green-dark);
+      background: rgba(52, 199, 89, 0.12);
+      padding: 2px 5px;
+      border-radius: 999px;
+      white-space: nowrap;
+      font-family: monospace;
+    }
+
+    .btn-inspect-tier {
+      background: transparent;
+      border: 1px solid var(--border-subtle);
+      border-radius: 6px;
+      padding: 2px 5px;
+      font-size: 0.68rem;
+      cursor: pointer;
+      color: var(--text-secondary);
+      transition: all 0.15s;
+    }
+
+    .btn-inspect-tier:hover {
+      background: #FFF;
+      color: var(--brand-purple);
+      border-color: var(--brand-purple);
+    }
+
+    /* ========================================================
+       5-PERIOD EXPENSE MATRIX TABLE STYLING & RADIAL GAUGE
+       ======================================================== */
+    .expense-scroll-container {
+      max-height: 480px;
+      overflow-y: auto;
+      overflow-x: auto;
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--border-subtle);
+      background: #FFF;
+    }
+
+    .expense-items-table {
+      width: 100%;
+      min-width: 980px;
+      border-collapse: collapse;
+      font-size: 0.80rem;
+    }
+
+    .expense-items-table th {
+      position: sticky;
+      top: 0;
+      background: var(--bg-card-subtle);
+      padding: 10px 10px;
+      font-size: 0.68rem;
+      font-weight: 700;
+      color: var(--text-tertiary);
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      border-bottom: 1px solid var(--border-subtle);
+      z-index: 5;
+      white-space: nowrap;
+    }
+
+    .expense-items-table td {
+      padding: 6px 8px;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.04);
+      vertical-align: middle;
+      background: #FFF;
+      white-space: nowrap;
+    }
+
+    .exp-start-select {
+      font-family: var(--font-sans);
+      font-size: 0.70rem;
+      font-weight: 600;
+      color: var(--text-secondary);
+      background: var(--bg-card-subtle);
+      border: 1px solid var(--border-subtle);
+      padding: 4px 6px;
+      border-radius: 6px;
+      cursor: pointer;
+      outline: none;
+      width: 100%;
+      max-width: 120px;
+    }
+
+    .exp-period-input {
+      font-family: monospace;
+      font-size: 0.80rem;
+      font-weight: 600;
+      width: 66px;
+      padding: 4px 6px;
+      border-radius: 6px;
+      border: 1px solid var(--border-subtle);
+      background: var(--bg-input);
+      color: var(--text-primary);
+      text-align: right;
+      transition: all 0.15s;
+    }
+
+    .exp-period-input:focus {
+      outline: none;
+      border-color: var(--brand-purple);
+      background: #FFF;
+      box-shadow: 0 0 0 2px rgba(46, 16, 101, 0.08);
+    }
+
+    .exp-inactive-cell {
+      opacity: 0.35;
+      background: rgba(0, 0, 0, 0.02) !important;
+    }
+
+    /* OPEX PERIOD TOGGLE STRIP */
+    .opex-year-toggle-strip {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      margin-bottom: 10px;
+      flex-wrap: wrap;
+    }
+
+    .opex-year-btn {
+      padding: 4px 10px;
+      border-radius: 999px;
+      font-size: 0.70rem;
+      font-weight: 600;
+      border: 1px solid var(--border-subtle);
+      background: #FFF;
+      color: var(--text-secondary);
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+
+    .opex-year-btn:hover {
+      background: #FFF;
+      color: var(--text-primary);
+      border-color: rgba(0, 0, 0, 0.2);
+    }
+
+    .opex-year-btn.active {
+      background: var(--brand-purple);
+      color: #FFF;
+      border-color: var(--brand-purple);
+      box-shadow: 0 2px 6px rgba(46, 16, 101, 0.2);
+    }
+
+    /* 5 PERIOD TOTALS IN EXPENSE FOOTER */
+    .exp-yearly-totals-row {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 8px;
+      margin-top: 8px;
+    }
+
+    @media (max-width: 900px) {
+      .exp-yearly-totals-row {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    .exp-year-badge {
+      font-size: 0.72rem;
+      color: var(--text-secondary);
+      background: #FFF;
+      padding: 7px 10px;
+      border-radius: 8px;
+      border: 1px solid var(--border-subtle);
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .exp-year-badge .yb-lbl {
+      font-size: 0.62rem;
+      color: var(--text-tertiary);
+      font-weight: 700;
+      text-transform: uppercase;
+    }
+
+    .exp-year-badge strong {
+      font-family: monospace;
+      font-size: 0.85rem;
+      color: var(--text-primary);
+    }
+
+    /* RADIAL SATURATION GAUGE */
+    .radial-gauge-container {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      background: var(--bg-card-subtle);
+      border: 1px solid var(--border-subtle);
+      border-radius: 14px;
+      padding: 12px 16px;
+      margin-bottom: 14px;
+    }
+
+    .radial-gauge-svg-wrap {
+      position: relative;
+      width: 82px;
+      height: 82px;
+      flex-shrink: 0;
+    }
+
+    .radial-svg {
+      width: 100%;
+      height: 100%;
+      transform: rotate(-90deg);
+    }
+
+    .radial-bg {
+      fill: none;
+      stroke: rgba(0, 0, 0, 0.06);
+      stroke-width: 8;
+    }
+
+    .radial-bar {
+      fill: none;
+      stroke: var(--brand-purple);
+      stroke-width: 8;
+      stroke-linecap: round;
+      stroke-dasharray: 251.2;
+      stroke-dashoffset: 0;
+      transition: stroke-dashoffset 0.6s ease;
+    }
+
+    .radial-center-text {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+
+    .radial-pct {
+      font-size: 0.90rem;
+      font-weight: 800;
+      color: var(--brand-purple);
+      letter-spacing: -0.02em;
+      line-height: 1.1;
+    }
+
+    .radial-label {
+      font-size: 0.58rem;
+      font-weight: 700;
+      color: var(--text-tertiary);
+      text-transform: uppercase;
+    }
+
+    .gauge-milestones-list {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      flex: 1;
+      min-width: 0;
+    }
+
+    .gauge-step {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.72rem;
+      color: var(--text-secondary);
+    }
+
+    .gauge-step strong {
+      color: var(--text-primary);
+      font-family: monospace;
+    }
+
+    .gauge-step-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    .gauge-step-name {
+      flex: 1;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .gauge-step-pct {
+      font-size: 0.66rem;
+      color: var(--text-tertiary);
+    }
+
+    /* RICH ANATOMY FLOATING HOVER CARD & BAR */
+    .anatomy-apple-bar {
+      position: relative;
+    }
+
+    .anat-segment {
+      transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+      cursor: pointer;
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: clip;
+      font-size: 0.72rem;
+    }
+
+    .anat-segment:hover {
+      filter: brightness(1.2);
+      z-index: 5;
+      transform: scaleY(1.08);
+    }
+
+    .anat-tooltip-popover {
+      position: absolute;
+      z-index: 1000;
+      pointer-events: none;
+      background: rgba(29, 29, 31, 0.94);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      color: #FFF;
+      border-radius: 10px;
+      padding: 9px 12px;
+      font-size: 0.72rem;
+      box-shadow: 0 10px 28px rgba(0, 0, 0, 0.28);
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      display: none;
+      width: 260px;
+      line-height: 1.4;
+      transform: translate(-50%, -110%);
+      transition: opacity 0.12s ease;
+    }
+
+    .anat-tooltip-title {
+      font-weight: 700;
+      font-size: 0.78rem;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      margin-bottom: 4px;
+      color: #FFF;
+    }
+
+    .anat-tooltip-stats {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 6px;
+      font-family: monospace;
+      color: #A1A1A6;
+      font-size: 0.72rem;
+      background: rgba(255, 255, 255, 0.08);
+      padding: 3px 6px;
+      border-radius: 4px;
+    }
+
+    .anat-tooltip-stats strong {
+      color: #34C759;
+    }
+
+    .anat-tooltip-desc {
+      font-size: 0.68rem;
+      color: rgba(255, 255, 255, 0.82);
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      padding-top: 5px;
+      line-height: 1.35;
+    }
+
+    /* TOAST */
+    .toast {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      background: var(--brand-purple);
+      color: #FFF;
+      padding: 12px 20px;
+      border-radius: var(--radius-pill);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+      font-size: 0.82rem;
+      font-weight: 600;
+      display: none;
+      z-index: 1000;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- APPLE TOP NAVIGATION -->
+  <header class="top-navbar">
+    <div class="nav-brand">
+      <div class="brand-emblem">AB</div>
+      <div class="brand-info">
+        <h1>AURA BOX <span style="font-size: 0.68rem; font-weight: 600; color: var(--brand-purple); background: var(--brand-purple-soft); padding: 2px 7px; border-radius: 10px;">Finansal Kokpit</span></h1>
+        <p>Kapalıçarşı Zanaat Üssü • Apple Bento</p>
+      </div>
+    </div>
+
+    <!-- MAIN VIEW SWITCHER TABS -->
+    <div class="main-view-switcher">
+      <button class="view-tab-btn active" id="tab_btn_main" onclick="switchView('main')">
+        <span>📊 4 Yıllık Kokpit</span>
+      </button>
+      <button class="view-tab-btn" id="tab_btn_prelaunch" onclick="switchView('prelaunch')">
+        <span>🛠️ İlk 6 Ay (Ar-Ge)</span>
+      </button>
+    </div>
+
+    <!-- PERSISTENCE INDICATOR -->
+    <div class="save-indicator" id="save_badge" title="Tüm değişiklikler anında kaydedilir">
+      <span>●</span>
+      <span id="save_badge_text">Kaydedildi</span>
+    </div>
+
+    <div class="nav-actions">
+      <button class="btn-apple btn-apple-secondary" onclick="exportConfigToFile()" title="Senaryoyu .json dosyası olarak indir">💾 İndir</button>
+      <button class="btn-apple btn-apple-secondary" onclick="document.getElementById('import_file_input').click()" title=".json senaryo yükle">📤 Yükle</button>
+      <input type="file" id="import_file_input" accept=".json" style="display: none;" onchange="importConfigFromFile(event)">
+      <button class="btn-apple btn-apple-secondary" onclick="copyInvestorNote()" title="Yatırımcı metnini panoya kopyala">📋 Yatırımcı Notu</button>
+      <button class="btn-apple btn-apple-secondary" onclick="window.print()" title="PDF olarak yazdır">🖨️ PDF</button>
+      <a href="Aura_Box_Finansal_Model_24Ay.xlsx" class="btn-apple btn-apple-primary" download title="24 Aylık Detaylı Excel Dosyasını İndir">📥 Detaylı Excel</a>
+    </div>
+  </header>
+
+  <!-- ========================================== -->
+  <!-- VIEW 1: 4 YILLIK GENEL KOKPİT (MAIN VIEW) -->
+  <!-- ========================================== -->
+  <div id="view_main">
+
+    <!-- QUICK PRESETS STRIP -->
+    <div class="scenario-strip">
+      <div class="segmented-control">
+        <button class="segment-btn active" onclick="applyPreset('trReality')">🇹🇷 Türkiye Gerçekliği (28K Doygunluk)</button>
+        <button class="segment-btn" onclick="applyPreset('ultraLuxury')">💎 Butik Haute Couture (8.5K Niş)</button>
+        <button class="segment-btn" onclick="applyPreset('gccExpansion')">🌍 TR + Körfez / GCC Açılımı (55K)</button>
+        <button class="segment-btn" onclick="applyPreset('aggressive')">🚀 Agresif Teori (100K)</button>
+      </div>
+      <div style="display: flex; gap: 8px; align-items: center;">
+        <span style="font-size: 0.78rem; color: var(--text-secondary);">İlk 6 Ay Ar-Ge Bütçesi: <strong id="lbl_strip_pre_total" style="color: var(--brand-purple);">$228.000</strong></span>
+        <button class="btn-apple btn-apple-secondary" style="padding: 4px 10px; font-size: 0.74rem;" onclick="resetToFactoryDefaults()">↺ Sıfırla</button>
+      </div>
+    </div>
+
+    <!-- MAIN BENTO GRID -->
+    <div class="view-container">
+      <div class="bento-grid">
+
+        <!-- 1. ROW: 4 HERO BENTO KPI CARDS (4. YIL VE TOPLAM METRİKLERİ) -->
+        <div class="bento-card span-3">
+          <div class="metric-top">
+            <span class="metric-label">4. Yıl Sonu Ciro (MRR)</span>
+            <div class="metric-icon">💰</div>
+          </div>
+          <div class="metric-value purple" id="kpi_mrr">$50.59M</div>
+          <div class="metric-sub">
+            Yıllıklandırılmış: <strong id="kpi_arr">$607M ARR</strong>
+          </div>
+        </div>
+
+        <div class="bento-card span-3">
+          <div class="metric-top">
+            <span class="metric-label">4. Yıl Net Kâr (EBITDA)</span>
+            <div class="metric-icon">📈</div>
+          </div>
+          <div class="metric-value green" id="kpi_ebitda">$28.14M</div>
+          <div class="metric-sub">
+            Net Marj: <span style="color: var(--apple-green-dark); font-weight: 700;" id="kpi_ebitda_margin">%55,6</span>
+          </div>
+        </div>
+
+        <div class="bento-card span-3">
+          <div class="metric-top">
+            <span class="metric-label">Kutu Başı Net Kâr</span>
+            <div class="metric-icon">📦</div>
+          </div>
+          <div class="metric-value" id="kpi_unit_profit">$86.27</div>
+          <div class="metric-sub">
+            Brüt Kâr Marjı: <span style="color: var(--apple-green-dark); font-weight: 700;" id="kpi_gross_margin">%59,7</span>
+          </div>
+        </div>
+
+        <div class="bento-card span-3">
+          <div class="metric-top">
+            <span class="metric-label">Başabaş Noktası</span>
+            <div class="metric-icon">⚖️</div>
+          </div>
+          <div class="metric-value" id="kpi_breakeven">8. Ay</div>
+          <div class="metric-sub">
+            Eşik: <strong id="kpi_breakeven_subs">~4.000 Abone</strong>
+          </div>
+        </div>
+
+        <!-- 2. ROW: 4-PHASE VISUAL ROADMAP (SPAN 8) + 1 BOX MULTI-TIER ANATOMY (SPAN 4) -->
+        <div class="bento-card span-7 visual-roadmap-card">
+          <div class="card-title-row" style="margin-bottom: 10px;">
+            <div>
+              <div style="display: flex; align-items: center; gap: 8px;">
+                <span style="font-size: 1.1rem;">🧭</span>
+                <h3 style="font-size: 0.95rem;">4 Yıllık İcraat, Kârlılık & Büyüme Mimarisi</h3>
+                <span class="apple-tag-pill" style="background: rgba(46, 16, 101, 0.08); color: var(--brand-purple);">4 Stratejik Faz</span>
+              </div>
+              <span class="subtitle" style="margin-top: 2px;">Minimum metin, maksimum rasyonel veri & Türkiye pazar tavanı (28.000 Abone)</span>
+            </div>
+            <div style="display: flex; gap: 6px; align-items: center;">
+              <button class="btn-apple btn-apple-secondary" onclick="togglePitchSpeechDrawer()" style="padding: 4px 9px; font-size: 0.72rem;">
+                🎙️ Konuşma Metni
+              </button>
+              <button class="btn-apple btn-apple-primary" onclick="copyInvestorNote()" style="padding: 4px 10px; font-size: 0.72rem;">
+                📋 Kopyala
+              </button>
+            </div>
+          </div>
+
+          <!-- 4-PHASE BENTO STEPPER GRID -->
+          <div class="roadmap-grid-apple">
+            <!-- FAZ 1 -->
+            <div class="phase-bento-card phase-1">
+              <div class="phase-card-top">
+                <div class="phase-num-badge">FAZ 1</div>
+                <span class="phase-status-pill phase-status-prep">🛠️ Hazırlık</span>
+              </div>
+              <div class="phase-title">Kurulum & Ar-Ge</div>
+              <div class="phase-time">1. - 6. Ay (Lansman Öncesi)</div>
+              <div class="phase-hero-kpi">
+                <span class="phase-kpi-val" id="phase1_kpi_burn">$280K</span>
+                <span class="phase-kpi-sub">Kümülatif CapEx & OpEx</span>
+                <div style="display: flex; gap: 4px; margin-top: 6px; flex-wrap: wrap;">
+                  <span class="split-pill tech">💻 Yazılım: <strong id="phase1_kpi_tech">$142.5K</strong></span>
+                  <span class="split-pill physical">🏛️ Depo: <strong id="phase1_kpi_physical">$137.5K</strong></span>
+                </div>
+              </div>
+              <div class="phase-checklist">
+                <div class="phase-item"><span>💻</span><span>Yazılım Ekibi & AI LLM Sandbox</span></div>
+                <div class="phase-item"><span>🏛️</span><span>Kapalıçarşı Depo, Tonoz & Kalıp</span></div>
+                <div class="phase-item"><span>📦</span><span>Lüks Kalıp, Pirinç Mühür & Numune</span></div>
+                <div class="phase-item"><span>⏳</span><span>6 Aylık Gelirsiz Ramp-up</span></div>
+              </div>
+            </div>
+
+            <!-- FAZ 2 -->
+            <div class="phase-bento-card phase-2">
+              <div class="phase-card-top">
+                <div class="phase-num-badge">FAZ 2</div>
+                <span class="phase-status-pill phase-status-breakeven">⚖️ Başabaş</span>
+              </div>
+              <div class="phase-title">Lansman & Eşik</div>
+              <div class="phase-time">7. - 12. Ay (1. Yıl Sonu)</div>
+              <div class="phase-hero-kpi">
+                <span class="phase-kpi-val" id="phase2_kpi_subs">1.742</span>
+                <span class="phase-kpi-sub" id="phase2_kpi_month_lbl">10. Ay Başabaş Eşiği</span>
+              </div>
+              <div class="phase-checklist">
+                <div class="phase-item"><span>🚀</span><span>6. Ay Sonu Go-to-Market</span></div>
+                <div class="phase-item"><span>🎯</span><span>10. Ay Tam Nakit Dengesi</span></div>
+                <div class="phase-item"><span>💎</span><span id="phase2_kpi_margin">%45.0 Sabit Brüt Marj</span></div>
+                <div class="phase-item"><span>📈</span><span>1. Yıl Sonu: <strong id="phase2_y1_subs">3.200</strong> Abone</span></div>
+              </div>
+            </div>
+
+            <!-- FAZ 3 -->
+            <div class="phase-bento-card phase-3">
+              <div class="phase-card-top">
+                <div class="phase-num-badge">FAZ 3</div>
+                <span class="phase-status-pill phase-status-scale">🚀 Ölçek</span>
+              </div>
+              <div class="phase-title">Ölçeklenme & Kulüp</div>
+              <div class="phase-time">2. - 3. Yıl (Ay 13-36)</div>
+              <div class="phase-hero-kpi">
+                <span class="phase-kpi-val" id="phase3_kpi_subs">21.000</span>
+                <span class="phase-kpi-sub">3. Yıl Sonu Aktif Abone</span>
+              </div>
+              <div class="phase-checklist">
+                <div class="phase-item"><span>✨</span><span>6 Kademeli Lüks Merdiveni</span></div>
+                <div class="phase-item"><span>🤝</span><span>Ocak Hacim & Tedarik Gücü</span></div>
+                <div class="phase-item"><span>📉</span><span>%1.5 Düşük VIP Churn</span></div>
+                <div class="phase-item"><span>💰</span><span id="phase3_kpi_cash">Yıllık $9.4M FAVÖK Kârı</span></div>
+              </div>
+            </div>
+
+            <!-- FAZ 4 -->
+            <div class="phase-bento-card phase-4">
+              <div class="phase-card-top">
+                <div class="phase-num-badge">FAZ 4</div>
+                <span class="phase-status-pill phase-status-ceiling">👑 Tavan</span>
+              </div>
+              <div class="phase-title">Pazar Tavanı & Nakit</div>
+              <div class="phase-time">4. Yıl (Ay 37-48)</div>
+              <div class="phase-hero-kpi">
+                <span class="phase-kpi-val" id="phase4_kpi_subs">28.000</span>
+                <span class="phase-kpi-sub">TR Doygunluk Tavanı</span>
+              </div>
+              <div class="phase-checklist">
+                <div class="phase-item"><span>🛑</span><span>Gerçekçi Pazar Sınırı (A+)</span></div>
+                <div class="phase-item"><span>💵</span><span id="phase4_kpi_arr">$41.8M ARR Ciro Tavanı</span></div>
+                <div class="phase-item"><span>📈</span><span id="phase4_kpi_ebitda">$15.7M FAVÖK (%37.6 Net)</span></div>
+                <div class="phase-item"><span>🏦</span><span id="phase4_kpi_cash">$28.9M Kasa Rezervi</span></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- MILESTONE PROGRESS FLOW BAR -->
+          <div class="milestone-flow-wrap">
+            <div class="flow-step">
+              <div class="flow-circle prep">0A</div>
+              <div class="flow-info">
+                <div class="flow-label">Kurulum</div>
+                <div class="flow-val" id="flow_val_prep">$280K</div>
+              </div>
+            </div>
+            <div class="flow-line"></div>
+            <div class="flow-step">
+              <div class="flow-circle launch">6A</div>
+              <div class="flow-info">
+                <div class="flow-label">Lansman</div>
+                <div class="flow-val">İlk Kutu</div>
+              </div>
+            </div>
+            <div class="flow-line"></div>
+            <div class="flow-step">
+              <div class="flow-circle breakeven" id="flow_circle_breakeven">10A</div>
+              <div class="flow-info">
+                <div class="flow-label">Başabaş</div>
+                <div class="flow-val" id="flow_val_breakeven">~1.742 Abone</div>
+              </div>
+            </div>
+            <div class="flow-line"></div>
+            <div class="flow-step">
+              <div class="flow-circle scale">24A</div>
+              <div class="flow-info">
+                <div class="flow-label">2. Yıl</div>
+                <div class="flow-val" id="flow_val_y2">11.500 Abone</div>
+              </div>
+            </div>
+            <div class="flow-line"></div>
+            <div class="flow-step">
+              <div class="flow-circle ceiling">48A</div>
+              <div class="flow-info">
+                <div class="flow-label">Doygunluk</div>
+                <div class="flow-val" id="flow_val_y4">28.000 Abone</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- COLLAPSIBLE PITCH SCRIPT (MINIMAL TEXT, EXPANDABLE) -->
+          <div id="pitch_speech_drawer" class="pitch-speech-drawer" style="display: none;">
+            <div class="pitch-drawer-header">
+              <span>🎙️ Yatırımcı / Yönetici Sunum Metni (4 Yıllık Rasyonel Hikaye)</span>
+              <button class="btn-apple btn-apple-secondary" onclick="togglePitchSpeechDrawer()" style="padding: 2px 7px; font-size: 0.7rem;">Kapat</button>
+            </div>
+            <p class="pitch-quote-apple" id="pitch_speech_text" style="margin: 0; font-size: 0.81rem; line-height: 1.5;">
+              "Aura Box olarak Türkiye'nin A+ hane ve lüks tüketim dinamiklerini rasyonel olarak modeledik. Kapalıçarşı doğrudan ocak alımı ve el yapımı lüks ambalajla <strong>135$ ortalama kutu tutarımızın %45.0'i (60.8$) brüt kâr</strong> olarak kalıyor. İlk 6 ay yazılım, kalıp ve Kapalıçarşı operasyon ve lojistik depomuzun kurulumunu ($280K) tamamlayıp lansman yapıyoruz. Henüz <strong>10. ayda (~1.742 aboneye ulaştığımızda)</strong> şirket başabaş noktasına ulaşıyor. 2. yılın sonunda 11.500 abone, <strong>4. yılın sonunda ise pazar doygunluk tavanı olan 28.000 aktif aboneyle ayda $3.8M ciro ve $1.4M net FAVÖK</strong> üreten, tamamen kendi nakit akışıyla büyüyen kârlı bir lüks kulüp inşa ediyoruz."
+            </p>
+          </div>
+        </div>
+
+        <!-- 1 BOX ANATOMY WITH MULTI-TIER SELECTOR (SPAN 4) -->
+        <div class="bento-card span-5" id="box_anatomy_card">
+          <div class="card-title-row" style="margin-bottom: 6px;">
+            <div>
+              <h3 style="font-size: 0.95rem;">📦 1 Kutunun Anatomisi</h3>
+              <span class="subtitle" id="lbl_anat_tier_meta" style="font-size: 0.70rem; color: var(--text-tertiary);">Ağırlıklı Portföy Ortalaması • AOV $135.05</span>
+            </div>
+            <span class="subtitle" id="lbl_anat_margin" style="font-size: 0.80rem; font-weight: 700; color: var(--apple-green-dark); background: rgba(52, 199, 89, 0.1); padding: 3px 8px; border-radius: 999px;">%45.0 Kâr</span>
+          </div>
+
+          <!-- TIER SELECTOR PILL STRIP -->
+          <div class="anat-tier-strip" id="anat_tier_strip">
+            <!-- Populated dynamically by renderAnatomyTierStrip() -->
+          </div>
+
+          <!-- ACTIVE TIER BADGE BANNER -->
+          <div class="anat-selected-tier-banner" id="anat_selected_banner">
+            <div style="display: flex; align-items: center; gap: 6px;">
+              <span class="anat-tier-dot" id="anat_banner_dot" style="background: var(--brand-purple);"></span>
+              <strong id="anat_banner_name" style="font-size: 0.80rem; color: var(--text-primary);">Ağırlıklı Karma Portföy</strong>
+            </div>
+            <div style="display: flex; align-items: center; gap: 6px;">
+              <span style="font-size: 0.68rem; color: var(--text-tertiary);" id="anat_banner_share">Pay: %100</span>
+              <span class="anat-price-tag" id="anat_banner_price">$135.05</span>
+            </div>
+          </div>
+          
+          <!-- ANATOMY STACKED BAR WITH FLOATING TOOLTIP TRIGGERS -->
+          <div class="anatomy-apple-bar" id="anat_bar_container">
+            <div class="anat-segment anat-craft" id="bar_craft" style="width: 42%;"
+                 onmouseenter="showAnatomyTooltip(event, 'craft')" onmousemove="moveAnatomyTooltip(event)" onmouseleave="hideAnatomyTooltip()">Zanaat %42</div>
+            <div class="anat-segment anat-box" id="bar_box" style="width: 5.5%;"
+                 onmouseenter="showAnatomyTooltip(event, 'box')" onmousemove="moveAnatomyTooltip(event)" onmouseleave="hideAnatomyTooltip()"></div>
+            <div class="anat-segment anat-courier" id="bar_courier" style="width: 4.4%;"
+                 onmouseenter="showAnatomyTooltip(event, 'courier')" onmousemove="moveAnatomyTooltip(event)" onmouseleave="hideAnatomyTooltip()"></div>
+            <div class="anat-segment anat-pos" id="bar_pos" style="width: 3.0%;"
+                 onmouseenter="showAnatomyTooltip(event, 'pos')" onmousemove="moveAnatomyTooltip(event)" onmouseleave="hideAnatomyTooltip()"></div>
+            <div class="anat-segment anat-profit" id="bar_profit" style="width: 45%;"
+                 onmouseenter="showAnatomyTooltip(event, 'profit')" onmousemove="moveAnatomyTooltip(event)" onmouseleave="hideAnatomyTooltip()">KÂR $60.8 (%45)</div>
+          </div>
+
+          <!-- FLOATING TOOLTIP ELEMENT -->
+          <div id="anat_tooltip" class="anat-tooltip-popover"></div>
+
+          <div class="anatomy-details-list">
+            <div class="anat-list-row" onmouseenter="showAnatomyTooltip(event, 'craft')" onmousemove="moveAnatomyTooltip(event)" onmouseleave="hideAnatomyTooltip()">
+              <div class="anat-row-left">
+                <span class="anat-row-dot" style="background: #5B21B6;"></span>
+                <input type="text" class="anat-lbl-input" id="cogs_name_craft" value="Kapalıçarşı Ocak Tedariki" oninput="updateCogsName('craftName', this.value)" title="Maliyet Adını Düzenle">
+              </div>
+              <div class="anat-val-group">
+                <span class="anat-pct-chip" id="anat_pct_craft">%42.0</span>
+                <span class="anat-tile-val" id="anat_val_craft">$56.72</span>
+              </div>
+            </div>
+
+            <div class="anat-list-row" onmouseenter="showAnatomyTooltip(event, 'box')" onmousemove="moveAnatomyTooltip(event)" onmouseleave="hideAnatomyTooltip()">
+              <div class="anat-row-left">
+                <span class="anat-row-dot" style="background: #3B82F6;"></span>
+                <input type="text" class="anat-lbl-input" id="cogs_name_box" value="Lüks Kutu, Süet Yuva & Mühür" oninput="updateCogsName('boxName', this.value)" title="Maliyet Adını Düzenle">
+              </div>
+              <div class="anat-val-group">
+                <span class="anat-pct-chip" id="anat_pct_box">%5.6</span>
+                <span class="anat-tile-val" id="anat_val_box">$7.50</span>
+              </div>
+            </div>
+
+            <div class="anat-list-row" onmouseenter="showAnatomyTooltip(event, 'courier')" onmousemove="moveAnatomyTooltip(event)" onmouseleave="hideAnatomyTooltip()">
+              <div class="anat-row-left">
+                <span class="anat-row-dot" style="background: #06B6D4;"></span>
+                <input type="text" class="anat-lbl-input" id="cogs_name_courier" value="VIP Sigortalı Değerli Kargo" oninput="updateCogsName('courierName', this.value)" title="Maliyet Adını Düzenle">
+              </div>
+              <div class="anat-val-group">
+                <span class="anat-pct-chip" id="anat_pct_courier">%4.4</span>
+                <span class="anat-tile-val" id="anat_val_courier">$6.00</span>
+              </div>
+            </div>
+
+            <div class="anat-list-row" onmouseenter="showAnatomyTooltip(event, 'pos')" onmousemove="moveAnatomyTooltip(event)" onmouseleave="hideAnatomyTooltip()">
+              <div class="anat-row-left">
+                <span class="anat-row-dot" style="background: #64748B;"></span>
+                <input type="text" class="anat-lbl-input" id="cogs_name_pos" value="Sanal POS & Taksit Komisyonu" oninput="updateCogsName('posName', this.value)" title="Maliyet Adını Düzenle">
+              </div>
+              <div class="anat-val-group">
+                <span class="anat-pct-chip" id="anat_pct_pos">%3.0</span>
+                <span class="anat-tile-val" id="anat_val_pos">$4.05</span>
+              </div>
+            </div>
+
+            <div class="anat-profit-card" id="anat_profit_card" onmouseenter="showAnatomyTooltip(event, 'profit')" onmousemove="moveAnatomyTooltip(event)" onmouseleave="hideAnatomyTooltip()">
+              <div class="anat-profit-lbl">
+                <span style="font-size: 1.05rem;">✨</span>
+                <span>Kutu Başı Kalan Net Brüt Kâr</span>
+              </div>
+              <div class="anat-profit-val" id="anat_val_profit">$60.78 (%45.0)</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 3. ROW: ABONE HEDEFLERİ & TAVAN GAUGE (SPAN 5) + 48 AYLIK BÜYÜME GRAFİĞİ (SPAN 7) -->
+        <div class="bento-card span-5">
+          <div class="card-title-row" style="margin-bottom: 8px;">
+            <div>
+              <h3 style="font-size: 0.95rem;">🎛️ Abone Hedefleri & Pazar Doygunluğu</h3>
+              <span class="subtitle">Türkiye A+ Gelir Grubu 28.000 Hane Sınırı</span>
+            </div>
+            <span class="subtitle" id="lbl_aov_badge" style="background: rgba(91, 33, 182, 0.08); color: var(--brand-purple); font-weight: 700; padding: 4px 10px; border-radius: 999px; font-size: 0.78rem;">AOV: $135.05</span>
+          </div>
+
+          <!-- APPLE STYLE RADIAL SATURATION GAUGE -->
+          <div class="radial-gauge-container">
+            <div class="radial-gauge-svg-wrap">
+              <svg viewBox="0 0 100 100" class="radial-svg">
+                <circle class="radial-bg" cx="50" cy="50" r="40" />
+                <circle class="radial-bar" id="gauge_radial_circle" cx="50" cy="50" r="40" />
+              </svg>
+              <div class="radial-center-text">
+                <div class="radial-pct" id="gauge_disp_pct">28.000</div>
+                <div class="radial-label">Tavan (%100)</div>
+              </div>
+            </div>
+            <div class="gauge-milestones-list">
+              <div class="gauge-step">
+                <span class="gauge-step-dot" style="background: #8B5CF6;"></span>
+                <span class="gauge-step-name">7-12. Ay (Lansman):</span>
+                <strong id="gauge_lbl_m7_12">3.200</strong>
+                <span class="gauge-step-pct">(%11)</span>
+              </div>
+              <div class="gauge-step">
+                <span class="gauge-step-dot" style="background: #3B82F6;"></span>
+                <span class="gauge-step-name">2. Yıl (Büyüme):</span>
+                <strong id="gauge_lbl_y2">11.500</strong>
+                <span class="gauge-step-pct">(%41)</span>
+              </div>
+              <div class="gauge-step">
+                <span class="gauge-step-dot" style="background: #10B981;"></span>
+                <span class="gauge-step-name">3. Yıl (Ölçek):</span>
+                <strong id="gauge_lbl_y3">21.000</strong>
+                <span class="gauge-step-pct">(%75)</span>
+              </div>
+              <div class="gauge-step">
+                <span class="gauge-step-dot" style="background: var(--brand-purple);"></span>
+                <span class="gauge-step-name">4. Yıl (TR Doygunluk):</span>
+                <strong id="gauge_lbl_y4">28.000</strong>
+                <span class="gauge-step-pct">(%100 Tavan)</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- 4-YEAR TARGET SLIDERS (TÜRKİYE GERÇEKLİĞİ & DOYGUNLUK TAVANI) -->
+          <div class="slider-tile">
+            <div class="slider-tile-top">
+              <span>7-12. Ay Sonu Abone (Ay 12)</span>
+              <strong id="disp_y1_subs">3.200 Abone</strong>
+            </div>
+            <input type="range" id="rng_y1_subs" min="500" max="15000" step="100" value="3200" oninput="updateTargetSubs(1, this.value)">
+          </div>
+
+          <div class="slider-tile">
+            <div class="slider-tile-top">
+              <span>2. Yıl Sonu Abone (Ay 24)</span>
+              <strong id="disp_y2_subs">11.500 Abone</strong>
+            </div>
+            <input type="range" id="rng_y2_subs" min="2000" max="35000" step="250" value="11500" oninput="updateTargetSubs(2, this.value)">
+          </div>
+
+          <div class="slider-tile">
+            <div class="slider-tile-top">
+              <span>3. Yıl Sonu Abone (Ay 36)</span>
+              <strong id="disp_y3_subs">21.000 Abone</strong>
+            </div>
+            <input type="range" id="rng_y3_subs" min="5000" max="50000" step="500" value="21000" oninput="updateTargetSubs(3, this.value)">
+          </div>
+
+          <div class="slider-tile">
+            <div class="slider-tile-top">
+              <span>4. Yıl Doygunluk Tavanı (Ay 48)</span>
+              <strong id="disp_y4_subs">28.000 Abone</strong>
+            </div>
+            <input type="range" id="rng_y4_subs" min="8000" max="100000" step="500" value="28000" oninput="updateTargetSubs(4, this.value)">
+          </div>
+
+          <!-- 6 KADEME LIST -->
+          <div style="margin-top: 10px;">
+            <div style="font-size: 0.72rem; font-weight: 700; color: var(--text-tertiary); text-transform: uppercase; margin-bottom: 6px;">
+              6 Kademe Fiyat & Pay Dağılımı:
+            </div>
+            <div class="tiers-bento-list" id="tiers_bento_container">
+              <!-- Populated by JS -->
+            </div>
+          </div>
+        </div>
+
+        <div class="bento-card span-7">
+          <div class="card-title-row">
+            <div>
+              <h3>📈 48 Aylık (4 Yıl) Büyüme & Kârlılık Eğrisi</h3>
+              <span class="subtitle">Aylık Brüt Ciro, EBITDA Kârı ve Kümülatif Kasa Nakit Rezervi</span>
+            </div>
+            <div class="metric-icon">📊</div>
+          </div>
+          <div class="chart-box-apple">
+            <canvas id="appleGrowthChart"></canvas>
+          </div>
+        </div>
+
+        <!-- 4. ROW: 4 YILLIK & İLK 6 AY KONSOLİDE ÖZET TABLOSU (SPAN 12 - FULL WIDTH) -->
+        <div class="bento-card span-12">
+          <div class="card-title-row">
+            <div>
+              <h3>📊 4 Yıllık & İlk 6 Ay Konsolide Özet Tablosu</h3>
+              <span class="subtitle">İlk 6 ay sıfır ciro / Ar-Ge hazırlık dönemi ve ardından gelen 3.5 yıllık ticari büyüme & nakit üretimi</span>
+            </div>
+            <span class="apple-tag-pill" style="background: rgba(46, 16, 101, 0.08); color: var(--brand-purple); font-weight: 700;">Tam Senkronize • 5 Ayrı Dönem</span>
+          </div>
+
+          <div class="apple-table-wrap">
+            <table class="apple-table">
+              <thead>
+                <tr>
+                  <th>Metrik</th>
+                  <th><span class="period-col-badge">Ay 1-6</span><br>1. İlk 6 Ay (Ar-Ge)</th>
+                  <th><span class="period-col-badge">Ay 7-12</span><br>2. 7-12. Ay (Lansman)</th>
+                  <th><span class="period-col-badge">Ay 13-24</span><br>3. 2. Yıl (Büyüme)</th>
+                  <th><span class="period-col-badge">Ay 25-36</span><br>4. 3. Yıl (Ölçek)</th>
+                  <th><span class="period-col-badge">Ay 37-48</span><br>5. 4. Yıl (Tavan)</th>
+                  <th style="background: rgba(46, 16, 101, 0.06); color: var(--brand-purple);"><span class="period-col-badge purple">48 Ay</span><br>4 Yıl Konsolide Toplam</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Dönem Sonu Aktif Abone</td>
+                  <td id="t_p1_subs">0</td>
+                  <td id="t_p2_subs">3.200</td>
+                  <td id="t_p3_subs">11.500</td>
+                  <td id="t_p4_subs">21.000</td>
+                  <td id="t_p5_subs">28.000</td>
+                  <td id="t_tot_subs" style="color: var(--brand-purple); font-weight: 700;">28.000 Tavan</td>
+                </tr>
+                <tr style="background: rgba(91, 33, 182, 0.03);">
+                  <td style="color: var(--brand-purple); font-weight: 600;">Aylık VIP Churn (%)</td>
+                  <td id="t_p1_churn">-</td>
+                  <td id="t_p2_churn">%2.2</td>
+                  <td id="t_p3_churn">%1.8</td>
+                  <td id="t_p4_churn">%1.5</td>
+                  <td id="t_p5_churn">%1.2</td>
+                  <td id="t_tot_churn" style="color: var(--brand-purple); font-weight: 700;">%1.5 Ort.</td>
+                </tr>
+                <tr>
+                  <td>Dönemde Gönderilen Kutu</td>
+                  <td id="t_p1_box">0</td>
+                  <td id="t_p2_box">9.4K</td>
+                  <td id="t_p3_box">86.5K</td>
+                  <td id="t_p4_box">195K</td>
+                  <td id="t_p5_box">309K</td>
+                  <td id="t_tot_box" style="font-weight: 700;">600K Kutu</td>
+                </tr>
+                <tr>
+                  <td>Ortalama Kutu Tutarı (AOV)</td>
+                  <td id="t_p1_aov">-</td>
+                  <td id="t_p2_aov">$135.05</td>
+                  <td id="t_p3_aov">$135.05</td>
+                  <td id="t_p4_aov">$135.05</td>
+                  <td id="t_p5_aov">$135.05</td>
+                  <td id="t_tot_aov" style="font-weight: 700;">$135.05 Ort.</td>
+                </tr>
+                <tr>
+                  <td>Brüt Satış Cirosu (Revenue)</td>
+                  <td id="t_p1_rev">$0</td>
+                  <td id="t_p2_rev">$1.27M</td>
+                  <td id="t_p3_rev">$11.68M</td>
+                  <td id="t_p4_rev">$26.33M</td>
+                  <td id="t_p5_rev">$41.73M</td>
+                  <td id="t_tot_rev" style="font-weight: 700;">$81.01M</td>
+                </tr>
+                <tr>
+                  <td>Brüt Kâr (<span id="t_gp_pct_lbl">%45.0</span>)</td>
+                  <td id="t_p1_gp">$0</td>
+                  <td id="t_p2_gp">$572K</td>
+                  <td id="t_p3_gp">$5.26M</td>
+                  <td id="t_p4_gp">$11.85M</td>
+                  <td id="t_p5_gp">$18.78M</td>
+                  <td id="t_tot_gp" style="font-weight: 700;">$36.46M</td>
+                </tr>
+                <tr>
+                  <td>Faaliyet Gideri (OPEX)</td>
+                  <td style="color: var(--brand-purple); font-weight: 700;">
+                    <div id="t_p1_op">$280.0K</div>
+                    <div style="font-size: 0.65rem; font-weight: 500; color: var(--text-tertiary); margin-top: 2px;">
+                      💻<span id="t_p1_op_tech">$142.5K</span> • 🏛️<span id="t_p1_op_phys">$137.5K</span>
+                    </div>
+                  </td>
+                  <td id="t_p2_op">$371.4K</td>
+                  <td id="t_p3_op">$1.54M</td>
+                  <td id="t_p4_op">$2.38M</td>
+                  <td id="t_p5_op">$3.05M</td>
+                  <td id="t_tot_op" style="font-weight: 700;">$7.62M</td>
+                </tr>
+                <tr class="highlight">
+                  <td style="font-weight: 700;">Net Kâr (EBITDA)</td>
+                  <td id="t_p1_eb" style="color: var(--apple-orange); font-weight: 700;">-$280.0K</td>
+                  <td id="t_p2_eb" style="color: var(--apple-green-dark); font-weight: 700;">+$200.7K</td>
+                  <td id="t_p3_eb" style="color: var(--apple-green-dark); font-weight: 700;">+$3.72M</td>
+                  <td id="t_p4_eb" style="color: var(--apple-green-dark); font-weight: 700;">+$9.47M</td>
+                  <td id="t_p5_eb" style="color: var(--apple-green-dark); font-weight: 700;">+$15.73M</td>
+                  <td id="t_tot_eb" style="color: var(--apple-green-dark); font-weight: 800; font-size: 0.90rem;">+$28.84M</td>
+                </tr>
+                <tr>
+                  <td>EBITDA Kâr Marjı (%)</td>
+                  <td id="t_p1_eb_margin">-%</td>
+                  <td id="t_p2_eb_margin" style="color: var(--apple-green-dark);">%15.8</td>
+                  <td id="t_p3_eb_margin" style="color: var(--apple-green-dark);">%31.8</td>
+                  <td id="t_p4_eb_margin" style="color: var(--apple-green-dark);">%36.0</td>
+                  <td id="t_p5_eb_margin" style="color: var(--apple-green-dark);">%37.7</td>
+                  <td id="t_tot_eb_margin" style="color: var(--apple-green-dark); font-weight: 700;">%35.6 Ort.</td>
+                </tr>
+                <tr style="background: rgba(46, 16, 101, 0.04);">
+                  <td style="font-weight: 700; color: var(--brand-purple);">Dönem Sonu Kasa Nakdi</td>
+                  <td id="t_p1_cash" style="color: var(--brand-purple); font-weight: 700;">$170.0K</td>
+                  <td id="t_p2_cash" style="color: var(--brand-purple); font-weight: 700;">$370.7K</td>
+                  <td id="t_p3_cash" style="color: var(--brand-purple); font-weight: 700;">$4.09M</td>
+                  <td id="t_p4_cash" style="color: var(--brand-purple); font-weight: 700;">$13.56M</td>
+                  <td id="t_p5_cash" style="color: var(--brand-purple); font-weight: 700;">$29.29M</td>
+                  <td id="t_tot_cash" style="color: var(--brand-purple); font-weight: 800; font-size: 0.90rem;">$29.29M</td>
+                </tr>
+                <tr style="background: rgba(0, 113, 227, 0.03);">
+                  <td style="color: #0071E3; font-weight: 600;">LTV / CAC Verimlilik</td>
+                  <td id="t_p1_ltv_cac">-</td>
+                  <td id="t_p2_ltv_cac">42x</td>
+                  <td id="t_p3_ltv_cac">58x</td>
+                  <td id="t_p4_ltv_cac">65x</td>
+                  <td id="t_p5_ltv_cac">68x</td>
+                  <td id="t_tot_ltv_cac" style="color: #0071E3; font-weight: 700;">~68x Sağlık</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- 5. ROW: KADRO & GİDER YÖNETİMİ (SPAN 12 - FULL WIDTH) -->
+        <div class="bento-card span-12">
+          <div class="card-title-row">
+            <div>
+              <h3>🧾 Kadro & Gider Yönetimi (Kademeli 5 Dönem Takvimi)</h3>
+              <span class="subtitle">Hangi personelin hangi ayda başlayacağını, ilk 6 ay Ar-Ge ve 4 yıllık maaş/gider seyrini doğrudan belirleyin</span>
+            </div>
+            <div class="metric-icon">⚙️</div>
+          </div>
+
+          <!-- CATEGORY PILLS -->
+          <div class="expenses-filter-bar">
+            <button class="cat-pill active" onclick="filterExpenses('all')">Tümü (<span id="cnt_all">0</span>)</button>
+            <button class="cat-pill" onclick="filterExpenses('payroll')">👥 Bordro & Kadro</button>
+            <button class="cat-pill" onclick="filterExpenses('facility')">🏛️ Tesis & Depo</button>
+            <button class="cat-pill" onclick="filterExpenses('marketing')">📣 Pazarlama</button>
+            <button class="cat-pill" onclick="filterExpenses('tech')">💻 Teknoloji</button>
+          </div>
+
+          <!-- OPEX PERIOD TOGGLE STRIP -->
+          <div class="opex-year-toggle-strip">
+            <span style="font-size: 0.68rem; font-weight: 700; color: var(--text-tertiary); text-transform: uppercase;">OPEX Dağılım Dönemi:</span>
+            <button class="opex-year-btn" id="btn_opex_p1" onclick="setOpexViewPeriod('p1_pre')">1. İlk 6 Ay ($47K/ay)</button>
+            <button class="opex-year-btn" id="btn_opex_p2" onclick="setOpexViewPeriod('p2_m7_12')">2. 7-12. Ay ($62K/ay)</button>
+            <button class="opex-year-btn" id="btn_opex_p3" onclick="setOpexViewPeriod('p3_y2')">3. 2. Yıl ($128K/ay)</button>
+            <button class="opex-year-btn" id="btn_opex_p4" onclick="setOpexViewPeriod('p4_y3')">4. 3. Yıl ($198K/ay)</button>
+            <button class="opex-year-btn active" id="btn_opex_p5" onclick="setOpexViewPeriod('p5_y4')">5. 4. Yıl Zirve ($254K/ay)</button>
+          </div>
+
+          <!-- OPEX DEPARTMENTAL SPLIT BAR -->
+          <div class="opex-summary-bar-card">
+            <div class="opex-stacked-bar" id="opex_stacked_bar">
+              <!-- Dynamically populated -->
+            </div>
+            <div class="opex-cat-chips-row" id="opex_cat_chips">
+              <!-- Dynamically populated -->
+            </div>
+          </div>
+
+          <!-- EXPENSE ITEMS TABLE (5-PERIOD MATRIX) -->
+          <div class="expense-scroll-container">
+            <table class="expense-items-table">
+              <thead>
+                <tr>
+                  <th style="min-width: 220px; text-align: left;">Gider / Kadro Adı</th>
+                  <th style="min-width: 105px;">Kategori</th>
+                  <th style="min-width: 115px;">Başlangıç</th>
+                  <th style="min-width: 75px; text-align: right;">İlk 6 Ay ($)</th>
+                  <th style="min-width: 75px; text-align: right;">7-12. Ay ($)</th>
+                  <th style="min-width: 75px; text-align: right;">2. Yıl ($)</th>
+                  <th style="min-width: 75px; text-align: right;">3. Yıl ($)</th>
+                  <th style="min-width: 75px; text-align: right;">4. Yıl ($)</th>
+                  <th style="min-width: 35px; text-align: center;">Sil</th>
+                </tr>
+              </thead>
+              <tbody id="expense_items_body">
+                <!-- Dynamic rows -->
+              </tbody>
+            </table>
+          </div>
+
+          <!-- ADD NEW EXPENSE / EMPLOYEE FORM -->
+          <div class="add-expense-bar">
+            <input type="text" id="new_exp_name" placeholder="Yeni çalışan / gider adı..." style="flex: 2;">
+            <select id="new_exp_cat" style="width: 120px;">
+              <option value="payroll">👥 Bordro</option>
+              <option value="facility">🏛️ Tesis & Depo</option>
+              <option value="marketing">📣 Pazarlama</option>
+              <option value="tech">💻 Teknoloji</option>
+              <option value="admin">🏢 Yönetim</option>
+            </select>
+            <select id="new_exp_start" style="width: 130px;" title="Giderin başlayacağı ay">
+              <option value="1">1. Ay (Ar-Ge)</option>
+              <option value="7" selected>7. Ay (Lansman)</option>
+              <option value="13">13. Ay (2. Yıl)</option>
+              <option value="25">25. Ay (3. Yıl)</option>
+              <option value="37">37. Ay (4. Yıl)</option>
+            </select>
+            <input type="number" id="new_exp_amount" placeholder="Aylık ($)" style="width: 90px;">
+            <button class="btn-apple btn-apple-primary" onclick="addNewExpense()" style="padding: 6px 14px; font-size: 0.76rem;">+ Ekle</button>
+          </div>
+
+          <div class="exp-total-card">
+            <div style="width: 100%;">
+              <div class="exp-total-label">5 DÖNEM KADEMELİ FAALİYET GİDERİ (AYLIK OPEX SEYRİ)</div>
+              <div class="exp-yearly-totals-row">
+                <div class="exp-year-badge">
+                  <span class="yb-lbl">1. İlk 6 Ay (Ar-Ge)</span>
+                  <strong id="lbl_opex_p1">$46.667/ay</strong>
+                </div>
+                <div class="exp-year-badge">
+                  <span class="yb-lbl">2. 7-12. Ay (Lansman)</span>
+                  <strong id="lbl_opex_p2">$61.900/ay</strong>
+                </div>
+                <div class="exp-year-badge">
+                  <span class="yb-lbl">3. 2. Yıl (Büyüme)</span>
+                  <strong id="lbl_opex_p3">$128.400/ay</strong>
+                </div>
+                <div class="exp-year-badge">
+                  <span class="yb-lbl">4. 3. Yıl (Ölçek)</span>
+                  <strong id="lbl_opex_p4">$198.200/ay</strong>
+                </div>
+                <div class="exp-year-badge">
+                  <span class="yb-lbl">5. 4. Yıl (Zirve Tavan)</span>
+                  <strong id="lbl_opex_p5" style="color: var(--brand-purple);">$254.200/ay</strong>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+</div>
+    </div>
+  </div>
+
+  <!-- ============================================================== -->
+  <!-- VIEW 2: İLK 6 AY: YAZILIM, AR-GE VE LANSMAN ÖNCESİ (PRELAUNCH) -->
+  <!-- ============================================================== -->
+  <div id="view_prelaunch" style="display: none;">
+
+    <div class="scenario-strip">
+      <div style="display: flex; align-items: center; gap: 10px;">
+        <span style="font-size: 0.85rem; font-weight: 700; color: var(--brand-purple);">🛠️ İlk 6 Ay Ar-Ge ve Kurulum Kokpiti</span>
+        <span style="font-size: 0.78rem; color: var(--text-secondary);">(Gelirsiz Dönem • Yazılım + Han + Kalıplar + VIP Waitlist)</span>
+      </div>
+      <div>
+        <button class="btn-apple btn-apple-secondary" onclick="switchView('main')">← 4 Yıllık Genel Kokpite Dön</button>
+      </div>
+    </div>
+
+    <div class="view-container">
+      <div class="bento-grid">
+
+        <!-- 4 HERO KPI CARDS FOR FIRST 6 MONTHS: EXPLICIT TECH VS PHYSICAL BREAKDOWN -->
+        <div class="bento-card span-3" style="border-top: 3px solid #6D28D9; background: linear-gradient(180deg, rgba(109, 40, 217, 0.04) 0%, #FFFFFF 100%);">
+          <div class="metric-top">
+            <span class="metric-label" style="font-weight: 700; color: #6D28D9;">💻 Yazılım & Teknik Kurulum</span>
+            <span class="split-pill tech">Yazılım</span>
+          </div>
+          <div class="metric-value purple" id="pre_kpi_tech_total">$142.500</div>
+          <div class="metric-sub">
+            Aylık Ort: <strong id="pre_kpi_tech_avg">$23.750/ay</strong> • Pay: <strong id="pre_kpi_tech_pct" style="color: #6D28D9;">%50.9</strong>
+          </div>
+          <div style="font-size: 0.72rem; color: var(--text-tertiary); margin-top: 5px;">
+            Yazılım Ekibi + AI LLM Sandbox Altyapısı
+          </div>
+        </div>
+
+        <div class="bento-card span-3" style="border-top: 3px solid #C5A059; background: linear-gradient(180deg, rgba(197, 160, 89, 0.05) 0%, #FFFFFF 100%);">
+          <div class="metric-top">
+            <span class="metric-label" style="font-weight: 700; color: #92400E;">🏛️ Depo, Kalıp & Fiziki Kurulum</span>
+            <span class="split-pill physical">Fiziki</span>
+          </div>
+          <div class="metric-value" style="color: #92400E;" id="pre_kpi_physical_total">$137.500</div>
+          <div class="metric-sub">
+            Aylık Ort: <strong id="pre_kpi_physical_avg">$22.917/ay</strong> • Pay: <strong id="pre_kpi_physical_pct" style="color: #92400E;">%49.1</strong>
+          </div>
+          <div style="font-size: 0.72rem; color: var(--text-tertiary); margin-top: 5px;">
+            Kapalıçarşı Depo + Tonoz CapEx + Kalıplar + PR
+          </div>
+        </div>
+
+        <div class="bento-card span-3">
+          <div class="metric-top">
+            <span class="metric-label">🛠️ 6 Aylık Toplam Nakit Çıkışı</span>
+            <div class="metric-icon">📦</div>
+          </div>
+          <div class="metric-value" style="color: var(--text-primary);" id="pre_kpi_total_burn">$280.000</div>
+          <div class="metric-sub">
+            Aylık Ortalama: <strong id="pre_kpi_avg_burn">$46.667 / ay</strong>
+          </div>
+          <div style="font-size: 0.72rem; color: var(--text-tertiary); margin-top: 5px;">
+            Yazılım ($142.5K) + Fiziki ($137.5K) Toplamı
+          </div>
+        </div>
+
+        <div class="bento-card span-3">
+          <div class="metric-top">
+            <span class="metric-label">🛡️ Başabaş Güvenli Kasa</span>
+            <div class="metric-icon">⚖️</div>
+          </div>
+          <div class="metric-value green" id="pre_kpi_safe_buffer">$310.000</div>
+          <div class="metric-sub">
+            Eşik: <strong id="pre_kpi_breakeven" style="color: var(--brand-purple);">9. Ay</strong> (<span id="pre_kpi_breakeven_subs">~1.131 Abone</span>)
+          </div>
+          <div style="font-size: 0.72rem; color: var(--text-tertiary); margin-top: 5px;">
+            Kurulum + 3 Ay Ramp-up Güvenlik Tamponu
+          </div>
+        </div>
+
+        <!-- 6-MONTH ITEM-BY-ITEM MONTHLY GRID (SPAN 12) -->
+        <div class="bento-card span-12">
+          <div class="card-title-row">
+            <div>
+              <h3>🗓️ İlk 6 Ayın Detaylı Gider Yönetimi (Yazılım & Fiziki Ayrımı)</h3>
+              <span class="subtitle">Her ayın tutarını doğrudan düzenleyebilirsiniz. Yazılım ve depo gereksinimleri bağımsız olarak ayrılmıştır.</span>
+            </div>
+            <button class="btn-apple btn-apple-secondary" onclick="addPrelaunchExpenseRow()">+ Yeni Ar-Ge Kalemi Ekle</button>
+          </div>
+
+          <!-- INTERACTIVE SEGMENTED FILTER & VISUAL PROPORTION BAR -->
+          <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; margin-top: 14px; margin-bottom: 14px; padding-bottom: 12px; border-bottom: 1px solid rgba(0,0,0,0.06);">
+            <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+              <button id="btn_pre_filter_all" class="btn-apple btn-apple-primary" onclick="setPrelaunchFilter('all')">
+                Tümü (7 Kalem • <span id="pre_pill_all_total">$280.000</span>)
+              </button>
+              <button id="btn_pre_filter_tech" class="btn-apple btn-apple-secondary" onclick="setPrelaunchFilter('tech')" style="color: #6D28D9; border-color: rgba(109, 40, 217, 0.25);">
+                💻 Sadece Yazılım & Teknik (<span id="pre_pill_tech_total">$142.500</span>)
+              </button>
+              <button id="btn_pre_filter_physical" class="btn-apple btn-apple-secondary" onclick="setPrelaunchFilter('physical')" style="color: #92400E; border-color: rgba(146, 64, 14, 0.25);">
+                🏛️ Depo, Kalıp & Fiziki (<span id="pre_pill_physical_total">$137.500</span>)
+              </button>
+            </div>
+
+            <div style="display: flex; align-items: center; gap: 10px; font-size: 0.80rem;">
+              <div style="width: 200px; height: 9px; background: rgba(0,0,0,0.06); border-radius: 5px; overflow: hidden; display: flex;">
+                <div id="pre_bar_tech" style="width: 50.9%; background: #6D28D9;" title="Yazılım & AI"></div>
+                <div id="pre_bar_physical" style="width: 49.1%; background: #C5A059;" title="Depo & Fiziki"></div>
+              </div>
+              <span style="font-weight: 700; color: #6D28D9;" id="pre_bar_label_tech">%51 Yazılım</span>
+              <span style="color: var(--text-tertiary);">•</span>
+              <span style="font-weight: 700; color: #92400E;" id="pre_bar_label_physical">%49 Fiziki</span>
+            </div>
+          </div>
+
+          <div class="apple-table-wrap">
+            <table class="apple-table prelaunch-table">
+              <thead>
+                <tr>
+                  <th style="text-align: left; min-width: 440px;">Gider / Faaliyet Kalemi</th>
+                  <th style="min-width: 110px;">Kategori</th>
+                  <th style="min-width: 75px;">1. Ay (Oca)</th>
+                  <th style="min-width: 75px;">2. Ay (Şub)</th>
+                  <th style="min-width: 75px;">3. Ay (Mar)</th>
+                  <th style="min-width: 75px;">4. Ay (Nis)</th>
+                  <th style="min-width: 75px;">5. Ay (May)</th>
+                  <th style="min-width: 75px;">6. Ay (Haz)</th>
+                  <th style="min-width: 90px; text-align: right;">6 Ay Toplam</th>
+                  <th style="min-width: 45px; text-align: center;">Sil</th>
+                </tr>
+              </thead>
+              <tbody id="prelaunch_items_body">
+                <!-- Populated dynamically by JS -->
+              </tbody>
+              <tfoot>
+                <tr class="highlight" style="background: rgba(46, 16, 101, 0.06); font-weight: 700;">
+                  <td style="color: var(--brand-purple);" id="pre_foot_label">AYLIK TOPLAM NAKİT ÇIKIŞI</td>
+                  <td>-</td>
+                  <td id="pre_tot_m1">$0</td>
+                  <td id="pre_tot_m2">$0</td>
+                  <td id="pre_tot_m3">$0</td>
+                  <td id="pre_tot_m4">$0</td>
+                  <td id="pre_tot_m5">$0</td>
+                  <td id="pre_tot_m6">$0</td>
+                  <td id="pre_grand_total" style="text-align: right; color: var(--brand-purple); font-size: 0.95rem;">$0</td>
+                  <td></td>
+                </tr>
+              </tfoot>
+            </table>
+          </div>
+        </div>
+
+        <!-- 6-MONTH CASH BURN RUNWAY CHART (SPAN 8) -->
+        <div class="bento-card span-8">
+          <div class="card-title-row">
+            <div>
+              <h3>📉 İlk 6 Ay Kümülatif Kurulum Harcaması & Nakit Çıkışı</h3>
+              <span class="subtitle">Lansman gününe kadar ay ay biriken yazılım, han ve ürün yatırımı</span>
+            </div>
+            <div class="metric-icon">🛡️</div>
+          </div>
+          <div class="chart-box-apple">
+            <canvas id="prelaunchChart"></canvas>
+          </div>
+        </div>
+
+        <!-- FON KULLANIM PLANI (USE OF FUNDS - SPAN 4) -->
+        <div class="bento-card span-4">
+          <div class="card-title-row">
+            <h3>🎯 Kurulum & Ar-Ge Bütçe Dağılımı</h3>
+            <span class="subtitle">6 Aylık Hazırlık Dönemi Kalemleri</span>
+          </div>
+
+          <div style="height: 180px; position: relative;">
+            <canvas id="prelaunchDoughnut"></canvas>
+          </div>
+
+          <div style="margin-top: 14px; font-size: 0.78rem; color: var(--text-secondary); line-height: 1.6;" id="pre_funds_breakdown_text">
+            <!-- Dynamic breakdown text -->
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <div class="toast" id="toast_msg">İşlem Tamamlandı</div>
+
+  <!-- JAVASCRIPT ENGINE -->
+  <script>
+    // DEFAULT CONFIGURATION (TÜRKİYE GERÇEKLİĞİ & DOYGUNLUK MODELİ)
+    const DEFAULT_CONFIG = {
+      years: 4,
+      seedFund: 450000,
+      activeCategoryFilter: 'all',
+      selectedAnatomyTier: 'blended',
+      activeOpexViewPeriod: 'p5_y4',
+      activePrelaunchFilter: 'all',
+      // Milestone subscribers (Türkiye A+ Gelir Grubu Pazar Doygunluğu)
+      targetSubsByYear: {
+        y1: 3200,
+        y2: 11500,
+        y3: 21000,
+        y4: 28000
+      },
+      // 6 Tiers + Bespoke Slider (Türkiye Gerçek Satın Alma Dağılımı)
+      tiers: [
+        { name: "Petite", share: 30, price: 28, color: "#8B5CF6" },
+        { name: "Signature (Popüler)", share: 45, price: 85, color: "#6D28D9" },
+        { name: "Prestige (Lüks)", share: 14, price: 175, color: "#C5A059" },
+        { name: "Privé (Yüksek)", share: 6, price: 390, color: "#D97706" },
+        { name: "Grand Vault", share: 3, price: 750, color: "#10B981" },
+        { name: "Aura Black (Cemiyet)", share: 1, price: 1320, color: "#1D1D1F" },
+        { name: "Özel (Bespoke)", share: 1, price: 480, color: "#0071E3" }
+      ],
+      // COGS per box (Türkiye Gerçekliği - Toptan Ocak Alımı & Lüks Ambalaj)
+      cogs: {
+        craftName: 'Kapalıçarşı Ocak Tedariki',
+        craftRate: 42.0, // Doğrudan ocak toptan alımı (%42.0)
+        boxName: 'Lüks Kutu, Süet Yuva & Mühür',
+        boxMaterial: 7.50, // 260 TL (Sert mukavva, süet yuva, el yapımı pirinç mühür)
+        courierName: 'VIP Sigortalı Değerli Kargo',
+        courierCost: 6.00, // 210 TL (İstanbul içi özel motorlu kurye / Loomis sigortalı)
+        posName: 'Sanal POS & Taksit Komisyonu',
+        posRate: 3.0 // iyzico / Banka Sanal POS abonelik komisyonu (%3.0)
+      },
+      // 1. DYNAMIC PRE-LAUNCH 6-MONTH ITEM-BY-ITEM EXPENSES (AR-GE DÖNEMİ)
+      prelaunchExpenses: [
+        { id: 'pre_sw_team', name: 'Yazılım & Mobil Ekip (CTO, Senior Dev, UI/UX)', cat: 'Yazılım', monthly: [18000, 18000, 20000, 20000, 22000, 22000] },
+        { id: 'pre_ai_llm', name: 'AI İlişki Zekası & LLM API Sandbox Altyapısı', cat: 'AI/Ar-Ge', monthly: [2500, 3000, 3500, 4000, 4500, 5000] },
+        { id: 'pre_han_rent', name: 'Kapalıçarşı Çevresi Operasyon & Tedarik Deposu Kirası', cat: 'Tesis', monthly: [4500, 4500, 4500, 4500, 4500, 4500] },
+        { id: 'pre_han_capex', name: 'Depo Kurulumu, Raf/Paketleme Masaları & Çelik Tonoz Kasa (CapEx)', cat: 'CapEx', monthly: [18000, 10000, 4000, 0, 0, 0] },
+        { id: 'pre_box_molds', name: 'Lüks Kutu Kalıpları, Pirinç Mühür & Numuneler', cat: 'Ürün', monthly: [8000, 12000, 6000, 3000, 0, 0] },
+        { id: 'pre_legal_ip', name: 'Şirket Kuruluşu, Marka & Hukuki Sözleşmeler', cat: 'Hukuk', monthly: [5000, 3000, 2000, 1500, 1500, 1500] },
+        { id: 'pre_vip_waitlist', name: 'VIP Bekleme Listesi & Cemiyet Lansman PR', cat: 'Pazarlama', monthly: [1500, 2500, 4000, 6000, 9000, 12000] }
+      ],
+      // 2. DYNAMIC 5-PERIOD REALISTIC EXPENSES (AR-GE, LANSMAN, BÜYÜME, ÖLÇEK, TAVAN)
+      expenses: [
+        { id: 'exp_ceo', name: 'Kurucu & CEO (Strateji)', cat: 'payroll', catName: 'Bordro', startMonth: 1, m1_6: 2500, m7_12: 3000, y2: 4000, y3: 5000, y4: 6000, amount: 6000 },
+        { id: 'exp_cto', name: 'CTO & Sistem Mimarı', cat: 'payroll', catName: 'Bordro', startMonth: 1, m1_6: 3500, m7_12: 4000, y2: 4500, y3: 5000, y4: 5500, amount: 5500 },
+        { id: 'exp_ai_lead', name: 'AI & Backend Yazılımcılar (1-3 Kişi)', cat: 'payroll', catName: 'Bordro', startMonth: 1, m1_6: 3500, m7_12: 5000, y2: 6500, y3: 9000, y4: 10500, amount: 10500 },
+        { id: 'exp_curator', name: 'Kapalıçarşı Baş Zanaat Küratörleri (2 Kişi)', cat: 'payroll', catName: 'Bordro', startMonth: 1, m1_6: 2500, m7_12: 3000, y2: 4000, y3: 5000, y4: 6000, amount: 6000 },
+        { id: 'exp_perfumer', name: 'Niş Koku & Deri Zanaat Uzmanı', cat: 'payroll', catName: 'Bordro', startMonth: 7, m1_6: 0, m7_12: 2000, y2: 2800, y3: 3200, y4: 3500, amount: 3500 },
+        { id: 'exp_packers', name: 'Lüks Paketleme, Mühür & Kalite Ekibi (3-18 Kişi)', cat: 'payroll', catName: 'Bordro', startMonth: 7, m1_6: 0, m7_12: 3600, y2: 9600, y3: 16800, y4: 21600, amount: 21600 },
+        { id: 'exp_concierge', name: 'VIP Özel Müşteri Concierge Ekibi (2-12 Kişi)', cat: 'payroll', catName: 'Bordro', startMonth: 7, m1_6: 0, m7_12: 3600, y2: 9000, y3: 14400, y4: 21600, amount: 21600 },
+        { id: 'exp_growth_mgr', name: 'Growth Marketing & Cemiyet İletişimi (1-3 Kişi)', cat: 'payroll', catName: 'Bordro', startMonth: 6, m1_6: 1500, m7_12: 2500, y2: 5000, y3: 7500, y4: 9000, amount: 9000 },
+        { id: 'exp_bazaar_hub', name: 'Kapalıçarşı Çevresi Operasyon & Tedarik Deposu', cat: 'facility', catName: 'Tesis', startMonth: 1, m1_6: 4500, m7_12: 4500, y2: 5000, y3: 5500, y4: 6000, amount: 6000 },
+        { id: 'exp_logistics_hub', name: 'Depolama, Raf & Ek Paketleme Alanı', cat: 'facility', catName: 'Tesis', startMonth: 13, m1_6: 0, m7_12: 0, y2: 3500, y3: 5500, y4: 7500, amount: 7500 },
+        { id: 'exp_vault_security', name: 'Zırhlı Çelik Tonoz & 7/24 Özel Güvenlik', cat: 'facility', catName: 'Tesis', startMonth: 1, m1_6: 2500, m7_12: 2500, y2: 3000, y3: 3200, y4: 3500, amount: 3500 },
+        { id: 'exp_depo_ops', name: 'Depo Aidatı, Nem/İklimlendirme & Bakım', cat: 'facility', catName: 'Tesis', startMonth: 1, m1_6: 1200, m7_12: 1200, y2: 1500, y3: 1800, y4: 2000, amount: 2000 },
+        { id: 'exp_mkt_meta', name: 'Meta (Instagram) VIP Video Reklamları', cat: 'marketing', catName: 'Pazarlama', startMonth: 7, m1_6: 0, m7_12: 12000, y2: 30000, y3: 50000, y4: 65000, amount: 65000 },
+        { id: 'exp_mkt_google', name: 'Google Intent & Lüks Hediye Arama', cat: 'marketing', catName: 'Pazarlama', startMonth: 7, m1_6: 0, m7_12: 5000, y2: 15000, y3: 25000, y4: 30000, amount: 30000 },
+        { id: 'exp_mkt_vip_tasting', name: 'Cemiyet & Influencer Tohum Kutuları', cat: 'marketing', catName: 'Pazarlama', startMonth: 6, m1_6: 1000, m7_12: 4000, y2: 8000, y3: 12000, y4: 15000, amount: 15000 },
+        { id: 'exp_mkt_pr', name: 'Lüks Yayınlar, Basın & Özel Davetler', cat: 'marketing', catName: 'Pazarlama', startMonth: 7, m1_6: 0, m7_12: 3000, y2: 6000, y3: 8000, y4: 10000, amount: 10000 },
+        { id: 'exp_cloud', name: 'Bulut Altyapısı (AWS / GCP Dedicated)', cat: 'tech', catName: 'Teknoloji', startMonth: 1, m1_6: 1500, m7_12: 2000, y2: 3500, y3: 6000, y4: 8000, amount: 8000 },
+        { id: 'exp_llm_api', name: 'AI LLM API (OpenAI / Gemini Model Maliyeti)', cat: 'tech', catName: 'Teknoloji', startMonth: 1, m1_6: 1500, m7_12: 2000, y2: 4000, y3: 8000, y4: 12000, amount: 12000 },
+        { id: 'exp_cyber_insurance', name: 'Değerli Emtia Sigortası & Hukuki Uyum', cat: 'tech', catName: 'Teknoloji', startMonth: 1, m1_6: 2000, m7_12: 2000, y2: 5000, y3: 9000, y4: 12000, amount: 12000 }
+      ]
+    };
+
+    let state = JSON.parse(JSON.stringify(DEFAULT_CONFIG));
+    let currentView = 'main';
+    let chartInstance = null;
+    let prelaunchChartInstance = null;
+    let prelaunchDoughnutInstance = null;
+
+    const STORAGE_KEY = 'aura_box_v10_5epoch_bento';
+
+    // PERSISTENCE
+    function saveStateToStorage() {
+      const badge = document.getElementById('save_badge');
+      const text = document.getElementById('save_badge_text');
+      badge.classList.add('saving');
+      text.textContent = 'Kaydediliyor...';
+
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+
+      setTimeout(() => {
+        badge.classList.remove('saving');
+        text.textContent = 'Kaydedildi';
+        badge.title = 'Son kayıt: ' + new Date().toLocaleTimeString('tr-TR', {hour: '2-digit', minute:'2-digit', second:'2-digit'});
+      }, 300);
+    }
+
+    function loadStateFromStorage() {
+      const saved = localStorage.getItem(STORAGE_KEY);
+      if (saved) {
+        try {
+          const parsed = JSON.parse(saved);
+          state = Object.assign(JSON.parse(JSON.stringify(DEFAULT_CONFIG)), parsed);
+          // 5-Period migration fallback
+          if (state.expenses) {
+            state.expenses.forEach(e => {
+              if (e.m1_6 === undefined) e.m1_6 = (e.startMonth && e.startMonth > 6) ? 0 : Math.round((e.y1 || 2000) * 0.7);
+              if (e.m7_12 === undefined) e.m7_12 = (e.y1 !== undefined ? e.y1 : (e.amount || 2500));
+              if (e.y2 === undefined) e.y2 = Math.round((e.y4 || 5000) * 0.75);
+              if (e.y3 === undefined) e.y3 = Math.round((e.y4 || 5000) * 0.90);
+              if (e.y4 === undefined) e.y4 = e.amount || 5000;
+            });
+          }
+          // Migration check for y1-y4
+          state.expenses.forEach(e => {
+            if (e.y4 === undefined) e.y4 = e.amount || 5000;
+            if (e.y1 === undefined) e.y1 = (e.startMonth && e.startMonth > 12) ? 0 : Math.round(e.y4 * 0.45);
+            if (e.y2 === undefined) e.y2 = (e.startMonth && e.startMonth > 24) ? 0 : Math.round(e.y4 * 0.70);
+            if (e.y3 === undefined) e.y3 = (e.startMonth && e.startMonth > 36) ? 0 : Math.round(e.y4 * 0.88);
+            if (e.startMonth === undefined) e.startMonth = 1;
+            e.amount = e.y4;
+          });
+        } catch (e) {
+          console.error("Storage load error:", e);
+          state = JSON.parse(JSON.stringify(DEFAULT_CONFIG));
+        }
+      } else {
+        state = JSON.parse(JSON.stringify(DEFAULT_CONFIG));
+      }
+    }
+
+    function resetToFactoryDefaults() {
+      if (confirm("Tüm değişiklikleri sıfırlayıp fabrika ayarlarına dönmek istediğinize emin misiniz?")) {
+        localStorage.removeItem(STORAGE_KEY);
+        state = JSON.parse(JSON.stringify(DEFAULT_CONFIG));
+        syncAllUIControls();
+        recalculateAll();
+        showToast("Fabrika ayarlarına dönüldü!");
+      }
+    }
+
+    function exportConfigToFile() {
+      const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(state, null, 2));
+      const a = document.createElement('a');
+      a.setAttribute("href", dataStr);
+      a.setAttribute("download", `Aura_Box_4Yillik_Senaryo_${new Date().toISOString().slice(0,10)}.json`);
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+      showToast("Finansal senaryo dosyası indirildi (.json)");
+    }
+
+    function importConfigFromFile(event) {
+      const file = event.target.files[0];
+      if (!file) return;
+      const reader = new FileReader();
+      reader.onload = function(e) {
+        try {
+          const imported = JSON.parse(e.target.result);
+          state = Object.assign(JSON.parse(JSON.stringify(DEFAULT_CONFIG)), imported);
+          syncAllUIControls();
+          recalculateAll();
+          saveStateToStorage();
+          showToast("Senaryo başarıyla yüklendi!");
+        } catch (err) {
+          alert("Geçersiz dosya formatı!");
+        }
+      };
+      reader.readAsText(file);
+    }
+
+    function switchView(viewName) {
+      currentView = viewName;
+      if (viewName === 'main') {
+        document.getElementById('view_main').style.display = 'block';
+        document.getElementById('view_prelaunch').style.display = 'none';
+        document.getElementById('tab_btn_main').classList.add('active');
+        document.getElementById('tab_btn_prelaunch').classList.remove('active');
+      } else {
+        document.getElementById('view_main').style.display = 'none';
+        document.getElementById('view_prelaunch').style.display = 'block';
+        document.getElementById('tab_btn_main').classList.remove('active');
+        document.getElementById('tab_btn_prelaunch').classList.add('active');
+        renderPrelaunchTable();
+        renderPrelaunchCharts();
+      }
+    }
+
+    // FORMATTERS
+    function formatUSD(val, compact = false) {
+      if (val < 0) return '-' + formatUSD(Math.abs(val), compact);
+      if (compact) {
+        if (val >= 1000000000) return '$' + (val / 1000000000).toFixed(2) + 'B';
+        if (val >= 1000000) return '$' + (val / 1000000).toFixed(1) + 'M';
+        if (val >= 1000) {
+          const kVal = val / 1000;
+          return '$' + (kVal % 1 === 0 ? kVal.toFixed(0) : kVal.toFixed(1)) + 'K';
+        }
+        return '$' + Math.round(val);
+      }
+      return '$' + Number(val).toLocaleString('en-US', { minimumFractionDigits: 0, maximumFractionDigits: 0 });
+    }
+
+    function formatNumber(val) {
+      return Number(val).toLocaleString('tr-TR');
+    }
+
+    // ===============================================
+    // PRE-LAUNCH (İLK 6 AY) TABLE RENDERING & LOGIC
+    // ===============================================
+    function setPrelaunchFilter(filterType) {
+      state.activePrelaunchFilter = filterType;
+      ['all', 'tech', 'physical'].forEach(f => {
+        const btn = document.getElementById(`btn_pre_filter_${f}`);
+        if (btn) {
+          if (f === filterType) {
+            btn.className = 'btn-apple btn-apple-primary';
+          } else {
+            btn.className = 'btn-apple btn-apple-secondary';
+          }
+        }
+      });
+      renderPrelaunchTable();
+    }
+
+    function renderPrelaunchTable() {
+      const tbody = document.getElementById('prelaunch_items_body');
+      if (!tbody) return;
+      tbody.innerHTML = '';
+
+      const filter = state.activePrelaunchFilter || 'all';
+
+      // Separate Tech vs Physical
+      const techItems = [];
+      const physicalItems = [];
+
+      state.prelaunchExpenses.forEach(exp => {
+        const isTech = (exp.cat === 'Yazılım' || exp.cat === 'AI/Ar-Ge');
+        if (isTech) {
+          techItems.push(exp);
+        } else {
+          physicalItems.push(exp);
+        }
+      });
+
+      let techTotal = 0;
+      let physTotal = 0;
+      const techMonthly = [0, 0, 0, 0, 0, 0];
+      const physMonthly = [0, 0, 0, 0, 0, 0];
+
+      techItems.forEach(exp => {
+        const rowSum = exp.monthly.reduce((a, b) => a + b, 0);
+        techTotal += rowSum;
+        exp.monthly.forEach((v, idx) => { techMonthly[idx] += v; });
+      });
+
+      physicalItems.forEach(exp => {
+        const rowSum = exp.monthly.reduce((a, b) => a + b, 0);
+        physTotal += rowSum;
+        exp.monthly.forEach((v, idx) => { physMonthly[idx] += v; });
+      });
+
+      const grandTotal = techTotal + physTotal;
+      const grandMonthly = [0, 1, 2, 3, 4, 5].map(i => techMonthly[i] + physMonthly[i]);
+
+      function buildExpenseRow(exp) {
+        const rowSum = exp.monthly.reduce((a, b) => a + b, 0);
+        const tr = document.createElement('tr');
+        let cellsHtml = `
+          <td>
+            <input type="text" class="exp-name-input" value="${exp.name}" oninput="updatePrelaunchName('${exp.id}', this.value)" title="Gider Adını Düzenle">
+          </td>
+          <td>
+            <select class="exp-cat-select" onchange="updatePrelaunchCat('${exp.id}', this.value)">
+              <option value="Yazılım" ${exp.cat === 'Yazılım' ? 'selected' : ''}>Yazılım</option>
+              <option value="AI/Ar-Ge" ${exp.cat === 'AI/Ar-Ge' ? 'selected' : ''}>AI/Ar-Ge</option>
+              <option value="Tesis" ${exp.cat === 'Tesis' ? 'selected' : ''}>Tesis</option>
+              <option value="CapEx" ${exp.cat === 'CapEx' ? 'selected' : ''}>CapEx</option>
+              <option value="Ürün" ${exp.cat === 'Ürün' ? 'selected' : ''}>Ürün</option>
+              <option value="Hukuk" ${exp.cat === 'Hukuk' ? 'selected' : ''}>Hukuk</option>
+              <option value="Pazarlama" ${exp.cat === 'Pazarlama' ? 'selected' : ''}>Pazarlama</option>
+              <option value="Diğer" ${exp.cat === 'Diğer' ? 'selected' : ''}>Diğer</option>
+            </select>
+          </td>
+        `;
+
+        for (let m = 0; m < 6; m++) {
+          cellsHtml += `
+            <td>
+              <input type="number" value="${exp.monthly[m]}" step="500" onchange="updatePrelaunchMonthly('${exp.id}', ${m}, this.value)">
+            </td>
+          `;
+        }
+
+        cellsHtml += `
+          <td style="text-align: right; font-weight: 700; color: var(--text-primary);">${formatUSD(rowSum)}</td>
+          <td style="text-align: center;">
+            <button class="btn-delete-row" title="Sil" onclick="deletePrelaunchRow('${exp.id}')">🗑️</button>
+          </td>
+        `;
+
+        tr.innerHTML = cellsHtml;
+        return tr;
+      }
+
+      // 1. RENDER SECTION 1: YAZILIM & TEKNİK KURULUM
+      if (filter === 'all' || filter === 'tech') {
+        const sec1Head = document.createElement('tr');
+        sec1Head.className = 'pre-group-header tech-header';
+        sec1Head.innerHTML = `
+          <td colspan="8">
+            💻 BÖLÜM 1: YAZILIM, MOBİL & AI ALTYAPI YATIRIMI (Yazılım Ekibi + AI LLM Sandbox)
+          </td>
+          <td style="text-align: right; font-weight: 800; color: #6D28D9;">${formatUSD(techTotal)}</td>
+          <td></td>
+        `;
+        tbody.appendChild(sec1Head);
+
+        techItems.forEach(exp => {
+          tbody.appendChild(buildExpenseRow(exp));
+        });
+
+        // Subtotal row for tech
+        const sec1Sub = document.createElement('tr');
+        sec1Sub.className = 'pre-subtotal-row tech-subtotal';
+        let subCells = `
+          <td style="color: #6D28D9; font-weight: 700;">💻 YAZILIM & TEKNİK ARA TOPLAMI</td>
+          <td><span class="split-pill tech">Yazılım</span></td>
+        `;
+        for (let m = 0; m < 6; m++) {
+          subCells += `<td style="font-weight: 700; color: #6D28D9;">${formatUSD(techMonthly[m])}</td>`;
+        }
+        subCells += `
+          <td style="text-align: right; font-weight: 800; color: #6D28D9;">${formatUSD(techTotal)}</td>
+          <td></td>
+        `;
+        sec1Sub.innerHTML = subCells;
+        tbody.appendChild(sec1Sub);
+      }
+
+      // 2. RENDER SECTION 2: KAPALIÇARŞI DEPO & FİZİKİ GİDERLER
+      if (filter === 'all' || filter === 'physical') {
+        const sec2Head = document.createElement('tr');
+        sec2Head.className = 'pre-group-header physical-header';
+        sec2Head.innerHTML = `
+          <td colspan="8">
+            🏛️ BÖLÜM 2: KAPALIÇARŞI DEPO, KALIP, HUKUK & LANSMAN ÖNCESİ GİDERLER
+          </td>
+          <td style="text-align: right; font-weight: 800; color: #92400E;">${formatUSD(physTotal)}</td>
+          <td></td>
+        `;
+        tbody.appendChild(sec2Head);
+
+        physicalItems.forEach(exp => {
+          tbody.appendChild(buildExpenseRow(exp));
+        });
+
+        // Subtotal row for physical
+        const sec2Sub = document.createElement('tr');
+        sec2Sub.className = 'pre-subtotal-row physical-subtotal';
+        let subCells2 = `
+          <td style="color: #92400E; font-weight: 700;">🏛️ DEPO & FİZİKİ GİDERLER ARA TOPLAMI</td>
+          <td><span class="split-pill physical">Operasyon</span></td>
+        `;
+        for (let m = 0; m < 6; m++) {
+          subCells2 += `<td style="font-weight: 700; color: #92400E;">${formatUSD(physMonthly[m])}</td>`;
+        }
+        subCells2 += `
+          <td style="text-align: right; font-weight: 800; color: #92400E;">${formatUSD(physTotal)}</td>
+          <td></td>
+        `;
+        sec2Sub.innerHTML = subCells2;
+        tbody.appendChild(sec2Sub);
+      }
+
+      // Footer & Totals
+      let activeMonthTotals = grandMonthly;
+      let activeGrandTotal = grandTotal;
+      let footLabel = 'AYLIK TOPLAM NAKİT ÇIKIŞI (YAZILIM + DEPO)';
+
+      if (filter === 'tech') {
+        activeMonthTotals = techMonthly;
+        activeGrandTotal = techTotal;
+        footLabel = '💻 AYLIK TOPLAM YAZILIM & TEKNİK GEREKSİNİMİ';
+      } else if (filter === 'physical') {
+        activeMonthTotals = physMonthly;
+        activeGrandTotal = physTotal;
+        footLabel = '🏛️ AYLIK TOPLAM DEPO & FİZİKİ KURULUM GEREKSİNİMİ';
+      }
+
+      if (document.getElementById('pre_foot_label')) {
+        document.getElementById('pre_foot_label').textContent = footLabel;
+      }
+
+      for (let m = 0; m < 6; m++) {
+        if (document.getElementById(`pre_tot_m${m+1}`)) {
+          document.getElementById(`pre_tot_m${m+1}`).textContent = formatUSD(activeMonthTotals[m]);
+        }
+      }
+      if (document.getElementById('pre_grand_total')) {
+        document.getElementById('pre_grand_total').textContent = formatUSD(activeGrandTotal);
+      }
+
+      // Update KPI Cards
+      if (document.getElementById('pre_kpi_tech_total')) document.getElementById('pre_kpi_tech_total').textContent = formatUSD(techTotal);
+      if (document.getElementById('pre_kpi_tech_avg')) document.getElementById('pre_kpi_tech_avg').textContent = formatUSD(techTotal / 6) + '/ay';
+      if (document.getElementById('pre_kpi_tech_pct')) document.getElementById('pre_kpi_tech_pct').textContent = `%${((techTotal / (grandTotal || 1)) * 100).toFixed(1)}`;
+
+      if (document.getElementById('pre_kpi_physical_total')) document.getElementById('pre_kpi_physical_total').textContent = formatUSD(physTotal);
+      if (document.getElementById('pre_kpi_physical_avg')) document.getElementById('pre_kpi_physical_avg').textContent = formatUSD(physTotal / 6) + '/ay';
+      if (document.getElementById('pre_kpi_physical_pct')) document.getElementById('pre_kpi_physical_pct').textContent = `%${((physTotal / (grandTotal || 1)) * 100).toFixed(1)}`;
+
+      if (document.getElementById('pre_kpi_total_burn')) document.getElementById('pre_kpi_total_burn').textContent = formatUSD(grandTotal);
+      if (document.getElementById('pre_kpi_avg_burn')) document.getElementById('pre_kpi_avg_burn').textContent = formatUSD(grandTotal / 6) + ' / ay';
+
+      // Update Filter Pills
+      if (document.getElementById('pre_pill_all_total')) document.getElementById('pre_pill_all_total').textContent = formatUSD(grandTotal);
+      if (document.getElementById('pre_pill_tech_total')) document.getElementById('pre_pill_tech_total').textContent = formatUSD(techTotal);
+      if (document.getElementById('pre_pill_physical_total')) document.getElementById('pre_pill_physical_total').textContent = formatUSD(physTotal);
+
+      // Update Proportion Bar
+      const techPct = (techTotal / (grandTotal || 1)) * 100;
+      const physPct = 100 - techPct;
+      if (document.getElementById('pre_bar_tech')) document.getElementById('pre_bar_tech').style.width = techPct + '%';
+      if (document.getElementById('pre_bar_physical')) document.getElementById('pre_bar_physical').style.width = physPct + '%';
+      if (document.getElementById('pre_bar_label_tech')) document.getElementById('pre_bar_label_tech').textContent = `%${techPct.toFixed(0)} Yazılım (${formatUSD(techTotal, true)})`;
+      if (document.getElementById('pre_bar_label_physical')) document.getElementById('pre_bar_label_physical').textContent = `%${physPct.toFixed(0)} Fiziki (${formatUSD(physTotal, true)})`;
+
+      if (document.getElementById('lbl_strip_pre_total')) {
+        document.getElementById('lbl_strip_pre_total').textContent = formatUSD(grandTotal);
+      }
+      if (document.getElementById('lbl_pitch_pre_burn')) {
+        document.getElementById('lbl_pitch_pre_burn').textContent = formatUSD(grandTotal, true) + ' Kurulum';
+      }
+
+      renderPrelaunchCharts();
+    }
+
+    function updatePrelaunchMonthly(id, monthIdx, val) {
+      const item = state.prelaunchExpenses.find(e => e.id === id);
+      if (item) {
+        item.monthly[monthIdx] = Math.max(0, parseFloat(val) || 0);
+        renderPrelaunchTable();
+        recalculateAll();
+        saveStateToStorage();
+      }
+    }
+
+    function updatePrelaunchName(id, val) {
+      const item = state.prelaunchExpenses.find(e => e.id === id);
+      if (item) {
+        item.name = val.trim();
+        saveStateToStorage();
+      }
+    }
+
+    function updatePrelaunchCat(id, val) {
+      const item = state.prelaunchExpenses.find(e => e.id === id);
+      if (item) {
+        item.cat = val;
+        renderPrelaunchTable();
+        recalculateAll();
+        saveStateToStorage();
+      }
+    }
+
+    function deletePrelaunchRow(id) {
+      const idx = state.prelaunchExpenses.findIndex(e => e.id === id);
+      if (idx !== -1) {
+        state.prelaunchExpenses.splice(idx, 1);
+        renderPrelaunchTable();
+        recalculateAll();
+        saveStateToStorage();
+        showToast("Ar-Ge kalemi silindi");
+      }
+    }
+
+    function addPrelaunchExpenseRow() {
+      const defaultCat = state.activePrelaunchFilter === 'tech' ? 'Yazılım' : (state.activePrelaunchFilter === 'physical' ? 'Tesis' : 'Yazılım');
+      const name = prompt("Yeni ilk 6 ay giderinin adı (Örn: Mobil App QA, Ekstra Güvenlik Denetimi, Prototipler):");
+      if (!name) return;
+      const newId = 'pre_custom_' + Date.now();
+      state.prelaunchExpenses.push({
+        id: newId,
+        name: name.trim(),
+        cat: defaultCat,
+        monthly: [2000, 2000, 2000, 2000, 2000, 2000]
+      });
+      renderPrelaunchTable();
+      recalculateAll();
+      saveStateToStorage();
+      showToast(`"${name}" eklendi!`);
+    }
+
+    function renderPrelaunchCharts() {
+      if (currentView !== 'prelaunch') return;
+
+      // 1. Prelaunch Cumulative Investment & Monthly Spend
+      const labels = ['Başlangıç', '1. Ay', '2. Ay', '3. Ay', '4. Ay', '5. Ay', '6. Ay (Lansman)'];
+      const monthBurn = [0, 0, 0, 0, 0, 0];
+      const techBurnMonthly = [0, 0, 0, 0, 0, 0];
+      const physBurnMonthly = [0, 0, 0, 0, 0, 0];
+
+      let techTotal = 0;
+      let physTotal = 0;
+
+      state.prelaunchExpenses.forEach(exp => {
+        const isTech = (exp.cat === 'Yazılım' || exp.cat === 'AI/Ar-Ge');
+        const rowSum = exp.monthly.reduce((a, b) => a + b, 0);
+        if (isTech) {
+          techTotal += rowSum;
+          exp.monthly.forEach((v, idx) => { techBurnMonthly[idx] += v; monthBurn[idx] += v; });
+        } else {
+          physTotal += rowSum;
+          exp.monthly.forEach((v, idx) => { physBurnMonthly[idx] += v; monthBurn[idx] += v; });
+        }
+      });
+
+      const cumSpend = [0];
+      const cumTech = [0];
+      const cumPhys = [0];
+      let runningSpend = 0;
+      let runningTech = 0;
+      let runningPhys = 0;
+
+      for (let m = 0; m < 6; m++) {
+        runningSpend += monthBurn[m];
+        runningTech += techBurnMonthly[m];
+        runningPhys += physBurnMonthly[m];
+        cumSpend.push(runningSpend);
+        cumTech.push(runningTech);
+        cumPhys.push(runningPhys);
+      }
+
+      const ctx1 = document.getElementById('prelaunchChart').getContext('2d');
+      if (!prelaunchChartInstance) {
+        prelaunchChartInstance = new Chart(ctx1, {
+          type: 'line',
+          data: {
+            labels: labels,
+            datasets: [
+              {
+                label: 'Kümülatif Toplam Kurulum',
+                data: cumSpend,
+                borderColor: '#2E1065',
+                backgroundColor: 'rgba(46, 16, 101, 0.05)',
+                borderWidth: 2.8,
+                fill: true,
+                tension: 0.25,
+                pointRadius: 4,
+                pointBackgroundColor: '#2E1065'
+              },
+              {
+                label: '💻 Yazılım & AI Altyapısı',
+                data: cumTech,
+                borderColor: '#7C3AED',
+                borderDash: [5, 4],
+                backgroundColor: 'transparent',
+                borderWidth: 2.2,
+                fill: false,
+                tension: 0.25,
+                pointRadius: 3,
+                pointBackgroundColor: '#7C3AED'
+              },
+              {
+                label: '🏛️ Depo, Kalıp & Fiziki',
+                data: cumPhys,
+                borderColor: '#C5A059',
+                borderDash: [4, 4],
+                backgroundColor: 'transparent',
+                borderWidth: 2.2,
+                fill: false,
+                tension: 0.25,
+                pointRadius: 3,
+                pointBackgroundColor: '#C5A059'
+              }
+            ]
+          },
+          options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+              legend: { 
+                display: true, 
+                position: 'top',
+                labels: { boxWidth: 10, font: { size: 11, weight: '600' } }
+              },
+              tooltip: {
+                callbacks: { 
+                  label: function(c) { return c.dataset.label + ': ' + formatUSD(c.raw); } 
+                }
+              }
+            },
+            scales: {
+              x: { grid: { display: false } },
+              y: {
+                grid: { color: 'rgba(0,0,0,0.05)' },
+                ticks: { callback: function(v) { return formatUSD(v, true); } }
+              }
+            }
+          }
+        });
+      } else {
+        prelaunchChartInstance.data.datasets[0].data = cumSpend;
+        prelaunchChartInstance.data.datasets[1].data = cumTech;
+        prelaunchChartInstance.data.datasets[2].data = cumPhys;
+        prelaunchChartInstance.update();
+      }
+
+      // 2. Prelaunch Use of Funds Doughnut
+      const catTotals = {};
+      state.prelaunchExpenses.forEach(exp => {
+        const sum = exp.monthly.reduce((a, b) => a + b, 0);
+        catTotals[exp.cat] = (catTotals[exp.cat] || 0) + sum;
+      });
+
+      const catLabels = Object.keys(catTotals);
+      const catValues = Object.values(catTotals);
+      const colors = ['#2E1065', '#5B21B6', '#C5A059', '#34C759', '#0071E3', '#FF9500', '#EC4899', '#64748B'];
+
+      const ctx2 = document.getElementById('prelaunchDoughnut').getContext('2d');
+      if (!prelaunchDoughnutInstance) {
+        prelaunchDoughnutInstance = new Chart(ctx2, {
+          type: 'doughnut',
+          data: {
+            labels: catLabels,
+            datasets: [{
+              data: catValues,
+              backgroundColor: colors,
+              borderWidth: 2,
+              borderColor: '#FFFFFF'
+            }]
+          },
+          options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            cutout: '65%',
+            plugins: {
+              legend: { position: 'right', labels: { boxWidth: 8, font: { size: 10 } } }
+            }
+          }
+        });
+      } else {
+        prelaunchDoughnutInstance.data.labels = catLabels;
+        prelaunchDoughnutInstance.data.datasets[0].data = catValues;
+        prelaunchDoughnutInstance.update();
+      }
+
+      // Breakdown text
+      const totalBurn = catValues.reduce((a, b) => a + b, 0);
+      let desc = `
+        <div style="background: rgba(109, 40, 217, 0.07); padding: 8px 10px; border-radius: 8px; margin-bottom: 6px; display: flex; justify-content: space-between; align-items: center;">
+          <span style="font-weight: 700; color: #6D28D9;">💻 Sadece Yazılım & Teknik:</span>
+          <span style="font-weight: 800; color: #6D28D9;">${formatUSD(techTotal)} (%${((techTotal / (totalBurn || 1)) * 100).toFixed(1)})</span>
+        </div>
+        <div style="background: rgba(197, 160, 89, 0.12); padding: 8px 10px; border-radius: 8px; margin-bottom: 10px; display: flex; justify-content: space-between; align-items: center;">
+          <span style="font-weight: 700; color: #92400E;">🏛️ Depo, Kalıp & Fiziki:</span>
+          <span style="font-weight: 800; color: #92400E;">${formatUSD(physTotal)} (%${((physTotal / (totalBurn || 1)) * 100).toFixed(1)})</span>
+        </div>
+      `;
+      catLabels.forEach((c, idx) => {
+        const pct = ((catValues[idx] / totalBurn) * 100).toFixed(0);
+        desc += `• <strong>${c}</strong>: %${pct} (${formatUSD(catValues[idx])})<br>`;
+      });
+      document.getElementById('pre_funds_breakdown_text').innerHTML = desc;
+    }
+
+    // ===============================================
+    // 4-YEAR POST-LAUNCH DYNAMIC EXPENSES & RECALC (4 YILLIK KADEMELİ TABLO)
+    // ===============================================
+    function renderExpenseTable() {
+      const tbody = document.getElementById('expense_items_body');
+      if (!tbody) return;
+      tbody.innerHTML = '';
+
+      const filtered = state.activeCategoryFilter === 'all' 
+        ? state.expenses 
+        : state.expenses.filter(e => e.cat === state.activeCategoryFilter);
+
+      document.getElementById('cnt_all').textContent = state.expenses.length;
+
+      filtered.forEach((exp) => {
+        // Migration fallback
+        if (exp.y4 === undefined) exp.y4 = exp.amount || 5000;
+        if (exp.m1_6 === undefined) exp.m1_6 = (exp.startMonth && exp.startMonth > 6) ? 0 : Math.round(exp.y4 * 0.35);
+        if (exp.m7_12 === undefined) exp.m7_12 = (exp.startMonth && exp.startMonth > 12) ? 0 : Math.round(exp.y4 * 0.55);
+        if (exp.y2 === undefined) exp.y2 = (exp.startMonth && exp.startMonth > 24) ? 0 : Math.round(exp.y4 * 0.75);
+        if (exp.y3 === undefined) exp.y3 = (exp.startMonth && exp.startMonth > 36) ? 0 : Math.round(exp.y4 * 0.90);
+        if (exp.startMonth === undefined) exp.startMonth = 1;
+        exp.amount = exp.y4;
+
+        const sMonth = exp.startMonth;
+        const tr = document.createElement('tr');
+        tr.innerHTML = `
+          <td>
+            <input type="text" class="exp-name-input" value="${exp.name}" oninput="updateExpenseName('${exp.id}', this.value)" title="Gider/Kadro Adını Düzenle">
+          </td>
+          <td>
+            <select class="exp-cat-select" onchange="updateExpenseCat('${exp.id}', this.value)">
+              <option value="payroll" ${exp.cat === 'payroll' ? 'selected' : ''}>👥 Bordro</option>
+              <option value="facility" ${exp.cat === 'facility' ? 'selected' : ''}>🏛️ Tesis</option>
+              <option value="marketing" ${exp.cat === 'marketing' ? 'selected' : ''}>📣 Pazarlama</option>
+              <option value="tech" ${exp.cat === 'tech' ? 'selected' : ''}>💻 Teknoloji</option>
+              <option value="admin" ${exp.cat === 'admin' ? 'selected' : ''}>🏢 Yönetim</option>
+            </select>
+          </td>
+          <td>
+            <select class="exp-start-select" onchange="updateExpenseStart('${exp.id}', this.value)" title="Giderin başlayacağı ay">
+              <option value="1" ${sMonth <= 1 ? 'selected' : ''}>1. Ay (Ar-Ge)</option>
+              <option value="7" ${sMonth > 1 && sMonth <= 7 ? 'selected' : ''}>7. Ay (Lansman)</option>
+              <option value="13" ${sMonth > 7 && sMonth <= 13 ? 'selected' : ''}>13. Ay (2. Yıl)</option>
+              <option value="25" ${sMonth > 13 && sMonth <= 25 ? 'selected' : ''}>25. Ay (3. Yıl)</option>
+              <option value="37" ${sMonth > 25 ? 'selected' : ''}>37. Ay (4. Yıl)</option>
+            </select>
+          </td>
+          <td style="text-align: right;">
+            <input type="number" class="exp-period-input ${sMonth > 6 ? 'exp-inactive-cell' : ''}" value="${exp.m1_6 || 0}" step="250" onchange="updateExpensePeriodVal('${exp.id}', 'm1_6', this.value)" title="İlk 6 Ay (Ar-Ge) Aylık Tutar">
+          </td>
+          <td style="text-align: right;">
+            <input type="number" class="exp-period-input ${sMonth > 12 ? 'exp-inactive-cell' : ''}" value="${exp.m7_12 || 0}" step="250" onchange="updateExpensePeriodVal('${exp.id}', 'm7_12', this.value)" title="7-12. Ay (Lansman) Aylık Tutar">
+          </td>
+          <td style="text-align: right;">
+            <input type="number" class="exp-period-input ${sMonth > 24 ? 'exp-inactive-cell' : ''}" value="${exp.y2 || 0}" step="250" onchange="updateExpensePeriodVal('${exp.id}', 'y2', this.value)" title="2. Yıl Aylık Tutar">
+          </td>
+          <td style="text-align: right;">
+            <input type="number" class="exp-period-input ${sMonth > 36 ? 'exp-inactive-cell' : ''}" value="${exp.y3 || 0}" step="250" onchange="updateExpensePeriodVal('${exp.id}', 'y3', this.value)" title="3. Yıl Aylık Tutar">
+          </td>
+          <td style="text-align: right;">
+            <input type="number" class="exp-period-input" value="${exp.y4 || 0}" step="250" onchange="updateExpensePeriodVal('${exp.id}', 'y4', this.value)" title="4. Yıl Zirve Tutar">
+          </td>
+          <td style="text-align: center;">
+            <button class="btn-delete-row" title="Gideri Sil" onclick="deleteExpense('${exp.id}')">🗑️</button>
+          </td>
+        `;
+        tbody.appendChild(tr);
+      });
+
+      updateOpexPeriodBadges();
+    }
+
+    function filterExpenses(cat) {
+      state.activeCategoryFilter = cat;
+      document.querySelectorAll('.cat-pill').forEach(btn => btn.classList.remove('active'));
+      event.target.classList.add('active');
+      renderExpenseTable();
+    }
+
+    function addNewExpense() {
+      const nameInput = document.getElementById('new_exp_name');
+      const catSelect = document.getElementById('new_exp_cat');
+      const startSelect = document.getElementById('new_exp_start');
+      const amountInput = document.getElementById('new_exp_amount');
+
+      const name = nameInput.value.trim();
+      const cat = catSelect.value;
+      const startMonth = parseInt(startSelect.value) || 7;
+      const amount = Math.max(0, parseFloat(amountInput.value) || 0);
+
+      if (!name) {
+        alert("Lütfen gider veya çalışan adını girin.");
+        return;
+      }
+
+      const catMap = { payroll: 'Bordro', facility: 'Tesis', marketing: 'Pazarlama', tech: 'Teknoloji', admin: 'Yönetim' };
+      const newId = 'exp_custom_' + Date.now();
+
+      state.expenses.push({
+        id: newId,
+        name,
+        cat,
+        catName: catMap[cat] || 'Diğer',
+        startMonth,
+        m1_6: startMonth <= 6 ? Math.round(amount * 0.4) : 0,
+        m7_12: startMonth <= 12 ? Math.round(amount * 0.6) : 0,
+        y2: startMonth <= 24 ? Math.round(amount * 0.75) : 0,
+        y3: startMonth <= 36 ? Math.round(amount * 0.9) : 0,
+        y4: amount,
+        amount
+      });
+
+      nameInput.value = '';
+      amountInput.value = '';
+
+      renderExpenseTable();
+      recalculateAll();
+      saveStateToStorage();
+      showToast(`"${name}" listeye eklendi!`);
+    }
+
+    function deleteExpense(id) {
+      const idx = state.expenses.findIndex(e => e.id === id);
+      if (idx !== -1) {
+        const item = state.expenses[idx];
+        state.expenses.splice(idx, 1);
+        renderExpenseTable();
+        recalculateAll();
+        saveStateToStorage();
+        showToast(`"${item.name}" silindi.`);
+      }
+    }
+
+    function updateExpenseName(id, val) {
+      const item = state.expenses.find(e => e.id === id);
+      if (item) {
+        item.name = val.trim();
+        saveStateToStorage();
+      }
+    }
+
+    function updateExpenseCat(id, val) {
+      const item = state.expenses.find(e => e.id === id);
+      if (item) {
+        item.cat = val;
+        const catMap = { payroll: 'Bordro', facility: 'Tesis', marketing: 'Pazarlama', tech: 'Teknoloji', admin: 'Yönetim' };
+        item.catName = catMap[val] || 'Diğer';
+        renderExpenseTable();
+        updateOpexSplitBar();
+        saveStateToStorage();
+      }
+    }
+
+    function updateExpenseStart(id, val) {
+      const item = state.expenses.find(e => e.id === id);
+      if (item) {
+        const sMonth = parseInt(val) || 1;
+        item.startMonth = sMonth;
+        if (sMonth > 6 && item.m1_6 > 0) item.m1_6 = 0;
+        if (sMonth > 12 && item.m7_12 > 0) item.m7_12 = 0;
+        if (sMonth > 24 && item.y2 > 0) item.y2 = 0;
+        if (sMonth > 36 && item.y3 > 0) item.y3 = 0;
+        renderExpenseTable();
+        recalculateAll();
+        saveStateToStorage();
+      }
+    }
+
+    function updateExpensePeriodVal(id, field, val) {
+      const item = state.expenses.find(e => e.id === id);
+      if (item) {
+        item[field] = Math.max(0, parseFloat(val) || 0);
+        if (field === 'y4') item.amount = item.y4;
+        renderExpenseTable();
+        recalculateAll();
+        saveStateToStorage();
+      }
+    }
+
+    function updateOpexPeriodBadges() {
+      // 1. Prelaunch average burn per month (Months 1-6)
+      const preTotal = state.prelaunchExpenses.reduce((s, e) => s + e.monthly.reduce((a, b) => a + b, 0), 0);
+      const avgM1_6 = preTotal / 6;
+
+      let totM7_12 = 0, totY2 = 0, totY3 = 0, totY4 = 0;
+      state.expenses.forEach(e => {
+        totM7_12 += ((e.startMonth || 1) <= 12 ? (e.m7_12 !== undefined ? e.m7_12 : (e.y1 || 0)) : 0);
+        totY2 += ((e.startMonth || 1) <= 24 ? (e.y2 || 0) : 0);
+        totY3 += ((e.startMonth || 1) <= 36 ? (e.y3 || 0) : 0);
+        totY4 += ((e.startMonth || 1) <= 48 ? (e.y4 || e.amount || 0) : 0);
+      });
+
+      if (document.getElementById('lbl_opex_p1')) document.getElementById('lbl_opex_p1').textContent = formatUSD(avgM1_6) + '/ay';
+      if (document.getElementById('lbl_opex_p2')) document.getElementById('lbl_opex_p2').textContent = formatUSD(totM7_12) + '/ay';
+      if (document.getElementById('lbl_opex_p3')) document.getElementById('lbl_opex_p3').textContent = formatUSD(totY2) + '/ay';
+      if (document.getElementById('lbl_opex_p4')) document.getElementById('lbl_opex_p4').textContent = formatUSD(totY3) + '/ay';
+      if (document.getElementById('lbl_opex_p5')) document.getElementById('lbl_opex_p5').textContent = formatUSD(totY4) + '/ay';
+
+      if (document.getElementById('btn_opex_p1')) document.getElementById('btn_opex_p1').textContent = `1. İlk 6 Ay ($${Math.round(avgM1_6/1000)}K/ay)`;
+      if (document.getElementById('btn_opex_p2')) document.getElementById('btn_opex_p2').textContent = `2. 7-12. Ay ($${Math.round(totM7_12/1000)}K/ay)`;
+      if (document.getElementById('btn_opex_p3')) document.getElementById('btn_opex_p3').textContent = `3. 2. Yıl ($${Math.round(totY2/1000)}K/ay)`;
+      if (document.getElementById('btn_opex_p4')) document.getElementById('btn_opex_p4').textContent = `4. 3. Yıl ($${Math.round(totY3/1000)}K/ay)`;
+      if (document.getElementById('btn_opex_p5')) document.getElementById('btn_opex_p5').textContent = `5. 4. Yıl Zirve ($${Math.round(totY4/1000)}K/ay)`;
+    }
+
+    function setOpexViewPeriod(periodKey) {
+      state.activeOpexViewPeriod = periodKey;
+      document.querySelectorAll('.opex-year-btn').forEach(btn => btn.classList.remove('active'));
+      const activeBtn = document.getElementById('btn_opex_' + periodKey);
+      if (activeBtn) activeBtn.classList.add('active');
+      updateOpexSplitBar();
+    }
+
+    function showAnatomyTooltip(e, key) {
+      const tooltip = document.getElementById('anat_tooltip');
+      if (!tooltip) return;
+
+      const infoMap = {
+        craft: {
+          icon: '🎨',
+          title: state.cogs.craftName || 'Kapalıçarşı Ocak Tedariki',
+          desc: 'Kapalıçarşı toptan gümüş, mücevher, deri ve niş koku atölyelerinden doğrudan ilk elden toptan alım bedeli.'
+        },
+        box: {
+          icon: '📦',
+          title: state.cogs.boxName || 'Lüks Kutu, Süet Yuva & Mühür',
+          desc: '260 TL (Sert mukavva lüks kutu, özel kesim süet iç yuva, damga pirinç mühür ve mühür mumu).'
+        },
+        courier: {
+          icon: '🚚',
+          title: state.cogs.courierName || 'VIP Sigortalı Değerli Kargo',
+          desc: '210 TL (İstanbul içi aynı gün motorlu özel kurye & Loomis sigortalı değerli taşımacılık).'
+        },
+        pos: {
+          icon: '💳',
+          title: state.cogs.posName || 'Sanal POS & Taksit Komisyonu',
+          desc: 'Banka Sanal POS ve iyzico abonelik/taksit tahsilat komisyonu (%3.0).'
+        },
+        profit: {
+          icon: '✨',
+          title: 'Kutu Başı Net Brüt Kâr',
+          desc: 'Kutu teslimatından sonra şirket operasyon giderlerini (OPEX) karşılamak ve nakit üretmek üzere kasaya kalan net marj.'
+        }
+      };
+
+      const item = infoMap[key];
+      if (!item) return;
+
+      let totShare = 0;
+      let blendedAOV = 0;
+      state.tiers.forEach(t => {
+        totShare += t.share;
+        blendedAOV += (t.share / 100) * t.price;
+      });
+      if (totShare > 0) blendedAOV = blendedAOV * (100 / totShare);
+
+      const isBlended = (state.selectedAnatomyTier === 'blended' || state.selectedAnatomyTier === undefined);
+      let activePrice = blendedAOV;
+      if (!isBlended) {
+        const t = state.tiers[parseInt(state.selectedAnatomyTier)] || state.tiers[0];
+        activePrice = t.price;
+      }
+
+      let cost = 0;
+      let pct = 0;
+      if (key === 'craft') {
+        cost = activePrice * (state.cogs.craftRate / 100);
+        pct = (cost / activePrice) * 100;
+      } else if (key === 'box') {
+        cost = state.cogs.boxMaterial;
+        pct = (cost / activePrice) * 100;
+      } else if (key === 'courier') {
+        cost = state.cogs.courierCost;
+        pct = (cost / activePrice) * 100;
+      } else if (key === 'pos') {
+        cost = activePrice * (state.cogs.posRate / 100);
+        pct = (cost / activePrice) * 100;
+      } else if (key === 'profit') {
+        const totalCOGS = (activePrice * (state.cogs.craftRate / 100)) + state.cogs.boxMaterial + state.cogs.courierCost + (activePrice * (state.cogs.posRate / 100));
+        cost = activePrice - totalCOGS;
+        pct = (cost / activePrice) * 100;
+      }
+
+      tooltip.innerHTML = `
+        <div class="anat-tooltip-title">${item.icon} ${item.title}</div>
+        <div class="anat-tooltip-stats">
+          <span>Tutar: <strong>${formatUSD(cost)}</strong></span>
+          <span>Oran: <strong>%${pct.toFixed(1)}</strong></span>
+        </div>
+        <div class="anat-tooltip-desc">${item.desc}</div>
+      `;
+
+      tooltip.style.display = 'block';
+      moveAnatomyTooltip(e);
+    }
+
+    function moveAnatomyTooltip(e) {
+      const tooltip = document.getElementById('anat_tooltip');
+      if (!tooltip || tooltip.style.display === 'none') return;
+      const boxCard = document.getElementById('box_anatomy_card');
+      if (boxCard) {
+        const rect = boxCard.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        tooltip.style.left = x + 'px';
+        tooltip.style.top = (y - 12) + 'px';
+      }
+    }
+
+    function hideAnatomyTooltip() {
+      const tooltip = document.getElementById('anat_tooltip');
+      if (tooltip) tooltip.style.display = 'none';
+    }
+
+    // TIERS LIST (WITH EDITABLE TIER NAMES)
+    // TIERS LIST (WITH EDITABLE TIER NAMES, SHARE BARS & INSPECT ACTIONS)
+    function renderTiersControls() {
+      const cont = document.getElementById('tiers_bento_container');
+      if (!cont) return;
+      cont.innerHTML = '';
+
+      state.tiers.forEach((t, i) => {
+        const tierUnitProfit = t.price - (
+          (t.price * (state.cogs.craftRate / 100)) +
+          state.cogs.boxMaterial +
+          state.cogs.courierCost +
+          (t.price * (state.cogs.posRate / 100))
+        );
+
+        const row = document.createElement('div');
+        row.className = 'tier-bento-row';
+        row.innerHTML = `
+          <div class="tier-info-left">
+            <span class="tier-badge-circ" style="background: ${t.color}"></span>
+            <input type="text" class="tier-name-input" value="${t.name}" oninput="updateTierName(${i}, this.value)" title="Kademe Adını Düzenle">
+          </div>
+          <div class="tier-share-bar-wrap" title="Hacim Payı: %${t.share}">
+            <div class="tier-share-fill" style="width: ${Math.min(100, t.share)}%; background: ${t.color};"></div>
+          </div>
+          <div class="tier-inputs">
+            <span style="font-size: 0.70rem; color: var(--text-tertiary);">Pay:</span>
+            <input type="number" class="tier-input-sm" value="${t.share}" min="0" max="100" onchange="updateTier(${i}, 'share', this.value)">%
+            <span style="font-size: 0.70rem; color: var(--text-tertiary); margin-left: 3px;">Fiyat:</span>
+            $<input type="number" class="tier-input-sm" value="${t.price}" min="10" step="5" onchange="updateTier(${i}, 'price', this.value)">
+            <span class="tier-unit-profit-pill" title="1 Kutu Başı Net Brüt Kâr">+$${tierUnitProfit.toFixed(0)}</span>
+            <button class="btn-inspect-tier" onclick="inspectTierInAnatomy(${i})" title="Bu kutunun maliyet anatomisini incele">🔍</button>
+          </div>
+        `;
+        cont.appendChild(row);
+      });
+    }
+
+    function inspectTierInAnatomy(i) {
+      setAnatomyTier(i);
+      const card = document.getElementById('box_anatomy_card');
+      if (card) {
+        card.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        card.style.transition = 'box-shadow 0.3s ease';
+        card.style.boxShadow = '0 0 0 3px rgba(91, 33, 182, 0.35)';
+        setTimeout(() => {
+          card.style.boxShadow = '';
+        }, 1200);
+      }
+    }
+
+    function updateTierName(idx, val) {
+      state.tiers[idx].name = val.trim();
+      renderAnatomyTierStrip();
+      updateAnatomyDisplay();
+      saveStateToStorage();
+    }
+
+    function updateTier(idx, field, val) {
+      state.tiers[idx][field] = parseFloat(val) || 0;
+      recalculateAll();
+      saveStateToStorage();
+    }
+
+    function updateCogsName(field, val) {
+      state.cogs[field] = val.trim();
+      saveStateToStorage();
+    }
+
+    // ===============================================
+    // MULTI-TIER ANATOMY LOGIC
+    // ===============================================
+    function setAnatomyTier(tKey) {
+      state.selectedAnatomyTier = tKey;
+      renderAnatomyTierStrip();
+      updateAnatomyDisplay();
+      saveStateToStorage();
+    }
+
+    function renderAnatomyTierStrip() {
+      const strip = document.getElementById('anat_tier_strip');
+      if (!strip) return;
+      let html = `
+        <button class="anat-tier-btn ${state.selectedAnatomyTier === 'blended' ? 'active' : ''}" id="pill_tier_blended" onclick="setAnatomyTier('blended')">
+          <span>✨ Karma AOV</span>
+        </button>
+      `;
+      state.tiers.forEach((t, i) => {
+        const isActive = state.selectedAnatomyTier === i;
+        html += `
+          <button class="anat-tier-btn ${isActive ? 'active' : ''}" id="pill_tier_${i}" onclick="setAnatomyTier(${i})">
+            <span style="width: 6px; height: 6px; border-radius: 50%; background: ${t.color || '#6D28D9'}; display: inline-block;"></span>
+            <span>${t.name} ($${t.price})</span>
+          </button>
+        `;
+      });
+      strip.innerHTML = html;
+    }
+
+    function updateAnatomyDisplay() {
+      // 1. Calculate Blended AOV
+      let totShare = 0;
+      let blendedAOV = 0;
+      state.tiers.forEach(t => {
+        totShare += t.share;
+        blendedAOV += (t.share / 100) * t.price;
+      });
+      if (totShare > 0) blendedAOV = blendedAOV * (100 / totShare);
+
+      const isBlended = (state.selectedAnatomyTier === 'blended' || state.selectedAnatomyTier === undefined);
+      let activePrice = blendedAOV;
+      let tierName = 'Ağırlıklı Karma Portföy';
+      let tierShareText = 'Pay: %100 (6 Kademe Harmanı)';
+      let tierDotColor = 'var(--brand-purple)';
+      let tierMeta = `Tüm kademelerin harmanı • Karma AOV $${blendedAOV.toFixed(2)}`;
+
+      if (!isBlended) {
+        const tIdx = parseInt(state.selectedAnatomyTier);
+        const t = state.tiers[tIdx] || state.tiers[0];
+        activePrice = t.price;
+        tierName = t.name;
+        tierShareText = `Portföy Payı: %${t.share}`;
+        tierDotColor = t.color || 'var(--brand-purple)';
+        tierMeta = `Seçili Kutu: ${t.name} • Satış Fiyatı: $${t.price} • Portföy Payı: %${t.share}`;
+      }
+
+      // Unit Economics for active selection
+      const craftCost = activePrice * (state.cogs.craftRate / 100);
+      const boxCost = state.cogs.boxMaterial;
+      const courierCost = state.cogs.courierCost;
+      const posCost = activePrice * (state.cogs.posRate / 100);
+      const totalCOGS = craftCost + boxCost + courierCost + posCost;
+      const unitProfit = activePrice - totalCOGS;
+      const marginPct = activePrice > 0 ? (unitProfit / activePrice) * 100 : 0;
+
+      const pCraft = activePrice > 0 ? (craftCost / activePrice) * 100 : 0;
+      const pBox = activePrice > 0 ? (boxCost / activePrice) * 100 : 0;
+      const pCourier = activePrice > 0 ? (courierCost / activePrice) * 100 : 0;
+      const pPos = activePrice > 0 ? (posCost / activePrice) * 100 : 0;
+
+      // Update Header & Banner
+      const lblMargin = document.getElementById('lbl_anat_margin');
+      if (lblMargin) lblMargin.textContent = `%${marginPct.toFixed(1)} Kâr`;
+      
+      const lblMeta = document.getElementById('lbl_anat_tier_meta');
+      if (lblMeta) lblMeta.textContent = tierMeta;
+
+      const bName = document.getElementById('anat_banner_name');
+      if (bName) bName.textContent = tierName;
+
+      const bShare = document.getElementById('anat_banner_share');
+      if (bShare) bShare.textContent = tierShareText;
+
+      const bPrice = document.getElementById('anat_banner_price');
+      if (bPrice) bPrice.textContent = '$' + activePrice.toFixed(2);
+
+      const bDot = document.getElementById('anat_banner_dot');
+      if (bDot) bDot.style.background = tierDotColor;
+
+      // Update Breakdown Table Rows ($ & %)
+      if (document.getElementById('anat_pct_craft')) document.getElementById('anat_pct_craft').textContent = `%${pCraft.toFixed(1)}`;
+      if (document.getElementById('anat_val_craft')) document.getElementById('anat_val_craft').textContent = '$' + craftCost.toFixed(2);
+
+      if (document.getElementById('anat_pct_box')) document.getElementById('anat_pct_box').textContent = `%${pBox.toFixed(1)}`;
+      if (document.getElementById('anat_val_box')) document.getElementById('anat_val_box').textContent = '$' + boxCost.toFixed(2);
+
+      if (document.getElementById('anat_pct_courier')) document.getElementById('anat_pct_courier').textContent = `%${pCourier.toFixed(1)}`;
+      if (document.getElementById('anat_val_courier')) document.getElementById('anat_val_courier').textContent = '$' + courierCost.toFixed(2);
+
+      if (document.getElementById('anat_pct_pos')) document.getElementById('anat_pct_pos').textContent = `%${pPos.toFixed(1)}`;
+      if (document.getElementById('anat_val_pos')) document.getElementById('anat_val_pos').textContent = '$' + posCost.toFixed(2);
+
+      const valProfit = document.getElementById('anat_val_profit');
+      if (valProfit) {
+        valProfit.textContent = (unitProfit >= 0 ? '+' : '') + `$${unitProfit.toFixed(2)} (%${marginPct.toFixed(1)})`;
+        valProfit.style.color = unitProfit >= 0 ? 'var(--apple-green-dark)' : 'var(--apple-red)';
+      }
+
+      // Update Bar Segments
+      const barCraft = document.getElementById('bar_craft');
+      const barBox = document.getElementById('bar_box');
+      const barCourier = document.getElementById('bar_courier');
+      const barPos = document.getElementById('bar_pos');
+      const barProfit = document.getElementById('bar_profit');
+
+      if (barCraft && barBox && barCourier && barPos && barProfit) {
+        barCraft.style.width = pCraft + '%';
+        barBox.style.width = pBox + '%';
+        barCourier.style.width = pCourier + '%';
+        barPos.style.width = pPos + '%';
+        barProfit.style.width = Math.max(0, marginPct) + '%';
+
+        barCraft.textContent = pCraft >= 18 ? `Zanaat %${pCraft.toFixed(0)}` : '';
+        barBox.textContent = '';
+        barCourier.textContent = '';
+        barPos.textContent = '';
+        barProfit.textContent = marginPct >= 20 ? `KÂR $${unitProfit.toFixed(1)} (%${marginPct.toFixed(0)})` : (marginPct >= 10 ? `$${unitProfit.toFixed(0)}` : '');
+
+        barCraft.title = `${state.cogs.craftName || 'Kapalıçarşı Ocak'}: $${craftCost.toFixed(2)} (%${pCraft.toFixed(1)})`;
+        barBox.title = `${state.cogs.boxName || 'Lüks Kutu'}: $${boxCost.toFixed(2)} (%${pBox.toFixed(1)})`;
+        barCourier.title = `${state.cogs.courierName || 'VIP Kargo'}: $${courierCost.toFixed(2)} (%${pCourier.toFixed(1)})`;
+        barPos.title = `${state.cogs.posName || 'Sanal POS'}: $${posCost.toFixed(2)} (%${pPos.toFixed(1)})`;
+        barProfit.title = `Net Brüt Kâr: $${unitProfit.toFixed(2)} (%${marginPct.toFixed(1)})`;
+      }
+    }
+
+    // ===============================================
+    // OPEX SPLIT BAR (DEPARTMENTAL ALLOCATION)
+    // ===============================================
+    function updateOpexSplitBar() {
+      const container = document.getElementById('opex_stacked_bar');
+      const legend = document.getElementById('opex_cat_chips');
+      if (!container || !legend) return;
+
+      const activePeriod = state.activeOpexViewPeriod || 'p5_y4';
+      const periodFieldMap = {
+        p1_pre: 'm1_6',
+        p2_m7_12: 'm7_12',
+        p3_y2: 'y2',
+        p4_y3: 'y3',
+        p5_y4: 'y4'
+      };
+      const fieldKey = periodFieldMap[activePeriod] || 'y4';
+
+      const catColors = {
+        payroll: { name: 'Bordro & Kadro', color: '#5B21B6', icon: '👥' },
+        facility: { name: 'Tesis & Depo', color: '#0071E3', icon: '🏛️' },
+        marketing: { name: 'Pazarlama', color: '#D97706', icon: '📣' },
+        tech: { name: 'Teknoloji & AI', color: '#10B981', icon: '💻' },
+        admin: { name: 'Yönetim', color: '#64748B', icon: '🏢' }
+      };
+
+      const catTotals = { payroll: 0, facility: 0, marketing: 0, tech: 0, admin: 0 };
+      let grandTotal = 0;
+
+      if (activePeriod === 'p1_pre') {
+        // Use average of prelaunch categories
+        const preCatMap = {
+          'Yazılım': 'tech',
+          'AI/Ar-Ge': 'tech',
+          'Tesis': 'facility',
+          'CapEx': 'facility',
+          'Ürün': 'facility',
+          'Hukuk': 'admin',
+          'Pazarlama': 'marketing'
+        };
+        state.prelaunchExpenses.forEach(exp => {
+          const rowSum = exp.monthly.reduce((a, b) => a + b, 0) / 6;
+          const targetCat = preCatMap[exp.cat] || 'tech';
+          catTotals[targetCat] = (catTotals[targetCat] || 0) + rowSum;
+          grandTotal += rowSum;
+        });
+      } else {
+        const pMonthLimit = { p2_m7_12: 12, p3_y2: 24, p4_y3: 36, p5_y4: 48 }[activePeriod] || 48;
+        state.expenses.forEach(e => {
+          const c = catTotals[e.cat] !== undefined ? e.cat : 'admin';
+          const isStarted = (e.startMonth || 1) <= pMonthLimit;
+          const amt = isStarted ? (e[fieldKey] || 0) : 0;
+          catTotals[c] += amt;
+          grandTotal += amt;
+        });
+      }
+
+      if (grandTotal === 0) grandTotal = 1;
+
+      let barHtml = '';
+      let legendHtml = '';
+
+      Object.keys(catColors).forEach(cat => {
+        const total = catTotals[cat] || 0;
+        const pct = (total / grandTotal) * 100;
+        const cfg = catColors[cat];
+
+        if (pct > 0) {
+          barHtml += `
+            <div class="opex-bar-slice" style="width: ${pct}%; background: ${cfg.color};" 
+                 title="${cfg.name}: ${formatUSD(total)} / ay (%${pct.toFixed(1)})">
+            </div>
+          `;
+          legendHtml += `
+            <div class="opex-cat-chip">
+              <span class="occ-dot" style="background: ${cfg.color};"></span>
+              <span>${cfg.icon} ${cfg.name}: <strong>${formatUSD(total)}</strong> (%${pct.toFixed(0)})</span>
+            </div>
+          `;
+        }
+      });
+
+      container.innerHTML = barHtml;
+      legend.innerHTML = legendHtml;
+    }
+
+    function togglePitchSpeechDrawer() {
+      const drawer = document.getElementById('pitch_speech_drawer');
+      if (drawer) {
+        drawer.style.display = drawer.style.display === 'none' ? 'block' : 'none';
+      }
+    }
+
+    function updateTargetSubs(yearNum, val) {
+      val = parseInt(val);
+      state.targetSubsByYear['y' + yearNum] = val;
+      document.getElementById('disp_y' + yearNum + '_subs').textContent = formatNumber(val) + ' Abone';
+      recalculateAll();
+      saveStateToStorage();
+    }
+
+    function updateBaseVar(key, val) {
+      val = parseFloat(val);
+      state[key] = val;
+      if (key === 'seedFund') {
+        document.getElementById('disp_seed_fund').textContent = formatUSD(val);
+        document.getElementById('pre_kpi_seed_fund').textContent = formatUSD(val);
+      }
+      recalculateAll();
+      saveStateToStorage();
+    }
+
+    function syncAllUIControls() {
+      document.getElementById('rng_y1_subs').value = state.targetSubsByYear.y1;
+      document.getElementById('rng_y2_subs').value = state.targetSubsByYear.y2;
+      document.getElementById('rng_y3_subs').value = state.targetSubsByYear.y3;
+      document.getElementById('rng_y4_subs').value = state.targetSubsByYear.y4;
+
+      document.getElementById('disp_y1_subs').textContent = formatNumber(state.targetSubsByYear.y1) + ' Abone';
+      document.getElementById('disp_y2_subs').textContent = formatNumber(state.targetSubsByYear.y2) + ' Abone';
+      document.getElementById('disp_y3_subs').textContent = formatNumber(state.targetSubsByYear.y3) + ' Abone';
+      document.getElementById('disp_y4_subs').textContent = formatNumber(state.targetSubsByYear.y4) + ' Abone';
+
+      if (document.getElementById('rng_seed_fund')) {
+        document.getElementById('rng_seed_fund').value = state.seedFund;
+      }
+      if (document.getElementById('disp_seed_fund')) {
+        document.getElementById('disp_seed_fund').textContent = formatUSD(state.seedFund);
+      }
+
+      if (document.getElementById('cogs_name_craft')) {
+        document.getElementById('cogs_name_craft').value = state.cogs.craftName || 'Kapalıçarşı Ocak Tedariki';
+        document.getElementById('cogs_name_box').value = state.cogs.boxName || 'Lüks Kutu, Süet Yuva & Mühür';
+        document.getElementById('cogs_name_courier').value = state.cogs.courierName || 'VIP Sigortalı Değerli Kargo';
+        document.getElementById('cogs_name_pos').value = state.cogs.posName || 'Sanal POS & Taksit Komisyonu';
+      }
+
+      renderExpenseTable();
+      renderTiersControls();
+      renderPrelaunchTable();
+      renderAnatomyTierStrip();
+      updateAnatomyDisplay();
+      updateOpexSplitBar();
+      updateOpexPeriodBadges();
+    }
+
+    // ===============================================
+    // 48-MONTH CALCULATION ENGINE
+    // ===============================================
+    function recalculateAll() {
+      // 1. Calculate Blended AOV
+      let totShare = 0;
+      let blendedAOV = 0;
+      state.tiers.forEach(t => {
+        totShare += t.share;
+        blendedAOV += (t.share / 100) * t.price;
+      });
+      if (totShare > 0) blendedAOV = blendedAOV * (100 / totShare);
+
+      document.getElementById('lbl_aov_badge').textContent = 'AOV: $' + blendedAOV.toFixed(2);
+
+      // 2. Unit Economics (Blended macro portfolio level)
+      const craftCost = blendedAOV * (state.cogs.craftRate / 100);
+      const boxCost = state.cogs.boxMaterial;
+      const courierCost = state.cogs.courierCost;
+      const posCost = blendedAOV * (state.cogs.posRate / 100);
+      const totalCOGS = craftCost + boxCost + courierCost + posCost;
+      const unitProfit = blendedAOV - totalCOGS;
+      const marginPct = (unitProfit / blendedAOV) * 100;
+
+      // Update dynamic interactive anatomy box & sliders
+      updateAnatomyDisplay();
+      updateOpexSplitBar();
+      renderTiersControls();
+
+      // 3. Prelaunch Monthly Burn (Months 1 to 6)
+      const preMonthlyBurn = [0, 0, 0, 0, 0, 0];
+      state.prelaunchExpenses.forEach(exp => {
+        exp.monthly.forEach((v, idx) => { preMonthlyBurn[idx] += v; });
+      });
+
+      // 4. 48 MONTH PROJECTION SIMULATION ACROSS 5 OPERATIONAL EPOCHS
+      const monthlyData = [];
+      let cumCash = state.seedFund;
+      let breakevenMonth = null;
+      let breakevenSubs = 0;
+
+      // 5 Distinct Operational Periods:
+      // p1_pre (m 1-6), p2_m7_12 (m 7-12), p3_y2 (m 13-24), p4_y3 (m 25-36), p5_y4 (m 37-48)
+      const periodAgg = {
+        p1_pre:   { name: '1. İlk 6 Ay (Ar-Ge)', rev: 0, cogs: 0, opex: 0, eb: 0, boxes: 0, endSubs: 0, cumCash: 0, churn: '-', aov: '-' },
+        p2_m7_12: { name: '2. 7-12. Ay (Lansman)', rev: 0, cogs: 0, opex: 0, eb: 0, boxes: 0, endSubs: 0, cumCash: 0, churn: '%2.2', aov: blendedAOV },
+        p3_y2:    { name: '3. 2. Yıl (Büyüme)', rev: 0, cogs: 0, opex: 0, eb: 0, boxes: 0, endSubs: 0, cumCash: 0, churn: '%1.8', aov: blendedAOV },
+        p4_y3:    { name: '4. 3. Yıl (Ölçek)', rev: 0, cogs: 0, opex: 0, eb: 0, boxes: 0, endSubs: 0, cumCash: 0, churn: '%1.5', aov: blendedAOV },
+        p5_y4:    { name: '5. 4. Yıl (Tavan)', rev: 0, cogs: 0, opex: 0, eb: 0, boxes: 0, endSubs: 0, cumCash: 0, churn: '%1.2', aov: blendedAOV }
+      };
+
+      for (let m = 1; m <= 48; m++) {
+        let subs = 0;
+        let rev = 0;
+        let cogsVal = 0;
+        let opexVal = 0;
+        let ebitdaVal = 0;
+        let capex = 0;
+
+        let pKey = 'p1_pre';
+        if (m <= 6) {
+          pKey = 'p1_pre';
+          subs = 0;
+          rev = 0;
+          cogsVal = 0;
+          opexVal = preMonthlyBurn[m - 1] || 46667;
+        } else if (m <= 12) {
+          pKey = 'p2_m7_12';
+          const t = (m - 6) / 6;
+          subs = Math.round(state.targetSubsByYear.y1 * Math.pow(t, 1.5));
+          if (m === 12) subs = state.targetSubsByYear.y1;
+        } else if (m <= 24) {
+          pKey = 'p3_y2';
+          const t = (m - 12) / 12;
+          subs = Math.round(state.targetSubsByYear.y1 + (state.targetSubsByYear.y2 - state.targetSubsByYear.y1) * Math.pow(t, 1.3));
+          if (m === 24) subs = state.targetSubsByYear.y2;
+        } else if (m <= 36) {
+          pKey = 'p4_y3';
+          const t = (m - 24) / 12;
+          subs = Math.round(state.targetSubsByYear.y2 + (state.targetSubsByYear.y3 - state.targetSubsByYear.y2) * Math.pow(t, 1.2));
+          if (m === 36) subs = state.targetSubsByYear.y3;
+        } else {
+          pKey = 'p5_y4';
+          const t = (m - 36) / 12;
+          subs = Math.round(state.targetSubsByYear.y3 + (state.targetSubsByYear.y4 - state.targetSubsByYear.y3) * (1 - Math.pow(1 - t, 1.8)));
+          if (m === 48) subs = state.targetSubsByYear.y4;
+        }
+
+        if (m > 6) {
+          const boxes = subs;
+          rev = boxes * blendedAOV;
+          cogsVal = boxes * totalCOGS;
+
+          // Dynamic exact monthly OPEX based on employee/expense timeline
+          if (m <= 12) {
+            opexVal = state.expenses.reduce((sum, e) => (m >= (e.startMonth || 1) ? sum + (e.m7_12 !== undefined ? e.m7_12 : (e.y1 || 0)) : sum), 0);
+          } else if (m <= 24) {
+            opexVal = state.expenses.reduce((sum, e) => (m >= (e.startMonth || 1) ? sum + (e.y2 || 0) : sum), 0);
+          } else if (m <= 36) {
+            opexVal = state.expenses.reduce((sum, e) => (m >= (e.startMonth || 1) ? sum + (e.y3 || 0) : sum), 0);
+          } else {
+            opexVal = state.expenses.reduce((sum, e) => (m >= (e.startMonth || 1) ? sum + (e.y4 || e.amount || 0) : sum), 0);
+          }
+
+          if (m === 12) capex = 40000;
+          if (m === 24) capex = 75000;
+          if (m === 36) capex = 100000;
+
+          periodAgg[pKey].boxes += boxes;
+        }
+
+        const grossProfit = rev - cogsVal;
+        ebitdaVal = grossProfit - opexVal;
+
+        if (ebitdaVal > 0 && breakevenMonth === null && m > 6) {
+          breakevenMonth = m;
+          breakevenSubs = subs;
+        }
+
+        cumCash += (ebitdaVal - capex);
+
+        periodAgg[pKey].rev += rev;
+        periodAgg[pKey].cogs += cogsVal;
+        periodAgg[pKey].opex += opexVal;
+        periodAgg[pKey].eb += ebitdaVal;
+        
+        if (m === 6) { periodAgg.p1_pre.endSubs = 0; periodAgg.p1_pre.cumCash = cumCash; }
+        if (m === 12) { periodAgg.p2_m7_12.endSubs = subs; periodAgg.p2_m7_12.cumCash = cumCash; }
+        if (m === 24) { periodAgg.p3_y2.endSubs = subs; periodAgg.p3_y2.cumCash = cumCash; }
+        if (m === 36) { periodAgg.p4_y3.endSubs = subs; periodAgg.p4_y3.cumCash = cumCash; }
+        if (m === 48) { periodAgg.p5_y4.endSubs = subs; periodAgg.p5_y4.cumCash = cumCash; }
+
+        monthlyData.push({
+          m, subs, rev, cogsVal, grossProfit, opexVal, ebitdaVal, cumCash
+        });
+      }
+
+      // 5. UPDATE TOP KPI HEROES (MONTH 48 / YEAR 4 CEILING)
+      const m48 = monthlyData[47];
+      const m48MRR = m48.rev;
+      const m48ARR = m48MRR * 12;
+      const m48EBITDA = m48.ebitdaVal;
+      const m48EbMargin = (m48EBITDA / (m48MRR || 1)) * 100;
+
+      document.getElementById('kpi_mrr').textContent = formatUSD(m48MRR, true);
+      document.getElementById('kpi_arr').textContent = formatUSD(m48ARR, true) + ' ARR';
+      document.getElementById('kpi_ebitda').textContent = formatUSD(m48EBITDA, true);
+      document.getElementById('kpi_ebitda_margin').textContent = `%${m48EbMargin.toFixed(1)}`;
+      document.getElementById('kpi_unit_profit').textContent = '$' + unitProfit.toFixed(2);
+      document.getElementById('kpi_gross_margin').textContent = `%${marginPct.toFixed(1)}`;
+
+      if (breakevenMonth) {
+        document.getElementById('kpi_breakeven').textContent = breakevenMonth + '. Ay';
+        document.getElementById('kpi_breakeven_subs').textContent = `~${formatNumber(breakevenSubs)} Abone`;
+      } else {
+        document.getElementById('kpi_breakeven').textContent = '>48 Ay';
+        document.getElementById('kpi_breakeven_subs').textContent = 'Ölçek Gerekli';
+      }
+
+      // 6. UPDATE RADIAL SATURATION GAUGE
+      const y4Target = state.targetSubsByYear.y4 || 28000;
+      const saturationRatio = Math.min(1, y4Target / 28000);
+      const circleOffset = 251.2 * (1 - saturationRatio);
+      const circleEl = document.getElementById('gauge_radial_circle');
+      if (circleEl) circleEl.style.strokeDashoffset = circleOffset;
+
+      if (document.getElementById('gauge_disp_pct')) {
+        document.getElementById('gauge_disp_pct').textContent = formatNumber(y4Target);
+      }
+      if (document.getElementById('gauge_lbl_m7_12')) {
+        document.getElementById('gauge_lbl_m7_12').textContent = formatNumber(state.targetSubsByYear.y1);
+      }
+      if (document.getElementById('gauge_lbl_y2')) {
+        document.getElementById('gauge_lbl_y2').textContent = formatNumber(state.targetSubsByYear.y2);
+      }
+      if (document.getElementById('gauge_lbl_y3')) {
+        document.getElementById('gauge_lbl_y3').textContent = formatNumber(state.targetSubsByYear.y3);
+      }
+      if (document.getElementById('gauge_lbl_y4')) {
+        document.getElementById('gauge_lbl_y4').textContent = formatNumber(state.targetSubsByYear.y4);
+      }
+
+      // 7. UPDATE NARRATION & ROADMAP
+      let techBurn = 0;
+      let physicalBurn = 0;
+      state.prelaunchExpenses.forEach(exp => {
+        const rowSum = exp.monthly.reduce((a, b) => a + b, 0);
+        const isTech = (exp.cat === 'Yazılım' || exp.cat === 'AI/Ar-Ge');
+        if (isTech) {
+          techBurn += rowSum;
+        } else {
+          physicalBurn += rowSum;
+        }
+      });
+      const prelaunchTotalBurn = techBurn + physicalBurn;
+      const speech = `"Aura Box olarak Türkiye'nin A+ hane ve lüks tüketim dinamiklerini rasyonel olarak modeledik. Kapalıçarşı doğrudan ocak alımı ve el yapımı lüks ambalajla <strong>$${blendedAOV.toFixed(0)} ortalama kutu tutarımızın %${marginPct.toFixed(1)}'i (${formatUSD(unitProfit)}) brüt kâr</strong> olarak kalıyor. İlk 6 ay yazılım & AI (${formatUSD(techBurn, true)}) ile Kapalıçarşı operasyon ve tedarik depomuzun (${formatUSD(physicalBurn, true)}) kurulumunu (Toplam ${formatUSD(prelaunchTotalBurn, true)}) tamamlayıp lansman yapıyoruz. Henüz <strong>${breakevenMonth || 10}. ayda (~${formatNumber(breakevenSubs || 1742)} aboneye ulaştığımızda)</strong> şirket başabaş noktasına ulaşıyor. 2. yılın sonunda ${formatNumber(state.targetSubsByYear.y2)} abone, <strong>4. yılın sonunda ise pazar doygunluk tavanı olan ${formatNumber(state.targetSubsByYear.y4)} aktif aboneyle ayda ${formatUSD(m48MRR, true)} ciro ve ${formatUSD(m48EBITDA, true)} net FAVÖK</strong> üreten, tamamen kendi nakit akışıyla büyüyen kârlı bir lüks kulüp inşa ediyoruz."`;
+      if (document.getElementById('pitch_speech_text')) {
+        document.getElementById('pitch_speech_text').innerHTML = speech;
+      }
+
+      if (document.getElementById('phase1_kpi_burn')) document.getElementById('phase1_kpi_burn').textContent = formatUSD(prelaunchTotalBurn, true);
+      if (document.getElementById('phase1_kpi_tech')) document.getElementById('phase1_kpi_tech').textContent = formatUSD(techBurn, true);
+      if (document.getElementById('phase1_kpi_physical')) document.getElementById('phase1_kpi_physical').textContent = formatUSD(physicalBurn, true);
+      if (document.getElementById('t_p1_op_tech')) document.getElementById('t_p1_op_tech').textContent = formatUSD(techBurn, true);
+      if (document.getElementById('t_p1_op_phys')) document.getElementById('t_p1_op_phys').textContent = formatUSD(physicalBurn, true);
+      if (document.getElementById('flow_val_prep')) document.getElementById('flow_val_prep').textContent = formatUSD(prelaunchTotalBurn, true);
+      if (document.getElementById('phase2_kpi_subs')) document.getElementById('phase2_kpi_subs').textContent = formatNumber(breakevenSubs || 1131);
+      if (document.getElementById('phase2_kpi_month_lbl')) document.getElementById('phase2_kpi_month_lbl').textContent = `${breakevenMonth || 10}. Ay Başabaş Eşiği`;
+      if (document.getElementById('flow_circle_breakeven')) document.getElementById('flow_circle_breakeven').textContent = (breakevenMonth || 10) + 'A';
+      if (document.getElementById('flow_val_breakeven')) document.getElementById('flow_val_breakeven').textContent = '~' + formatNumber(breakevenSubs || 1131) + ' Abone';
+      if (document.getElementById('phase2_y1_subs')) document.getElementById('phase2_y1_subs').textContent = formatNumber(state.targetSubsByYear.y1);
+      if (document.getElementById('phase2_kpi_margin')) document.getElementById('phase2_kpi_margin').textContent = `%${marginPct.toFixed(1)} Sabit Brüt Marj`;
+      if (document.getElementById('phase3_kpi_subs')) document.getElementById('phase3_kpi_subs').textContent = formatNumber(state.targetSubsByYear.y3);
+      if (document.getElementById('phase3_kpi_cash')) document.getElementById('phase3_kpi_cash').textContent = `Yıllık ${formatUSD(periodAgg.p4_y3.eb, true)} FAVÖK Kârı`;
+      if (document.getElementById('flow_val_y2')) document.getElementById('flow_val_y2').textContent = formatNumber(state.targetSubsByYear.y2) + ' Abone';
+      if (document.getElementById('phase4_kpi_subs')) document.getElementById('phase4_kpi_subs').textContent = formatNumber(state.targetSubsByYear.y4);
+      if (document.getElementById('phase4_kpi_arr')) document.getElementById('phase4_kpi_arr').textContent = `${formatUSD(m48ARR, true)} ARR Ciro Tavanı`;
+      if (document.getElementById('phase4_kpi_ebitda')) document.getElementById('phase4_kpi_ebitda').textContent = `${formatUSD(m48EBITDA * 12, true)} FAVÖK (%${m48EbMargin.toFixed(1)} Net)`;
+      if (document.getElementById('phase4_kpi_cash')) document.getElementById('phase4_kpi_cash').textContent = `${formatUSD(monthlyData[47].cumCash, true)} Kasa Rezervi`;
+      if (document.getElementById('flow_val_y4')) document.getElementById('flow_val_y4').textContent = formatNumber(state.targetSubsByYear.y4) + ' Abone';
+
+      // Prelaunch tab KPIs
+      if (document.getElementById('pre_kpi_breakeven')) document.getElementById('pre_kpi_breakeven').textContent = (breakevenMonth || 10) + '. Ay';
+      if (document.getElementById('pre_kpi_breakeven_subs')) document.getElementById('pre_kpi_breakeven_subs').textContent = `Eşik: ~${formatNumber(breakevenSubs || 1742)} Abone`;
+      if (document.getElementById('pre_kpi_safe_buffer')) document.getElementById('pre_kpi_safe_buffer').textContent = formatUSD(prelaunchTotalBurn + 30000);
+
+      // 8. UPDATE 5-PERIOD CONSOLIDATED TABLE (100% MATHEMATICAL SYNCHRONIZATION)
+      const periodMapping = [
+        { key: 'p1_pre', id: 'p1' },
+        { key: 'p2_m7_12', id: 'p2' },
+        { key: 'p3_y2', id: 'p3' },
+        { key: 'p4_y3', id: 'p4' },
+        { key: 'p5_y4', id: 'p5' }
+      ];
+      const ltvCacMap = { p1: '-', p2: '42x', p3: '58x', p4: '65x', p5: '68x' };
+
+      periodMapping.forEach(({ key, id }) => {
+        const p = periodAgg[key];
+        if (document.getElementById(`t_${id}_subs`)) {
+          document.getElementById(`t_${id}_subs`).textContent = p.endSubs > 0 ? formatNumber(p.endSubs) : '0';
+        }
+        if (document.getElementById(`t_${id}_churn`)) {
+          document.getElementById(`t_${id}_churn`).textContent = p.churn;
+        }
+        if (document.getElementById(`t_${id}_box`)) {
+          document.getElementById(`t_${id}_box`).textContent = p.boxes > 0 ? (formatUSD(p.boxes, true).replace('$', '')) : '0';
+        }
+        if (document.getElementById(`t_${id}_aov`)) {
+          document.getElementById(`t_${id}_aov`).textContent = p.aov !== '-' ? ('$' + blendedAOV.toFixed(2)) : '-';
+        }
+        if (document.getElementById(`t_${id}_rev`)) {
+          document.getElementById(`t_${id}_rev`).textContent = p.rev > 0 ? formatUSD(p.rev, true) : '$0';
+        }
+        if (document.getElementById(`t_${id}_gp`)) {
+          const gp = p.rev - p.cogs;
+          document.getElementById(`t_${id}_gp`).textContent = gp > 0 ? formatUSD(gp, true) : '$0';
+        }
+        if (document.getElementById(`t_${id}_op`)) {
+          document.getElementById(`t_${id}_op`).textContent = formatUSD(p.opex, true);
+        }
+        if (document.getElementById(`t_${id}_eb`)) {
+          const ebEl = document.getElementById(`t_${id}_eb`);
+          ebEl.textContent = (p.eb >= 0 ? '+' : '') + formatUSD(p.eb, true);
+          ebEl.style.color = p.eb >= 0 ? 'var(--apple-green-dark)' : 'var(--apple-orange)';
+        }
+        if (document.getElementById(`t_${id}_eb_margin`)) {
+          const ebMarginEl = document.getElementById(`t_${id}_eb_margin`);
+          if (p.rev > 0) {
+            const mPct = (p.eb / p.rev) * 100;
+            ebMarginEl.textContent = (mPct >= 0 ? '%' : '-%') + Math.abs(mPct).toFixed(1);
+            ebMarginEl.style.color = mPct >= 0 ? '#248A3D' : '#D97706';
+          } else {
+            ebMarginEl.textContent = '-%';
+            ebMarginEl.style.color = 'var(--text-tertiary)';
+          }
+        }
+        if (document.getElementById(`t_${id}_cash`)) {
+          document.getElementById(`t_${id}_cash`).textContent = formatUSD(p.cumCash, true);
+        }
+        if (document.getElementById(`t_${id}_ltv_cac`)) {
+          document.getElementById(`t_${id}_ltv_cac`).textContent = ltvCacMap[id];
+        }
+      });
+
+      // Master Consolidated Totals (48 Months Sum)
+      const totBoxes = periodAgg.p2_m7_12.boxes + periodAgg.p3_y2.boxes + periodAgg.p4_y3.boxes + periodAgg.p5_y4.boxes;
+      const totRev = periodAgg.p2_m7_12.rev + periodAgg.p3_y2.rev + periodAgg.p4_y3.rev + periodAgg.p5_y4.rev;
+      const totGP = (periodAgg.p2_m7_12.rev - periodAgg.p2_m7_12.cogs) + 
+                    (periodAgg.p3_y2.rev - periodAgg.p3_y2.cogs) + 
+                    (periodAgg.p4_y3.rev - periodAgg.p4_y3.cogs) + 
+                    (periodAgg.p5_y4.rev - periodAgg.p5_y4.cogs);
+      const totOP = periodAgg.p1_pre.opex + periodAgg.p2_m7_12.opex + periodAgg.p3_y2.opex + periodAgg.p4_y3.opex + periodAgg.p5_y4.opex;
+      const totEB = periodAgg.p1_pre.eb + periodAgg.p2_m7_12.eb + periodAgg.p3_y2.eb + periodAgg.p4_y3.eb + periodAgg.p5_y4.eb;
+      const totEbMargin = (totEB / (totRev || 1)) * 100;
+
+      if (document.getElementById('t_gp_pct_lbl')) document.getElementById('t_gp_pct_lbl').textContent = `%${marginPct.toFixed(0)}`;
+      if (document.getElementById('t_tot_subs')) document.getElementById('t_tot_subs').textContent = formatNumber(periodAgg.p5_y4.endSubs) + ' Tavan';
+      if (document.getElementById('t_tot_churn')) document.getElementById('t_tot_churn').textContent = '%1.5 Ort.';
+      if (document.getElementById('t_tot_box')) document.getElementById('t_tot_box').textContent = formatUSD(totBoxes, true).replace('$', '') + ' Kutu';
+      if (document.getElementById('t_tot_aov')) document.getElementById('t_tot_aov').textContent = '$' + blendedAOV.toFixed(2) + ' Ort.';
+      if (document.getElementById('t_tot_rev')) document.getElementById('t_tot_rev').textContent = formatUSD(totRev, true);
+      if (document.getElementById('t_tot_gp')) document.getElementById('t_tot_gp').textContent = formatUSD(totGP, true);
+      if (document.getElementById('t_tot_op')) document.getElementById('t_tot_op').textContent = formatUSD(totOP, true);
+      if (document.getElementById('t_tot_eb')) document.getElementById('t_tot_eb').textContent = '+' + formatUSD(totEB, true);
+      if (document.getElementById('t_tot_eb_margin')) document.getElementById('t_tot_eb_margin').textContent = `%${totEbMargin.toFixed(1)} Ort.`;
+      if (document.getElementById('t_tot_cash')) document.getElementById('t_tot_cash').textContent = formatUSD(cumCash, true);
+      if (document.getElementById('t_tot_ltv_cac')) document.getElementById('t_tot_ltv_cac').textContent = '~68x Zirve';
+
+      // Update OPEX Period Badges
+      updateOpexPeriodBadges();
+
+      // 9. UPDATE 48-MONTH DUAL-AXIS CHART
+      renderAppleChart(monthlyData);
+    }
+
+    function renderAppleChart(monthlyData) {
+      const labels = monthlyData.map(d => (d.m % 6 === 0 || d.m === 1 || d.m === 48) ? 'Ay ' + d.m : '');
+      const revData = monthlyData.map(d => d.rev);
+      const ebData = monthlyData.map(d => d.ebitdaVal);
+      const cashData = monthlyData.map(d => d.cumCash);
+
+      if (!chartInstance) {
+        const ctx = document.getElementById('appleGrowthChart').getContext('2d');
+        chartInstance = new Chart(ctx, {
+          type: 'line',
+          data: {
+            labels: labels,
+            datasets: [
+              {
+                label: 'Aylık Ciro (MRR)',
+                data: revData,
+                yAxisID: 'y',
+                borderColor: '#2E1065',
+                backgroundColor: 'rgba(46, 16, 101, 0.05)',
+                borderWidth: 2.8,
+                fill: true,
+                tension: 0.35,
+                pointRadius: 0,
+                pointHoverRadius: 6
+              },
+              {
+                label: 'Aylık Net FAVÖK',
+                data: ebData,
+                yAxisID: 'y',
+                borderColor: '#34C759',
+                backgroundColor: 'rgba(52, 199, 89, 0.05)',
+                borderWidth: 2.2,
+                tension: 0.35,
+                pointRadius: 0,
+                pointHoverRadius: 6
+              },
+              {
+                label: 'Kasa Rezervi (Kümülatif)',
+                data: cashData,
+                yAxisID: 'yCash',
+                borderColor: '#0071E3',
+                backgroundColor: 'transparent',
+                borderWidth: 2,
+                borderDash: [5, 4],
+                tension: 0.35,
+                pointRadius: 0,
+                pointHoverRadius: 6
+              }
+            ]
+          },
+          options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            interaction: { mode: 'index', intersect: false },
+            plugins: {
+              legend: {
+                position: 'top',
+                align: 'end',
+                labels: {
+                  boxWidth: 9,
+                  usePointStyle: true,
+                  font: { family: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif', size: 11, weight: '600' },
+                  color: '#6E6E73'
+                }
+              },
+              tooltip: {
+                backgroundColor: 'rgba(29, 29, 31, 0.95)',
+                titleFont: { size: 12, weight: '700' },
+                bodyFont: { size: 11 },
+                padding: 10,
+                cornerRadius: 10,
+                callbacks: {
+                  label: function(c) {
+                    return c.dataset.label + ': ' + formatUSD(c.raw, true);
+                  }
+                }
+              }
+            },
+            scales: {
+              x: { grid: { display: false }, ticks: { color: '#86868B', font: { size: 10 } } },
+              y: {
+                type: 'linear',
+                position: 'left',
+                grid: { color: 'rgba(0, 0, 0, 0.05)' },
+                title: { display: true, text: 'Aylık Ciro & FAVÖK ($)', font: { size: 10, weight: '600' }, color: '#86868B' },
+                ticks: {
+                  color: '#86868B',
+                  font: { size: 10 },
+                  callback: function(v) { return formatUSD(v, true); }
+                }
+              },
+              yCash: {
+                type: 'linear',
+                position: 'right',
+                grid: { display: false },
+                title: { display: true, text: 'Kasa Rezervi ($)', font: { size: 10, weight: '600' }, color: '#0071E3' },
+                ticks: {
+                  color: '#0071E3',
+                  font: { size: 10 },
+                  callback: function(v) { return formatUSD(v, true); }
+                }
+              }
+            }
+          }
+        });
+      } else {
+        chartInstance.data.datasets[0].data = revData;
+        chartInstance.data.datasets[1].data = ebData;
+        chartInstance.data.datasets[2].data = cashData;
+        chartInstance.update();
+      }
+    }
+
+    // PRESET SCENARIOS (TÜRKİYE GERÇEKLİĞİ VE DOYGUNLUK TAVANI)
+    function applyPreset(type) {
+      document.querySelectorAll('.segment-btn').forEach(b => b.classList.remove('active'));
+      event.target.classList.add('active');
+
+      if (type === 'trReality') {
+        // Türkiye Gerçekliği: A+ Gelir Grubu ve Hediye Doygunluğu (Zirve: 28K Abone)
+        state.targetSubsByYear = { y1: 3200, y2: 11500, y3: 21000, y4: 28000 };
+        state.seedFund = 450000;
+        state.tiers = [
+          { name: "Petite", share: 30, price: 28, color: "#8B5CF6" },
+          { name: "Signature (Popüler)", share: 45, price: 85, color: "#6D28D9" },
+          { name: "Prestige (Lüks)", share: 14, price: 175, color: "#C5A059" },
+          { name: "Privé (Yüksek)", share: 6, price: 390, color: "#D97706" },
+          { name: "Grand Vault", share: 3, price: 750, color: "#10B981" },
+          { name: "Aura Black (Cemiyet)", share: 1, price: 1320, color: "#1D1D1F" },
+          { name: "Özel (Bespoke)", share: 1, price: 480, color: "#0071E3" }
+        ];
+      } else if (type === 'ultraLuxury') {
+        // Butik Haute Couture: Sadece Türkiye'nin en zengin 8.500 hanesi, yüksek AOV ($260+)
+        state.targetSubsByYear = { y1: 1200, y2: 4000, y3: 6800, y4: 8500 };
+        state.seedFund = 380000;
+        state.tiers = [
+          { name: "Petite", share: 5, price: 28, color: "#8B5CF6" },
+          { name: "Signature", share: 20, price: 85, color: "#6D28D9" },
+          { name: "Prestige (Lüks)", share: 35, price: 175, color: "#C5A059" },
+          { name: "Privé (Yüksek)", share: 22, price: 390, color: "#D97706" },
+          { name: "Grand Vault", share: 10, price: 750, color: "#10B981" },
+          { name: "Aura Black", share: 5, price: 1320, color: "#1D1D1F" },
+          { name: "Özel (Bespoke)", share: 3, price: 650, color: "#0071E3" }
+        ];
+      } else if (type === 'gccExpansion') {
+        // TR Doyunca Körfez Açılımı (Dubai, Riyad, Doha) -> 55K Abone
+        state.targetSubsByYear = { y1: 3200, y2: 12000, y3: 32000, y4: 55000 };
+        state.seedFund = 650000;
+      } else if (type === 'aggressive') {
+        // Agresif Teori: Kitlesel Lüks (100K)
+        state.targetSubsByYear = { y1: 8000, y2: 35000, y3: 70000, y4: 100000 };
+        state.seedFund = 750000;
+      }
+
+      syncAllUIControls();
+      recalculateAll();
+      saveStateToStorage();
+    }
+
+    function copyInvestorNote() {
+      const text = document.getElementById('pitch_speech_text').innerText;
+      navigator.clipboard.writeText(text).then(() => {
+        showToast("Yatırımcı konuşma notu kopyalandı!");
+      }).catch(() => {
+        const dummy = document.createElement("textarea");
+        document.body.appendChild(dummy);
+        dummy.value = text;
+        dummy.select();
+        document.execCommand("copy");
+        document.body.removeChild(dummy);
+        showToast("Yatırımcı konuşma notu kopyalandı!");
+      });
+    }
+
+    function showToast(msg) {
+      const t = document.getElementById('toast_msg');
+      t.textContent = msg;
+      t.style.display = 'block';
+      setTimeout(() => { t.style.display = 'none'; }, 2500);
+    }
+
+    // INITIALIZATION ON DOM READY
+    window.addEventListener('DOMContentLoaded', () => {
+      loadStateFromStorage();
+      syncAllUIControls();
+      recalculateAll();
+    });
+  </script>
+</body>
+</html>
